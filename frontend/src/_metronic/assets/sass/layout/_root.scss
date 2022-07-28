@@ -1,0 +1,23 @@
+//
+// Root
+//
+
+// Light mode
+@include theme-light() {
+    // Page bg
+    --kt-page-bg: #{$page-bg};
+
+    // Header
+    --kt-header-bg-color: #{get($header-config, bg-color)};
+    --kt-header-border-color: #{get($header-config, border-color)};
+}
+
+// Dark mode
+@include theme-dark() {
+    // Page bg
+    --kt-page-bg: #{$page-bg-dark};
+
+    // Header
+    --kt-header-bg-color: #{get($header-config, bg-color-dark)};
+    --kt-header-border-color: #{get($header-config, border-color-dark)};
+}
