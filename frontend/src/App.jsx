@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { Auth } from "aws-amplify";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import { LinkContainer } from "react-router-bootstrap";
 import "./App.css";
 import Routes from "./Routes";
 import { AppContext } from "./lib/contextLib";
-import { Auth } from "aws-amplify";
-import { useNavigate } from "react-router-dom";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 function App() {
   const [isAuthenticating, setIsAuthenticating] = useState(true);
@@ -67,9 +68,13 @@ function App() {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
-        <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
-          <Routes />
-        </AppContext.Provider>
+        <ErrorBoundary>
+          <AppContext.Provider
+            value={{ isAuthenticated, userHasAuthenticated }}
+          >
+            <Routes />
+          </AppContext.Provider>
+        </ErrorBoundary>
       </div>
     )
   );
