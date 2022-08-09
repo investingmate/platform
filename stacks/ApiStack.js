@@ -7,6 +7,8 @@ export function ApiStack({ stack, app }) {
   // Create the API
   const api = new Api(stack, "Api", {
     defaults: {
+      customDomain:
+        app.stage === "prod" ? "api.investingmate.com.au" : undefined,
       authorizer: "iam",
       function: {
         permissions: [table],
@@ -28,7 +30,7 @@ export function ApiStack({ stack, app }) {
 
   // Show the API endpoint in the output
   stack.addOutputs({
-    ApiEndpoint: api.url,
+    ApiEndpoint: api.customDomainUrl || api.url,
   });
 
   // Return the API resource

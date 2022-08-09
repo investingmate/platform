@@ -13,6 +13,7 @@ import UnauthenticatedRoute from "./components/UnauthenticatedRoute";
 export default function Links() {
   return (
     <Routes>
+      <Route path="/" element={<Home />} />
       <Route
         path="/login"
         element={

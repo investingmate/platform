@@ -9,6 +9,13 @@ export function FrontendStack({ stack, app }) {
   const { bucket } = use(StorageStack);
   // Define our React app
   const site = new ReactStaticSite(stack, "ReactSite", {
+    customDomain:
+      app.stage === "prod"
+        ? {
+            domainName: "app.investingmate.com.au",
+            domainAlias: "www.app.investingmate.com.au",
+          }
+        : undefined,
     path: "frontend",
     // Pass in our environment variables
     environment: {
@@ -22,6 +29,6 @@ export function FrontendStack({ stack, app }) {
   });
   // Show the url in the output
   stack.addOutputs({
-    SiteUrl: site.url,
+    SiteUrl: site.customDomainUrl || site.url,
   });
 }
