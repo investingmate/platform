@@ -1,16 +1,52 @@
 import * as iam from "aws-cdk-lib/aws-iam";
-import { Auth, use } from "@serverless-stack/resources";
+import * as cognito from "aws-cdk-lib/aws-cognito";
+import { Cognito, use } from "@serverless-stack/resources";
 import { StorageStack } from "./StorageStack";
 import { ApiStack } from "./ApiStack";
 
 export function AuthStack({ stack, app }) {
   const { bucket } = use(StorageStack);
   const { api } = use(ApiStack);
-  // Create a Cognito User Pool and Identity Pool
-  const auth = new Auth(stack, "Auth", {
+
+  const auth = new Cognito(stack, "auth", {
     login: ["email"],
+    cdk: {
+      userPoolClient: {
+        supportedIdentityProviders: [
+          cognito.UserPoolClientIdentityProvider.GOOGLE,
+        ],
+        oAuth: {
+          callbackUrls: ["http://localhost:3000"],
+          logoutUrls: ["http://localhost:3000"],
+        },
+      },
+    },
   });
-  auth.attachPermissionsForAuthUsers([
+
+  const provider = new cognito.UserPoolIdentityProviderGoogle(stack, "Google", {
+    clientId:
+      "560062138519-d9fior6tn78a3d908e37ngmpnb9c6d10.apps.googleusercontent.com",
+    clientSecret: "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",
+    userPool: auth.cdk.userPool,
+    scopes: ["profile", "email", "openid"],
+    attributeMapping: {
+      email: cognito.ProviderAttribute.GOOGLE_EMAIL,
+      givenName: cognito.ProviderAttribute.GOOGLE_GIVEN_NAME,
+      familyName: cognito.ProviderAttribute.GOOGLE_FAMILY_NAME,
+      profilePicture: cognito.ProviderAttribute.GOOGLE_PICTURE,
+    },
+  });
+
+  auth.cdk.userPoolClient.node.addDependency(provider);
+
+  // Create a cognito userpool domain
+  const domain = auth.cdk.userPool.addDomain("AuthDomain", {
+    cognitoDomain: {
+      domainPrefix: `${app.stage}-investing-mate-auth-domain`,
+    },
+  });
+
+  auth.attachPermissionsForAuthUsers(auth, [
     // Allow access to the API
     api,
     // Policy granting access to a specific folder in the bucket
@@ -28,9 +64,11 @@ export function AuthStack({ stack, app }) {
     UserPoolId: auth.userPoolId,
     IdentityPoolId: auth.cognitoIdentityPoolId,
     UserPoolClientId: auth.userPoolClientId,
+    AuthDomain: domain.domainName,
   });
   // Return the auth resource
   return {
     auth,
+    domain,
   };
 }

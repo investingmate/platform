@@ -5,7 +5,7 @@ import { BsPencilSquare } from "react-icons/bs";
 import { LinkContainer } from "react-router-bootstrap";
 import { useAppContext } from "../lib/contextLib";
 import { onError } from "../lib/errorLib";
-import "./Home.css";
+
 export default function Home() {
   const [notes, setNotes] = useState([]);
   const { isAuthenticated } = useAppContext();

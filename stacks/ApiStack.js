@@ -5,10 +5,10 @@ export function ApiStack({ stack, app }) {
   const { table } = use(StorageStack);
 
   // Create the API
-  const api = new Api(stack, "Api", {
+  const api = new Api(stack, "api", {
     defaults: {
-      customDomain:
-        app.stage === "prod" ? "api.investingmate.com.au" : undefined,
+      // customDomain:
+      //   app.stage === "prod" ? "api.investingmate.com.au" : undefined,
       authorizer: "iam",
       function: {
         permissions: [table],

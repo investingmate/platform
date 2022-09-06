@@ -5,17 +5,17 @@ import { StorageStack } from "./StorageStack";
 
 export function FrontendStack({ stack, app }) {
   const { api } = use(ApiStack);
-  const { auth } = use(AuthStack);
+  const { auth, domain } = use(AuthStack);
   const { bucket } = use(StorageStack);
   // Define our React app
-  const site = new ReactStaticSite(stack, "ReactSite", {
-    customDomain:
-      app.stage === "prod"
-        ? {
-            domainName: "app.investingmate.com.au",
-            domainAlias: "www.app.investingmate.com.au",
-          }
-        : undefined,
+  const site = new ReactStaticSite(stack, "frontend", {
+    // customDomain:
+    //   app.stage === "prod"
+    //     ? {
+    //         domainName: "app.investingmate.com.au",
+    //         domainAlias: "www.app.investingmate.com.au",
+    //       }
+    //     : undefined,
     path: "frontend",
     // Pass in our environment variables
     environment: {
@@ -25,6 +25,7 @@ export function FrontendStack({ stack, app }) {
       REACT_APP_USER_POOL_ID: auth.userPoolId,
       REACT_APP_IDENTITY_POOL_ID: auth.cognitoIdentityPoolId,
       REACT_APP_USER_POOL_CLIENT_ID: auth.userPoolClientId,
+      REACT_APP_AUTH_DOMAIN: domain.domainName,
     },
   });
   // Show the url in the output

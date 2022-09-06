@@ -6,7 +6,6 @@ import LoaderButton from "../components/LoaderButton";
 import { useAppContext } from "../lib/contextLib";
 import { useFormFields } from "../lib/hooksLib";
 import { onError } from "../lib/errorLib";
-import "./Signup.css";
 
 export default function Signup() {
   const [fields, handleFieldChange] = useFormFields({

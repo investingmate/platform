@@ -6,7 +6,6 @@ import { Elements } from "@stripe/react-stripe-js";
 import config from "../config";
 import { onError } from "../lib/errorLib";
 import BillingForm from "../components/BillingForm";
-import "./Settings.css";
 
 export default function Settings() {
   const nav = useNavigate();

@@ -5,7 +5,6 @@ import LoaderButton from "../components/LoaderButton";
 import { useAppContext } from "../lib/contextLib";
 import { useFormFields } from "../lib/hooksLib";
 import { onError } from "../lib/errorLib";
-import "./Login.css";
 
 export default function Login() {
   const { userHasAuthenticated } = useAppContext();

@@ -6,7 +6,6 @@ import LoaderButton from "../components/LoaderButton";
 import { s3Upload } from "../lib/awsLib";
 import { onError } from "../lib/errorLib";
 import config from "../config";
-import "./NewNote.css";
 
 export default function NewNote() {
   const file = useRef(null);
