@@ -33,7 +33,7 @@ Amplify.configure({
   API: {
     endpoints: [
       {
-        name: "notes",
+        name: "investingmate",
         endpoint: config.apiGateway.URL,
         region: config.apiGateway.REGION,
       },

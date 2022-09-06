@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <div className="footer py-4 px-4 d-flex flex-lg-column" id="kt_footer">
+    <div className="footer py-4 px-4 d-flex flex-lg-column" id="im_footer">
       {/* begin::Container */}
       <div
         className={`d-flex flex-column flex-md-row align-items-center justify-content-between`}

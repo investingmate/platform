@@ -102,7 +102,7 @@ export function ForgotPassword() {
     <form
       className="form w-100 fv-plugins-bootstrap5 fv-plugins-framework"
       noValidate
-      id="kt_login_password_reset_form"
+      id="im_login_password_reset_form"
       onSubmit={formik.handleSubmit}
     >
       <div className="text-center mb-10">
@@ -153,7 +153,7 @@ export function ForgotPassword() {
       <div className="d-flex flex-wrap justify-content-center pb-lg-0">
         <button
           type="submit"
-          id="kt_password_reset_submit"
+          id="im_password_reset_submit"
           className="btn btn-lg btn-primary fw-bolder me-4"
         >
           <span className="indicator-label">Submit</span>
@@ -167,7 +167,7 @@ export function ForgotPassword() {
         <Link to="/auth/login">
           <button
             type="button"
-            id="kt_login_password_reset_form_cancel_button"
+            id="im_login_password_reset_form_cancel_button"
             className="btn btn-lg btn-light-primary fw-bolder"
             disabled={formik.isSubmitting || !formik.isValid}
           >
@@ -183,7 +183,7 @@ export function ForgotPassword() {
     <form
       className="form w-100 fv-plugins-bootstrap5 fv-plugins-framework"
       noValidate
-      id="kt_login_password_reset_form"
+      id="im_login_password_reset_form"
       onSubmit={formik2.handleSubmit}
     >
       <div className="text-center mb-10">
@@ -352,7 +352,7 @@ export function ForgotPassword() {
       <div className="d-flex flex-wrap justify-content-center pb-lg-0">
         <button
           type="submit"
-          id="kt_password_reset_submit"
+          id="im_password_reset_submit"
           className="btn btn-lg btn-primary fw-bolder me-4"
           disabled={formik2.isSubmitting || !formik2.isValid}
         >
@@ -367,7 +367,7 @@ export function ForgotPassword() {
         <Link to="/auth/login">
           <button
             type="button"
-            id="kt_login_password_reset_form_cancel_button"
+            id="im_login_password_reset_form_cancel_button"
             className="btn btn-lg btn-light-primary fw-bolder"
           >
             Cancel

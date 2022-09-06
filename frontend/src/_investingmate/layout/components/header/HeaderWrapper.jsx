@@ -14,7 +14,7 @@ export function HeaderWrapper() {
 
   return (
     <div
-      id="kt_header"
+      id="im_header"
       className={clsx(
         "header",
         classes.header.join(" "),
@@ -36,7 +36,7 @@ export function HeaderWrapper() {
           >
             <div
               className="btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px"
-              id="kt_aside_mobile_toggle"
+              id="im_aside_mobile_toggle"
             >
               <KTSVG
                 path="/media/icons/duotune/abstract/abs015.svg"
@@ -76,13 +76,13 @@ export function HeaderWrapper() {
         <div className="d-flex align-items-stretch justify-content-between flex-lg-grow-1">
           {/* begin::Navbar */}
           {header.left === "menu" && (
-            <div className="d-flex align-items-stretch" id="kt_header_nav">
+            <div className="d-flex align-items-stretch" id="im_header_nav">
               <Header />
             </div>
           )}
 
           {header.left === "page-title" && (
-            <div className="d-flex align-items-center" id="kt_header_nav">
+            <div className="d-flex align-items-center" id="im_header_nav">
               <DefaultTitle />
             </div>
           )}

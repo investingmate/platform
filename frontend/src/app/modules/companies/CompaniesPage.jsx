@@ -1,5 +1,5 @@
 import { Route, Routes, Outlet, Navigate } from "react-router-dom";
-// import { CompaniesHeader } from "./CompaniesHeader";
+import { CompaniesHeader } from "./CompaniesHeader";
 import { Companies } from "./components/Companies";
 
 // const notesBreadcrumbs = [
@@ -23,7 +23,7 @@ const CompaniesPage = () => {
       <Route
         element={
           <>
-            {/* <CompaniesHeader /> */}
+            <CompaniesHeader />
             <Outlet />
           </>
         }

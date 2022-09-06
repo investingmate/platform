@@ -1,160 +1,121 @@
+import { Link } from "react-router-dom";
+import { KTSVG, toAbsoluteUrl } from "../../../../_investingmate/helpers";
+
 const Companies = () => {
-  return <>Companies</>;
+  return (
+    <div className="card mb-5 mb-xl-10" id="kt_profile_details_view">
+      <div className="card-header cursor-pointer">
+        <div className="card-title m-0">
+          <h3 className="fw-bolder m-0">Headlines</h3>
+        </div>
+
+        <Link
+          to="/crafted/account/settings"
+          className="btn btn-primary align-self-center"
+        >
+          Edit Profile
+        </Link>
+      </div>
+
+      <div className="card-body p-9">
+        <div className="row mb-7">
+          <label className="col-lg-4 fw-bold text-muted">Full Name</label>
+
+          <div className="col-lg-8">
+            <span className="fw-bolder fs-6 text-dark">Max Smith</span>
+          </div>
+        </div>
+
+        <div className="row mb-7">
+          <label className="col-lg-4 fw-bold text-muted">Company</label>
+
+          <div className="col-lg-8 fv-row">
+            <span className="fw-bold fs-6">Keenthemes</span>
+          </div>
+        </div>
+
+        <div className="row mb-7">
+          <label className="col-lg-4 fw-bold text-muted">
+            Contact Phone
+            <i
+              className="fas fa-exclamation-circle ms-1 fs-7"
+              data-bs-toggle="tooltip"
+              title="Phone number must be active"
+            ></i>
+          </label>
+
+          <div className="col-lg-8 d-flex align-items-center">
+            <span className="fw-bolder fs-6 me-2">044 3276 454 935</span>
+
+            <span className="badge badge-success">Verified</span>
+          </div>
+        </div>
+
+        <div className="row mb-7">
+          <label className="col-lg-4 fw-bold text-muted">Company Site</label>
+
+          <div className="col-lg-8">
+            <a href="#" className="fw-bold fs-6 text-dark text-hover-primary">
+              keenthemes.com
+            </a>
+          </div>
+        </div>
+
+        <div className="row mb-7">
+          <label className="col-lg-4 fw-bold text-muted">
+            Country
+            <i
+              className="fas fa-exclamation-circle ms-1 fs-7"
+              data-bs-toggle="tooltip"
+              title="Country of origination"
+            ></i>
+          </label>
+
+          <div className="col-lg-8">
+            <span className="fw-bolder fs-6 text-dark">Germany</span>
+          </div>
+        </div>
+
+        <div className="row mb-7">
+          <label className="col-lg-4 fw-bold text-muted">Communication</label>
+
+          <div className="col-lg-8">
+            <span className="fw-bolder fs-6 text-dark">Email, Phone</span>
+          </div>
+        </div>
+
+        <div className="row mb-10">
+          <label className="col-lg-4 fw-bold text-muted">Allow Changes</label>
+
+          <div className="col-lg-8">
+            <span className="fw-bold fs-6">Yes</span>
+          </div>
+        </div>
+
+        <div className="notice d-flex bg-light-warning rounded border-warning border border-dashed p-6">
+          <KTSVG
+            path="icons/duotune/general/gen044.svg"
+            className="svg-icon-2tx svg-icon-warning me-4"
+          />
+          <div className="d-flex flex-stack flex-grow-1">
+            <div className="fw-bold">
+              <h4 className="text-gray-800 fw-bolder">
+                We need your attention!
+              </h4>
+              <div className="fs-6 text-gray-600">
+                Your payment was declined. To start using tools, please
+                <Link className="fw-bolder" to="/crafted/account/settings">
+                  {" "}
+                  Add Payment Method
+                </Link>
+                .
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export { Companies };
-
-// import React, { useRef, useState, useEffect } from "react";
-// import { useParams, useNavigate } from "react-router-dom";
-// import { API, Storage } from "aws-amplify";
-// import Form from "react-bootstrap/Form";
-// import Button from "react-bootstrap/Button";
-// import { onError } from "../../../../lib/errorLib";
-// import { s3Upload } from "../../../../lib/awsLib";
-// import config from "../../../../config";
-
-// export function Companies() {
-//   const file = useRef(null);
-//   const { id } = useParams();
-//   const nav = useNavigate();
-//   const [note, setNote] = useState(null);
-//   const [content, setContent] = useState("");
-//   const [isLoading, setIsLoading] = useState(false);
-//   const [isDeleting, setIsDeleting] = useState(false);
-
-//   useEffect(() => {
-//     function loadNote() {
-//       return API.get("notes", `/notes/${id}`);
-//     }
-//     async function onLoad() {
-//       try {
-//         const note = await loadNote();
-//         const { content, attachment } = note;
-//         if (attachment) {
-//           note.attachmentURL = await Storage.vault.get(attachment);
-//         }
-//         setContent(content);
-//         setNote(note);
-//       } catch (e) {
-//         onError(e);
-//       }
-//     }
-//     onLoad();
-//   }, [id]);
-
-//   function validateForm() {
-//     return content.length > 0;
-//   }
-
-//   function formatFilename(str) {
-//     return str.replace(/^\w+-/, "");
-//   }
-
-//   function handleFileChange(event) {
-//     file.current = event.target.files[0];
-//   }
-
-//   function saveNote(note) {
-//     return API.put("notes", `/notes/${id}`, {
-//       body: note,
-//     });
-//   }
-
-//   function deleteNote() {
-//     return API.del("notes", `/notes/${id}`);
-//   }
-
-//   async function handleSubmit(event) {
-//     let attachment;
-//     event.preventDefault();
-//     if (file.current && file.current.size > config.MAX_ATTACHMENT_SIZE) {
-//       alert(
-//         `Please pick a file smaller than ${
-//           config.MAX_ATTACHMENT_SIZE / 1000000
-//         } MB.`
-//       );
-//       return;
-//     }
-//     setIsLoading(true);
-//     try {
-//       if (file.current) {
-//         attachment = await s3Upload(file.current);
-//       }
-//       await saveNote({
-//         content,
-//         attachment: attachment || note.attachment,
-//       });
-//       nav("/");
-//     } catch (e) {
-//       onError(e);
-//       setIsLoading(false);
-//     }
-//   }
-
-//   async function handleDelete(event) {
-//     event.preventDefault();
-//     const confirmed = window.confirm(
-//       "Are you sure you want to delete this note?"
-//     );
-//     if (!confirmed) {
-//       return;
-//     }
-//     setIsDeleting(true);
-//     try {
-//       await deleteNote();
-//       nav("/");
-//     } catch (e) {
-//       onError(e);
-//       setIsDeleting(false);
-//     }
-//   }
-
-//   return (
-//     <div className="Notes">
-//       {note && (
-//         <Form onSubmit={handleSubmit}>
-//           <Form.Group controlId="content">
-//             <Form.Control
-//               as="textarea"
-//               value={content}
-//               onChange={(e) => setContent(e.target.value)}
-//             />
-//           </Form.Group>
-//           <Form.Group controlId="file">
-//             <Form.Label>Attachment</Form.Label>
-//             {note.attachment && (
-//               <p>
-//                 <a
-//                   target="_blank"
-//                   rel="noopener noreferrer"
-//                   href={note.attachmentURL}
-//                 >
-//                   {formatFilename(note.attachment)}
-//                 </a>
-//               </p>
-//             )}
-//             <Form.Control onChange={handleFileChange} type="file" />
-//           </Form.Group>
-//           <Button
-//             block="true"
-//             size="lg"
-//             type="submit"
-//             isLoading={isLoading}
-//             disabled={!validateForm()}
-//           >
-//             Save
-//           </Button>
-//           <Button
-//             block="true"
-//             size="lg"
-//             variant="danger"
-//             onClick={handleDelete}
-//             isLoading={isDeleting}
-//           >
-//             Delete
-//           </Button>
-//         </Form>
-//       )}
-//     </div>
-//   );
-// }

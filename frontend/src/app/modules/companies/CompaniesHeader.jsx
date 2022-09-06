@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import { KTSVG, toAbsoluteUrl } from "../../../_investingmate/helpers";
-import { Link } from "react-router-dom";
 import { useLocation } from "react-router";
 
 const CompaniesHeader = () => {
@@ -41,7 +40,7 @@ const CompaniesHeader = () => {
                     href="#"
                     className="btn btn-sm btn-light-success fw-bolder ms-2 fs-8 py-1 px-3"
                     data-bs-toggle="modal"
-                    data-bs-target="#kt_modal_upgrade_plan"
+                    data-bs-target="#im_modal_upgrade_plan"
                   >
                     Upgrade to Pro
                   </a>
@@ -85,7 +84,7 @@ const CompaniesHeader = () => {
                 <a
                   href="#"
                   className="btn btn-sm btn-light me-2"
-                  id="kt_user_follow_button"
+                  id="im_user_follow_button"
                 >
                   <KTSVG
                     path="/media/icons/duotune/arrows/arr012.svg"
@@ -143,53 +142,8 @@ const CompaniesHeader = () => {
                   </div>
                 </div>
               </div>
-
-              <div className="d-flex align-items-center w-200px w-sm-300px flex-column mt-3">
-                <div className="d-flex justify-content-between w-100 mt-auto mb-2">
-                  <span className="fw-bold fs-6 text-gray-400">
-                    Profile Compleation
-                  </span>
-                  <span className="fw-bolder fs-6">50%</span>
-                </div>
-                <div className="h-5px mx-3 w-100 bg-light mb-3">
-                  <div
-                    className="bg-success rounded h-5px"
-                    role="progressbar"
-                    style={{ width: "50%" }}
-                  ></div>
-                </div>
-              </div>
             </div>
           </div>
-        </div>
-
-        <div className="d-flex overflow-auto h-55px">
-          <ul className="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bolder flex-nowrap">
-            <li className="nav-item">
-              <Link
-                className={
-                  `nav-link text-active-primary me-6 ` +
-                  (location.pathname === "/crafted/account/overview" &&
-                    "active")
-                }
-                to="/crafted/account/overview"
-              >
-                Overview
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                className={
-                  `nav-link text-active-primary me-6 ` +
-                  (location.pathname === "/crafted/account/settings" &&
-                    "active")
-                }
-                to="/crafted/account/settings"
-              >
-                Settings
-              </Link>
-            </li>
-          </ul>
         </div>
       </div>
     </div>

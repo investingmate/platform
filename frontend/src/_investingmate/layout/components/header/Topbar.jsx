@@ -58,7 +58,7 @@ const Topbar = () => {
       {/* begin::User */}
       <div
         className={clsx("d-flex align-items-center", toolbarButtonMarginClass)}
-        id="kt_header_user_menu_toggle"
+        id="im_header_user_menu_toggle"
       >
         {/* begin::Toggle */}
         <div

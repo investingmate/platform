@@ -10,16 +10,16 @@ const MasterLayout = () => {
       <AsideDefault />
       <div
         className="wrapper d-flex flex-column flex-row-fluid"
-        id="kt_wrapper"
+        id="im_wrapper"
       >
         <HeaderWrapper />
 
         <div
-          id="kt_content"
+          id="im_content"
           className="content d-flex flex-column flex-column-fluid"
         >
           {/* <Toolbar /> */}
-          <div className="post d-flex flex-column-fluid" id="kt_post">
+          <div className="post d-flex flex-column-fluid" id="im_post">
             <Content>
               <Outlet />
             </Content>

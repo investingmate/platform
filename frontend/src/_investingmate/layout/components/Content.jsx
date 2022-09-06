@@ -1,5 +1,17 @@
+import clsx from "clsx";
+import { useLayout } from "../core";
+
 const Content = ({ children }) => {
-  return <div id="kt_content_container">{children}</div>;
+  const { classes } = useLayout();
+
+  return (
+    <div
+      id="im_content_container"
+      className={clsx(classes.contentContainer.join(" "))}
+    >
+      {children}
+    </div>
+  );
 };
 
 export { Content };

@@ -65,7 +65,7 @@ export class LayoutSetup {
       document.body.removeAttribute(attr.name);
     });
     document.body.setAttribute("style", "");
-    document.body.setAttribute("id", "kt_body");
+    document.body.setAttribute("id", "im_body");
     if (config.main?.body?.backgroundImage) {
       document.body.style.backgroundImage = `url('${config.main.body.backgroundImage}')`;
     }
@@ -145,7 +145,7 @@ export class LayoutSetup {
       LayoutSetup.attributes.pageTitle.set("data-kt-swapper-mode", "prepend");
       LayoutSetup.attributes.pageTitle.set(
         "data-kt-swapper-parent",
-        `{ default: '#kt_content_container', '${config.responsiveBreakpoint}': '${config.responsiveTarget}'}`
+        `{ default: '#im_content_container', '${config.responsiveBreakpoint}': '${config.responsiveTarget}'}`
       );
     }
   }

@@ -110,7 +110,7 @@ export function Login() {
     <form
       className="form w-100 fv-plugins-bootstrap5 fv-plugins-framework"
       noValidate
-      id="kt_confirmation_login_form"
+      id="im_confirmation_login_form"
       onSubmit={formik2.handleSubmit}
     >
       {/* begin::Heading */}
@@ -202,7 +202,7 @@ export function Login() {
       <div className="text-center">
         <button
           type="submit"
-          id="kt_sign_up_submit"
+          id="im_sign_up_submit"
           className="btn btn-lg btn-primary w-100 mb-5"
           disabled={formik2.isSubmitting || !formik2.isValid}
         >
@@ -217,7 +217,7 @@ export function Login() {
         <Link to="/auth/login">
           <button
             type="button"
-            id="kt_confirmation_signup_form_cancel_button"
+            id="im_confirmation_signup_form_cancel_button"
             className="btn btn-lg btn-light-primary w-100 mb-5"
           >
             Cancel
@@ -233,7 +233,7 @@ export function Login() {
       className="form w-100"
       onSubmit={formik.handleSubmit}
       noValidate
-      id="kt_login_signin_form"
+      id="im_login_signin_form"
     >
       {/* begin::Heading */}
       <div className="text-center mb-10">
@@ -326,7 +326,7 @@ export function Login() {
       <div className="text-center">
         <button
           type="submit"
-          id="kt_sign_in_submit"
+          id="im_sign_in_submit"
           className="btn btn-lg btn-primary w-100 mb-5"
           disabled={formik.isSubmitting || !formik.isValid}
         >

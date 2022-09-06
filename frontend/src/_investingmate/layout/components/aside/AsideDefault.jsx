@@ -23,7 +23,7 @@ const AsideDefault = () => {
 
   return (
     <div
-      id="kt_aside"
+      id="im_aside"
       className={clsx("aside", classes.aside.join(" "))}
       data-kt-drawer="true"
       data-kt-drawer-name="aside"
@@ -31,11 +31,11 @@ const AsideDefault = () => {
       data-kt-drawer-overlay="true"
       data-kt-drawer-width="{default:'200px', '300px': '250px'}"
       data-kt-drawer-direction="start"
-      data-kt-drawer-toggle="#kt_aside_mobile_toggle"
+      data-kt-drawer-toggle="#im_aside_mobile_toggle"
       ref={asideRef}
     >
       {/* begin::Brand */}
-      <div className="aside-logo flex-column-auto" id="kt_aside_logo">
+      <div className="aside-logo flex-column-auto" id="im_aside_logo">
         {/* begin::Logo */}
         {aside.theme === "dark" && (
           <Link to="/dashboard">
@@ -60,7 +60,7 @@ const AsideDefault = () => {
         {/* begin::Aside toggler */}
         {aside.minimize && (
           <div
-            id="kt_aside_toggle"
+            id="im_aside_toggle"
             className="btn btn-icon w-auto px-0 btn-active-color-primary aside-toggle"
             data-kt-toggle="true"
             data-kt-toggle-state="active"

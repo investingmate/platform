@@ -123,7 +123,7 @@ export function Registration() {
     <form
       className="form w-100 fv-plugins-bootstrap5 fv-plugins-framework"
       noValidate
-      id="kt_login_signup_form"
+      id="im_login_signup_form"
       onSubmit={formik.handleSubmit}
     >
       {/* begin::Heading */}
@@ -352,12 +352,12 @@ export function Registration() {
           <input
             className="form-check-input"
             type="checkbox"
-            id="kt_login_toc_agree"
+            id="im_login_toc_agree"
             {...formik.getFieldProps("acceptTerms")}
           />
           <label
             className="form-check-label fw-bold text-gray-700 fs-6"
-            htmlFor="kt_login_toc_agree"
+            htmlFor="im_login_toc_agree"
           >
             I Agree the{" "}
             <Link to="/auth/terms" className="ms-1 link-primary">
@@ -380,7 +380,7 @@ export function Registration() {
       <div className="text-center">
         <button
           type="submit"
-          id="kt_sign_up_submit"
+          id="im_sign_up_submit"
           className="btn btn-lg btn-primary w-100 mb-5"
           disabled={
             formik.isSubmitting || !formik.isValid || !formik.values.acceptTerms
@@ -397,7 +397,7 @@ export function Registration() {
         <Link to="/auth/login">
           <button
             type="button"
-            id="kt_login_signup_form_cancel_button"
+            id="im_login_signup_form_cancel_button"
             className="btn btn-lg btn-light-primary w-100 mb-5"
           >
             Cancel
@@ -412,7 +412,7 @@ export function Registration() {
     <form
       className="form w-100 fv-plugins-bootstrap5 fv-plugins-framework"
       noValidate
-      id="kt_confirmation_signup_form"
+      id="im_confirmation_signup_form"
       onSubmit={formik2.handleSubmit}
     >
       {/* begin::Heading */}
@@ -500,7 +500,7 @@ export function Registration() {
       <div className="text-center">
         <button
           type="submit"
-          id="kt_sign_up_submit"
+          id="im_sign_up_submit"
           className="btn btn-lg btn-primary w-100 mb-5"
           disabled={formik2.isSubmitting || !formik2.isValid}
         >
@@ -515,7 +515,7 @@ export function Registration() {
         <Link to="/auth/login">
           <button
             type="button"
-            id="kt_confirmation_signup_form_cancel_button"
+            id="im_confirmation_signup_form_cancel_button"
             className="btn btn-lg btn-light-primary w-100 mb-5"
           >
             Cancel

@@ -7,10 +7,10 @@ const DefaultTitle = () => {
   const { config } = useLayout();
   return (
     <div
-      id="kt_page_title"
+      id="im_page_title"
       data-kt-swapper="true"
       data-kt-swapper-mode="prepend"
-      data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}"
+      data-kt-swapper-parent="{default: '#im_content_container', 'lg': '#im_toolbar_container'}"
       className={`page-title d-flex`}
     >
       {/* begin::Title */}
