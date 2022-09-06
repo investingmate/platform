@@ -4,7 +4,7 @@
 
 // Button
 .btn {
-	--#{$prefix}btn-color: var(--kt-body-color);
+	--#{$prefix}btn-color: var(--im-body-color);
 	--#{$prefix}btn-bg: transparent;
 	--#{$prefix}btn-border-color: transparent;
 
@@ -42,12 +42,12 @@
  
 	// Outline
 	&.btn-outline:not(.btn-outline-dashed) {
-		border: 1px solid var(--kt-input-border-color);
+		border: 1px solid var(--im-input-border-color);
 	}
 
 	// Outline dashed
 	&.btn-outline-dashed {
-		border: 1px dashed var(--kt-input-border-color);
+		border: 1px dashed var(--im-input-border-color);
 	}
 
 	// Flush

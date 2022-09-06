@@ -23,10 +23,10 @@
     .app-sidebar-secondary {        
         @include property( z-index, $app-sidebar-secondary-base-z-index);
 
-        background-color: var(--kt-app-sidebar-secondary-base-bg-color);
-        box-shadow: var(--kt-app-sidebar-secondary-base-box-shadow);
-        border-left: var(--kt-app-sidebar-secondary-base-border-start);
-        border-right: var(--kt-app-sidebar-secondary-base-border-end);
+        background-color: var(--im-app-sidebar-secondary-base-bg-color);
+        box-shadow: var(--im-app-sidebar-secondary-base-box-shadow);
+        border-left: var(--im-app-sidebar-secondary-base-border-start);
+        border-right: var(--im-app-sidebar-secondary-base-border-end);
 
         @include property( margin-left, $app-sidebar-secondary-base-gap-start-mobile);
         @include property( margin-right, $app-sidebar-secondary-base-gap-end-mobile);
@@ -36,7 +36,7 @@
 
     // Vars
     :root {
-        --kt-app-sidebar-secondary-width-actual: calc(
+        --im-app-sidebar-secondary-width-actual: calc(
             #{$app-sidebar-base-width} - 
             #{$app-sidebar-primary-base-width} - 
             #{$app-sidebar-primary-base-gap-start} - 
@@ -47,7 +47,7 @@
     }
 
     [data-kt-app-sidebar-stacked="true"] {
-        --kt-app-sidebar-secondary-width: calc(
+        --im-app-sidebar-secondary-width: calc(
             #{$app-sidebar-base-width} - 
             #{$app-sidebar-primary-base-width} - 
             #{$app-sidebar-primary-base-gap-start} - 
@@ -56,23 +56,23 @@
             #{$app-sidebar-secondary-base-gap-end}
         );        
 
-        --kt-app-sidebar-secondary-gap-start: #{$app-sidebar-secondary-base-gap-start};
-        --kt-app-sidebar-secondary-gap-end: #{$app-sidebar-secondary-base-gap-end};
-        --kt-app-sidebar-secondary-gap-top: #{$app-sidebar-secondary-base-gap-top};
-        --kt-app-sidebar-secondary-gap-bottom: #{$app-sidebar-secondary-base-gap-bottom};
+        --im-app-sidebar-secondary-gap-start: #{$app-sidebar-secondary-base-gap-start};
+        --im-app-sidebar-secondary-gap-end: #{$app-sidebar-secondary-base-gap-end};
+        --im-app-sidebar-secondary-gap-top: #{$app-sidebar-secondary-base-gap-top};
+        --im-app-sidebar-secondary-gap-bottom: #{$app-sidebar-secondary-base-gap-bottom};
     }
 
     [data-kt-app-sidebar-secondary-minimize="on"] {
-        --kt-app-sidebar-secondary-width: #{$app-sidebar-secondary-minimize-width};
+        --im-app-sidebar-secondary-width: #{$app-sidebar-secondary-minimize-width};
 
-        --kt-app-sidebar-secondary-gap-start: #{$app-sidebar-secondary-minimize-gap-start};
-        --kt-app-sidebar-secondary-gap-end: #{$app-sidebar-secondary-minimize-gap-end};
-        --kt-app-sidebar-secondary-gap-top: #{$app-sidebar-secondary-minimize-gap-top};
-        --kt-app-sidebar-secondary-gap-bottom: #{$app-sidebar-secondary-minimize-gap-bottom};
+        --im-app-sidebar-secondary-gap-start: #{$app-sidebar-secondary-minimize-gap-start};
+        --im-app-sidebar-secondary-gap-end: #{$app-sidebar-secondary-minimize-gap-end};
+        --im-app-sidebar-secondary-gap-top: #{$app-sidebar-secondary-minimize-gap-top};
+        --im-app-sidebar-secondary-gap-bottom: #{$app-sidebar-secondary-minimize-gap-bottom};
     } 
 
     [data-kt-app-sidebar-secondary-collapse="on"] {
-        --kt-app-sidebar-secondary-width-actual: calc(
+        --im-app-sidebar-secondary-width-actual: calc(
             #{$app-sidebar-base-width} - 
             #{$app-sidebar-primary-base-width} - 
             #{$app-sidebar-primary-base-gap-start} - 
@@ -81,26 +81,26 @@
             #{$app-sidebar-secondary-base-gap-end}
         );
 
-        --kt-app-sidebar-secondary-width: 0px;
+        --im-app-sidebar-secondary-width: 0px;
     }       
 
     // States
     .app-sidebar-secondary {
-        width: var(--kt-app-sidebar-secondary-width);
+        width: var(--im-app-sidebar-secondary-width);
 
         [data-kt-app-sidebar-secondary-collapse="on"] & {
             transition: $app-sidebar-secondary-base-transition;
-            width: var(--kt-app-sidebar-secondary-width-actual);
-            margin-left: calc( -1 * var(--kt-app-sidebar-secondary-width-actual));
+            width: var(--im-app-sidebar-secondary-width-actual);
+            margin-left: calc( -1 * var(--im-app-sidebar-secondary-width-actual));
         }
 
         [data-kt-app-sidebar-secondary-minimize="on"] & {
             transition: $app-sidebar-secondary-base-transition;
             
-            background-color: var(--kt-app-sidebar-secondary-minimize-bg-color);
-            box-shadow: var(--kt-app-sidebar-secondary-minimize-box-shadow);
-            border-left: var(--kt-app-sidebar-secondary-minimize-border-start);
-            border-right: var(--kt-app-sidebar-secondary-minimize-border-end);
+            background-color: var(--im-app-sidebar-secondary-minimize-bg-color);
+            box-shadow: var(--im-app-sidebar-secondary-minimize-box-shadow);
+            border-left: var(--im-app-sidebar-secondary-minimize-border-start);
+            border-right: var(--im-app-sidebar-secondary-minimize-border-end);
 
             @include property( margin-left, $app-sidebar-secondary-minimize-gap-start-mobile);
             @include property( margin-right, $app-sidebar-secondary-minimize-gap-end-mobile);
@@ -110,14 +110,14 @@
 
         [data-kt-app-sidebar-secondary-hoverable="true"] & {
             .app-sidebar-secondary-hoverable {
-                width: var(--kt-app-sidebar-secondary-width-actual); 
+                width: var(--im-app-sidebar-secondary-width-actual); 
             }
         }
 
         [data-kt-app-sidebar-secondary-hoverable="true"][data-kt-app-sidebar-secondary-minimize="on"] &:hover:not(.animating) {
             transition: $app-sidebar-secondary-base-transition;
-			width: var(--kt-app-sidebar-secondary-width-actual);
-            box-shadow: var(--kt-app-sidebar-secondary-minimize-hover-box-shadow);
+			width: var(--im-app-sidebar-secondary-width-actual);
+            box-shadow: var(--im-app-sidebar-secondary-minimize-hover-box-shadow);
         }
     }
 
@@ -125,12 +125,12 @@
     .app-sidebar-secondary {
         // Header
         [data-kt-app-sidebar-fixed="true"][data-kt-app-header-fixed="true"][data-kt-app-sidebar-secondary-below-header="true"] & {
-            top: var(--kt-app-header-height);
+            top: var(--im-app-header-height);
         }
 
         // Toolbar
         [data-kt-app-sidebar-fixed="true"][data-kt-app-header-fixed="true"][data-kt-app-toolbar-fixed="true"][data-kt-app-sidebar-secondary-below-toolbar="true"] & {
-            top: calc(var(--kt-app-header-height) + var(--kt-app-toolbar-height, 0));
+            top: calc(var(--im-app-header-height) + var(--im-app-toolbar-height, 0));
         }
     }
 
@@ -162,10 +162,10 @@
     .app-sidebar-secondary {        
         @include property( z-index, $app-sidebar-secondary-base-z-index-mobile);
 
-        background-color: var(--kt-app-sidebar-secondary-base-bg-color-mobile);
-        box-shadow: var(--kt-app-sidebar-secondary-base-box-shadow-mobile);
-        border-left: var(--kt-app-sidebar-secondary-base-border-start-mobile);
-        border-right: var(--kt-app-sidebar-secondary-base-border-end-mobile);
+        background-color: var(--im-app-sidebar-secondary-base-bg-color-mobile);
+        box-shadow: var(--im-app-sidebar-secondary-base-box-shadow-mobile);
+        border-left: var(--im-app-sidebar-secondary-base-border-start-mobile);
+        border-right: var(--im-app-sidebar-secondary-base-border-end-mobile);
 
         @include property( margin-left, $app-sidebar-secondary-base-gap-start-mobile);
         @include property( margin-right, $app-sidebar-secondary-base-gap-end-mobile);
@@ -175,7 +175,7 @@
 
     // Vars
     :root {
-        --kt-app-sidebar-secondary-width-actual: calc(
+        --im-app-sidebar-secondary-width-actual: calc(
             #{$app-sidebar-base-width-mobile} - 
             #{$app-sidebar-primary-base-width-mobile} - 
             #{$app-sidebar-primary-base-gap-start-mobile} - 
@@ -186,7 +186,7 @@
     }
 
     [data-kt-app-sidebar-stacked="true"] {
-        --kt-app-sidebar-secondary-width: calc(
+        --im-app-sidebar-secondary-width: calc(
             #{$app-sidebar-base-width-mobile} - 
             #{$app-sidebar-primary-base-width-mobile} - 
             #{$app-sidebar-primary-base-gap-start-mobile} - 
@@ -195,23 +195,23 @@
             #{$app-sidebar-secondary-base-gap-end-mobile}
         );       
 
-        --kt-app-sidebar-secondary-gap-start: #{$app-sidebar-secondary-base-gap-start-mobile};
-        --kt-app-sidebar-secondary-gap-end: #{$app-sidebar-secondary-base-gap-end-mobile};
-        --kt-app-sidebar-secondary-gap-top: #{$app-sidebar-secondary-base-gap-top-mobile};
-        --kt-app-sidebar-secondary-gap-bottom: #{$app-sidebar-secondary-base-gap-bottom-mobile};
+        --im-app-sidebar-secondary-gap-start: #{$app-sidebar-secondary-base-gap-start-mobile};
+        --im-app-sidebar-secondary-gap-end: #{$app-sidebar-secondary-base-gap-end-mobile};
+        --im-app-sidebar-secondary-gap-top: #{$app-sidebar-secondary-base-gap-top-mobile};
+        --im-app-sidebar-secondary-gap-bottom: #{$app-sidebar-secondary-base-gap-bottom-mobile};
     }
 
     [data-kt-app-sidebar-secondary-minimize-mobile="on"] {
-        --kt-app-sidebar-secondary-width: #{$app-sidebar-secondary-minimize-width-mobile};
+        --im-app-sidebar-secondary-width: #{$app-sidebar-secondary-minimize-width-mobile};
 
-        --kt-app-sidebar-secondary-gap-start: #{$app-sidebar-secondary-minimize-gap-start-mobile};
-        --kt-app-sidebar-secondary-gap-end: #{$app-sidebar-secondary-minimize-gap-end-mobile};
-        --kt-app-sidebar-secondary-gap-top: #{$app-sidebar-secondary-minimize-gap-top-mobile};
-        --kt-app-sidebar-secondary-gap-bottom: #{$app-sidebar-secondary-minimize-gap-bottom-mobile};
+        --im-app-sidebar-secondary-gap-start: #{$app-sidebar-secondary-minimize-gap-start-mobile};
+        --im-app-sidebar-secondary-gap-end: #{$app-sidebar-secondary-minimize-gap-end-mobile};
+        --im-app-sidebar-secondary-gap-top: #{$app-sidebar-secondary-minimize-gap-top-mobile};
+        --im-app-sidebar-secondary-gap-bottom: #{$app-sidebar-secondary-minimize-gap-bottom-mobile};
     }        
 
     [data-kt-app-sidebar-secondary-collapse-mobile="on"] {
-        --kt-app-sidebar-secondary-width-actual:  calc(
+        --im-app-sidebar-secondary-width-actual:  calc(
             #{$app-sidebar-base-width-mobile} - 
             #{$app-sidebar-primary-base-width-mobile} - 
             #{$app-sidebar-primary-base-gap-start-mobile} - 
@@ -220,25 +220,25 @@
             #{$app-sidebar-secondary-base-gap-end-mobile}
         );
 
-        --kt-app-sidebar-secondary-width: 0px;
+        --im-app-sidebar-secondary-width: 0px;
     }
 
     // States
     .app-sidebar-secondary {
-        width: var(--kt-app-sidebar-secondary-width);
+        width: var(--im-app-sidebar-secondary-width);
 
         [data-kt-app-sidebar-secondary-collapse-mobile="on"] & {
             transition: $app-sidebar-secondary-base-transition;
-            width: var(--kt-app-sidebar-secondary-width-actual);
-            margin-left: calc( -1 * var(--kt-app-sidebar-secondary-width-actual));
+            width: var(--im-app-sidebar-secondary-width-actual);
+            margin-left: calc( -1 * var(--im-app-sidebar-secondary-width-actual));
         }
 
         [data-kt-app-sidebar-secondary-minimize-mobile="on"] & {
             transition: $app-sidebar-secondary-base-transition;
-            background-color: var(--kt-app-sidebar-secondary-minimize-bg-color-mobile);
-            box-shadow: var(--kt-app-sidebar-secondary-minimize-box-shadow-mobile);
-            border-left: var(--kt-app-sidebar-secondary-minimize-border-start-mobile);
-            border-right: var(--kt-app-sidebar-secondary-minimize-border-end-mobile);
+            background-color: var(--im-app-sidebar-secondary-minimize-bg-color-mobile);
+            box-shadow: var(--im-app-sidebar-secondary-minimize-box-shadow-mobile);
+            border-left: var(--im-app-sidebar-secondary-minimize-border-start-mobile);
+            border-right: var(--im-app-sidebar-secondary-minimize-border-end-mobile);
 
             @include property( margin-left, $app-sidebar-secondary-minimize-gap-start-mobile);
             @include property( margin-right, $app-sidebar-secondary-minimize-gap-end-mobile);
@@ -248,14 +248,14 @@
 
         [data-kt-app-sidebar-secondary-hoverable-mobile="true"] & {
             .app-sidebar-secondary-hoverable {
-                width: var(--kt-app-sidebar-secondary-width-actual); 
+                width: var(--im-app-sidebar-secondary-width-actual); 
             }
         }
 
         [data-kt-app-sidebar-secondary-hoverable-mobile="true"][data-kt-app-sidebar-secondary-minimize-mobile="on"] &:hover:not(.animating) {
             transition: $app-sidebar-secondary-base-transition;
-			width: var(--kt-app-sidebar-secondary-width-actual);
-            box-shadow: var(--kt-app-sidebar-secondary-minimize-hover-box-shadow-mobile);
+			width: var(--im-app-sidebar-secondary-width-actual);
+            box-shadow: var(--im-app-sidebar-secondary-minimize-hover-box-shadow-mobile);
         }
     }
 

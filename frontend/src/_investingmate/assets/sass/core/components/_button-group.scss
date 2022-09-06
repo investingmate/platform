@@ -3,5 +3,5 @@
 // The clickable button for toggling the menu
 // Set the same inset shadow as the :active state
 .btn-group.show .dropdown-toggle {
-  @include box-shadow(var(--kt-btn-active-box-shadow));
+  @include box-shadow(var(--im-btn-active-box-shadow));
 }

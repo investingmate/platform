@@ -6,7 +6,7 @@
 .toolbar {
     display: flex;
     align-items: center;
-    background-color: var(--kt-toolbar-bg-color);
+    background-color: var(--im-toolbar-bg-color);
     padding: get($toolbar-config, padding);
 }
 
@@ -15,13 +15,13 @@
     .toolbar {
         // Fixed toolbar
         .toolbar-fixed & {
-			height: var(--kt-toolbar-height);
+			height: var(--im-toolbar-height);
       	    position: fixed;
 			top: 0;
 			right: 0;
 			left: 0;
 			z-index: get($toolbar-config, z-index);			
-            box-shadow: var(--kt-toolbar-box-shadow);
+            box-shadow: var(--im-toolbar-box-shadow);
         }
 
 		// toolbar enabled & toolbar not fixed modes
@@ -33,7 +33,7 @@
         .header-fixed.toolbar-fixed & {
             padding: 0;
             top: get($header-config, fixed, height, desktop);
-            border-top: var(--kt-toolbar-border-top);
+            border-top: var(--im-toolbar-border-top);
         }
 
         // Aside default enabled, aside fixed & header sticky modes
@@ -55,13 +55,13 @@
     .toolbar {
         // Fixed toolbar mode
         .toolbar-tablet-and-mobile-fixed & {
-			height: var(--kt-toolbar-height-tablet-and-mobile);
+			height: var(--im-toolbar-height-tablet-and-mobile);
             position: fixed;
             top: 0;
             right: 0;
             left: 0;
             z-index: get($toolbar-config, z-index);
-            box-shadow: var(--kt-toolbar-box-shadow);
+            box-shadow: var(--im-toolbar-box-shadow);
         }
 
         // Toolbar enabled & toolbar not fixed modes
@@ -73,7 +73,7 @@
         .header-tablet-and-mobile-fixed.toolbar-tablet-and-mobile-fixed & {
             padding: 0;
 			top: get($header-config, default, height, tablet-and-mobile);
-            border-top: var(--kt-toolbar-border-top);
+            border-top: var(--im-toolbar-border-top);
         }
 
         // Page title

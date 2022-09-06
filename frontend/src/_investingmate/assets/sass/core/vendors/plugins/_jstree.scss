@@ -4,12 +4,12 @@
 
 .jstree-default {
     .jstree-anchor {
-        color: var(--kt-gray-700);
+        color: var(--im-gray-700);
         padding: 0 8px 0 4px;
     }
 
     .jstree-icon {
-        color: var(--kt-gray-700);
+        color: var(--im-gray-700);
 
         font-size: 1.3rem;
 
@@ -28,32 +28,32 @@
         opacity: 0.7;
 
         .jstree-icon {
-            color: var(--kt-gray-700);
+            color: var(--im-gray-700);
         }
     }
 
     .jstree-clicked {
         border: 0;
-        background: var(--kt-gray-100);
+        background: var(--im-gray-100);
         box-shadow: none;
     }
 
     .jstree-hovered {
         border: 0;
-        background-color: var(--kt-gray-100);
+        background-color: var(--im-gray-100);
         box-shadow: none;
     }
 
     .jstree-wholerow-clicked,
     .jstree-wholerow-clicked {
-        background: var(--kt-gray-200);
+        background: var(--im-gray-200);
         box-shadow: none;
     }
 
     .jstree-wholerow-hovered,
     &.jstree-wholerow .jstree-wholerow-hovered {
         border: 0;
-        background-color: var(--kt-gray-100);
+        background-color: var(--im-gray-100);
         box-shadow: none;
     }
 }
@@ -88,8 +88,8 @@
     min-width: 150px;
     font-size: 1rem;
     font-family: $font-family-base;
-    background: var(--kt-body-bg);
-    box-shadow: var(--kt-dropdown-box-shadow);
+    background: var(--im-body-bg);
+    box-shadow: var(--im-dropdown-box-shadow);
     border: 0;
     @include border-radius($border-radius);
 
@@ -121,8 +121,8 @@
     .vakata-context-hover>a,
     li a:hover {
         margin: 0;
-        background-color: var(--kt-gray-100);
-        color: var(--kt-primary);
+        background-color: var(--im-gray-100);
+        color: var(--im-primary);
         box-shadow: none;
 
         .span,
@@ -137,14 +137,14 @@
     margin: 0;
     border: 0;
     height: 2px;
-    background-color: var(--kt-gray-200);
+    background-color: var(--im-gray-200);
 }
 
 .jstree-rename-input {
     outline: none !important;
     padding: 2px 6px !important;
     margin-right: -4px !important;
-    background-color: var(--kt-gray-100) !important;
-    border: 1px solid var(--kt-gray-100) !important;
+    background-color: var(--im-gray-100) !important;
+    border: 1px solid var(--im-gray-100) !important;
     @include border-radius($border-radius);
 }

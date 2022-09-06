@@ -5,13 +5,13 @@
 // Highlight
 .highlight {
     position: relative;
-    background: var(--kt-highlight-bg);
+    background: var(--im-highlight-bg);
     border-radius: $border-radius;
     padding: 1.75rem 1.5rem 1.75rem 1.5rem;
 
     // Tabs
     .nav {
-        border-bottom: 1px solid var(--kt-highlight-border);
+        border-bottom: 1px solid var(--im-highlight-border);
         padding-bottom: 1rem;
         margin-bottom: 1rem;
         margin-top: -0.25rem;
@@ -25,15 +25,15 @@
             font-weight: 500;
             padding: 0.35rem 1rem;
             border-radius: $border-radius;
-            color: var(--kt-highlight-btn-color);
+            color: var(--im-highlight-btn-color);
             transition: $transition-base;
             background-color: transparent;
 
             &:focus,
             &.active {
                 transition: $transition-base;
-                background-color: var(--kt-highlight-btn-bg-hover);
-                color: var(--kt-highlight-btn-color-hover);
+                background-color: var(--im-highlight-btn-bg-hover);
+                color: var(--im-highlight-btn-color-hover);
             }
         }
     }
@@ -47,14 +47,14 @@
         font-weight: 500;
         padding: 0.35rem 1rem !important;
         transition: $transition-base;
-        background-color: var(--kt-highlight-btn-bg);
-        color: var(--kt-highlight-btn-color);
+        background-color: var(--im-highlight-btn-bg);
+        color: var(--im-highlight-btn-color);
 
         &:focus,
         &:hover {
             transition: $transition-base;
-            background-color: var(--kt-highlight-btn-bg-hover);
-            color: var(--kt-highlight-btn-color-hover);
+            background-color: var(--im-highlight-btn-bg-hover);
+            color: var(--im-highlight-btn-color-hover);
         }
     }
 
@@ -72,7 +72,7 @@
             padding: 0;
             margin: 0;
 
-            @include scrollbar-color( var(--kt-highlight-scrollbar-color), var(--kt-highlight-scrollbar-color-hover));
+            @include scrollbar-color( var(--im-highlight-scrollbar-color), var(--im-highlight-scrollbar-color-hover));
 
             code[class*="language-"] {
                 padding: 0;

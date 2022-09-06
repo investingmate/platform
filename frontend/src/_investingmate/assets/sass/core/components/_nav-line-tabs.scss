@@ -6,14 +6,14 @@
 .nav-line-tabs {
 	border-bottom-width: 1px;
 	border-bottom-style: solid;
-	border-bottom-color: var(--kt-border-color);
+	border-bottom-color: var(--im-border-color);
 
 	.nav-item {
 		margin-bottom: -1px;
 
 		// Base link
 		.nav-link {
-			color: var(--kt-gray-500);
+			color: var(--im-gray-500);
 			border: 0;
 			border-bottom: 1px solid transparent;
 			transition: $transition-link;
@@ -42,7 +42,7 @@
 	.nav-item .nav-link:hover:not(.disabled) {
 		background-color: transparent;
 		border: 0;
-		border-bottom: 1px solid var(--kt-primary);
+		border-bottom: 1px solid var(--im-primary);
 		transition: $transition-link;
   	}
 

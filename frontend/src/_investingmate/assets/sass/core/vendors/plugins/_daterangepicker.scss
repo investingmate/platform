@@ -9,8 +9,8 @@
     margin: 0;
     border: 0;
     width: auto;
-    background-color: var(--kt-body-bg);
-    box-shadow: var(--kt-dropdown-box-shadow);
+    background-color: var(--im-body-bg);
+    box-shadow: var(--im-dropdown-box-shadow);
     font-family: $font-family-sans-serif;
     z-index: $zindex-dropdown;
     @include border-radius($dropdown-border-radius);
@@ -34,13 +34,13 @@
     }
 
     .calendar-table {
-        background-color: var(--kt-body-bg);
+        background-color: var(--im-body-bg);
         border: 0;
     }
 
     .ranges {
         @include border-radius($dropdown-border-radius);
-        background-color: var(--kt-body-bg);
+        background-color: var(--im-body-bg);
 
         ul {
             padding: 1rem 0;
@@ -51,18 +51,18 @@
             padding: 0.7rem 1.75rem;
             font-weight: 500;
             font-size: 1rem;
-            color: var(--kt-gray-600);
+            color: var(--im-gray-600);
             transition: $transition-link;
 
             &:hover {
-                background-color: var(--kt-component-hover-bg);
-                color: var(--kt-component-hover-color);
+                background-color: var(--im-component-hover-bg);
+                color: var(--im-component-hover-color);
                 transition: $transition-link;
             }
 
             &.active {
-                background-color: var(--kt-component-active-bg);
-                color: var(--kt-component-active-color);
+                background-color: var(--im-component-active-bg);
+                color: var(--im-component-active-color);
                 transition: $transition-link;
             }
         }
@@ -80,7 +80,7 @@
     &.show-ranges {
         &.show-calendar {
             .ranges  {
-                border-right: 1px solid var(--kt-gray-200);
+                border-right: 1px solid var(--im-gray-200);
             }
         }
 
@@ -91,7 +91,7 @@
 
     .drp-buttons {
         padding: 1rem 1.75rem;
-        border-top: 1px solid var(--kt-gray-200);
+        border-top: 1px solid var(--im-gray-200);
 
        .btn {
             font-size: 1rem;
@@ -101,14 +101,14 @@
 
         .cancelBtn {
             @include button-custom-variant(
-                $color: var(--kt-light-inverse),
-                $icon-color: var(--kt-light-inverse),
-                $border-color: var(--kt-light),
-                $bg-color: var(--kt-light),
-                $color-active: var(--kt-light-inverse),
-                $icon-color-active: var(--kt-light-inverse),
-                $border-color-active: var(--kt-light-active),
-                $bg-color-active: var(--kt-light-active)
+                $color: var(--im-light-inverse),
+                $icon-color: var(--im-light-inverse),
+                $border-color: var(--im-light),
+                $bg-color: var(--im-light),
+                $color-active: var(--im-light-inverse),
+                $icon-color-active: var(--im-light-inverse),
+                $border-color-active: var(--im-light-active),
+                $bg-color-active: var(--im-light-active)
             );
         }
     }
@@ -136,30 +136,30 @@
 
             &.available:hover {
                 @include border-radius($border-radius);
-                background-color: var(--kt-component-hover-bg);
-                color: var(--kt-component-hover-color);
+                background-color: var(--im-component-hover-bg);
+                color: var(--im-component-hover-color);
             }
         }
 
         th {
             font-weight: $font-weight-semibold;
-            color: var(--kt-gray-800);
+            color: var(--im-gray-800);
 
             &.month {
                 font-weight: $font-weight-semibold;
-                color: var(--kt-gray-800);
+                color: var(--im-gray-800);
             }
 
             &.next,
             &.prev {
                 span {
                     border-width: 0 1px 1px 0;
-                    border-color: var(--kt-gray-600);
+                    border-color: var(--im-gray-600);
                 }
 
                 &.available:hover {
                     span {
-                        border-color: var(--kt-component-hover-color);
+                        border-color: var(--im-component-hover-color);
                     }
                 }
             }
@@ -178,15 +178,15 @@
         }
 
         td {
-            color: var(--kt-gray-700);
+            color: var(--im-gray-700);
 
             &.available.off {
-                color: var(--kt-gray-400);
+                color: var(--im-gray-400);
             }
 
             &.active {
-                background-color: var(--kt-component-active-bg) !important;
-                color: var(--kt-component-active-color) !important;
+                background-color: var(--im-component-active-bg) !important;
+                color: var(--im-component-active-color) !important;
                 @include border-radius($border-radius);
 
                 &.start-date {
@@ -206,19 +206,19 @@
 
             &.today,
             &.today.active {
-                background: var(--kt-component-hover-bg) !important;
-                color: var(--kt-component-hover-color) !important;
+                background: var(--im-component-hover-bg) !important;
+                color: var(--im-component-hover-color) !important;
                 @include border-radius($border-radius);
             }
 
             &.in-range.available:not(.active):not(.off):not(.today) {
-                background-color: var(--kt-component-hover-bg);
-                color: var(--kt-component-hover-color);
+                background-color: var(--im-component-hover-bg);
+                color: var(--im-component-hover-color);
             }
 
             &:hover {
-                background-color: var(--kt-component-hover-bg);
-                color: var(--kt-component-hover-color);
+                background-color: var(--im-component-hover-bg);
+                color: var(--im-component-hover-color);
             }
         }
     }
@@ -231,14 +231,14 @@
         padding-top: 0.35rem;
         padding-bottom: 0.35rem;
         @include border-radius($border-radius);
-        background-color: var(--kt-body-bg) !important;
+        background-color: var(--im-body-bg) !important;
         border-color: transparent;
-        color: var(--kt-input-color);
+        color: var(--im-input-color);
         font-weight: $font-weight-semibold;
         outline: 0 !important;
 
         &:focus {
-            background-color: var(--kt-gray-100);
+            background-color: var(--im-gray-100);
         }
     }
 }

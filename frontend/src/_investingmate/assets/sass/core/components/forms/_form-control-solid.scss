@@ -7,22 +7,22 @@
 .form-control {
 	// Dropdown shown state
 	.dropdown.show > & {
-		color: var(--kt-input-focus-color); 
-		background-color: var(--kt-input-focus-bg);
-  	    border-color: var(--kt-input-focus-border-color);
+		color: var(--im-input-focus-color); 
+		background-color: var(--im-input-focus-bg);
+  	    border-color: var(--im-input-focus-border-color);
 	}
 
 	// Readonly state
 	&[readonly] {
-		background-color: var(--kt-input-readonly-bg);
+		background-color: var(--im-input-readonly-bg);
 	}
 
 	// Solid style
 	&.form-control-solid {
-		background-color: var(--kt-input-solid-bg);
-		border-color: var(--kt-input-solid-bg);
-		color: var(--kt-input-solid-color);
-		@include placeholder(var(--kt-input-solid-placeholder-color));
+		background-color: var(--im-input-solid-bg);
+		border-color: var(--im-input-solid-bg);
+		color: var(--im-input-solid-color);
+		@include placeholder(var(--im-input-solid-placeholder-color));
 		transition: $transition-input;
 
 		.dropdown.show > &,
@@ -30,9 +30,9 @@
 		&.active,
 		&:focus,
 		&.focus {
-			background-color: var(--kt-input-solid-bg-focus);
-			border-color: var(--kt-input-solid-bg-focus);
-			color: var(--kt-input-solid-color);
+			background-color: var(--im-input-solid-bg-focus);
+			border-color: var(--im-input-solid-bg-focus);
+			color: var(--im-input-solid-color);
 			transition: $transition-input;
 		}
 	}
@@ -60,7 +60,7 @@
 
 // Placeholder colors
 .placeholder-gray-500 {
-	@include placeholder(var(--kt-gray-500));
+	@include placeholder(var(--im-gray-500));
 }
 
 .placeholder-white {
@@ -74,5 +74,5 @@
 
 // Form control solid bg
 .form-control-solid-bg {
-	background-color: var(--kt-input-solid-bg);
+	background-color: var(--im-input-solid-bg);
 }

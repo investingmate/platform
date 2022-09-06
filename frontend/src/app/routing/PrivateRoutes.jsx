@@ -1,12 +1,14 @@
 import { lazy, Suspense } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
-import { MasterLayout } from "../../_investingmate/layout/MasterLayout";
 import TopBarProgress from "react-topbar-progress-indicator";
+import { MasterLayout } from "../../_investingmate/layout/MasterLayout";
 import { DashboardWrapper } from "../pages/dashboard/DashboardWrapper";
 import { getCSSVariableValue } from "../../_investingmate/assets/js/_utils";
 
 const PrivateRoutes = () => {
-  const NotesPage = lazy(() => import("../modules/notes/NotesPage"));
+  const CompaniesPage = lazy(() =>
+    import("../modules/companies/CompaniesPage")
+  );
 
   return (
     <Routes>
@@ -17,10 +19,10 @@ const PrivateRoutes = () => {
         <Route path="dashboard" element={<DashboardWrapper />} />
         {/* Lazy Modules */}
         <Route
-          path="apps/notes/*"
+          path="companies/*"
           element={
             <SuspensedView>
-              <NotesPage />
+              <CompaniesPage />
             </SuspensedView>
           }
         />

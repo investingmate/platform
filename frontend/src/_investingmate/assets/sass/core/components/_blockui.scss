@@ -16,7 +16,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: var(--kt-blockui-overlay-bg);
+        background-color: var(--im-blockui-overlay-bg);
 
         .spinner-border {
             height: 1.35rem;
@@ -28,9 +28,9 @@
         display: flex;
         align-items: center;
         @include border-radius($border-radius);
-        box-shadow: var(--kt-dropdown-box-shadow);
-        background-color: var(--kt-tooltip-bg);
-        color: var(--kt-gray-700);
+        box-shadow: var(--im-dropdown-box-shadow);
+        background-color: var(--im-tooltip-bg);
+        color: var(--im-gray-700);
         font-weight: $font-weight-bold;
         margin: 0 !important;
         width: auto;

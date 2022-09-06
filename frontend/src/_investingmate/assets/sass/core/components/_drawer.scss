@@ -10,7 +10,7 @@
 	position: fixed;
 	top: 0;
 	bottom: 0;
-	background-color: var(--kt-drawer-bg-color);
+	background-color: var(--im-drawer-bg-color);
 	transition: transform $drawer-transition-speed ease-in-out;
 
 	&.drawer-start {
@@ -25,7 +25,7 @@
 
 	&.drawer-on {
 		transform: none;
-		box-shadow: var(--kt-drawer-box-shadow);
+		box-shadow: var(--im-drawer-box-shadow);
 		transition: transform $drawer-transition-speed ease-in-out;
 	}
 }
@@ -39,7 +39,7 @@
 	right: 0;
 	overflow: hidden;
 	z-index: $drawer-z-index - 1;
-	background-color: var(--kt-drawer-overlay-bg-color);
+	background-color: var(--im-drawer-overlay-bg-color);
 	animation: animation-drawer-fade-in $drawer-overlay-animation-speed ease-in-out 1;
 }
 

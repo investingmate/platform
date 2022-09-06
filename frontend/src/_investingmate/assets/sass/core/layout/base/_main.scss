@@ -29,30 +29,30 @@
         // Sidebar
         [data-kt-app-sidebar-sticky="true"] & {
             margin-left: calc(
-                var(--kt-app-sidebar-width) + 
-                var(--kt-app-sidebar-gap-start, 0px) + 
-                var(--kt-app-sidebar-gap-end, 0px)
+                var(--im-app-sidebar-width) + 
+                var(--im-app-sidebar-gap-start, 0px) + 
+                var(--im-app-sidebar-gap-end, 0px)
             );
         }
 
         // Sidebar Panel
         [data-kt-app-sidebar-panel-sticky="true"] & {
             margin-left: calc(
-                var(--kt-app-sidebar-width) + 
-                var(--kt-app-sidebar-gap-start, 0px) + 
-                var(--kt-app-sidebar-gap-end, 0px) + 
-                var(--kt-app-sidebar-panel-width) + 
-                var(--kt-app-sidebar-panel-gap-start, 0px) + 
-                var(--kt-app-sidebar-panel-gap-end, 0px)
+                var(--im-app-sidebar-width) + 
+                var(--im-app-sidebar-gap-start, 0px) + 
+                var(--im-app-sidebar-gap-end, 0px) + 
+                var(--im-app-sidebar-panel-width) + 
+                var(--im-app-sidebar-panel-gap-start, 0px) + 
+                var(--im-app-sidebar-panel-gap-end, 0px)
             );
         }
 
         // Aside
         [data-kt-app-aside-sticky="true"] & {
             margin-right: calc(
-                var(--kt-app-aside-width) + 
-                var(--kt-app-aside-gap-start, 0px) + 
-                var(--kt-app-aside-gap-end, 0px)
+                var(--im-app-aside-width) + 
+                var(--im-app-aside-gap-start, 0px) + 
+                var(--im-app-aside-gap-end, 0px)
             );
         }
     }

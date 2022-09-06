@@ -16,7 +16,7 @@ $kanban-spacer-x: 1.25rem;
 		flex-shrink: 0;
 		margin-bottom: $kanban-spacer-y;
 		margin-right: $kanban-spacer-x !important;
-		background-color: var(--kt-gray-100);
+		background-color: var(--im-gray-100);
 		@include border-radius($border-radius);
 
 		&:last-child {
@@ -30,25 +30,25 @@ $kanban-spacer-x: 1.25rem;
 			.kanban-title-board {
 				font-size: 1.2rem;
 				font-weight: 500;
-				color: var(--kt-gray-900);
+				color: var(--im-gray-900);
 			}
 
 			@each $name, $color in $theme-colors {
 				&.#{$name} {
-					background-color: var(--kt-#{$name});
+					background-color: var(--im-#{$name});
 					box-shadow: none;
 
 					.kanban-title-board {
-						color: var(--kt-#{$name}-inverse);
+						color: var(--im-#{$name}-inverse);
 					}
 				}
 
 				&.light-#{$name} {
-					color: rgba(var(--kt-#{$name}), 0.1);
+					color: rgba(var(--im-#{$name}), 0.1);
 					box-shadow: none;
 
 					.kanban-title-board {
-						color: var(--kt-#{$name});
+						color: var(--im-#{$name});
 					}
 				}
 			}
@@ -58,18 +58,18 @@ $kanban-spacer-x: 1.25rem;
 			.kanban-item {
 				@include border-radius($border-radius);
 				box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.05);
-				background: var(--kt-body-bg);
+				background: var(--im-body-bg);
 
 				@each $name, $color in $theme-colors {
 					&[data-class="#{$name}"] {
-						background-color: var(--kt-#{$name});
-						color: var(--kt-#{$name}-inverse);
+						background-color: var(--im-#{$name});
+						color: var(--im-#{$name}-inverse);
 						box-shadow: none;
 					}
 
 					&[data-class="light-#{$name}"] {
-						background-color: var(--kt-#{$name}-light);
-						color: var(--kt-#{$name});
+						background-color: var(--im-#{$name}-light);
+						color: var(--im-#{$name});
 						box-shadow: none;
 					}
 				}

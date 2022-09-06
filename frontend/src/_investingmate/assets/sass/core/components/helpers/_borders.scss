@@ -15,18 +15,18 @@
 @each $name, $value in $grays {
 	// Initial
 	.border-gray-#{$name} {
-		border-color: var(--kt-gray-#{$name}) !important;
+		border-color: var(--im-gray-#{$name}) !important;
 	}
 }
 
 // Hover border colors
 @each $name, $value in $theme-colors {
     .border-hover-#{$name}:hover {
-        border-color: var(--kt-#{$name}) !important;
+        border-color: var(--im-#{$name}) !important;
     }
 
     .border-active-#{$name}.active {
-        border-color: var(--kt-#{$name}) !important;
+        border-color: var(--im-#{$name}) !important;
     }   
 }
 
@@ -38,7 +38,7 @@
 // Dashed style
 .border-dashed {
     border-style: dashed !important;
-    border-color: var(--kt-border-dashed-color);
+    border-color: var(--im-border-dashed-color);
 }
 
 .border-top-dashed {
@@ -85,7 +85,7 @@
 
 // Border body
 .border-body {
-    border-color: var(--kt-body-bg) !important;
+    border-color: var(--im-body-bg) !important;
 }
 
 // Border radiuses

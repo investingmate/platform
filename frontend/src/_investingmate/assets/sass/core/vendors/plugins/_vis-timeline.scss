@@ -3,8 +3,8 @@
 //
 
 // Variables
-$vis-border-color: var(--kt-border-color);
-$vis-border-dashed-color: var(--kt-border-dashed-color);
+$vis-border-color: var(--im-border-color);
+$vis-border-dashed-color: var(--im-border-dashed-color);
 
 // General
 .vis-timeline {
@@ -23,7 +23,7 @@ $vis-border-dashed-color: var(--kt-border-dashed-color);
             border-bottom: none;
             font-size: $h4-font-size;
             font-weight: $font-weight-semibold;
-            color: var(--kt-gray-900);
+            color: var(--im-gray-900);
         }
     }
 
@@ -38,19 +38,19 @@ $vis-border-dashed-color: var(--kt-border-dashed-color);
 
     .vis-item {
         position: absolute;
-        color: var(--kt-gray-700);
-        border-color: var(--kt-primary);
+        color: var(--im-gray-700);
+        border-color: var(--im-primary);
         border-width: 1px;
-        background-color: var(--kt-gray-100);
+        background-color: var(--im-gray-100);
 
         @if ($enable-rounded) {
             border-radius: $border-radius !important;
         }
 
         &.vis-selected {
-            background-color: var(--kt-warning-light);
-            color: var(--kt-gray-700);
-            border-color: var(--kt-warning);
+            background-color: var(--im-warning-light);
+            color: var(--im-gray-700);
+            border-color: var(--im-warning);
         }
 
         .vis-item-content {
@@ -66,7 +66,7 @@ $vis-border-dashed-color: var(--kt-border-dashed-color);
         font-weight: $font-weight-semibold;
 
         .vis-text {
-            color: var(--kt-gray-400);
+            color: var(--im-gray-400);
         }
 
         .vis-grid.vis-minor {
@@ -95,7 +95,7 @@ $vis-border-dashed-color: var(--kt-border-dashed-color);
     }
 
     .vis-current-time {
-        background-color: var(--kt-success);
+        background-color: var(--im-success);
     }
 }
 

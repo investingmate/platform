@@ -17,7 +17,7 @@
     @include border-radius($border-radius !important);
 
     &.ck-focused{
-        border-color: var(--kt-primary) !important;
+        border-color: var(--im-primary) !important;
         box-shadow: none !important;
     }
 }
@@ -42,7 +42,7 @@
             border-color: transparent !important;
 
             &.ck-focused{
-                border-color: var(--kt-primary) !important;
+                border-color: var(--im-primary) !important;
             }
         }
 

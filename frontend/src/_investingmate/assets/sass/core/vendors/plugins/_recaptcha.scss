@@ -6,7 +6,7 @@
 // Base
 .recaptcha {
     padding: 15px;
-    border: 1px solid var(--kt-gray-200);
+    border: 1px solid var(--im-gray-200);
     @include border-radius($border-radius);
 
     .recaptcha-img {
@@ -14,7 +14,7 @@
     }
 
     .recaptcha_only_if_incorrect_sol {
-        color: var(--kt-danger);
+        color: var(--im-danger);
     }
 
     .input-group {

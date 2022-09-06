@@ -3,43 +3,43 @@
 //
 
 body {    
-    --fc-event-border-color: var(--kt-primary);
-    --fc-event-bg-color: var(--kt-primary);
-    --fc-event-text-color: var(--kt-primary-inverse);
+    --fc-event-border-color: var(--im-primary);
+    --fc-event-bg-color: var(--im-primary);
+    --fc-event-text-color: var(--im-primary-inverse);
 }
 
 // Base
 .fc {
     // Border color
-    --fc-border-color: #{var(--kt-gray-200)};
+    --fc-border-color: #{var(--im-gray-200)};
     --fc-page-bg-color: #{$white};
     --fc-small-font-size: 0.95rem;
 
     // General
-    --fc-highlight-color: var(--kt-light);
+    --fc-highlight-color: var(--im-light);
     //--fc-non-business-color: 
     //--fc-bg-event-color:
     --fc-bg-event-opacity: 0.3;
-    --fc-neutral-bg-color: var(--kt-light);
+    --fc-neutral-bg-color: var(--im-light);
     //--fc-event-selected-overlay-color: 
-    --fc-today-bg-color: var(--kt--success-light);
+    --fc-today-bg-color: var(--im--success-light);
     //--fc-neutral-bg-color:
     //--fc-neutral-text-color:
     //--fc-more-link-text-color:
     //--fc-more-link-bg-color:
-    --fc-now-indicator-color: var(--kt-danger);
-    --fc-list-event-hover-bg-color: var(--kt-light);
+    --fc-now-indicator-color: var(--im-danger);
+    --fc-list-event-hover-bg-color: var(--im-light);
 
     // Buttons
-    --fc-button-text-color: var(--kt-gray-600);
-    --fc-button-bg-color: var(--kt-gray-100);
-    --fc-button-border-color: var(--kt-gray-100);
+    --fc-button-text-color: var(--im-gray-600);
+    --fc-button-bg-color: var(--im-gray-100);
+    --fc-button-border-color: var(--im-gray-100);
     
-    --fc-button-hover-bg-color:  var(--kt-gray-100);
-    --fc-button-hover-border-color:  var(--kt-gray-100);
+    --fc-button-hover-bg-color:  var(--im-gray-100);
+    --fc-button-hover-border-color:  var(--im-gray-100);
 
-    --fc-button-active-bg-color: var(--kt-gray-200);
-    --fc-button-active-border-color: var(--kt-gray-200);
+    --fc-button-active-bg-color: var(--im-gray-200);
+    --fc-button-active-border-color: var(--im-gray-200);
 
     // Table
     table {
@@ -71,19 +71,19 @@ body {
             &:focus,
             &:hover,
             &:active {
-                color: var(--kt-gray-900);
+                color: var(--im-gray-900);
 
                 .fc-icon {
-                    color: var(--kt-gray-900);
+                    color: var(--im-gray-900);
                 }
             }
         }
         
         &:not(:disabled).fc-button-active {
-            color: var(--kt-gray-900);
+            color: var(--im-gray-900);
 
             .fc-icon {
-                color: var(--kt-gray-900);
+                color: var(--im-gray-900);
             }
         }
     }
@@ -99,7 +99,7 @@ body {
     .fc-toolbar-title {
         font-size: 1.5rem;
         font-weight: $font-weight-bold;
-        color: var(--kt-gray-800);
+        color: var(--im-gray-800);
     }
 
     // Header cell
@@ -109,7 +109,7 @@ body {
         .fc-col-header-cell-cushion  {            
             font-size: 1.1rem;
             font-weight: $font-weight-semibold;
-            color: var(--kt-gray-800);
+            color: var(--im-gray-800);
         }
     }    
 
@@ -154,13 +154,13 @@ body {
 
     // Day number
     .fc-daygrid-day-number {
-        color: var(--kt-gray-800);
+        color: var(--im-gray-800);
     }
 
     // Dot event
     .fc-daygrid-dot-event {
-        background-color: var(--kt-light);
-        color: var(--kt-gray-600);
+        background-color: var(--im-light);
+        color: var(--im-gray-600);
 
         .fc-event-title {
             font-weight: $font-weight-semibold;
@@ -168,8 +168,8 @@ body {
 
         &:hover,
         &.fc-event-mirror {
-            background-color: var(--kt-light);
-            color: var(--kt-primary);
+            background-color: var(--im-light);
+            color: var(--im-primary);
         }
     }
 
@@ -182,27 +182,27 @@ body {
     // Popover
     .fc-popover {
         border: 0 !important;
-        background-color: var(--kt-tooltip-bg);
-        box-shadow: var(--kt-dropdown-box-shadow);
+        background-color: var(--im-tooltip-bg);
+        box-shadow: var(--im-dropdown-box-shadow);
         @include border-radius($dropdown-border-radius);
 
         .fc-popover-header {
             @include border-top-radius($dropdown-border-radius);
             padding: 0.65rem 0.75rem;
-            background-color: var(--kt-tooltip-bg);
+            background-color: var(--im-tooltip-bg);
             
             .fc-popover-title {
-                color: var(--kt-gray-800);
+                color: var(--im-gray-800);
                 font-size: 1rem;
                 font-weight: $font-weight-semibold;
             }
 
             .fc-popover-close {
                 font-size: 1rem;
-                color: var(--kt-gray-600);
+                color: var(--im-gray-600);
 
                 &:hover {
-                    color: var(--kt-primary);
+                    color: var(--im-primary);
                 }
             }
         }
@@ -232,7 +232,7 @@ body {
     .fc-list-day-text,
     .fc-list-day-side-text {
         font-size: 1.1rem;
-        color: var(--kt-gray-900);
+        color: var(--im-gray-900);
         font-weight: $font-weight-bold;
     }
 

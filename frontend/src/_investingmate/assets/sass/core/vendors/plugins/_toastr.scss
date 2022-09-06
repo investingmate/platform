@@ -5,11 +5,11 @@
 // Base
 .toastr {
     background-position: 1.5rem center #{'/*rtl:calc(100% - 1.5rem) center*/'} !important;
-    box-shadow: var(--kt-dropdown-box-shadow) !important;
+    box-shadow: var(--im-dropdown-box-shadow) !important;
 	border-radius: $dropdown-border-radius !important;
 	border: 0 !important;
-    background-color: var(--kt-gray-100);
-    color: var(--kt-gray-700);
+    background-color: var(--im-gray-100);
+    color: var(--im-gray-700);
     padding: 1.25rem 1.25rem 1.25rem 4.5rem !important;
 
 	.toastr-close-button {
@@ -37,38 +37,38 @@
 
     // States
     &.toastr-success {
-        background-color: var(--kt-success);
-        color: var(--kt-success-inverse);
+        background-color: var(--im-success);
+        color: var(--im-success-inverse);
 
         .toastr-close-button {
-            @include svg-bg-icon(close, var(--kt-success-inverse));
+            @include svg-bg-icon(close, var(--im-success-inverse));
         }    
     }
 
     &.toastr-info {
-        background-color: var(--kt-info);
-        color: var(--kt-info-inverse);
+        background-color: var(--im-info);
+        color: var(--im-info-inverse);
 
         .toastr-close-button {
-            @include svg-bg-icon(close, var(--kt-info-inverse));
+            @include svg-bg-icon(close, var(--im-info-inverse));
         } 
     }
 
     &.toastr-warning {
-        background-color: var(--kt-warning);
-        color: var(--kt-warning-inverse);
+        background-color: var(--im-warning);
+        color: var(--im-warning-inverse);
 
         .toastr-close-button {
-            @include svg-bg-icon(close, var(--kt-warning-inverse));
+            @include svg-bg-icon(close, var(--im-warning-inverse));
         } 
     }
 
     &.toastr-error {
-        background-color: var(--kt-danger);
-        color: var(--kt-danger-inverse);
+        background-color: var(--im-danger);
+        color: var(--im-danger-inverse);
 
         .toastr-close-button {
-            @include svg-bg-icon(close, var(--kt-danger-inverse));
+            @include svg-bg-icon(close, var(--im-danger-inverse));
         } 
     }
 }

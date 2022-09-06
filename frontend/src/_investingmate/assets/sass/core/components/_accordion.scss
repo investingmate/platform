@@ -4,17 +4,17 @@
 
 // Base
 .accordion {
-	--#{$prefix}accordion-color: var(--kt-accordion-color);
-	--#{$prefix}accordion-bg: var(--kt-accordion-bg);
-	--#{$prefix}accordion-border-color: var(--kt-accordion-border-color);
-	--#{$prefix}accordion-btn-color: var(--kt-accordion-color);
-	--#{$prefix}accordion-btn-bg: var(--kt-accordion-button-bg);
-	--#{$prefix}accordion-btn-icon: var(--kt-accordion-button-icon);
-	--#{$prefix}accordion-btn-active-icon: var(--kt-accordion-button-active-icon);
-	--#{$prefix}accordion-btn-focus-border-color: var(--kt-accordion-button-focus-border-color);
-	--#{$prefix}accordion-btn-focus-box-shadow: var(--kt-accordion-button-focus-box-shadow);
-	--#{$prefix}accordion-active-color: var(--kt-accordion-button-active-color);
-	--#{$prefix}accordion-active-bg: var(--kt-accordion-button-active-bg);
+	--#{$prefix}accordion-color: var(--im-accordion-color);
+	--#{$prefix}accordion-bg: var(--im-accordion-bg);
+	--#{$prefix}accordion-border-color: var(--im-accordion-border-color);
+	--#{$prefix}accordion-btn-color: var(--im-accordion-color);
+	--#{$prefix}accordion-btn-bg: var(--im-accordion-button-bg);
+	--#{$prefix}accordion-btn-icon: var(--im-accordion-button-icon);
+	--#{$prefix}accordion-btn-active-icon: var(--im-accordion-button-active-icon);
+	--#{$prefix}accordion-btn-focus-border-color: var(--im-accordion-button-focus-border-color);
+	--#{$prefix}accordion-btn-focus-box-shadow: var(--im-accordion-button-focus-box-shadow);
+	--#{$prefix}accordion-active-color: var(--im-accordion-button-active-color);
+	--#{$prefix}accordion-active-bg: var(--im-accordion-button-active-bg);
 
 	// According heading
 	.accordion-header {
@@ -34,7 +34,7 @@
 
 			i,
 			.svg-icon {
-	    		color: var(--kt-primary);
+	    		color: var(--im-primary);
 	    	}
 		}
 
@@ -46,7 +46,7 @@
 
 				i,
 				.svg-icon {
-		    		color: var(--kt-text-muted);
+		    		color: var(--im-text-muted);
 		    	}
 			}
 		}

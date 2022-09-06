@@ -6,7 +6,7 @@
 // Base
 .noUi-target {
     border: 0;
-    background: var(--kt-gray-100);
+    background: var(--im-gray-100);
     box-shadow:none;
 
     &.noUi-horizontal {
@@ -51,13 +51,13 @@
     }
 
     .noUi-connect {
-        background: var(--kt-component-active-bg);
+        background: var(--im-component-active-bg);
     }
 
     .noUi-handle {
-        background-color: $white; //var(--kt-body-bg);
-        border: 1px solid var(--kt-gray-200);
-        box-shadow:var(--kt-box-shadow-sm)
+        background-color: $white; //var(--im-body-bg);
+        border: 1px solid var(--im-gray-200);
+        box-shadow:var(--im-box-shadow-sm)
     }
 
     // Small size
@@ -76,26 +76,26 @@
     // NoUiSlider success color option
     .noUi-target.noUi-target-#{$name} {
         .noUi-connects {
-            background-color: var(--kt-#{$name}-light);
+            background-color: var(--im-#{$name}-light);
 
             .noUi-connect {
-                background-color: var(--kt-#{$name});
+                background-color: var(--im-#{$name});
             }
         }
 
         .noUi-handle {
-            border: 1px solid var(--kt-#{$name});
-            box-shadow: 0 3px 6px -3px rgba(var(--kt-#{$name}), 0.7);
-            background-color: var(--kt-#{$name});
+            border: 1px solid var(--im-#{$name});
+            box-shadow: 0 3px 6px -3px rgba(var(--im-#{$name}), 0.7);
+            background-color: var(--im-#{$name});
         }
     }
 }
 
 // Tooltip
 .noUi-tooltip {
-    box-shadow: var(--kt-tooltip-box-shadow);
-    background: var(--kt-tooltip-bg);
-    color: var(--kt-tooltip-color);
+    box-shadow: var(--im-tooltip-box-shadow);
+    background: var(--im-tooltip-bg);
+    color: var(--im-tooltip-color);
     font-size: $tooltip-font-size;
     border: 0;
     padding: 0.5rem 0.75rem;

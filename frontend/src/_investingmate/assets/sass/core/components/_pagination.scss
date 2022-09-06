@@ -3,21 +3,21 @@
 //
 
 .pagination {
-	--#{$prefix}pagination-color: var(--kt-pagination-color);
-	--#{$prefix}pagination-bg: var(--kt-pagination-bg);
-	--#{$prefix}pagination-border-color: var(--kt-pagination-border-color);
-	--#{$prefix}pagination-hover-color: var(--kt-pagination-hover-color);
-	--#{$prefix}pagination-hover-bg: var(--kt-pagination-hover-bg);
-	--#{$prefix}pagination-hover-border-color: var(--kt-pagination-hover-border-color);
-	--#{$prefix}pagination-focus-color: var(--kt-pagination-focus-color);
-	--#{$prefix}pagination-focus-bg: var(--kt-pagination-focus-bg);
-	--#{$prefix}pagination-focus-box-shadow: var(--kt-pagination-focus-box-shadow);
-	--#{$prefix}pagination-active-color: var(--kt-pagination-active-color);
-	--#{$prefix}pagination-active-bg: var(--kt-pagination-active-bg);
-	--#{$prefix}pagination-active-border-color: var(--kt-pagination-active-border-color);
-	--#{$prefix}pagination-disabled-color: var(--kt-pagination-disabled-color);
-	--#{$prefix}pagination-disabled-bg: var(--kt-pagination-disabled-bg);
-	--#{$prefix}pagination-disabled-border-color: var(--kt-pagination-disabled-border-color);
+	--#{$prefix}pagination-color: var(--im-pagination-color);
+	--#{$prefix}pagination-bg: var(--im-pagination-bg);
+	--#{$prefix}pagination-border-color: var(--im-pagination-border-color);
+	--#{$prefix}pagination-hover-color: var(--im-pagination-hover-color);
+	--#{$prefix}pagination-hover-bg: var(--im-pagination-hover-bg);
+	--#{$prefix}pagination-hover-border-color: var(--im-pagination-hover-border-color);
+	--#{$prefix}pagination-focus-color: var(--im-pagination-focus-color);
+	--#{$prefix}pagination-focus-bg: var(--im-pagination-focus-bg);
+	--#{$prefix}pagination-focus-box-shadow: var(--im-pagination-focus-box-shadow);
+	--#{$prefix}pagination-active-color: var(--im-pagination-active-color);
+	--#{$prefix}pagination-active-bg: var(--im-pagination-active-bg);
+	--#{$prefix}pagination-active-border-color: var(--im-pagination-active-border-color);
+	--#{$prefix}pagination-disabled-color: var(--im-pagination-disabled-color);
+	--#{$prefix}pagination-disabled-bg: var(--im-pagination-disabled-bg);
+	--#{$prefix}pagination-disabled-border-color: var(--im-pagination-disabled-border-color);
 
 	display:flex;
 	flex-wrap: wrap;
@@ -34,14 +34,14 @@
 	// Pagination outline
 	&.pagination-outline {
 		.page-link {
-			border: 1px solid var(--kt-border-color);
+			border: 1px solid var(--im-border-color);
 		}
 
 		.page-item {
 			&:hover:not(.disabled),
 		    &.active {
 			    .page-link {
-			        border-color: var(--kt-primary-light);
+			        border-color: var(--im-primary-light);
 				}	
 			}
 		}
@@ -92,27 +92,27 @@
 
 	&:focus {
 		.page-link {
-			color: var(--kt-pagination-focus-color);
+			color: var(--im-pagination-focus-color);
 
 			.svg-icon,
 			i {
-				color: var(--kt-pagination-focus-color);
+				color: var(--im-pagination-focus-color);
 			}
 
 			.previous {
-				@include svg-bg-icon(arrow-start, var(--kt-pagination-focus-color));
+				@include svg-bg-icon(arrow-start, var(--im-pagination-focus-color));
 			}
 
 			/*rtl:options:{"autoRename":false}*/
 			.next {
-				@include svg-bg-icon(arrow-end, var(--kt-pagination-focus-color));
+				@include svg-bg-icon(arrow-end, var(--im-pagination-focus-color));
 			}
 		}
 	}
 
 	&:hover:not(.active):not(.offset):not(.disabled) {
 		.page-link {
-			color: var(--kt-pagination-hover-color);
+			color: var(--im-pagination-hover-color);
 			
 			&.page-text {
 				background-color: transparent;	
@@ -120,23 +120,23 @@
 
 			.svg-icon,
 			i {
-				color: var(--kt-pagination-hover-color);
+				color: var(--im-pagination-hover-color);
 			}
 
 			.previous {
-				@include svg-bg-icon(arrow-start, var(--kt-pagination-hover-color));
+				@include svg-bg-icon(arrow-start, var(--im-pagination-hover-color));
 			}
 
 			/*rtl:options:{"autoRename":false}*/
 			.next {
-				@include svg-bg-icon(arrow-end, var(--kt-pagination-hover-color));
+				@include svg-bg-icon(arrow-end, var(--im-pagination-hover-color));
 			}
 		}
 	}
 
 	&.active {
 		.page-link {
-			color: var(--kt-pagination-active-color);
+			color: var(--im-pagination-active-color);
 
 			&.page-text {
 				background-color: transparent;	
@@ -144,36 +144,36 @@
 
 			.svg-icon,
 			i {
-				color: var(--kt-pagination-active-color);;
+				color: var(--im-pagination-active-color);;
 			}
 				
 			.previous {
-				@include svg-bg-icon(arrow-start, var(--kt-pagination-active-color));
+				@include svg-bg-icon(arrow-start, var(--im-pagination-active-color));
 			}
 
 			/*rtl:options:{"autoRename":false}*/
 			.next {
-				@include svg-bg-icon(arrow-end, var(--kt-pagination-active-color));
+				@include svg-bg-icon(arrow-end, var(--im-pagination-active-color));
 			}
 		}
 	}
 
 	&.disabled {
 		.page-link {
-			color: var(--kt-pagination-disabled-color);
+			color: var(--im-pagination-disabled-color);
 
 			.svg-icon,
 			i {
-				color: var(--kt-pagination-disabled-color);
+				color: var(--im-pagination-disabled-color);
 			}
 
 			.previous {
-				@include svg-bg-icon(arrow-start, var(--kt-pagination-disabled-color));
+				@include svg-bg-icon(arrow-start, var(--im-pagination-disabled-color));
 			}
 
 			/*rtl:options:{"autoRename":false}*/
 			.next {
-				@include svg-bg-icon(arrow-end, var(--kt-pagination-disabled-color));
+				@include svg-bg-icon(arrow-end, var(--im-pagination-disabled-color));
 			}
 		}
 	}

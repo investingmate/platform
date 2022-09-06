@@ -7,30 +7,30 @@
 	// Select2
 	
 	// Prismjs
-	--kt-highlight-bg: #{$highlight-bg};
+	--im-highlight-bg: #{$highlight-bg};
 
-	--kt-highlight-border: #{$highlight-border};
+	--im-highlight-border: #{$highlight-border};
 
-	--kt-highlight-btn-bg: #{$highlight-btn-bg};
-	--kt-highlight-btn-bg-hover: #{$highlight-btn-bg-hover};
-	--kt-highlight-btn-color: #{$highlight-btn-color};
-	--kt-highlight-btn-color-hover: #{$highlight-btn-color-hover};
+	--im-highlight-btn-bg: #{$highlight-btn-bg};
+	--im-highlight-btn-bg-hover: #{$highlight-btn-bg-hover};
+	--im-highlight-btn-color: #{$highlight-btn-color};
+	--im-highlight-btn-color-hover: #{$highlight-btn-color-hover};
 
-	--kt-highlight-scrollbar-color: #{$highlight-scrollbar-color};
-	--kt-highlight-scrollbar-color: #{$highlight-scrollbar-hover-color};
+	--im-highlight-scrollbar-color: #{$highlight-scrollbar-color};
+	--im-highlight-scrollbar-color: #{$highlight-scrollbar-hover-color};
 }
 
 [data-theme="dark"] {
 	// Prismjs
-	--kt-highlight-bg: #{$highlight-bg-dark};
+	--im-highlight-bg: #{$highlight-bg-dark};
 
-	--kt-highlight-border: #{$highlight-border-dark};
+	--im-highlight-border: #{$highlight-border-dark};
 
-	--kt-highlight-btn-bg: #{$highlight-btn-bg-dark};
-	--kt-highlight-btn-bg-hover: #{$highlight-btn-bg-hover-dark};
-	--kt-highlight-btn-color: #{$highlight-btn-color-dark};
-	--kt-highlight-btn-color-hover: #{$highlight-btn-color-hover-dark};
+	--im-highlight-btn-bg: #{$highlight-btn-bg-dark};
+	--im-highlight-btn-bg-hover: #{$highlight-btn-bg-hover-dark};
+	--im-highlight-btn-color: #{$highlight-btn-color-dark};
+	--im-highlight-btn-color-hover: #{$highlight-btn-color-hover-dark};
 
-	--kt-highlight-scrollbar-color: #{$highlight-scrollbar-color-dark};
-	--kt-highlight-scrollbar-color-hover: #{$highlight-scrollbar-hover-color-dark};
+	--im-highlight-scrollbar-color: #{$highlight-scrollbar-color-dark};
+	--im-highlight-scrollbar-color-hover: #{$highlight-scrollbar-hover-color-dark};
 }

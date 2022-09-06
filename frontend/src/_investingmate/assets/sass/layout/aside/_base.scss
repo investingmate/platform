@@ -6,7 +6,7 @@
 .aside {
 	display: flex;
 	flex-direction: column;
-	box-shadow: var(--kt-aside-box-shadow);
+	box-shadow: var(--im-aside-box-shadow);
 	padding: 0;
 
 	// Custom button
@@ -79,7 +79,7 @@
 
 	// Light theme
 	&.aside-light {
-		background-color: var(--kt-aside-bg-color);
+		background-color: var(--im-aside-bg-color);
 	}
 }
 
@@ -139,7 +139,7 @@
 			&.aside-hoverable:hover:not(.animating) {
 				transition: width get($aside-config, transition-speed) ease;
 				width: get($aside-config, width);
-				box-shadow: var(--kt-aside-minimized-hover-box-shadow);
+				box-shadow: var(--im-aside-minimized-hover-box-shadow);
 			}
 
 			// Not hovered mode

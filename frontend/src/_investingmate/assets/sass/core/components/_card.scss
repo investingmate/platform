@@ -5,13 +5,13 @@
 // Base
 .card {    
     @if ($card-border-enabled)  {
-        border: $card-border-width $card-border-style var(--kt-card-border-color);
+        border: $card-border-width $card-border-style var(--im-card-border-color);
     } @else {
         border: 0;
     }  
     
-    box-shadow: var(--kt-card-box-shadow); 
-    background-color: var(--kt-card-bg);
+    box-shadow: var(--im-card-box-shadow); 
+    background-color: var(--im-card-bg);
 
     // Header
     .card-header {
@@ -21,9 +21,9 @@
         flex-wrap: wrap;
         min-height: $card-header-height;
         padding: 0 $card-px;
-        color: var(--kt-card-cap-color);
-        background-color: var(--kt-card-cap-bg);
-        border-bottom: $card-border-width $card-border-style var(--kt-card-border-color);
+        color: var(--im-card-cap-color);
+        background-color: var(--im-card-cap-bg);
+        border-bottom: $card-border-width $card-border-style var(--im-card-border-color);
 
         // Title
         .card-title {
@@ -43,7 +43,7 @@
 
                 i {
                     font-size: 1.25rem;
-                    color: var(--kt-gray-600);
+                    color: var(--im-gray-600);
                     line-height: 0;
 
                     &:after,
@@ -53,7 +53,7 @@
                 }
 
                 .svg-icon {
-                    color: var(--kt-gray-600);
+                    color: var(--im-gray-600);
                     @include svg-icon-size(24px);
                 }
             }
@@ -62,7 +62,7 @@
             .card-label {
                 font-weight: 500;
                 font-size: 1.275rem;
-                color: var(--kt-text-dark);
+                color: var(--im-text-dark);
             }
 
             .card-label {
@@ -72,7 +72,7 @@
 
             // Description
             small {
-                color: var(--kt-text-muted);
+                color: var(--im-text-muted);
                 font-size: 1rem;
             }
 
@@ -94,15 +94,15 @@
     // Body
     .card-body {
         padding: $card-py $card-px;
-        color: var(--kt-card-color);
+        color: var(--im-card-color);
     }
 
     // Footer
     .card-footer {
         padding: $card-py $card-px;
-        color: var(--kt-card-cap-color);
-        background-color: var(--kt-card-cap-bg);
-        border-top: $card-border-width $card-border-style var(--kt-card-border-color);
+        color: var(--im-card-cap-color);
+        background-color: var(--im-card-cap-bg);
+        border-top: $card-border-width $card-border-style var(--im-card-border-color);
     }
 
     // Scroll
@@ -141,21 +141,21 @@
     // Dashed style
     &.card-dashed {
         box-shadow: none;
-        border: $card-border-width dashed var(--kt-card-border-dashed-color);
+        border: $card-border-width dashed var(--im-card-border-dashed-color);
 
         > .card-header {
-            border-bottom: 1px dashed var(--kt-card-border-dashed-color);
+            border-bottom: 1px dashed var(--im-card-border-dashed-color);
         }
 
         > .card-footer {
-            border-top: 1px dashed var(--kt-card-border-dashed-color);
+            border-top: 1px dashed var(--im-card-border-dashed-color);
         }
     }
 
     // Bordered style
     &.card-bordered {
         box-shadow: none;
-        border: $card-border-width $card-border-style var(--kt-card-border-color);
+        border: $card-border-width $card-border-style var(--im-card-border-color);
     }
 
     // Flush header and footer borders
@@ -171,7 +171,7 @@
     
     // Enable shadow
     &.card-shadow {
-        box-shadow: var(--kt-card-box-shadow);
+        box-shadow: var(--im-card-box-shadow);
         border: 0;
     }
 
@@ -248,7 +248,7 @@
 }
 
 .card-shadow {
-    box-shadow: var(--kt-card-box-shadow);
+    box-shadow: var(--im-card-box-shadow);
 }
 
 .card-py {

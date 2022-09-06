@@ -12,8 +12,8 @@
     margin: 0 auto;
     position: fixed;
     z-index: $feedback-popup-z-index;
-    box-shadow: var(--kt-feedback-popup-box-shadow);
-    background-color: var(--kt-feedback-popup-background-color);
+    box-shadow: var(--im-feedback-popup-box-shadow);
+    background-color: var(--im-feedback-popup-background-color);
     border-radius: $feedback-popup-border-radius;
     padding: $feedback-popup-padding;
 }

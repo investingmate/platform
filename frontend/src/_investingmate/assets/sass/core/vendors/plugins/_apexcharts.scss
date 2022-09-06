@@ -24,10 +24,10 @@
 }
 
 .apexcharts-menu {
-	background-color: var(--kt-body-bg);
+	background-color: var(--im-body-bg);
 	border: 0 !important;
 	padding: 0.5rem 0 !important;
-	box-shadow: var(--kt-dropdown-box-shadow);
+	box-shadow: var(--im-dropdown-box-shadow);
 	border-radius: $border-radius !important;
 	overflow: hidden;
 	min-width: 10rem !important;
@@ -37,7 +37,7 @@
 		transition: $transition-base;
 
 		&:hover{
-			background-color: var(--kt-hover-bg) !important;
+			background-color: var(--im-hover-bg) !important;
 		}
 	}
 }
@@ -46,16 +46,16 @@
 .apexcharts-tooltip {
 	&.apexcharts-theme-light {
 		@include border-radius($border-radius);
-		box-shadow: var(--kt-dropdown-box-shadow);
+		box-shadow: var(--im-dropdown-box-shadow);
 		border: 0 !important;
-		background: var(--kt-body-bg) !important;
-		color: var(--kt-gray-800);
+		background: var(--im-body-bg) !important;
+		color: var(--im-gray-800);
 
 		.apexcharts-tooltip-title {
-			background: var(--kt-body-bg) !important;
+			background: var(--im-body-bg) !important;
 			font-weight: $font-weight-semibold;
-			color: var(--kt-gray-800);
-			border-bottom: 1px solid var(--kt-gray-100) !important;
+			color: var(--im-gray-800);
+			border-bottom: 1px solid var(--im-gray-100) !important;
 		}
 	}
 
@@ -70,17 +70,17 @@
 .apexcharts-xaxistooltip {
 	&.apexcharts-theme-light {
 		@include border-radius($border-radius !important);
-		box-shadow: var(--kt-dropdown-box-shadow) !important;
+		box-shadow: var(--im-dropdown-box-shadow) !important;
 		border: 0 !important;
-		background: var(--kt-dropdown-box-shadow) !important;
-		color: var(--kt-gray-800);
+		background: var(--im-dropdown-box-shadow) !important;
+		color: var(--im-gray-800);
 
 		&:before {
 			border-bottom: 0 !important;
 		}
 
 		&:after {
-			border-bottom-color: var(--kt-dropdown-box-shadow) !important;
+			border-bottom-color: var(--im-dropdown-box-shadow) !important;
 		}
 	}
 }

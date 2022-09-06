@@ -16,7 +16,7 @@
         margin-left: -1.25em;
         font-weight: 500;
         font-size: 0.8em;
-        color: var(--kt-text-muted);
+        color: var(--im-text-muted);
         transition: $transition-base;
 
         &:before {
@@ -29,7 +29,7 @@
             display: flex;
 
             &:hover {
-                color: var(--kt-primary);
+                color: var(--im-primary);
                 transition: $transition-base;
             }
         }

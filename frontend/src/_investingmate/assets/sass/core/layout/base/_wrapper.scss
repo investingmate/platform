@@ -15,59 +15,59 @@
         
         // Header
         [data-kt-app-header-sticky="on"] & {
-            margin-top: var(--kt-app-header-height-actual);
+            margin-top: var(--im-app-header-height-actual);
         }
 
         [data-kt-app-header-fixed="true"] & {
-            margin-top: var(--kt-app-header-height);
+            margin-top: var(--im-app-header-height);
         }
 
         // Toolbar
         [data-kt-app-toolbar-sticky="on"] & {
-            margin-top: var(--kt-app-toolbar-height-actual, 0px);
+            margin-top: var(--im-app-toolbar-height-actual, 0px);
         }
 
         [data-kt-app-header-fixed="true"][data-kt-app-toolbar-sticky="on"] & {
-            margin-top: calc(var(--kt-app-header-height-actual) + var(--kt-app-toolbar-height-actual, 0px));
+            margin-top: calc(var(--im-app-header-height-actual) + var(--im-app-toolbar-height-actual, 0px));
         }
 
         [data-kt-app-header-fixed="true"][data-kt-app-toolbar-fixed="true"] & {
-            margin-top: calc(var(--kt-app-header-height) + var(--kt-app-toolbar-height, 0px));
+            margin-top: calc(var(--im-app-header-height) + var(--im-app-toolbar-height, 0px));
         }
 
         // Sidebar
         [data-kt-app-sidebar-fixed="true"] & {
             margin-left: calc(
-                var(--kt-app-sidebar-width) + 
-                var(--kt-app-sidebar-gap-start, 0px) + 
-                var(--kt-app-sidebar-gap-end, 0px)
+                var(--im-app-sidebar-width) + 
+                var(--im-app-sidebar-gap-start, 0px) + 
+                var(--im-app-sidebar-gap-end, 0px)
             );
         }
 
         // Sidebar Panel
         [data-kt-app-sidebar-panel-fixed="true"] & {
             margin-left: calc(
-                var(--kt-app-sidebar-width) + 
-                var(--kt-app-sidebar-gap-start, 0px) + 
-                var(--kt-app-sidebar-gap-end, 0px) +
-                var(--kt-app-sidebar-panel-width) + 
-                var(--kt-app-sidebar-panel-gap-start, 0px) + 
-                var(--kt-app-sidebar-panel-gap-end, 0px)
+                var(--im-app-sidebar-width) + 
+                var(--im-app-sidebar-gap-start, 0px) + 
+                var(--im-app-sidebar-gap-end, 0px) +
+                var(--im-app-sidebar-panel-width) + 
+                var(--im-app-sidebar-panel-gap-start, 0px) + 
+                var(--im-app-sidebar-panel-gap-end, 0px)
             );
         }
 
         // Aside
         [data-kt-app-aside-fixed="true"] & {
             margin-right: calc(
-                var(--kt-app-aside-width) + 
-                var(--kt-app-aside-gap-start, 0px) + 
-                var(--kt-app-aside-gap-end, 0px)
+                var(--im-app-aside-width) + 
+                var(--im-app-aside-gap-start, 0px) + 
+                var(--im-app-aside-gap-end, 0px)
             );
         }
 
         // Footer
         [data-kt-app-footer-fixed="true"] & {
-            margin-bottom: var(--kt-app-footer-height);
+            margin-bottom: var(--im-app-footer-height);
         }  
     }
 }
@@ -80,21 +80,21 @@
         
         // Header
         [data-kt-app-header-sticky-mobile="on"] & {
-            margin-top: var(--kt-app-header-height-actual);
+            margin-top: var(--im-app-header-height-actual);
         }
 
         [data-kt-app-header-fixed-mobile="true"] & {
-            margin-top: var(--kt-app-header-height);
+            margin-top: var(--im-app-header-height);
         }
 
         // Toolbar
         [data-kt-app-header-fixed-mobile="true"][data-kt-app-toolbar-sticky-mobile="on"] & {
-            margin-top: calc(var(--kt-app-header-height-actual) + var(--kt-app-toolbar-height-actual, 0px));
+            margin-top: calc(var(--im-app-header-height-actual) + var(--im-app-toolbar-height-actual, 0px));
         }
 
         // Footer
         [data-kt-app-footer-fixed-mobile="true"] & {
-            margin-bottom: var(--kt-app-footer-height);
+            margin-bottom: var(--im-app-footer-height);
         }  
     }
 }

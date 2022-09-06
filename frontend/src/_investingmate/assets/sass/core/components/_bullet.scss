@@ -5,7 +5,7 @@
 // Base
 .bullet {
     display: inline-block;
-    background-color: var(--kt-bullet-bg-color); 
+    background-color: var(--im-bullet-bg-color); 
     @include border-radius($bullet-bar-border-radius);
     width: $bullet-bar-width;
     height: $bullet-bar-height;

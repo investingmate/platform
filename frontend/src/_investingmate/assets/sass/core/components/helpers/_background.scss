@@ -6,13 +6,13 @@
 @each $name, $value in $theme-colors {
 	@if (theme-light-color($name)) {
 		.bg-light-#{$name} {
-			background-color: var(--kt-#{$name}-light) !important;
+			background-color: var(--im-#{$name}-light) !important;
 		}
 	}
 
 	.bg-#{$name} {
-		--kt-bg-rgb-color: var(--kt-#{$name}-rgb);
-		background-color: var(--kt-#{$name}) !important;
+		--im-bg-rgb-color: var(--im-#{$name}-rgb);
+		background-color: var(--im-#{$name}) !important;
 	}
 
 	@if (theme-light-color($name)) {
@@ -20,7 +20,7 @@
 			cursor: pointer;
 
 			&:hover {
-				background-color: var(--kt-#{$name}-light) !important;
+				background-color: var(--im-#{$name}-light) !important;
 			}
 		}
 
@@ -29,7 +29,7 @@
 
 			&.active,
 			&:hover {				
-				background-color: var(--kt-#{$name}-light) !important;
+				background-color: var(--im-#{$name}-light) !important;
 			}
 		}
 	}
@@ -38,13 +38,13 @@
 		cursor: pointer;
 
 		&:hover {
-			background-color: var(--kt-#{$name}) !important;
+			background-color: var(--im-#{$name}) !important;
 		}
 	}
 
 	.bg-active-#{$name} {
 		&.active {
-			background-color: var(--kt-#{$name}) !important;
+			background-color: var(--im-#{$name}) !important;
 		}
 	}
 
@@ -53,7 +53,7 @@
 
 		&.active,
 		&:hover {				
-			background-color: var(--kt-#{$name}) !important;
+			background-color: var(--im-#{$name}) !important;
 		}
 	}
 }
@@ -61,32 +61,32 @@
 // Background gray colors
 @each $name, $value in $grays {
     .bg-gray-#{$name} {
-		background-color: var(--kt-gray-#{$name});
+		background-color: var(--im-gray-#{$name});
 	}
 
 	.bg-gray-#{$name}i {
-		background-color: var(--kt-gray-#{$name}) !important;
+		background-color: var(--im-gray-#{$name}) !important;
 	}
 }
 
 // Opacity
 @each $name, $value in $opacity-values {
 	.bg-opacity-#{$name} {
-		background-color: rgba(var(--kt-bg-rgb-color), #{$value}) !important;
+		background-color: rgba(var(--im-bg-rgb-color), #{$value}) !important;
 	}
 
 	.bg-hover-opacity-#{$name}:hover {
-		background-color: rgba(var(--kt-bg-rgb-color), #{$value}) !important;
+		background-color: rgba(var(--im-bg-rgb-color), #{$value}) !important;
 	}
 
 	.bg-active-opacity-#{$name}.active {
-		background-color: rgba(var(--kt-bg-rgb-color), #{$value}) !important;
+		background-color: rgba(var(--im-bg-rgb-color), #{$value}) !important;
 	}
 
 	.bg-state-opacity-#{$name} {
 		.active,
 		&:hover {
-			background-color: rgba(var(--kt-bg-rgb-color), #{$value}) !important;
+			background-color: rgba(var(--im-bg-rgb-color), #{$value}) !important;
 		}		
 	}
 }
@@ -98,8 +98,8 @@
 
 // Background body color
 .bg-body {
-	--bg-color: var(--kt-body-bg-rgb);
-	background-color: var(--kt-body-bg) !important;
+	--bg-color: var(--im-body-bg-rgb);
+	background-color: var(--im-body-bg) !important;
 }
 
 // Background image helpers

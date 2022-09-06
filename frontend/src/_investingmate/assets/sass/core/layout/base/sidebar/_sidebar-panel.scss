@@ -22,11 +22,11 @@
     .app-sidebar-panel {        
         display: flex;    
         flex-shrink: 0;
-        width: var(--kt-app-sidebar-panel-width);
-        background-color: var(--kt-app-sidebar-panel-base-bg-color);
-        box-shadow: var(--kt-app-sidebar-panel-base-box-shadow);
-        border-left: var(--kt-app-sidebar-panel-base-border-start);
-        border-right: var(--kt-app-sidebar-panel-base-border-end);
+        width: var(--im-app-sidebar-panel-width);
+        background-color: var(--im-app-sidebar-panel-base-bg-color);
+        box-shadow: var(--im-app-sidebar-panel-base-box-shadow);
+        border-left: var(--im-app-sidebar-panel-base-border-start);
+        border-right: var(--im-app-sidebar-panel-base-border-end);
 
         @include property( z-index, $app-sidebar-panel-base-z-index);
         @include property( margin-left, $app-sidebar-panel-base-gap-start);
@@ -37,36 +37,36 @@
 
     // Vars
     :root {
-        --kt-app-sidebar-panel-width: #{$app-sidebar-panel-base-width};
-        --kt-app-sidebar-panel-width-actual: #{$app-sidebar-panel-base-width};
+        --im-app-sidebar-panel-width: #{$app-sidebar-panel-base-width};
+        --im-app-sidebar-panel-width-actual: #{$app-sidebar-panel-base-width};
 
-        --kt-app-sidebar-panel-gap-start: #{$app-sidebar-panel-base-gap-start};
-        --kt-app-sidebar-panel-gap-end: #{$app-sidebar-panel-base-gap-end};
-        --kt-app-sidebar-panel-gap-top: #{$app-sidebar-panel-base-gap-top};
-        --kt-app-sidebar-panel-gap-bottom: #{$app-sidebar-panel-base-gap-bottom};
+        --im-app-sidebar-panel-gap-start: #{$app-sidebar-panel-base-gap-start};
+        --im-app-sidebar-panel-gap-end: #{$app-sidebar-panel-base-gap-end};
+        --im-app-sidebar-panel-gap-top: #{$app-sidebar-panel-base-gap-top};
+        --im-app-sidebar-panel-gap-bottom: #{$app-sidebar-panel-base-gap-bottom};
     }
 
     [data-kt-app-sidebar-panel-minimize="on"] {
-        --kt-app-sidebar-panel-width: #{$app-sidebar-panel-minimize-width};
+        --im-app-sidebar-panel-width: #{$app-sidebar-panel-minimize-width};
 
-        --kt-app-sidebar-panel-gap-start: #{$app-sidebar-panel-minimize-gap-start};
-        --kt-app-sidebar-panel-gap-end: #{$app-sidebar-panel-minimize-gap-end};
-        --kt-app-sidebar-panel-gap-top: #{$app-sidebar-panel-minimize-gap-top};
-        --kt-app-sidebar-panel-gap-bottom: #{$app-sidebar-panel-minimize-gap-bottom};
+        --im-app-sidebar-panel-gap-start: #{$app-sidebar-panel-minimize-gap-start};
+        --im-app-sidebar-panel-gap-end: #{$app-sidebar-panel-minimize-gap-end};
+        --im-app-sidebar-panel-gap-top: #{$app-sidebar-panel-minimize-gap-top};
+        --im-app-sidebar-panel-gap-bottom: #{$app-sidebar-panel-minimize-gap-bottom};
     }    
 
     [data-kt-app-sidebar-panel-sticky="on"] {
-        --kt-app-sidebar-panel-width: #{$app-sidebar-panel-sticky-width};
+        --im-app-sidebar-panel-width: #{$app-sidebar-panel-sticky-width};
 
-        --kt-app-sidebar-panel-gap-start: #{$app-sidebar-panel-sticky-gap-start};
-        --kt-app-sidebar-panel-gap-end: #{$app-sidebar-panel-sticky-gap-end};
-        --kt-app-sidebar-panel-gap-top: #{$app-sidebar-panel-sticky-gap-top};
-        --kt-app-sidebar-panel-gap-bottom: #{$app-sidebar-panel-sticky-gap-bottom};
+        --im-app-sidebar-panel-gap-start: #{$app-sidebar-panel-sticky-gap-start};
+        --im-app-sidebar-panel-gap-end: #{$app-sidebar-panel-sticky-gap-end};
+        --im-app-sidebar-panel-gap-top: #{$app-sidebar-panel-sticky-gap-top};
+        --im-app-sidebar-panel-gap-bottom: #{$app-sidebar-panel-sticky-gap-bottom};
     }
 
     [data-kt-app-sidebar-panel-collapse="on"] {
-        --kt-app-sidebar-panel-width-actual: #{$app-sidebar-panel-base-width};
-        --kt-app-sidebar-panel-width: 0px;        
+        --im-app-sidebar-panel-width-actual: #{$app-sidebar-panel-base-width};
+        --im-app-sidebar-panel-width: 0px;        
     }
 
     // States
@@ -82,21 +82,21 @@
         [data-kt-app-sidebar-panel-fixed="true"] & {
             @include property( z-index, $app-sidebar-panel-fixed-z-index);
             position: fixed;
-            left: calc(var(--kt-app-sidebar-width) + var(--kt-app-sidebar-gap-start, 0px) + var(--kt-app-sidebar-gap-end, 0px));
+            left: calc(var(--im-app-sidebar-width) + var(--im-app-sidebar-gap-start, 0px) + var(--im-app-sidebar-gap-end, 0px));
             top: 0;
             bottom: 0;
         }  
 
         [data-kt-app-sidebar-panel-sticky="on"] & {
             position: fixed;
-            left: calc(var(--kt-app-sidebar-width) + var(--kt-app-sidebar-gap-start, 0px) + var(--kt-app-sidebar-gap-end, 0px));
+            left: calc(var(--im-app-sidebar-width) + var(--im-app-sidebar-gap-start, 0px) + var(--im-app-sidebar-gap-end, 0px));
             top: 0;
             bottom: 0;
             transition: $app-sidebar-panel-base-transition;
 
-            box-shadow: var(--kt-app-sidebar-panel-sticky-box-shadow);
-            border-left: var(--kt-app-sidebar-panel-sticky-border-start);
-            border-right: var(--kt-app-sidebar-panel-sticky-border-end);
+            box-shadow: var(--im-app-sidebar-panel-sticky-box-shadow);
+            border-left: var(--im-app-sidebar-panel-sticky-border-start);
+            border-right: var(--im-app-sidebar-panel-sticky-border-end);
 
             @include property( z-index, $app-sidebar-panel-sticky-z-index);
             @include property( margin-left, $app-sidebar-panel-sticky-gap-start);
@@ -107,10 +107,10 @@
 
         [data-kt-app-sidebar-panel-minimize="on"] & {
             transition: $app-sidebar-panel-base-transition;
-            background-color: var(--kt-app-sidebar-panel-minimize-bg-color);
-            box-shadow: var(--kt-app-sidebar-panel-minimize-box-shadow);
-            border-left: var(--kt-app-sidebar-panel-minimize-border-start);
-            border-right: var(--kt-app-sidebar-panel-minimize-border-end);
+            background-color: var(--im-app-sidebar-panel-minimize-bg-color);
+            box-shadow: var(--im-app-sidebar-panel-minimize-box-shadow);
+            border-left: var(--im-app-sidebar-panel-minimize-border-start);
+            border-right: var(--im-app-sidebar-panel-minimize-border-end);
 
 
             @include property( margin-left, $app-sidebar-panel-minimize-gap-start);
@@ -121,20 +121,20 @@
 
         [data-kt-app-sidebar-panel-hoverable="true"] & {
             .app-sidebar-panel-hoverable {
-                width: var(--kt-app-sidebar-panel-width-actual); 
+                width: var(--im-app-sidebar-panel-width-actual); 
             }
         }
 
         [data-kt-app-sidebar-panel-hoverable="true"][data-kt-app-sidebar-panel-minimize="on"] &:hover:not(.animating) {
             transition: $app-sidebar-panel-base-transition;
-			width: var(--kt-app-sidebar-panel-width-actual);
-            box-shadow: var(--kt-app-sidebar-panel-minimize-hover-box-shadow);
+			width: var(--im-app-sidebar-panel-width-actual);
+            box-shadow: var(--im-app-sidebar-panel-minimize-hover-box-shadow);
         }
 
         [data-kt-app-sidebar-panel-collapse="on"] & {
             transition: $app-sidebar-panel-base-transition;
-            width: var(--kt-app-sidebar-panel-width-actual);
-            margin-left: calc( -1 * (var(--kt-app-sidebar-panel-width-actual) + var(--kt-app-sidebar-gap-start, 0px) + var(--kt-app-sidebar-gap-end, 0px)));
+            width: var(--im-app-sidebar-panel-width-actual);
+            margin-left: calc( -1 * (var(--im-app-sidebar-panel-width-actual) + var(--im-app-sidebar-gap-start, 0px) + var(--im-app-sidebar-gap-end, 0px)));
         }
     }
 
@@ -142,12 +142,12 @@
     .app-sidebar-panel {
         // Header
         [data-kt-app-sidebar-panel-fixed="true"][data-kt-app-header-fixed="true"]:not([data-kt-app-sidebar-panel-push-header="true"]) & {
-            top: var(--kt-app-header-height);
+            top: var(--im-app-header-height);
         }
 
         // Toolbar
         [data-kt-app-sidebar-panel-fixed="true"][data-kt-app-header-fixed="true"][data-kt-app-toolbar-fixed="true"]:not([data-kt-app-sidebar-panel-push-toolbar="true"]) & {
-            top: calc(var(--kt-app-header-height) + var(--kt-app-toolbar-height, 0));
+            top: calc(var(--im-app-header-height) + var(--im-app-toolbar-height, 0));
         }
     }
 
@@ -188,12 +188,12 @@
     // Base
     .app-sidebar-panel {
         display: none;
-        width: var(--kt-app-sidebar-panel-width);
+        width: var(--im-app-sidebar-panel-width);
         
-        background-color: var(--kt-app-sidebar-panel-base-bg-color-mobile);
-        box-shadow: var(--kt-app-sidebar-panel-base-box-shadow-mobile);
-        border-left: var(--kt-app-sidebar-panel-base-border-start-mobile);
-        border-right: var(--kt-app-sidebar-panel-base-border-end-mobile);
+        background-color: var(--im-app-sidebar-panel-base-bg-color-mobile);
+        box-shadow: var(--im-app-sidebar-panel-base-box-shadow-mobile);
+        border-left: var(--im-app-sidebar-panel-base-border-start-mobile);
+        border-right: var(--im-app-sidebar-panel-base-border-end-mobile);
 
         @include property( z-index, $app-sidebar-panel-base-z-index-mobile);
         @include property( margin-left, $app-sidebar-panel-base-gap-start-mobile);
@@ -204,24 +204,24 @@
 
     // Vars
     :root {
-        --kt-app-sidebar-panel-gap-start: #{$app-sidebar-panel-base-gap-start-mobile};
-        --kt-app-sidebar-panel-gap-end: #{$app-sidebar-panel-base-gap-end-mobile};
-        --kt-app-sidebar-panel-gap-top: #{$app-sidebar-panel-base-gap-top-mobile};
-        --kt-app-sidebar-panel-gap-bottom: #{$app-sidebar-panel-base-gap-bottom-mobile};
+        --im-app-sidebar-panel-gap-start: #{$app-sidebar-panel-base-gap-start-mobile};
+        --im-app-sidebar-panel-gap-end: #{$app-sidebar-panel-base-gap-end-mobile};
+        --im-app-sidebar-panel-gap-top: #{$app-sidebar-panel-base-gap-top-mobile};
+        --im-app-sidebar-panel-gap-bottom: #{$app-sidebar-panel-base-gap-bottom-mobile};
     }
 
     [data-kt-app-sidebar-panel-minimize-mobile="on"] {
-        --kt-app-sidebar-panel-width: #{$app-sidebar-panel-minimize-width-mobile};
+        --im-app-sidebar-panel-width: #{$app-sidebar-panel-minimize-width-mobile};
 
-        --kt-app-sidebar-panel-gap-start: #{$app-sidebar-panel-minimize-gap-start-mobile};
-        --kt-app-sidebar-panel-gap-end: #{$app-sidebar-panel-minimize-gap-end-mobile};
-        --kt-app-sidebar-panel-gap-top: #{$app-sidebar-panel-minimize-gap-top-mobile};
-        --kt-app-sidebar-panel-gap-bottom: #{$app-sidebar-panel-minimize-gap-bottom-mobile};
+        --im-app-sidebar-panel-gap-start: #{$app-sidebar-panel-minimize-gap-start-mobile};
+        --im-app-sidebar-panel-gap-end: #{$app-sidebar-panel-minimize-gap-end-mobile};
+        --im-app-sidebar-panel-gap-top: #{$app-sidebar-panel-minimize-gap-top-mobile};
+        --im-app-sidebar-panel-gap-bottom: #{$app-sidebar-panel-minimize-gap-bottom-mobile};
     }
 
     [data-kt-app-sidebar-panel-collapse-mobile="on"] {
-        --kt-app-sidebar-panel-width-actual: #{$app-sidebar-panel-base-width-mobile};
-        --kt-app-sidebar-panel-width: 0px;
+        --im-app-sidebar-panel-width-actual: #{$app-sidebar-panel-base-width-mobile};
+        --im-app-sidebar-panel-width: 0px;
     }
 
     // States
@@ -229,10 +229,10 @@
         [data-kt-app-sidebar-panel-minimize-mobile="on"] & {
             transition: $app-sidebar-panel-base-transition;
 
-            background-color: var(--kt-app-sidebar-panel-minimize-bg-color-mobile);
-            box-shadow: var(--kt-app-sidebar-panel-minimize-box-shadow-mobile);
-            border-left: var(--kt-app-sidebar-panel-minimize-border-start-mobile);
-            border-right: var(--kt-app-sidebar-panel-minimize-border-end-mobile);
+            background-color: var(--im-app-sidebar-panel-minimize-bg-color-mobile);
+            box-shadow: var(--im-app-sidebar-panel-minimize-box-shadow-mobile);
+            border-left: var(--im-app-sidebar-panel-minimize-border-start-mobile);
+            border-right: var(--im-app-sidebar-panel-minimize-border-end-mobile);
 
             @include property( margin-left, $app-sidebar-panel-minimize-gap-start-mobile);
             @include property( margin-right, $app-sidebar-panel-minimize-gap-end-mobile);
@@ -242,21 +242,21 @@
 
         [data-kt-app-sidebar-panel-hoverable-mobile="true"] & {
             .app-sidebar-panel-hoverable {
-                width: var(--kt-app-sidebar-panel-width-actual); 
+                width: var(--im-app-sidebar-panel-width-actual); 
             }
         }
 
         [data-kt-app-sidebar-panel-hoverable-mobile="true"][data-kt-app-sidebar-panel-minimize-mobile="on"] &:hover:not(.animating) {
             transition: $app-sidebar-panel-base-transition;
-			width: var(--kt-app-sidebar-panel-width-actual);
+			width: var(--im-app-sidebar-panel-width-actual);
 
-            box-shadow: var(--kt-app-sidebar-panel-minimize-hover-box-shadow-mobile);
+            box-shadow: var(--im-app-sidebar-panel-minimize-hover-box-shadow-mobile);
         }
 
         [data-kt-app-sidebar-panel-collapse-mobile="on"] & {
             transition: $app-sidebar-panel-base-transition;
-            width: var(--kt-app-sidebar-panel-width-actual);
-            margin-left: calc( -1 * var(--kt-app-sidebar-panel-width-actual));
+            width: var(--im-app-sidebar-panel-width-actual);
+            margin-left: calc( -1 * var(--im-app-sidebar-panel-width-actual));
         }
     }
 

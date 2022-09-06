@@ -4,9 +4,9 @@
 
 // Breadcrumb
 .breadcrumb {
-    --#{$prefix}breadcrumb-bg: var(--kt-breadcrumb-bg);
-    --#{$prefix}breadcrumb-divider-color: var(--kt-breadcrumb-divider-color);
-    --#{$prefix}breadcrumb-item-active-color: var(--kt-breadcrumb-item-active-color);
+    --#{$prefix}breadcrumb-bg: var(--im-breadcrumb-bg);
+    --#{$prefix}breadcrumb-divider-color: var(--im-breadcrumb-divider-color);
+    --#{$prefix}breadcrumb-item-active-color: var(--im-breadcrumb-item-active-color);
 
     display: flex;
     align-items: center;

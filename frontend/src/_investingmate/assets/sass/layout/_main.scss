@@ -5,7 +5,7 @@
 
 // Body
 body {
-	background-color: var(--kt-page-bg);
+	background-color: var(--im-page-bg);
 }
 
 // Font color from Content background color
@@ -45,7 +45,7 @@ body {
 
 		// Fixed header & fixed toolbar modes
 		.header-fixed.toolbar-fixed & {
-			padding-top: calc(#{get($header-config, fixed, height, desktop)} + var(--kt-toolbar-height));
+			padding-top: calc(#{get($header-config, fixed, height, desktop)} + var(--im-toolbar-height));
 		}
 	}
 }
@@ -69,7 +69,7 @@ body {
 
 		// Fixed header & fixed toolbar modes
 		.header-tablet-and-mobile-fixed.toolbar-tablet-and-mobile-fixed & {
-			padding-top: calc(#{get($header-config, fixed, height, tablet-and-mobile)} + var(--kt-toolbar-height-tablet-and-mobile));
+			padding-top: calc(#{get($header-config, fixed, height, tablet-and-mobile)} + var(--im-toolbar-height-tablet-and-mobile));
 		}
 	}
 }

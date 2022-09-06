@@ -16,20 +16,20 @@
         }
 
         .input-group-text {
-            background-color: var(--kt-input-solid-bg);
-		    border-color: var(--kt-input-solid-bg);
+            background-color: var(--im-input-solid-bg);
+		    border-color: var(--im-input-solid-bg);
 
             & + .form-control {
-                border-left-color: var(--kt-input-border-color);
+                border-left-color: var(--im-input-border-color);
             }
         }
 
         .form-control {
-            background-color: var(--kt-input-solid-bg);
-    		border-color: var(--kt-input-solid-bg);
+            background-color: var(--im-input-solid-bg);
+    		border-color: var(--im-input-solid-bg);
 
             & + .input-group-text {
-                border-left-color: var(--kt-input-border-color);
+                border-left-color: var(--im-input-border-color);
             }
         }
     }

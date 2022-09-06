@@ -8,48 +8,48 @@
 	&:focus {
 		// Pseudo-elements must be split across multiple rulesets to have an effect.
 		// No box-shadow() mixin for focus accessibility.
-		&::-webkit-slider-thumb { box-shadow: var(--kt-form-range-thumb-focus-box-shadow); }
-		&::-moz-range-thumb     { box-shadow: var(--kt-form-range-thumb-focus-box-shadow); }
+		&::-webkit-slider-thumb { box-shadow: var(--im-form-range-thumb-focus-box-shadow); }
+		&::-moz-range-thumb     { box-shadow: var(--im-form-range-thumb-focus-box-shadow); }
 	}
 
 	&::-webkit-slider-thumb {
-		@include gradient-bg(var(--kt-form-range-thumb-bg));
-		border: var(--kt-form-range-thumb-border);
-		//@include box-shadow(var(--kt-form-range-thumb-box-shadow));
+		@include gradient-bg(var(--im-form-range-thumb-bg));
+		border: var(--im-form-range-thumb-border);
+		//@include box-shadow(var(--im-form-range-thumb-box-shadow));
 		appearance: none;
 
 		&:active {
-			@include gradient-bg(var(--kt-form-range-thumb-active-bg));
+			@include gradient-bg(var(--im-form-range-thumb-active-bg));
 		}
 	}
 
 	&::-webkit-slider-runnable-track {
-		background-color: var(--kt-form-range-track-bg);
-		//@include box-shadow(var(--kt-form-range-track-box-shadow));
+		background-color: var(--im-form-range-track-bg);
+		//@include box-shadow(var(--im-form-range-track-box-shadow));
 	}
 
 	&::-moz-range-thumb {
-		@include gradient-bg(var(--kt-form-range-thumb-bg));
-		border: var(--kt-form-range-thumb-border);
-		//@include box-shadow(var(--kt-form-range-thumb-box-shadow));
+		@include gradient-bg(var(--im-form-range-thumb-bg));
+		border: var(--im-form-range-thumb-border);
+		//@include box-shadow(var(--im-form-range-thumb-box-shadow));
 
 		&:active {
-			@include gradient-bg(var(--kt-form-range-thumb-active-bg));
+			@include gradient-bg(var(--im-form-range-thumb-active-bg));
 		}
 	}
 
 	&::-moz-range-track {
-		background-color: var(--kt-form-range-track-bg);
-		//@include box-shadow(var(--kt-form-range-track-box-shadow));
+		background-color: var(--im-form-range-track-bg);
+		//@include box-shadow(var(--im-form-range-track-box-shadow));
 	}
 
 	&:disabled {
 		&::-webkit-slider-thumb {
-			background-color: var(--kt-form-range-thumb-disabled-bg);
+			background-color: var(--im-form-range-thumb-disabled-bg);
 		}
 
 		&::-moz-range-thumb {
-			background-color: var(--kt-form-range-thumb-disabled-bg);
+			background-color: var(--im-form-range-thumb-disabled-bg);
 		}
 	}
 }

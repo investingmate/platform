@@ -49,16 +49,16 @@
     &.form-check-solid {
         .form-check-input {
             border: 0;
-            background-color: var(--kt-form-check-input-bg-solid);
+            background-color: var(--im-form-check-input-bg-solid);
 
             &:active,
             &:focus {
                 filter: none;
-                background-color: var(--kt-form-check-input-bg-solid);
+                background-color: var(--im-form-check-input-bg-solid);
             }
 
             &:checked {
-                background-color: var(--kt-form-check-input-checked-bg-color-solid);
+                background-color: var(--im-form-check-input-checked-bg-color-solid);
             }
         }
     }
@@ -68,7 +68,7 @@
     &.form-check-success {
         .form-check-input {
             &:checked {
-                background-color: var(--kt-success);
+                background-color: var(--im-success);
             }
         }
     }
@@ -77,7 +77,7 @@
     &.form-check-danger {
         .form-check-input {
             &:checked {
-                background-color: var(--kt-danger);
+                background-color: var(--im-danger);
             }
         }
     }
@@ -86,7 +86,7 @@
     &.form-check-warning {
         .form-check-input {
             &:checked {
-                background-color: var(--kt-warning);
+                background-color: var(--im-warning);
             }
         }
     }
@@ -96,12 +96,12 @@
 .form-switch.form-check-solid {
     .form-check-input {
         height: $form-switch-height;
-        background-image: var(--kt-form-switch-bg-image-solid);
+        background-image: var(--im-form-switch-bg-image-solid);
         border-radius: $form-switch-border-radius;
 
         &:checked {
             filter: none;
-            background-image: var(--kt-form-switch-checked-bg-image);
+            background-image: var(--im-form-switch-checked-bg-image);
         }
     }
 
@@ -128,7 +128,7 @@
     .form-check-label {
         padding-top: 0.5rem;
         font-size: $form-label-font-size;
-        color: var(--kt-form-label-color);
+        color: var(--im-form-label-color);
         font-weight: $form-label-font-weight;    
     }
 
@@ -152,8 +152,8 @@
         background-position: center;
         background-size: contain;
         background-size: 50%;   
-        background-image: var(--kt-form-check-input-checked-bg-image);
-        background-color: var(--kt-primary);  
+        background-image: var(--im-form-check-input-checked-bg-image);
+        background-color: var(--im-primary);  
         @include border-bottom-start-radius($border-radius-lg);
         @include border-top-end-radius($border-radius-lg);
 
@@ -173,7 +173,7 @@
     }
 
     .btn-check:checked + div {
-        border: 2px solid var(--kt-primary);
+        border: 2px solid var(--im-primary);
         transition: $transition-base;
 
         .form-check-indicator {
@@ -184,7 +184,7 @@
 
     .btn-check:disabled + div {
         transition: $transition-base;
-        opacity: var(--kt-form-check-btn-check-disabled-opacity);
+        opacity: var(--im-form-check-btn-check-disabled-opacity);
     }
 }
 
@@ -217,23 +217,23 @@
 
     &.active {
         .form-check-wrapper {
-            border-color: var(--kt-primary);
+            border-color: var(--im-primary);
         }    
     }
 
     &.form-check-success.active {
         .form-check-wrapper {
-            border-color: var(--kt-success);
+            border-color: var(--im-success);
         } 
     }
 
     &.form-check-danger.active {
         .form-check-wrapper {
-            border-color: var(--kt-danger);
+            border-color: var(--im-danger);
         } 
     }
 
     &.disabled {
-        opacity: var(--kt-form-check-btn-check-disabled-opacity);
+        opacity: var(--im-form-check-btn-check-disabled-opacity);
     }
 }

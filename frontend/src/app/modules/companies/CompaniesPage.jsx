@@ -1,5 +1,6 @@
 import { Route, Routes, Outlet, Navigate } from "react-router-dom";
-import { Notes } from "./components/Notes";
+// import { CompaniesHeader } from "./CompaniesHeader";
+import { Companies } from "./components/Companies";
 
 // const notesBreadcrumbs = [
 //   {
@@ -16,22 +17,29 @@ import { Notes } from "./components/Notes";
 //   },
 // ];
 
-const NotesPage = () => {
+const CompaniesPage = () => {
   return (
     <Routes>
-      <Route element={<Outlet />}>
+      <Route
+        element={
+          <>
+            {/* <CompaniesHeader /> */}
+            <Outlet />
+          </>
+        }
+      >
         <Route
-          path="/"
+          path="overview"
           element={
             <>
-              <Notes />
+              <Companies />
             </>
           }
         />
       </Route>
-      <Route index element={<Navigate to="/apps/notes" />} />
+      <Route index element={<Navigate to="/companies/overview" />} />
     </Routes>
   );
 };
 
-export default NotesPage;
+export default CompaniesPage;

@@ -8,8 +8,8 @@
     padding: 1.5rem 1.75rem;
 	text-align: center;
 	cursor: pointer;
-    border: 1px dashed var(--kt-primary);
-    background-color: var(--kt-primary-light);
+    border: 1px dashed var(--im-primary);
+    background-color: var(--im-primary-light);
     border-radius: $border-radius !important;
 
     .dz-message{
@@ -29,7 +29,7 @@
 
         &.dz-file-preview {
             .dz-image {
-                background: var(--kt-gray-200);
+                background: var(--im-gray-200);
             }
         }
     }
@@ -59,8 +59,8 @@
         white-space: nowrap;  
         position: absolute;
         z-index: 2;
-        background-color: var(--kt-body-bg) !important;        
-        box-shadow: var(--kt-box-shadow);        
+        background-color: var(--im-body-bg) !important;        
+        box-shadow: var(--im-box-shadow);        
 		border-radius: 100%;
         top: -(divide($size,2));
         right: -(divide($size,2));
@@ -75,19 +75,19 @@
             content: "";
             mask-size: 40%;
             -webkit-mask-size: 40%;
-            @include svg-bg-icon(close, var(--kt-gray-600));
+            @include svg-bg-icon(close, var(--im-gray-600));
         }       
 
         &:hover {
             &:after {
-                @include svg-bg-icon(close, var(--kt-primary));
+                @include svg-bg-icon(close, var(--im-primary));
             } 
         }
     }
 
     .dz-error-message {
-        color: var(--kt-danger-inverse);
-        background: var(--kt-danger);
+        color: var(--im-danger-inverse);
+        background: var(--im-danger);
     }
 }
 
@@ -115,7 +115,7 @@
         margin-top: 0.75rem;
         @include border-radius($border-radius);
         padding: 0.5rem 1rem;
-        background-color: var(--kt-gray-100);
+        background-color: var(--im-gray-100);
 
         .dropzone-file {
             flex-grow: 1;
@@ -123,12 +123,12 @@
             .dropzone-filename {
                 font-size: 0.9rem;
                 font-weight: 500;
-                color: var(--kt-gray-600);
+                color: var(--im-gray-600);
                 text-overflow: ellipsis;
                 margin-right: 0.5rem;
 
                 &:hover {
-                    color: var(--kt-primary);
+                    color: var(--im-primary);
                 }
             }
 
@@ -136,7 +136,7 @@
                 margin-top: 0.25rem;
                 font-size: 0.9rem;
                 font-weight: 400;
-                color: var(--kt-danger);
+                color: var(--im-danger);
                 text-overflow: ellipsis;
             }
         }
@@ -169,13 +169,13 @@
                 i {
                     transition: $transition-link;
                     font-size: 0.8rem;
-                    color: var(--kt-gray-600);
+                    color: var(--im-gray-600);
                 }
 
                 &:hover {
                     transition: $transition-link;
                     i {
-                        color: var(--kt-primary);
+                        color: var(--im-primary);
                     }
                 }
             }

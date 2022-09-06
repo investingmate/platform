@@ -4,10 +4,10 @@
 
 // Base
 .progress {
-  --#{$prefix}progress-bg: var(--kt-progress-bg);
-  --#{$prefix}progress-box-shadow: var(--kt-progress-box-shadow);
-  --#{$prefix}progress-bar-color: var(--kt-progress-bar-color);
-  --#{$prefix}progress-bar-bg: var(--kt-progress-bar-bg);
+  --#{$prefix}progress-bg: var(--im-progress-bg);
+  --#{$prefix}progress-box-shadow: var(--im-progress-box-shadow);
+  --#{$prefix}progress-bar-color: var(--im-progress-bar-color);
+  --#{$prefix}progress-bar-bg: var(--im-progress-bar-bg);
 }
 
 // Vertical Position

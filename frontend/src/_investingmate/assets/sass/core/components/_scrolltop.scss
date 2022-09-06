@@ -13,39 +13,39 @@
     height: $scrolltop-size;
     bottom: $scrolltop-bottom;
     right: $scrolltop-end;    
-    background-color: var(--kt-scrolltop-bg-color);
-    box-shadow: var(--kt-scrolltop-box-shadow);
+    background-color: var(--im-scrolltop-bg-color);
+    box-shadow: var(--im-scrolltop-box-shadow);
     opacity: $scrolltop-opacity;
     transition: $transition-link;
     @include border-radius($border-radius);
 
     .svg-icon {
         @include svg-icon-size(24px);
-        color: var(--kt-scrolltop-icon-color);
+        color: var(--im-scrolltop-icon-color);
     }
 
     > i {
         font-size: 1.3rem;
-        color: var(--kt-scrolltop-icon-color);
+        color: var(--im-scrolltop-icon-color);
     }
 
     &:hover {
-        background-color: var(--kt-scrolltop-bg-color-hover);
+        background-color: var(--im-scrolltop-bg-color-hover);
 
         .svg-icon,
         i {
-            color: var(--kt-scrolltop-icon-color-hover);
+            color: var(--im-scrolltop-icon-color-hover);
         }
     }
 
     [data-kt-scrolltop="on"] & {
-        opacity: var(--kt-scrolltop-opacity-on);
+        opacity: var(--im-scrolltop-opacity-on);
         animation: animation-scrolltop .4s ease-out 1;
         display: flex;
 
         &:hover {
             transition: $transition-link;
-            opacity: var(--kt-scrolltop-opacity-hover);
+            opacity: var(--im-scrolltop-opacity-hover);
         }
     }
 

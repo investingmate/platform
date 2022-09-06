@@ -396,7 +396,7 @@ function slideDown(el, speed, callback) {
 }
 
 function getBreakpoint(breakpoint) {
-  let value = getCSSVariableValue("--kt-" + breakpoint);
+  let value = getCSSVariableValue("--im-" + breakpoint);
   if (value) {
     value = parseInt(value.trim());
   }

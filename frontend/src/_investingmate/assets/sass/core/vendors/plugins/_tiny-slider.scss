@@ -27,11 +27,11 @@
             margin: 0 0.25rem;
             @include border-radius($btn-border-radius);
             padding: 0.5rem 0.75rem;
-            background-color: var(--kt-primary);
-            color: var(--kt-primary-inverse);
+            background-color: var(--im-primary);
+            color: var(--im-primary-inverse);
 
             &:hover {
-                background-color: var(--kt-primary-active);
+                background-color: var(--im-primary-active);
             }
         }
     }
@@ -48,13 +48,13 @@
             outline: none;            
             width: 1.25rem;
             height: 0.75rem;
-            background-color: var(--kt-gray-200);
+            background-color: var(--im-gray-200);
             margin: 0 0.25rem;
             border: 0;
             @include border-radius(0.35rem);
 
             &.tns-nav-active{
-                background-color: var(--kt-primary);
+                background-color: var(--im-primary);
             }
         }
     }

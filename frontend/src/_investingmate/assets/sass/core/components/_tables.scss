@@ -4,16 +4,16 @@
 
 // Table
 .table {
-	--#{$prefix}table-color: var(--kt-table-color);
-	--#{$prefix}table-bg: var(--kt-table-bg);
-	--#{$prefix}table-border-color: var(--kt-table-border-color);
-	--#{$prefix}table-accent-bg: var(--kt-table-accent-bg);
-	--#{$prefix}table-striped-color: var(--kt-table-striped-color);
-	--#{$prefix}table-striped-bg: var(--kt-table-striped-bg);
-	--#{$prefix}table-active-color: var(--kt-table-active-color);
-	--#{$prefix}table-active-bg: var(--kt-table-active-bg);
-	--#{$prefix}table-hover-color: var(--kt-table-hover-color);
-	--#{$prefix}table-hover-bg: var(--kt-table-hover-bg);
+	--#{$prefix}table-color: var(--im-table-color);
+	--#{$prefix}table-bg: var(--im-table-bg);
+	--#{$prefix}table-border-color: var(--im-table-border-color);
+	--#{$prefix}table-accent-bg: var(--im-table-accent-bg);
+	--#{$prefix}table-striped-color: var(--im-table-striped-color);
+	--#{$prefix}table-striped-bg: var(--im-table-striped-bg);
+	--#{$prefix}table-active-color: var(--im-table-active-color);
+	--#{$prefix}table-active-bg: var(--im-table-active-bg);
+	--#{$prefix}table-hover-color: var(--im-table-hover-color);
+	--#{$prefix}table-hover-bg: var(--im-table-hover-bg);
 
 	// Fix for BS 5.1.2 update
 	& > :not(:first-child) {
@@ -82,7 +82,7 @@
 		tr {
 			border-bottom-width: 1px;
 			border-bottom-style: solid;
-			border-bottom-color: var(--kt-border-color);
+			border-bottom-color: var(--im-border-color);
 		}
 
 		tfoot {
@@ -97,7 +97,7 @@
 		tr {
 			border-bottom-width: 1px;
 			border-bottom-style: dashed;
-			border-bottom-color: var(--kt-border-color);
+			border-bottom-color: var(--im-border-color);
 		}
 
 		tfoot {
@@ -111,7 +111,7 @@
 	@each $name, $value in $grays {
 		&.table-row-gray-#{$name} {
 			tr { 
-				border-bottom-color: var(--kt-gray-#{$name});
+				border-bottom-color: var(--im-gray-#{$name});
 			}
 		}
 	}	
@@ -150,14 +150,14 @@
 .table-sort-asc {
 	&:after {
 		opacity: 1;
-		@include svg-bg-icon(arrow-top, var(--kt-text-muted));
+		@include svg-bg-icon(arrow-top, var(--im-text-muted));
 	}
 }
 
 .table-sort-desc {
 	&:after {
 		opacity: 1;
-		@include svg-bg-icon(arrow-bottom, var(--kt-text-muted));
+		@include svg-bg-icon(arrow-bottom, var(--im-text-muted));
 	}
 }
 
@@ -168,9 +168,9 @@
 	top: 50%;
 	left: 50%;
 	@include border-radius($border-radius);
-	box-shadow: var(--kt-table-loading-message-box-shadow);
-	background-color: var(--kt-table-loading-message-bg);
-	color: var(--kt-table-loading-message-color);
+	box-shadow: var(--im-table-loading-message-box-shadow);
+	background-color: var(--im-table-loading-message-bg);
+	color: var(--im-table-loading-message-color);
 	font-weight: $font-weight-bold;
 	margin: 0 !important;
 	width: auto;

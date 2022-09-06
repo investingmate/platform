@@ -12,14 +12,14 @@
     @include border-radius($border-radius);
 
     &.note-frame {
-        border: 1px solid var(--kt-input-border-color);
+        border: 1px solid var(--im-input-border-color);
 
         .panel-heading.note-toolbar {
-            background: var(--kt-gray-100);
+            background: var(--im-gray-100);
         }
 
         .note-statusbar {
-            background: var(--kt-gray-100);
+            background: var(--im-gray-100);
         }
 
         &.fullscreen{
@@ -37,13 +37,13 @@
 
             .btn {
                 background: white;
-                border: 1px solid var(--kt-gray-200);
+                border: 1px solid var(--im-gray-200);
 
                 i {
                     font-size: 1rem;
                     line-height: 0;
                     padding-right: 0;
-                    color: var(--kt-gray-600);
+                    color: var(--im-gray-600);
                 }
 
                 &:hover,
@@ -51,10 +51,10 @@
                 &:active,
                 &.active {
                     background: transparent;
-                    color: var(--kt-primary);
+                    color: var(--im-primary);
 
                     i {
-                        color: var(--kt-primary);
+                        color: var(--im-primary);
                     }
                 }
             }
@@ -83,7 +83,7 @@
 
         &.note-modal {
             .modal-dialog {
-                box-shadow: var(--kt-modal-content-box-shadow);
+                box-shadow: var(--im-modal-content-box-shadow);
             }
         }
     }
@@ -137,7 +137,7 @@
     .note-editable {
         .table.table-bordered {
             th,td {
-                border: 1px solid var(--kt-gray-200);
+                border: 1px solid var(--im-gray-200);
             }
         }
     }
@@ -145,13 +145,13 @@
     // Validation
     .is-valid {
         .note-editor {
-            border-color: var(--kt-success);
+            border-color: var(--im-success);
         }
     }
 
     .is-invalid {
         .note-editor {
-            border-color: var(--kt-danger);
+            border-color: var(--im-danger);
         }
     }
 }

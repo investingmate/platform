@@ -99,9 +99,9 @@
                 content: " ";
                 will-change: transform;
                 background-size: 100% 100%;
-                @include svg-bg-icon(arrow-start, var(--kt-text-muted));
+                @include svg-bg-icon(arrow-start, var(--im-text-muted));
                 /*rtl:begin:remove*/
-                @include svg-bg-icon(arrow-end, var(--kt-text-muted));
+                @include svg-bg-icon(arrow-end, var(--im-text-muted));
                 /*rtl:end:remove*/
             }
         }
@@ -132,7 +132,7 @@
 
 // Heading
 .menu-heading {
-    color: var(--kt-menu-heading-color);    
+    color: var(--im-menu-heading-color);    
 }
 
 // Responsive 
@@ -165,8 +165,8 @@
             .menu-sub#{$infix}-dropdown {
                 display: none;
                 border-radius: $menu-dropdown-border-radius;
-                background-color: var(--kt-menu-dropdown-bg-color);
-                box-shadow: var(--kt-menu-dropdown-box-shadow);
+                background-color: var(--im-menu-dropdown-bg-color);
+                box-shadow: var(--im-menu-dropdown-box-shadow);
                 z-index: $menu-dropdown-z-index;
 
                 // Dropdown show

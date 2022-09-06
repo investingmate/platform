@@ -14,14 +14,14 @@ body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown):not(.modal-open
 
 // Popup
 .swal2-popup {
-	background-color: var(--kt-body-bg);
+	background-color: var(--im-body-bg);
 	padding: 2rem;
 	@include border-radius($border-radius);
 
 	.swal2-title {
 		font-weight: 500;
 		font-size: 1.3rem;
-		color: var(--kt-dark);
+		color: var(--im-dark);
 	}
 
 	.swal2-html-container,
@@ -29,7 +29,7 @@ body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown):not(.modal-open
 		font-weight: normal;
 		font-size: 1.1rem;
 		margin-top: 1.5rem;
-		color: var(--kt-gray-800);
+		color: var(--im-gray-800);
 	}
 
 	.btn {
@@ -70,43 +70,43 @@ body.swal2-height-auto {
 .swal2-icon {
 	// Warning
 	&.swal2-warning {
-    	border-color: var(--kt-warning);
-    	color: var(--kt-warning);
+    	border-color: var(--im-warning);
+    	color: var(--im-warning);
 	}
 
 	// Error
 	&.swal2-error {
-    	border-color: var(--kt-danger);
-    	color: var(--kt-danger);
+    	border-color: var(--im-danger);
+    	color: var(--im-danger);
 
 		[class^=swal2-x-mark-line] {
-			background-color: rgba(var(--kt-danger-rgb), 0.75);
+			background-color: rgba(var(--im-danger-rgb), 0.75);
 		}
 	}
 
 	// Success
 	&.swal2-success {
-    	border-color: var(--kt-success);
-    	color: var(--kt-success);
+    	border-color: var(--im-success);
+    	color: var(--im-success);
 
 		[class^=swal2-success-line] {
-			background-color: var(--kt-success);
+			background-color: var(--im-success);
 		}
 
 		.swal2-success-ring {
-			border-color: rgba(var(--kt-success-rgb), 0.3);
+			border-color: rgba(var(--im-success-rgb), 0.3);
 		}
 	}
 
 	// Info
 	&.swal2-info {
-    	border-color: var(--kt-info);
-    	color: var(--kt-info);
+    	border-color: var(--im-info);
+    	color: var(--im-info);
 	}
 
 	// Question
 	&.swal2-question {
-    	border-color: var(--kt-primary);
-    	color: var(--kt-primary);
+    	border-color: var(--im-primary);
+    	color: var(--im-primary);
 	}
 }

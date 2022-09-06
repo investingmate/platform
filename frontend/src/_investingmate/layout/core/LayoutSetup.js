@@ -113,11 +113,11 @@ export class LayoutSetup {
     if (typeOptions) {
       let bodyStyles = "";
       if (typeOptions.height) {
-        bodyStyles += ` --kt-toolbar-height: ${typeOptions.height};`;
+        bodyStyles += ` --im-toolbar-height: ${typeOptions.height};`;
       }
 
       if (typeOptions.heightAndTabletMobileMode) {
-        bodyStyles += ` --kt-toolbar-height-tablet-and-mobile: ${typeOptions.heightAndTabletMobileMode};`;
+        bodyStyles += ` --im-toolbar-height-tablet-and-mobile: ${typeOptions.heightAndTabletMobileMode};`;
       }
       document.body.setAttribute("style", bodyStyles);
     }

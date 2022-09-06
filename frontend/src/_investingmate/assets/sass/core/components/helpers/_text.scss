@@ -6,20 +6,20 @@
 @each $name, $color in $theme-text-colors {
     // Base color
     .text-#{$name} {
-        color: var(--kt-text-#{$name}) !important;
+        color: var(--im-text-#{$name}) !important;
     }
 
     // Inverse color
     @if (theme-inverse-color($name)) {
         .text-inverse-#{$name} {
-            color: var(--kt-#{$name}-inverse) !important;
+            color: var(--im-#{$name}-inverse) !important;
         }
     }
 
     @if (theme-light-color($name)) {
         // Light colors
         .text-light-#{$name} {
-            color: var(--kt-#{$name}-light) !important;
+            color: var(--im-#{$name}-light) !important;
         }
     }
 
@@ -33,15 +33,15 @@
 
         &:hover {
             transition: $transition-link;
-            color: var(--kt-text-#{$name}) !important;
+            color: var(--im-text-#{$name}) !important;
 
             i {
                 transition: $transition-link;
-				color: var(--kt-text-#{$name}) !important;
+				color: var(--im-text-#{$name}) !important;
 			}
 
 			.svg-icon {
-				color: var(--kt-text-#{$name}) !important;
+				color: var(--im-text-#{$name}) !important;
 			}
         }
     }
@@ -56,15 +56,15 @@
 
         &.active {
             transition: $transition-link;
-            color: var(--kt-text-#{$name}) !important;
+            color: var(--im-text-#{$name}) !important;
             
             i {
                 transition: $transition-link;
-                color: var(--kt-text-#{$name}) !important;
+                color: var(--im-text-#{$name}) !important;
             }
     
             .svg-icon {
-                color: var(--kt-text-#{$name}) !important;
+                color: var(--im-text-#{$name}) !important;
             }
         }
     }
@@ -93,7 +93,7 @@
 i {
     line-height: 1;
     font-size: 1rem;
-    color: var(--kt-text-muted);
+    color: var(--im-text-muted);
 }
 
 // Link transition
