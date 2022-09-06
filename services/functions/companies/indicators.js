@@ -47,8 +47,9 @@ const INDICATOR_TEMPLATE = {
 };
 
 export const main = handler(async (event) => {
-  
-  const _indicators = INDICATORS.map(indicator => {`${indicator}`: ...INDICATOR_TEMPLATE });
+  const _indicators = INDICATORS.map((indicator) => {
+    return { [indicator]: { ...INDICATOR_TEMPLATE } };
+  });
 
-  return {}
+  return _indicators;
 });
