@@ -15,7 +15,6 @@ const config = {
     AUTH_DOMAIN: process.env.REACT_APP_AUTH_DOMAIN,
   },
   MAX_ATTACHMENT_SIZE: 5000000,
-  STRIPE_KEY: "YOUR_STRIPE_PUBLIC_KEY",
   SENTRY_DNS:
     "https://6d806f0cd4be45c3903c528d830b89f5@o1352644.ingest.sentry.io/6634155",
 };
