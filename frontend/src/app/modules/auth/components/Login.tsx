@@ -9,6 +9,7 @@ import {useAuth} from '../core/Auth'
 import {GoogleLogin} from './GoogleLogin'
 import {onError} from '../../../../lib/errorLib'
 import {toAbsoluteUrl, useQuery} from '../../../../_investingmate/helpers'
+import {useIntl} from "react-intl";
 
 const initialValues = {
   email: 'csalucasnascimento@gmail.com',
@@ -47,6 +48,7 @@ async function resendConfirmationCode(email: string) {
 }
 
 export function Login() {
+  const intl = useIntl()
   const navigate = useNavigate()
   const query = useQuery()
   const email = query.get('email')
@@ -220,126 +222,130 @@ export function Login() {
     </form>
   )
 
-  const renderForm = () => (
-    <form
-      className='form w-100'
-      onSubmit={formik.handleSubmit}
-      noValidate
-      id='im_login_signin_form'
-    >
-      {/* begin::Heading */}
-      <div className='text-center mb-10'>
-        <h1 className='text-dark mb-3'>Sign In to InvestingMate</h1>
-        <div className='text-gray-400 fw-bold fs-4'>
-          New Here?{' '}
-          <Link to='/auth/registration' className='link-primary fw-bolder'>
-            Create an Account
-          </Link>
+  const renderForm = () => {
+    return (
+      <form
+        className='form w-100'
+        onSubmit={formik.handleSubmit}
+        noValidate
+        id='im_login_signin_form'
+      >
+        {/* begin::Heading */}
+        <div className='text-center mb-10'>
+          <h1 className='text-dark mb-3'>{intl.formatMessage({id: 'LOGIN.SIGN_IN_TO_INVESTINGMATE'})}</h1>
+          <div className='text-gray-400 fw-bold fs-4'>
+            New Here?{' '}
+            <Link to='/auth/registration' className='link-primary fw-bolder'>
+              Create an Account
+            </Link>
+          </div>
         </div>
-      </div>
-      {/* begin::Heading */}
+        {/* begin::Heading */}
 
-      {formik.status && (
-        <div className='mb-lg-15 alert alert-danger'>
-          <div className='alert-text font-weight-bold'>{formik.status}</div>
-        </div>
-      )}
-
-      {/* begin::Form group */}
-      <div className='fv-row mb-10'>
-        <label className='form-label fs-6 fw-bolder text-dark'>Email</label>
-        <input
-          placeholder='Email'
-          {...formik.getFieldProps('email')}
-          className={clsx(
-            'form-control form-control-lg form-control-solid',
-            {'is-invalid': formik.touched.email && formik.errors.email},
-            {
-              'is-valid': formik.touched.email && !formik.errors.email,
-            }
-          )}
-          type='email'
-          name='email'
-          autoComplete='off'
-        />
-        {formik.touched.email && formik.errors.email && (
-          <div className='fv-plugins-message-container'>
-            <span role='alert'>{formik.errors.email}</span>
+        {formik.status && (
+          <div className='mb-lg-15 alert alert-danger'>
+            <div className='alert-text font-weight-bold'>{formik.status}</div>
           </div>
         )}
-      </div>
-      {/* end::Form group */}
 
-      {/* begin::Form group */}
-      <div className='fv-row mb-10'>
-        <div className='d-flex justify-content-between mt-n5'>
-          <div className='d-flex flex-stack mb-2'>
-            {/* begin::Label */}
-            <label className='form-label fw-bolder text-dark fs-6 mb-0'>Password</label>
-            {/* end::Label */}
-            {/* begin::Link */}
-            <Link
-              to='/auth/forgot-password'
-              className='link-primary fs-6 fw-bolder'
-              style={{marginLeft: '5px'}}
-            >
-              Forgot Password ?
-            </Link>
-            {/* end::Link */}
-          </div>
-        </div>
-        <input
-          type='password'
-          autoComplete='off'
-          {...formik.getFieldProps('password')}
-          className={clsx(
-            'form-control form-control-lg form-control-solid',
-            {
-              'is-invalid': formik.touched.password && formik.errors.password,
-            },
-            {
-              'is-valid': formik.touched.password && !formik.errors.password,
-            }
+        {/* begin::Form group */}
+        <div className='fv-row mb-10'>
+          <label className='form-label fs-6 fw-bolder text-dark'>Email</label>
+          <input
+            placeholder='Email'
+            {...formik.getFieldProps('email')}
+            className={clsx(
+              'form-control form-control-lg form-control-solid',
+              {'is-invalid': formik.touched.email && formik.errors.email},
+              {
+                'is-valid': formik.touched.email && !formik.errors.email,
+              }
+            )}
+            type='email'
+            name='email'
+            autoComplete='off'
+          />
+          {formik.touched.email && formik.errors.email && (
+            <div className='fv-plugins-message-container'>
+              <span role='alert'>{formik.errors.email}</span>
+            </div>
           )}
-        />
-        {formik.touched.password && formik.errors.password && (
-          <div className='fv-plugins-message-container'>
-            <div className='fv-help-block'>
-              <span role='alert'>{formik.errors.password}</span>
+        </div>
+        {/* end::Form group */}
+
+        {/* begin::Form group */}
+        <div className='fv-row mb-10'>
+          <div className='d-flex justify-content-between mt-n5'>
+            <div className='d-flex flex-stack mb-2'>
+              {/* begin::Label */}
+              <label className='form-label fw-bolder text-dark fs-6 mb-0'>Password</label>
+              {/* end::Label */}
+              {/* begin::Link */}
+              <Link
+                to='/auth/forgot-password'
+                className='link-primary fs-6 fw-bolder'
+                style={{marginLeft: '5px'}}
+              >
+                Forgot Password ?
+              </Link>
+              {/* end::Link */}
             </div>
           </div>
-        )}
-      </div>
-      {/* end::Form group */}
+          <input
+            type='password'
+            autoComplete='off'
+            {...formik.getFieldProps('password')}
+            className={clsx(
+              'form-control form-control-lg form-control-solid',
+              {
+                'is-invalid': formik.touched.password && formik.errors.password,
+              },
+              {
+                'is-valid': formik.touched.password && !formik.errors.password,
+              }
+            )}
+          />
+          {formik.touched.password && formik.errors.password && (
+            <div className='fv-plugins-message-container'>
+              <div className='fv-help-block'>
+                <span role='alert'>{formik.errors.password}</span>
+              </div>
+            </div>
+          )}
+        </div>
+        {/* end::Form group */}
 
-      {/* begin::Action */}
-      <div className='text-center'>
-        <button
-          type='submit'
-          id='im_sign_in_submit'
-          className='btn btn-lg btn-primary w-100 mb-5'
-          disabled={formik.isSubmitting || !formik.isValid}
-        >
-          {!loading && <span className='indicator-label'>Continue</span>}
-          {loading && (
-            <span className='indicator-progress' style={{display: 'block'}}>
+        {/* begin::Action */}
+        <div className='text-center'>
+          <button
+            type='submit'
+            id='im_sign_in_submit'
+            className='btn btn-lg btn-primary w-100 mb-5'
+            disabled={formik.isSubmitting || !formik.isValid}
+          >
+            {!loading && <span className='indicator-label'>Continue</span>}
+            {loading && (
+              <span className='indicator-progress' style={{display: 'block'}}>
               Please wait...
               <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
             </span>
-          )}
-        </button>
+            )}
+          </button>
 
-        {/* begin::Separator */}
-        <div className='text-center text-muted text-uppercase fw-bolder mb-5'>or</div>
-        {/* end::Separator */}
+          {/* begin::Separator */}
+          <div className='text-center text-muted text-uppercase fw-bolder mb-5'>or</div>
+          {/* end::Separator */}
 
-        {/* begin::Google link */}
-        <GoogleLogin />
-        {/* end::Google link */}
-      </div>
-      {/* end::Action */}
-    </form>
-  )
+          {/* begin::Google link */}
+          <GoogleLogin />
+          {/* end::Google link */}
+        </div>
+        {/* end::Action */}
+      </form>
+    )
+  }
 
-  return <div className='Login'>{!email ? renderForm() : renderFormConfirm()}</div>
+  return <div className='Login'>
+    {!email ? renderForm() : renderFormConfirm()}
+  </div>
 }

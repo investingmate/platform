@@ -5,6 +5,7 @@ import {Registration} from './components/Registration'
 import {ForgotPassword} from './components/ForgotPassword'
 import {Login} from './components/Login'
 import {toAbsoluteUrl} from '../../../_investingmate/helpers'
+import {HomeLanguages} from "../../../_investingmate/partials/layout/header-menus/HomeLanguages";
 
 const AuthLayout = () => {
   useEffect(() => {
@@ -21,6 +22,7 @@ const AuthLayout = () => {
         backgroundImage: `url(${toAbsoluteUrl('/media/illustrations/sketchy-1/14.png')})`,
       }}
     >
+      <HomeLanguages />
       {/* begin::Content */}
       <div className='d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20'>
         {/* begin::Logo */}
