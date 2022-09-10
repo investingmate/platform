@@ -4,182 +4,182 @@
 
 // Base
 .ql-toolbar {
-    font-family: $font-family-sans-serif;
+  font-family: $font-family-sans-serif;
 
-    &.ql-snow {
-        border: 1px solid var(--im-border-color);
-        @include border-top-radius($border-radius);
+  &.ql-snow {
+    border: 1px solid var(--im-border-color);
+    @include border-top-radius($border-radius);
 
-        .ql-picker,
-        button {
-            .ql-fill,
-            .ql-stroke {
-                stroke: var(--im-gray-500);
-            }
+    .ql-picker,
+    button {
+      .ql-fill,
+      .ql-stroke {
+        stroke: var(--im-gray-500);
+      }
 
-            .ql-fill {
-                fill: var(--im-gray-500);
-            }
+      .ql-fill {
+        fill: var(--im-gray-500);
+      }
 
-            &.ql-expanded,
-            &.ql-active,
-            &:focus,
-            &:hover {
-                .ql-fill,
-                .ql-stroke {
-                    stroke: var(--im-primary);
-                }
-
-                .ql-fill {
-                    fill: var(--im-primary);
-                }
-            }
+      &.ql-expanded,
+      &.ql-active,
+      &:focus,
+      &:hover {
+        .ql-fill,
+        .ql-stroke {
+          stroke: var(--im-primary);
         }
+
+        .ql-fill {
+          fill: var(--im-primary);
+        }
+      }
     }
+  }
 }
 
 .ql-editor {
-    color: var(--im-input-color);
+  color: var(--im-input-color);
 
-    &.ql-blank {
-        &:before {
-            left: auto !important;
-            right: auto !important;
-            color: var(--im-text-muted) !important;
-            font-style: normal !important;
-        }
+  &.ql-blank {
+    &:before {
+      left: auto !important;
+      right: auto !important;
+      color: var(--im-text-muted) !important;
+      font-style: normal !important;
     }
+  }
 }
 
 .ql-container {
-    &.ql-snow {
-        background-color: var(--im-input-bg);
-        border: 1px solid var(--im-gray-200);
-        border-top: 0;
-        @include border-bottom-radius($border-radius);
-    }
+  &.ql-snow {
+    background-color: var(--im-input-bg);
+    border: 1px solid var(--im-gray-200);
+    border-top: 0;
+    @include border-bottom-radius($border-radius);
+  }
 }
 
 .ql-snow {
-    .ql-picker {
-        .ql-picker-label {
-            color: var(--im-gray-500);
+  .ql-picker {
+    .ql-picker-label {
+      color: var(--im-gray-500);
 
-            &.ql-active,
-            &:hover {
-                color: var(--im-primary);
-            }
-        }
-
-        &.ql-expanded {
-            outline: none !important;
-            border-color: transparent !important;
-
-            .ql-picker-label {
-                border-color: transparent !important;
-                color:  var(--im-primary);
-                outline: none !important;
-
-                &.ql-active,
-                &:hover {
-                    color: var(--im-primary);
-                }
-            }
-
-            .ql-picker-options {
-                border: 0;
-                padding: 0.5rem 1rem;
-                box-shadow: var(--im-dropdown-box-shadow);
-                background-color: var(--im-body-bg);
-                @include border-radius($border-radius);
-
-                .ql-picker-item {
-                    color: var(--im-gray-600);
-                    outline: none;
-
-                    &.ql-selected,
-                    &.ql-active,
-                    &:hover {
-                        color: var(--im-primary);
-                    }
-                }
-            }
-        }
+      &.ql-active,
+      &:hover {
+        color: var(--im-primary);
+      }
     }
 
-    .ql-tooltip {
+    &.ql-expanded {
+      outline: none !important;
+      border-color: transparent !important;
+
+      .ql-picker-label {
+        border-color: transparent !important;
+        color: var(--im-primary);
+        outline: none !important;
+
+        &.ql-active,
+        &:hover {
+          color: var(--im-primary);
+        }
+      }
+
+      .ql-picker-options {
         border: 0;
         padding: 0.5rem 1rem;
         box-shadow: var(--im-dropdown-box-shadow);
+        background-color: var(--im-body-bg);
         @include border-radius($border-radius);
 
-        input[type=text] {
-            @include input-reset();
-            border: 1px solid var(--im-border-color);
-            color: $input-plaintext-color;
-            outline: none !important;
-            @include border-radius($border-radius);
+        .ql-picker-item {
+          color: var(--im-gray-600);
+          outline: none;
 
-            &:active,
-            &:focus {
-                border-color: var(--im-input-focus-border-color) !important;
-            }
+          &.ql-selected,
+          &.ql-active,
+          &:hover {
+            color: var(--im-primary);
+          }
         }
+      }
+    }
+  }
 
-        .ql-preview {
-            color: var(--im-gray-600);
-        }
+  .ql-tooltip {
+    border: 0;
+    padding: 0.5rem 1rem;
+    box-shadow: var(--im-dropdown-box-shadow);
+    @include border-radius($border-radius);
 
-        .ql-action {
-            transition: color 0.3s ease;
-            color: var(--im-gray-600);
+    input[type='text'] {
+      @include input-reset();
+      border: 1px solid var(--im-border-color);
+      color: $input-plaintext-color;
+      outline: none !important;
+      @include border-radius($border-radius);
 
-            &:hover {
-                transition: color 0.3s ease;
-                color: var(--im-primary);
-            }
-        }
-
-        // Tooltip adjustment in modal
-        .modal & {
-            &.ql-editing {
-                left: 20px !important;
-            }
-        }
+      &:active,
+      &:focus {
+        border-color: var(--im-input-focus-border-color) !important;
+      }
     }
 
-    .ql-editor {
-        pre.ql-syntax {
-            background-color: var(--im-gray-900);
-            color: var(--im-text-muted);
-            overflow: visible;
-            @include border-radius($border-radius);
-        }
+    .ql-preview {
+      color: var(--im-gray-600);
     }
+
+    .ql-action {
+      transition: color 0.3s ease;
+      color: var(--im-gray-600);
+
+      &:hover {
+        transition: color 0.3s ease;
+        color: var(--im-primary);
+      }
+    }
+
+    // Tooltip adjustment in modal
+    .modal & {
+      &.ql-editing {
+        left: 20px !important;
+      }
+    }
+  }
+
+  .ql-editor {
+    pre.ql-syntax {
+      background-color: var(--im-gray-900);
+      color: var(--im-text-muted);
+      overflow: visible;
+      @include border-radius($border-radius);
+    }
+  }
 }
 
 // Plain Style
 .ql-quil.ql-quil-plain {
-    .ql-toolbar {
-        padding: 0;
-        margin: 0;
-        border: 0;
+  .ql-toolbar {
+    padding: 0;
+    margin: 0;
+    border: 0;
 
-        &:after {
-            display: none;
-        }
-
-        .ql-picker-label {
-            padding-left: 0;
-        }
+    &:after {
+      display: none;
     }
 
-    .ql-container {
-        border: 0;
+    .ql-picker-label {
+      padding-left: 0;
     }
+  }
 
-    .ql-editor {
-        border: 0;
-        padding: 0;
-    }
+  .ql-container {
+    border: 0;
+  }
+
+  .ql-editor {
+    border: 0;
+    padding: 0;
+  }
 }

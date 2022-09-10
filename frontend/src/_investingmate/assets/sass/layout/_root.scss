@@ -4,48 +4,48 @@
 
 // Light mode
 @include theme-light() {
-    // Page bg color
-    --im-page-bg: #{$page-bg};
+  // Page bg color
+  --im-page-bg: #{$page-bg};
 
-    // Header
-    --im-header-default-bg-color: #{get($header-config, default, bg-color)};
-	--im-header-fixed-bg-color: #{get($header-config, fixed, bg-color)};
-	--im-header-fixed-box-shadow: #{get($header-config, fixed, box-shadow)};
+  // Header
+  --im-header-default-bg-color: #{get($header-config, default, bg-color)};
+  --im-header-fixed-bg-color: #{get($header-config, fixed, bg-color)};
+  --im-header-fixed-box-shadow: #{get($header-config, fixed, box-shadow)};
 
-	// Aside
-	--im-aside-box-shadow: #{get($aside-config, box-shadow)};
-	--im-aside-bg-color: #{get($aside-config, bg-color)};
-	--im-aside-minimized-hover-box-shadow: #{get($aside-config, minimized-hover-box-shadow)};
+  // Aside
+  --im-aside-box-shadow: #{get($aside-config, box-shadow)};
+  --im-aside-bg-color: #{get($aside-config, bg-color)};
+  --im-aside-minimized-hover-box-shadow: #{get($aside-config, minimized-hover-box-shadow)};
 
-	// Toolbar
-	--im-toolbar-bg-color: #{get($toolbar-config, bg-color)};
-	--im-toolbar-box-shadow: #{get($toolbar-config, box-shadow)};
-	--im-toolbar-border-top: #{get($toolbar-config, border-top)};
+  // Toolbar
+  --im-toolbar-bg-color: #{get($toolbar-config, bg-color)};
+  --im-toolbar-box-shadow: #{get($toolbar-config, box-shadow)};
+  --im-toolbar-border-top: #{get($toolbar-config, border-top)};
 
-	// Footer
-	--im-footer-bg-color: #{get($footer-config, bg-color)};
+  // Footer
+  --im-footer-bg-color: #{get($footer-config, bg-color)};
 }
 
 // Dark mode
 @include theme-dark() {
-    // Page bg color
-    --im-page-bg: #{$page-bg-dark};
+  // Page bg color
+  --im-page-bg: #{$page-bg-dark};
 
-    // Header
-    --im-header-default-bg-color: #{get($header-config, default, bg-color-dark)};
-	--im-header-fixed-bg-color: #{get($header-config, fixed, bg-color-dark)};
-	--im-header-fixed-box-shadow: #{get($header-config, fixed, box-shadow-dark)};
+  // Header
+  --im-header-default-bg-color: #{get($header-config, default, bg-color-dark)};
+  --im-header-fixed-bg-color: #{get($header-config, fixed, bg-color-dark)};
+  --im-header-fixed-box-shadow: #{get($header-config, fixed, box-shadow-dark)};
 
-	// Aside
-	--im-aside-box-shadow: #{get($aside-config, box-shadow-dark)};
-	--im-aside-bg-color: #{get($aside-config, bg-color-dark)};
-	--im-aside-minimized-hover-box-shadow: #{get($aside-config, minimized-hover-box-shadow-dark)};
+  // Aside
+  --im-aside-box-shadow: #{get($aside-config, box-shadow-dark)};
+  --im-aside-bg-color: #{get($aside-config, bg-color-dark)};
+  --im-aside-minimized-hover-box-shadow: #{get($aside-config, minimized-hover-box-shadow-dark)};
 
-	// Toolbar
-	--im-toolbar-bg-color: #{get($toolbar-config, bg-color-dark)};
-	--im-toolbar-box-shadow: #{get($toolbar-config, box-shadow-dark)};
-	--im-toolbar-border-top: #{get($toolbar-config, border-top-dark)};
+  // Toolbar
+  --im-toolbar-bg-color: #{get($toolbar-config, bg-color-dark)};
+  --im-toolbar-box-shadow: #{get($toolbar-config, box-shadow-dark)};
+  --im-toolbar-border-top: #{get($toolbar-config, border-top-dark)};
 
-	// Footer
-	--im-footer-bg-color: #{get($footer-config, bg-color-dark)};
+  // Footer
+  --im-footer-bg-color: #{get($footer-config, bg-color-dark)};
 }

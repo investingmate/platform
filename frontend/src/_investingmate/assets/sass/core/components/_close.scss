@@ -3,12 +3,11 @@
 //
 
 .btn-close {
-	color: var(--im-btn-close-color);
-	background-image: var(--im-btn-close-bg); 
-	background-position: center;
-	
+  color: var(--im-btn-close-color);
+  background-image: var(--im-btn-close-bg);
+  background-position: center;
 
-	&:hover {
-		color: var(--im-btn-close-color);
-	}
+  &:hover {
+    color: var(--im-btn-close-color);
+  }
 }

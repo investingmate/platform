@@ -3,34 +3,34 @@
 //
 
 :root,
-[data-theme="light"] {
-	// Select2
-	
-	// Prismjs
-	--im-highlight-bg: #{$highlight-bg};
+[data-theme='light'] {
+  // Select2
 
-	--im-highlight-border: #{$highlight-border};
+  // Prismjs
+  --im-highlight-bg: #{$highlight-bg};
 
-	--im-highlight-btn-bg: #{$highlight-btn-bg};
-	--im-highlight-btn-bg-hover: #{$highlight-btn-bg-hover};
-	--im-highlight-btn-color: #{$highlight-btn-color};
-	--im-highlight-btn-color-hover: #{$highlight-btn-color-hover};
+  --im-highlight-border: #{$highlight-border};
 
-	--im-highlight-scrollbar-color: #{$highlight-scrollbar-color};
-	--im-highlight-scrollbar-color: #{$highlight-scrollbar-hover-color};
+  --im-highlight-btn-bg: #{$highlight-btn-bg};
+  --im-highlight-btn-bg-hover: #{$highlight-btn-bg-hover};
+  --im-highlight-btn-color: #{$highlight-btn-color};
+  --im-highlight-btn-color-hover: #{$highlight-btn-color-hover};
+
+  --im-highlight-scrollbar-color: #{$highlight-scrollbar-color};
+  --im-highlight-scrollbar-color: #{$highlight-scrollbar-hover-color};
 }
 
-[data-theme="dark"] {
-	// Prismjs
-	--im-highlight-bg: #{$highlight-bg-dark};
+[data-theme='dark'] {
+  // Prismjs
+  --im-highlight-bg: #{$highlight-bg-dark};
 
-	--im-highlight-border: #{$highlight-border-dark};
+  --im-highlight-border: #{$highlight-border-dark};
 
-	--im-highlight-btn-bg: #{$highlight-btn-bg-dark};
-	--im-highlight-btn-bg-hover: #{$highlight-btn-bg-hover-dark};
-	--im-highlight-btn-color: #{$highlight-btn-color-dark};
-	--im-highlight-btn-color-hover: #{$highlight-btn-color-hover-dark};
+  --im-highlight-btn-bg: #{$highlight-btn-bg-dark};
+  --im-highlight-btn-bg-hover: #{$highlight-btn-bg-hover-dark};
+  --im-highlight-btn-color: #{$highlight-btn-color-dark};
+  --im-highlight-btn-color-hover: #{$highlight-btn-color-hover-dark};
 
-	--im-highlight-scrollbar-color: #{$highlight-scrollbar-color-dark};
-	--im-highlight-scrollbar-color-hover: #{$highlight-scrollbar-hover-color-dark};
+  --im-highlight-scrollbar-color: #{$highlight-scrollbar-color-dark};
+  --im-highlight-scrollbar-color-hover: #{$highlight-scrollbar-hover-color-dark};
 }
