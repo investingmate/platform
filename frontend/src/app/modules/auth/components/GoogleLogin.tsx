@@ -2,8 +2,11 @@
 import {Auth} from 'aws-amplify'
 import {Link} from 'react-router-dom'
 import {toAbsoluteUrl} from '../../../../_investingmate/helpers'
+import {useIntl} from "react-intl";
 
 const GoogleLogin = () => {
+  const intl = useIntl()
+
   const signIn = async () => {
     await Auth.federatedSignIn({provider: 'Google'})
   }
@@ -22,7 +25,7 @@ const GoogleLogin = () => {
           src={toAbsoluteUrl('/media/svg/brand-logos/google-icon.svg')}
           className='h-20px me-3'
         />
-        Continue with Google
+        {intl.formatMessage({id: 'LOGIN.CONTINUE_WITH_GOOGLE'})}
       </button>
     </Link>
   )

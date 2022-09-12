@@ -234,9 +234,9 @@ export function Login() {
         <div className='text-center mb-10'>
           <h1 className='text-dark mb-3'>{intl.formatMessage({id: 'LOGIN.SIGN_IN_TO_INVESTINGMATE'})}</h1>
           <div className='text-gray-400 fw-bold fs-4'>
-            New Here?{' '}
+            {intl.formatMessage({id: 'LOGIN.NEW_HERE'})}{' '}
             <Link to='/auth/registration' className='link-primary fw-bolder'>
-              Create an Account
+              {intl.formatMessage({id: 'LOGIN.CREATE_AN_ACCOUNT'})}
             </Link>
           </div>
         </div>
@@ -250,9 +250,11 @@ export function Login() {
 
         {/* begin::Form group */}
         <div className='fv-row mb-10'>
-          <label className='form-label fs-6 fw-bolder text-dark'>Email</label>
+          <label className='form-label fs-6 fw-bolder text-dark'>
+            {intl.formatMessage({id: 'LOGIN.EMAIL'})}
+          </label>
           <input
-            placeholder='Email'
+            placeholder={intl.formatMessage({id: 'LOGIN.EMAIL'})}
             {...formik.getFieldProps('email')}
             className={clsx(
               'form-control form-control-lg form-control-solid',
@@ -278,7 +280,9 @@ export function Login() {
           <div className='d-flex justify-content-between mt-n5'>
             <div className='d-flex flex-stack mb-2'>
               {/* begin::Label */}
-              <label className='form-label fw-bolder text-dark fs-6 mb-0'>Password</label>
+              <label className='form-label fw-bolder text-dark fs-6 mb-0'>
+                {intl.formatMessage({id: 'LOGIN.PASSWORD'})}
+              </label>
               {/* end::Label */}
               {/* begin::Link */}
               <Link
@@ -286,7 +290,7 @@ export function Login() {
                 className='link-primary fs-6 fw-bolder'
                 style={{marginLeft: '5px'}}
               >
-                Forgot Password ?
+                {intl.formatMessage({id: 'LOGIN.FORGOT_PASSWORD'})}
               </Link>
               {/* end::Link */}
             </div>
@@ -323,17 +327,22 @@ export function Login() {
             className='btn btn-lg btn-primary w-100 mb-5'
             disabled={formik.isSubmitting || !formik.isValid}
           >
-            {!loading && <span className='indicator-label'>Continue</span>}
+            {!loading && <span className='indicator-label'>
+              {intl.formatMessage({id: 'LOGIN.CONTINUE'})}
+            </span>
+            }
             {loading && (
               <span className='indicator-progress' style={{display: 'block'}}>
-              Please wait...
+              {intl.formatMessage({id: 'LOGIN.PLEASE_WAIT'})}
               <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
             </span>
             )}
           </button>
 
           {/* begin::Separator */}
-          <div className='text-center text-muted text-uppercase fw-bolder mb-5'>or</div>
+          <div className='text-center text-muted text-uppercase fw-bolder mb-5'>
+            {intl.formatMessage({id: 'LOGIN.OR'})}
+          </div>
           {/* end::Separator */}
 
           {/* begin::Google link */}

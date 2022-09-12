@@ -6,8 +6,11 @@ import {ForgotPassword} from './components/ForgotPassword'
 import {Login} from './components/Login'
 import {toAbsoluteUrl} from '../../../_investingmate/helpers'
 import {HomeLanguages} from "../../../_investingmate/partials/layout/header-menus/HomeLanguages";
+import {useIntl} from "react-intl";
 
 const AuthLayout = () => {
+  const intl = useIntl()
+
   useEffect(() => {
     document.body.classList.add('bg-body')
     return () => {
@@ -41,15 +44,15 @@ const AuthLayout = () => {
       <div className='d-flex flex-center flex-column-auto p-10'>
         <div className='d-flex align-items-center fw-bold fs-6'>
           <a href='#' className='text-muted text-hover-primary px-2'>
-            About
+            {intl.formatMessage({id: 'PAGES.ABOUT'})}
           </a>
 
           <a href='#' className='text-muted text-hover-primary px-2'>
-            Contact
+            {intl.formatMessage({id: 'PAGES.CONTACT'})}
           </a>
 
           <a href='#' className='text-muted text-hover-primary px-2'>
-            Contact Us
+            {intl.formatMessage({id: 'PAGES.CONTACT_US'})}
           </a>
         </div>
       </div>

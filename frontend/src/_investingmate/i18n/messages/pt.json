@@ -66,5 +66,17 @@
   "ECOMMERCE.CUSTOMERS.UPDATE_STATUS.MESSAGE": "(TRADUZIR)Selected customers status have successfully been updated",
   "ECOMMERCE.CUSTOMERS.EDIT.UPDATE_MESSAGE": "(TRADUZIR)Customer has been updated",
   "ECOMMERCE.CUSTOMERS.EDIT.ADD_MESSAGE": "(TRADUZIR)Customer has been created",
-  "LOGIN.SIGN_IN_TO_INVESTINGMATE": "Entrar no InvestingMate"
+  "LOGIN.SIGN_IN_TO_INVESTINGMATE": "Entrar no InvestingMate",
+  "LOGIN.CREATE_AN_ACCOUNT": "(TRADUZIR)Create an Account",
+  "LOGIN.NEW_HERE": "(TRADUZIR)New Here",
+  "LOGIN.EMAIL": "(TRADUZIR)Email",
+  "LOGIN.PASSWORD": "(TRADUZIR)Password",
+  "LOGIN.FORGOT_PASSWORD": "(TRADUZIR)Forgot Password",
+  "LOGIN.CONTINUE": "(TRADUZIR)Continue",
+  "LOGIN.PLEASE_WAIT": "(TRADUZIR)Please wait...",
+  "LOGIN.OR": "(TRADUZIR)or",
+  "LOGIN.CONTINUE_WITH_GOOGLE": "(TRADUZIR)Continue with Google",
+  "PAGES.ABOUT": "(TRADUZIR)About",
+  "PAGES.CONTACT": "(TRADUZIR)Contact",
+  "PAGES.CONTACT_US": "(TRADUZIR)Contact us"
 }
