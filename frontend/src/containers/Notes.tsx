@@ -1,5 +1,4 @@
-// @ts-nocheck TODO check this later
-import {useRef, useState, useEffect} from 'react'
+import {useRef, useState, useEffect, FormEvent} from 'react'
 import {useParams, useNavigate} from 'react-router-dom'
 import {API, Storage} from 'aws-amplify'
 import Form from 'react-bootstrap/Form'
@@ -8,18 +7,22 @@ import {s3Upload} from '../lib/awsLib'
 import LoaderButton from '../components/LoaderButton'
 import config from '../config'
 
+interface Note {
+  attachmentURL?: string,
+  attachment?: string,
+}
 export default function Notes() {
   const file = useRef(null)
   const {id} = useParams()
   const nav = useNavigate()
-  const [note, setNote] = useState(null)
+  const [note, setNote] = useState<Note>({})
   const [content, setContent] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [isDeleting, setIsDeleting] = useState(false)
 
   useEffect(() => {
     function loadNote() {
-      return API.get('notes', `/notes/${id}`)
+      return API.get('notes', `/notes/${id}`, {})
     }
     async function onLoad() {
       try {
@@ -41,27 +44,28 @@ export default function Notes() {
     return content.length > 0
   }
 
-  function formatFilename(str) {
+  function formatFilename(str: string) {
     return str.replace(/^\w+-/, '')
   }
 
-  function handleFileChange(event) {
+  function handleFileChange(event: any) {
     file.current = event.target.files[0]
   }
 
-  function saveNote(note) {
+  function saveNote(note: object) {
     return API.put('notes', `/notes/${id}`, {
       body: note,
     })
   }
 
   function deleteNote() {
-    return API.del('notes', `/notes/${id}`)
+    return API.del('notes', `/notes/${id}`, {})
   }
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     let attachment
     event.preventDefault()
+    // @ts-ignore TODO check this later
     if (file.current && file.current.size > config.MAX_ATTACHMENT_SIZE) {
       alert(`Please pick a file smaller than ${config.MAX_ATTACHMENT_SIZE / 1000000} MB.`)
       return
@@ -82,7 +86,7 @@ export default function Notes() {
     }
   }
 
-  async function handleDelete(event) {
+  async function handleDelete(event: FormEvent<HTMLButtonElement>) {
     event.preventDefault()
     const confirmed = window.confirm('Are you sure you want to delete this note?')
     if (!confirmed) {
@@ -111,7 +115,7 @@ export default function Notes() {
           </Form.Group>
           <Form.Group controlId='file'>
             <Form.Label>Attachment</Form.Label>
-            {note.attachment && (
+            {note && note.attachment && (
               <p>
                 <a target='_blank' rel='noopener noreferrer' href={note.attachmentURL}>
                   {formatFilename(note.attachment)}

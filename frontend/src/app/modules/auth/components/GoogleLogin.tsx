@@ -1,4 +1,3 @@
-// @ts-nocheck TODO check this later
 import {Auth} from 'aws-amplify'
 import {Link} from 'react-router-dom'
 import {toAbsoluteUrl} from '../../../../_investingmate/helpers'
@@ -8,6 +7,7 @@ const GoogleLogin = () => {
   const intl = useIntl()
 
   const signIn = async () => {
+    // @ts-ignore TODO check this later
     await Auth.federatedSignIn({provider: 'Google'})
   }
 

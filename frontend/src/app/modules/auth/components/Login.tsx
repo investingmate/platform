@@ -1,4 +1,3 @@
-// @ts-nocheck TODO check this later
 import {useState} from 'react'
 import {useFormik} from 'formik'
 import * as Yup from 'yup'
@@ -51,7 +50,7 @@ export function Login() {
   const intl = useIntl()
   const navigate = useNavigate()
   const query = useQuery()
-  const email = query.get('email')
+  const email = query.get('email') ?? ''
   const [loading, setLoading] = useState(false)
   const {setCurrentUser} = useAuth()
 
@@ -63,7 +62,7 @@ export function Login() {
       try {
         const {username} = await Auth.signIn(values.email, values.password)
         setCurrentUser(username)
-      } catch (error) {
+      } catch (error: any) {
         if (error.code === 'UserNotConfirmedException') {
           navigate(`/auth/login?email=${values.email}`)
           // The error happens if the user didn't finish the confirmation step when signing up

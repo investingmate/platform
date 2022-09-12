@@ -1,6 +1,6 @@
-// @ts-nocheck TODO check this later
 import * as Sentry from '@sentry/browser'
 import config from '../config'
+import {ErrorInfo} from "../utils/Interfaces";
 
 const isLocal = process.env.NODE_ENV === 'development'
 
@@ -22,7 +22,7 @@ export function logError(error: Error, errorInfo?: any) {
 }
 
 export function onError(error: any) {
-  let errorInfo = {}
+  let errorInfo: ErrorInfo = {}
   let message = error.toString()
   if (!(error instanceof Error) && error.message) {
     errorInfo = error

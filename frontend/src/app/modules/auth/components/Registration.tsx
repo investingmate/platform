@@ -1,4 +1,3 @@
-// @ts-nocheck TODO check this later
 import {useState} from 'react'
 import {useFormik} from 'formik'
 import * as Yup from 'yup'
@@ -8,6 +7,7 @@ import {Link, useNavigate} from 'react-router-dom'
 import {useAuth} from '../core/Auth'
 import {onError} from '../../../../lib/errorLib'
 import {toAbsoluteUrl, useQuery} from '../../../../_investingmate/helpers'
+import {IUser} from "../../../../utils/Interfaces";
 
 const initialValues = {
   firstname: 'Lucas',
@@ -59,10 +59,10 @@ const schema2 = Yup.object().shape({
 export function Registration() {
   const navigate = useNavigate()
   const query = useQuery()
-  const email = query.get('email')
+  const email = query.get('email') ?? ''
   const [loading, setLoading] = useState(false)
   const {setCurrentUser} = useAuth()
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState<IUser>({username: '', password: ''})
 
   const formik = useFormik({
     initialValues,

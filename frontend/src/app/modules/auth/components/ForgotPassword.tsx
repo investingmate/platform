@@ -1,4 +1,3 @@
-// @ts-nocheck TODO check this later
 import {useState} from 'react'
 import * as Yup from 'yup'
 import clsx from 'clsx'
@@ -47,9 +46,9 @@ const schema2 = Yup.object().shape({
 export function ForgotPassword() {
   const navigate = useNavigate()
   const query = useQuery()
-  const email = query.get('email')
+  const email = query.get('email') ?? ''
   const [loading, setLoading] = useState(false)
-  const [hasErrors, setHasErrors] = useState(undefined)
+  const [hasErrors, setHasErrors] = useState(false)
 
   const formik = useFormik({
     initialValues,
@@ -69,6 +68,13 @@ export function ForgotPassword() {
     },
   })
 
+  interface Values {
+    email: string;
+    confirmationCode: string;
+    password: string;
+    confirmPassword: string;
+  }
+
   const formik2 = useFormik({
     initialValues: {
       ...initialValues2,
@@ -76,9 +82,9 @@ export function ForgotPassword() {
     },
     enableReinitialize: true,
     validationSchema: schema2,
-    onSubmit: async (values, {setStatus, setSubmitting}) => {
+    onSubmit: async (values: Values, {setStatus, setSubmitting}) => {
       setLoading(true)
-      setHasErrors(undefined)
+      setHasErrors(false)
       try {
         await Auth.forgotPasswordSubmit(values.email, values.confirmationCode, values.password)
         setHasErrors(false)
