@@ -31,7 +31,7 @@ jobs:
       run: |
         cd frontend
         npm install
-        npm build
+        npm run build
     
     - name: npm install, build and test app
       env:
