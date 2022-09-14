@@ -1,23 +1,29 @@
+// import * as route53 from "aws-cdk-lib/aws-route53";
+// import * as route53Targets from "aws-cdk-lib/aws-route53-targets";
 import { ReactStaticSite, use } from "@serverless-stack/resources";
 import { ApiStack } from "./ApiStack";
 import { AuthStack } from "./AuthStack";
 import { StorageStack } from "./StorageStack";
+import { CertificateStack } from "./CertificateStack";
 
 export function FrontendStack({ stack, app }) {
   const { api } = use(ApiStack);
   const { auth, domain } = use(AuthStack);
   const { bucket } = use(StorageStack);
-  // Define our React app
+  const { certificate, hostedZone } = use(CertificateStack);
+
+  const appPrefix = app.stage === "prod" ? "app" : app.stage + "-app";
+
   const site = new ReactStaticSite(stack, "frontend", {
-    // customDomain:
-    //   app.stage === "prod"
-    //     ? {
-    //         domainName: "app.investingmate.com.au",
-    //         domainAlias: "www.app.investingmate.com.au",
-    //       }
-    //     : undefined,
+    // customDomain: {
+    //   domainName: `${appPrefix}.${domain}`,
+    //   domainAlias: `www.${appPrefix}.${domain}`,
+    //   cdk: {
+    //     hostedZone,
+    //     certificate,
+    //   },
+    // },
     path: "frontend",
-    // Pass in our environment variables
     environment: {
       REACT_APP_API_URL: api.customDomainUrl || api.url,
       REACT_APP_REGION: app.region,
@@ -28,7 +34,17 @@ export function FrontendStack({ stack, app }) {
       REACT_APP_AUTH_DOMAIN: domain.domainName,
     },
   });
-  // Show the url in the output
+
+  // const recordProps = {
+  //   recordName: `${appPrefix}.${domain}`,
+  //   zone: hostedZone,
+  //   target: route53.RecordTarget.fromAlias(
+  //     new route53Targets.CloudFrontTarget(site.cdk.distribution)
+  //   ),
+  // };
+  // new route53.ARecord(stack, "AlternateARecord", recordProps);
+  // new route53.AaaaRecord(stack, "AlternateAAAARecord", recordProps);
+
   stack.addOutputs({
     SiteUrl: site.customDomainUrl || site.url,
   });

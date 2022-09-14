@@ -6,13 +6,11 @@ import clsx from "clsx";
 import { useLayout } from "../../core";
 import { KTSVG, toAbsoluteUrl } from "../../../helpers";
 import { AsideMenu } from "./AsideMenu";
-import { useAuth } from "../../../../app/modules/auth";
 
 const AsideDefault = () => {
   const { config, classes } = useLayout();
   const asideRef = useRef(null);
   const { aside } = config;
-  const { logout } = useAuth();
 
   const minimize = () => {
     asideRef.current?.classList.add("animating");

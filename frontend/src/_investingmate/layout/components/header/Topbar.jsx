@@ -7,7 +7,6 @@ import {
   // Search,
   // ThemeModeSwitcher,
 } from "../../../partials";
-import { useLayout } from "../../core";
 import { useAuth } from "../../../../app/modules/auth";
 
 const toolbarButtonMarginClass = "ms-1 ms-lg-3",
@@ -16,7 +15,6 @@ const toolbarButtonMarginClass = "ms-1 ms-lg-3",
   toolbarButtonIconSizeClass = "svg-icon-3";
 
 const Topbar = () => {
-  const { config } = useLayout();
   const { currentUser } = useAuth();
 
   return (

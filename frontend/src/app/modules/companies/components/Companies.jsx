@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { KTSVG, toAbsoluteUrl } from "../../../../_investingmate/helpers";
+import { KTSVG } from "../../../../_investingmate/helpers";
 
 const Companies = () => {
   return (
@@ -55,7 +55,7 @@ const Companies = () => {
           <label className="col-lg-4 fw-bold text-muted">Company Site</label>
 
           <div className="col-lg-8">
-            <a href="#" className="fw-bold fs-6 text-dark text-hover-primary">
+            <a href="/#" className="fw-bold fs-6 text-dark text-hover-primary">
               keenthemes.com
             </a>
           </div>
