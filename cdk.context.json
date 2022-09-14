@@ -1,0 +1,10 @@
+{
+  "hosted-zone:account=067734764907:domainName=investingmate.com.au:region=us-east-1": {
+    "Id": "/hostedzone/Z04650012QXA1P2GXBH4E",
+    "Name": "investingmate.com.au."
+  },
+  "hosted-zone:account=067734764907:domainName=investingmate.com.au:privateZone=false:region=us-east-1": {
+    "Id": "/hostedzone/Z07487043MI4QF3JLBDOX",
+    "Name": "investingmate.com.au."
+  }
+}
