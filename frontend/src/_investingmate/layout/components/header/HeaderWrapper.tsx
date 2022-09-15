@@ -4,7 +4,6 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import {KTSVG, toAbsoluteUrl} from '../../../helpers'
 import {useLayout} from '../../core'
-import {Header} from './Header'
 import {DefaultTitle} from './page-title/DefaultTitle'
 import {Topbar} from './Topbar'
 
@@ -40,7 +39,7 @@ export function HeaderWrapper() {
         {!aside.display && (
           <div className='d-flex align-items-center flex-grow-1 flex-lg-grow-0'>
             <Link to='/dashboard' className='d-lg-none'>
-              <img alt='Logo' src={toAbsoluteUrl('/media/logos/default-small.svg')} className='h-30px' />
+              <img alt='Logo' src={toAbsoluteUrl('/media/logos/logo_purple.svg')} className='h-30px' />
             </Link>
           </div>
         )}
@@ -49,7 +48,7 @@ export function HeaderWrapper() {
         {aside.display && (
           <div className='d-flex align-items-center flex-grow-1 flex-lg-grow-0'>
             <Link to='/' className='d-lg-none'>
-              <img alt='Logo' src={toAbsoluteUrl('/media/logos/default-small.svg')} className='h-30px' />
+              <img alt='Logo' src={toAbsoluteUrl('/media/logos/logo_purple.svg')} className='h-30px' />
             </Link>
           </div>
         )}
@@ -59,7 +58,7 @@ export function HeaderWrapper() {
           {/* begin::Navbar */}
           {header.left === 'menu' && (
             <div className='d-flex align-items-stretch' id='im_header_nav'>
-              <Header />
+              {/*<Header />*/}
             </div>
           )}
 
