@@ -1,14 +1,14 @@
 import {useEffect, useRef} from 'react'
 import {
   MenuComponent,
-  // DrawerComponent,
-  // ScrollComponent,
-  // ScrollTopComponent,
-  // StickyComponent,
-  // ToggleComponent,
-  // SwapperComponent,
+  DrawerComponent,
+  ScrollComponent,
+  ScrollTopComponent,
+  StickyComponent,
+  ToggleComponent,
+  SwapperComponent,
 } from '../assets/ts/components'
-// import { ThemeModeComponent } from '../assets/ts/layout'
+import { ThemeModeComponent } from '../assets/ts/layout'
 
 import {useLayout} from './core'
 
@@ -17,15 +17,15 @@ export function MasterInit() {
   const isFirstRun = useRef(true)
   const pluginsInitialization = () => {
     isFirstRun.current = false
-    // ThemeModeComponent.init()
+    ThemeModeComponent.init()
     setTimeout(() => {
-      // ToggleComponent.bootstrap()
-      // ScrollTopComponent.bootstrap()
-      // DrawerComponent.bootstrap()
-      // StickyComponent.bootstrap()
+      ToggleComponent.bootstrap()
+      ScrollTopComponent.bootstrap()
+      DrawerComponent.bootstrap()
+      StickyComponent.bootstrap()
       MenuComponent.bootstrap()
-      // ScrollComponent.bootstrap()
-      // SwapperComponent.bootstrap()
+      ScrollComponent.bootstrap()
+      SwapperComponent.bootstrap()
     }, 500)
   }
 
