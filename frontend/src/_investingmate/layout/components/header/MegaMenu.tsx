@@ -2,7 +2,7 @@
 import React, {FC} from 'react'
 
 const MegaMenu: FC = () => (
-  <div className='row' data-kt-menu-dismiss='true'>
+  <div className='row' data-im-menu-dismiss='true'>
     <div className='col-lg-4 border-left-lg-1'>
       <div className='menu-inline menu-column menu-active-bg'>
         <div className='menu-item'>

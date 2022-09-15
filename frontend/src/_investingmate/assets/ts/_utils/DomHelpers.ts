@@ -31,7 +31,7 @@ function getCSSVariableValue(variableName: string) {
 function getElementActualCss(el: HTMLElement, prop: any, cache: boolean) {
   let css = ''
 
-  if (!el.getAttribute('kt-hidden-' + prop) || cache === false) {
+  if (!el.getAttribute('im-hidden-' + prop) || cache === false) {
     let value
 
     // the element is hidden so:
@@ -49,13 +49,13 @@ function getElementActualCss(el: HTMLElement, prop: any, cache: boolean) {
 
     // store it in cache
     if (value !== undefined) {
-      el.setAttribute('kt-hidden-' + prop, value.toString())
+      el.setAttribute('im-hidden-' + prop, value.toString())
       return parseFloat(value.toString())
     }
     return 0
   } else {
     // store it in cache
-    const attributeValue = el.getAttribute('kt-hidden-' + prop)
+    const attributeValue = el.getAttribute('im-hidden-' + prop)
     if (attributeValue || attributeValue === '0') {
       return parseFloat(attributeValue)
     }
@@ -380,7 +380,7 @@ function slideDown(el: HTMLElement, speed: number, callback: any) {
 }
 
 function getBreakpoint(breakpoint: string) {
-  let value: number | string = getCSSVariableValue('--kt-' + breakpoint)
+  let value: number | string = getCSSVariableValue('--im-' + breakpoint)
   if (value) {
     value = parseInt(value.trim())
   }

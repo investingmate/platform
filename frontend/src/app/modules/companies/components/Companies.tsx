@@ -3,7 +3,7 @@ import {KTSVG} from '../../../../_investingmate/helpers'
 
 const Companies = () => {
   return (
-    <div className='card mb-5 mb-xl-10' id='kt_profile_details_view'>
+    <div className='card mb-5 mb-xl-10' id='im_profile_details_view'>
       <div className='card-header cursor-pointer'>
         <div className='card-title m-0'>
           <h3 className='fw-bolder m-0'>Headlines</h3>

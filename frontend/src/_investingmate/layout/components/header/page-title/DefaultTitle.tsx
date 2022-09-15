@@ -8,9 +8,9 @@ const DefaultTitle = () => {
   return (
     <div
       id='im_page_title'
-      data-kt-swapper='true'
-      data-kt-swapper-mode='prepend'
-      data-kt-swapper-parent="{default: '#im_content_container', 'lg': '#im_toolbar_container'}"
+      data-im-swapper='true'
+      data-im-swapper-mode='prepend'
+      data-im-swapper-parent="{default: '#im_content_container', 'lg': '#im_toolbar_container'}"
       className={`page-title d-flex`}
     >
       {/* begin::Title */}

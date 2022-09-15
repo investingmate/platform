@@ -41,8 +41,8 @@ class StickyComponent {
     this.element = _element
     this.options = Object.assign(defaultStickyOptions, options)
     this.instanceUid = getUniqueIdWithPrefix('sticky')
-    this.instanceName = this.element.getAttribute('data-kt-sticky-name')
-    this.attributeName = 'data-kt-sticky-' + this.instanceName
+    this.instanceName = this.element.getAttribute('data-im-sticky-name')
+    this.attributeName = 'data-im-sticky-' + this.instanceName
     this.eventTriggerState = true
     this.lastScrollTop = 0
 
@@ -133,7 +133,7 @@ class StickyComponent {
   }
 
   private getOption = (name: string) => {
-    const dataStickyAttr = 'data-kt-sticky-' + name
+    const dataStickyAttr = 'data-im-sticky-' + name
     if (this.element.hasAttribute(dataStickyAttr) === true) {
       const attrValueInStr = this.element.getAttribute(dataStickyAttr)
       const attrValue = getAttributeValueByBreakpoint(attrValueInStr || '')
@@ -273,11 +273,11 @@ class StickyComponent {
     return sticky
   }
 
-  public static bootstrap(attr: string = '[data-kt-sticky="true"]') {
+  public static bootstrap(attr: string = '[data-im-sticky="true"]') {
     StickyComponent.createInstances(attr)
   }
 
-  public static reInitialization(attr: string = '[data-kt-sticky="true"]') {
+  public static reInitialization(attr: string = '[data-im-sticky="true"]') {
     StickyComponent.createInstances(attr)
   }
 }

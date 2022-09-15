@@ -29,11 +29,11 @@ const MasterLayout = () => {
       <ThemeModeProvider>
         <div className='page d-flex flex-row flex-column-fluid'>
           <AsideDefault />
-          <div className='wrapper d-flex flex-column flex-row-fluid' id='kt_wrapper'>
+          <div className='wrapper d-flex flex-column flex-row-fluid' id='im_wrapper'>
             <HeaderWrapper />
 
-            <div id='kt_content' className='content d-flex flex-column flex-column-fluid'>
-              <div className='post d-flex flex-column-fluid' id='kt_post'>
+            <div id='im_content' className='content d-flex flex-column flex-column-fluid'>
+              <div className='post d-flex flex-column-fluid' id='im_post'>
                 <Content>
                   <Outlet />
                 </Content>

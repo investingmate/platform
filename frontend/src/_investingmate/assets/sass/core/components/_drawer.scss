@@ -44,7 +44,7 @@
 }
 
 // Initial state
-[data-kt-drawer='true'] {
+[data-im-drawer='true'] {
   display: none;
 }
 
@@ -60,7 +60,7 @@
 
 // Tablet & Mobile Modes
 @include media-breakpoint-down(lg) {
-  body[data-kt-drawer='on'] {
+  body[data-im-drawer='on'] {
     overflow: hidden;
   }
 }

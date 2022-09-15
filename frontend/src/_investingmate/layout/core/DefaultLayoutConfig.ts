@@ -82,6 +82,6 @@ export const DefaultLayoutConfig: ILayout = {
     direction: 'row',
     responsive: true,
     responsiveBreakpoint: 'lg',
-    responsiveTarget: '#kt_toolbar_container',
+    responsiveTarget: '#im_toolbar_container',
   },
 }

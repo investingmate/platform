@@ -13,7 +13,7 @@ const Content: FC<WithChildren> = ({children}) => {
   }, [location])
 
   return (
-    <div id='kt_content_container' className={clsx(classes.contentContainer.join(' '))}>
+    <div id='im_content_container' className={clsx(classes.contentContainer.join(' '))}>
       {children}
     </div>
   )

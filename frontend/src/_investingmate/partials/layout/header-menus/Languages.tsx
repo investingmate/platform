@@ -28,9 +28,9 @@ const Languages: FC = () => {
   return (
     <div
       className='menu-item px-5'
-      data-kt-menu-trigger='hover'
-      data-kt-menu-placement='left-start'
-      data-kt-menu-flip='bottom'
+      data-im-menu-trigger='hover'
+      data-im-menu-placement='left-start'
+      data-im-menu-flip='bottom'
     >
       <a href='#' className='menu-link px-5'>
         <span className='menu-title position-relative'>

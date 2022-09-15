@@ -38,7 +38,7 @@
     --im-app-sidebar-primary-width-actual: #{$app-sidebar-primary-base-width};
   }
 
-  [data-kt-app-sidebar-stacked='true'] {
+  [data-im-app-sidebar-stacked='true'] {
     --im-app-sidebar-primary-width: #{$app-sidebar-primary-base-width};
 
     --im-app-sidebar-primary-gap-start: #{$app-sidebar-primary-base-gap-start};
@@ -47,7 +47,7 @@
     --im-app-sidebar-primary-gap-bottom: #{$app-sidebar-primary-base-gap-bottom};
   }
 
-  [data-kt-app-sidebar-primary-minimize='on'] {
+  [data-im-app-sidebar-primary-minimize='on'] {
     --im-app-sidebar-primary-width: #{$app-sidebar-primary-minimize-width};
 
     --im-app-sidebar-primary-gap-start: #{$app-sidebar-primary-minimize-gap-start};
@@ -56,7 +56,7 @@
     --im-app-sidebar-primary-gap-bottom: #{$app-sidebar-primary-minimize-gap-bottom};
   }
 
-  [data-kt-app-sidebar-primary-collapse='on'] {
+  [data-im-app-sidebar-primary-collapse='on'] {
     --im-app-sidebar-primary-width: 0px;
   }
 
@@ -64,13 +64,13 @@
   .app-sidebar-primary {
     width: var(--im-app-sidebar-primary-width);
 
-    [data-kt-app-sidebar-primary-collapse='on'] & {
+    [data-im-app-sidebar-primary-collapse='on'] & {
       transition: $app-sidebar-primary-base-transition;
       width: var(--im-app-sidebar-primary-width-actual);
       margin-left: calc(-1 * var(--im-app-sidebar-primary-width-actual));
     }
 
-    [data-kt-app-sidebar-primary-minimize='on'] & {
+    [data-im-app-sidebar-primary-minimize='on'] & {
       transition: $app-sidebar-primary-base-transition;
 
       background-color: var(--im-app-sidebar-primary-minimize-bg-color);
@@ -84,14 +84,14 @@
       @include property(margin-bottom, $app-sidebar-primary-minimize-gap-bottom);
     }
 
-    [data-kt-app-sidebar-primary-hoverable='true'] & {
+    [data-im-app-sidebar-primary-hoverable='true'] & {
       .app-sidebar-primary-hoverable {
         width: var(--im-app-sidebar-primary-width-actual);
       }
     }
 
     // Hover minimized
-    [data-kt-app-sidebar-primary-hoverable='true'][data-kt-app-sidebar-primary-minimize='on']
+    [data-im-app-sidebar-primary-hoverable='true'][data-im-app-sidebar-primary-minimize='on']
       &:hover:not(.animating) {
       transition: $app-sidebar-primary-base-transition;
       width: var(--im-app-sidebar-primary-width-actual);
@@ -102,20 +102,20 @@
   // Integration
   .app-sidebar-primary {
     // Header
-    [data-kt-app-sidebar-fixed='true'][data-kt-app-header-fixed='true'][data-kt-app-sidebar-primary-below-header='true']
+    [data-im-app-sidebar-fixed='true'][data-im-app-header-fixed='true'][data-im-app-sidebar-primary-below-header='true']
       & {
       top: var(--im-app-header-height);
     }
 
     // Toolbar
-    [data-kt-app-sidebar-fixed='true'][data-kt-app-header-fixed='true'][data-kt-app-toolbar-fixed='true'][data-kt-app-sidebar-primary-below-toolbar='true']
+    [data-im-app-sidebar-fixed='true'][data-im-app-header-fixed='true'][data-im-app-toolbar-fixed='true'][data-im-app-sidebar-primary-below-toolbar='true']
       & {
       top: calc(var(--im-app-header-height) + var(--im-app-toolbar-height, 0));
     }
   }
 
   // Utilities
-  [data-kt-app-sidebar-primary-minimize='on'] {
+  [data-im-app-sidebar-primary-minimize='on'] {
     .app-sidebar-primary-minimize-d-none {
       display: none !important;
     }
@@ -125,7 +125,7 @@
     }
   }
 
-  [data-kt-app-sidebar-primary-collapse='on'] {
+  [data-im-app-sidebar-primary-collapse='on'] {
     .app-sidebar-primary-collapse-d-none {
       display: none !important;
     }
@@ -158,7 +158,7 @@
     --im-app-sidebar-primary-width-actual: #{$app-sidebar-primary-base-width-mobile};
   }
 
-  [data-kt-app-sidebar-stacked='true'] {
+  [data-im-app-sidebar-stacked='true'] {
     --im-app-sidebar-primary-width: #{$app-sidebar-primary-base-width-mobile};
 
     --im-app-sidebar-primary-gap-start: #{$app-sidebar-primary-base-gap-start-mobile};
@@ -167,7 +167,7 @@
     --im-app-sidebar-primary-gap-bottom: #{$app-sidebar-primary-base-gap-bottom-mobile};
   }
 
-  [data-kt-app-sidebar-primary-minimize-mobile='on'] {
+  [data-im-app-sidebar-primary-minimize-mobile='on'] {
     --im-app-sidebar-primary-width: #{$app-sidebar-primary-minimize-width-mobile};
 
     --im-app-sidebar-primary-gap-start: #{$app-sidebar-primary-minimize-gap-start-mobile};
@@ -176,7 +176,7 @@
     --im-app-sidebar-primary-gap-bottom: #{$app-sidebar-primary-minimize-gap-bottom-mobile};
   }
 
-  [data-kt-app-sidebar-primary-collapse-mobile='on'] {
+  [data-im-app-sidebar-primary-collapse-mobile='on'] {
     --im-app-sidebar-primary-width: 0px;
   }
 
@@ -184,13 +184,13 @@
   .app-sidebar-primary {
     width: var(--im-app-sidebar-primary-width);
 
-    [data-kt-app-sidebar-primary-collapse-mobile='on'] & {
+    [data-im-app-sidebar-primary-collapse-mobile='on'] & {
       transition: $app-sidebar-primary-base-transition;
       width: var(--im-app-sidebar-primary-width-actual);
       margin-left: calc(-1 * var(--im-app-sidebar-primary-width-actual));
     }
 
-    [data-kt-app-sidebar-primary-minimize-mobile='on'] & {
+    [data-im-app-sidebar-primary-minimize-mobile='on'] & {
       transition: $app-sidebar-primary-base-transition;
       background-color: var(--im-app-sidebar-primary-minimize-bg-color-mobile);
       box-shadow: var(--im-app-sidebar-primary-base-box-shadow-mobile);
@@ -203,13 +203,13 @@
       @include property(margin-bottom, $app-sidebar-primary-minimize-gap-bottom-mobile);
     }
 
-    [data-kt-app-sidebar-primary-hoverable-mobile='true'] & {
+    [data-im-app-sidebar-primary-hoverable-mobile='true'] & {
       .app-sidebar-primary-hoverable {
         width: var(--im-app-sidebar-primary-width-actual);
       }
     }
 
-    [data-kt-app-sidebar-primary-hoverable-mobile='true'][data-kt-app-sidebar-primary-minimize-mobile='on']
+    [data-im-app-sidebar-primary-hoverable-mobile='true'][data-im-app-sidebar-primary-minimize-mobile='on']
       &:hover:not(.animating) {
       transition: $app-sidebar-primary-base-transition;
       width: var(--im-app-sidebar-primary-width-actual);
@@ -218,7 +218,7 @@
   }
 
   // Utilities
-  [data-kt-app-sidebar-primary-minimize-mobile='on'] {
+  [data-im-app-sidebar-primary-minimize-mobile='on'] {
     .app-sidebar-primary-minimize-mobile-d-none {
       display: none !important;
     }
@@ -228,7 +228,7 @@
     }
   }
 
-  [data-kt-app-sidebar-primary-collapse-mobile='on'] {
+  [data-im-app-sidebar-primary-collapse-mobile='on'] {
     .app-sidebar-primary-collapse-mobile-d-none {
       display: none !important;
     }

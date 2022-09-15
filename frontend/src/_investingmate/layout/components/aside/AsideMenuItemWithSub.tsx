@@ -28,8 +28,8 @@ const AsideMenuItemWithSub: FC<Props & WithChildren> = ({
   return (
     <div
       className={clsx({show: isActive, hover: isActive}, 'menu-item menu-accordion')}
-      data-kt-menu-sub='accordion'
-      data-kt-menu-trigger='click'
+      data-im-menu-sub='accordion'
+      data-im-menu-trigger='click'
     >
       <span className={clsx('menu-link', {active: isActive})}>
         {hasBullet && (

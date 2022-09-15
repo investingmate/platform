@@ -38,7 +38,7 @@
     }
   }
 
-  [data-kt-scrolltop='on'] & {
+  [data-im-scrolltop='on'] & {
     opacity: var(--im-scrolltop-opacity-on);
     animation: animation-scrolltop 0.4s ease-out 1;
     display: flex;

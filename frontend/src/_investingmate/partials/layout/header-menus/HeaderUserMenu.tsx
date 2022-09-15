@@ -10,7 +10,7 @@ const HeaderUserMenu = () => {
   return (
     <div
       className='menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg menu-state-primary fw-bold py-4 fs-6 w-275px'
-      data-kt-menu='true'
+      data-im-menu='true'
     >
       <div className='menu-item px-3'>
         <div className='menu-content d-flex align-items-center px-3'>
@@ -54,9 +54,9 @@ const HeaderUserMenu = () => {
 
       <div
         className="menu-item px-5"
-        data-kt-menu-trigger="hover"
-        data-kt-menu-placement="left-start"
-        data-kt-menu-flip="bottom"
+        data-im-menu-trigger="hover"
+        data-im-menu-placement="left-start"
+        data-im-menu-flip="bottom"
       >
         <a href="#" className="menu-link px-5">
           <span className="menu-title">My Subscription</span>

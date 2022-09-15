@@ -37,8 +37,8 @@ const defaultSearchOptions: ISearchOptions = {
 
 const defaultSearchQueires: ISearchQueries = {
   componentName: 'search',
-  instanseQuery: '[data-kt-search]',
-  attrQuery: 'data-kt-search-',
+  instanseQuery: '[data-im-search]',
+  attrQuery: 'data-im-search-',
 }
 
 class SearchComponent {
@@ -98,7 +98,7 @@ class SearchComponent {
   }
 
   private _getElement = (name: string) => {
-    return this.element.querySelector('[data-kt-search-element="' + name + '"]')
+    return this.element.querySelector('[data-im-search-element="' + name + '"]')
   }
 
   // Get option

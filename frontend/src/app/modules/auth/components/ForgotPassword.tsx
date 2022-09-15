@@ -253,7 +253,7 @@ export function ForgotPassword() {
       {/* end::Form group */}
 
       {/* begin::Form group Password */}
-      <div className='mb-10 fv-row' data-kt-password-meter='true'>
+      <div className='mb-10 fv-row' data-im-password-meter='true'>
         <div className='mb-1'>
           <label className='form-label fw-bolder text-dark fs-6'>Password</label>
           <div className='position-relative mb-3'>
@@ -283,7 +283,7 @@ export function ForgotPassword() {
           {/* begin::Meter */}
           <div
             className='d-flex align-items-center mb-3'
-            data-kt-password-meter-control='highlight'
+            data-im-password-meter-control='highlight'
           >
             <div className='flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2'></div>
             <div className='flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2'></div>

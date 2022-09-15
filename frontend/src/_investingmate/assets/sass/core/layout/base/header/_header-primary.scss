@@ -25,15 +25,15 @@
     --im-app-header-primary-height: #{$app-header-primary-base-height};
   }
 
-  [data-kt-app-header-sticky='on'] {
+  [data-im-app-header-sticky='on'] {
     --im-app-header-primary-height: #{$app-header-primary-sticky-height};
   }
 
-  [data-kt-app-header-minimize='on'] {
+  [data-im-app-header-minimize='on'] {
     --im-app-header-primary-height: #{$app-header-primary-minimize-height};
   }
 
-  [data-kt-app-header-sticky='on'][data-kt-app-header-primary-sticky-hide='true'] {
+  [data-im-app-header-sticky='on'][data-im-app-header-primary-sticky-hide='true'] {
     --im-app-header-primary-height: 0;
   }
 
@@ -41,7 +41,7 @@
   .app-header-primary {
     height: var(--im-app-header-primary-height);
 
-    [data-kt-app-header-primary-fixed='true'] & {
+    [data-im-app-header-primary-fixed='true'] & {
       @include property(z-index, $app-header-primary-fixed-z-index);
       position: fixed;
       left: 0;
@@ -49,11 +49,11 @@
       top: 0;
     }
 
-    [data-kt-app-header-primary-static='true'] & {
+    [data-im-app-header-primary-static='true'] & {
       position: relative;
     }
 
-    [data-kt-app-header-primary-sticky='on'] & {
+    [data-im-app-header-primary-sticky='on'] & {
       position: fixed;
       left: 0;
       right: 0;
@@ -66,7 +66,7 @@
       border-bottom: var(--im-app-header-primary-sticky-border-bottom);
     }
 
-    [data-kt-app-header-primary-minimize='on'] & {
+    [data-im-app-header-primary-minimize='on'] & {
       transition: $app-header-primary-base-transition;
       @include property(height, $app-header-primary-minimize-height);
       @include property(z-index, $app-header-primary-minimize-z-index);
@@ -76,7 +76,7 @@
       border-bottom: var(--im-app-header-primary-minimize-border-bottom);
     }
 
-    [data-kt-app-header-sticky='on'][data-kt-app-header-primary-sticky-hide='true'] & {
+    [data-im-app-header-sticky='on'][data-im-app-header-primary-sticky-hide='true'] & {
       display: none !important;
     }
   }
@@ -84,7 +84,7 @@
   // Integration
   .app-header-primary {
     // Sidebar
-    [data-kt-app-sidebar-fixed='true'][data-kt-app-sidebar-push-header='true'] & {
+    [data-im-app-sidebar-fixed='true'][data-im-app-sidebar-push-header='true'] & {
       left: calc(
         var(--im-app-sidebar-width) + var(--im-app-sidebar-gap-start, 0px) +
           var(--im-app-sidebar-gap-end, 0px)
@@ -92,7 +92,7 @@
     }
 
     // Sidebar Panel
-    [data-kt-app-sidebar-panel-fixed='true'][data-kt-app-sidebar-panel-push-header='true'] & {
+    [data-im-app-sidebar-panel-fixed='true'][data-im-app-sidebar-panel-push-header='true'] & {
       left: calc(
         var(--im-app-sidebar-width) + var(--im-app-sidebar-gap-start, 0px) +
           var(--im-app-sidebar-gap-end, 0px) + var(--im-app-sidebar-panel-width) +

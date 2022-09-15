@@ -21,19 +21,19 @@ const AsideDefault: FC = () => {
 
   return (
     <div
-      id='kt_aside'
+      id='im_aside'
       className={clsx('aside', classes.aside.join(' '))}
-      data-kt-drawer='true'
-      data-kt-drawer-name='aside'
-      data-kt-drawer-activate='{default: true, lg: false}'
-      data-kt-drawer-overlay='true'
-      data-kt-drawer-width="{default:'200px', '300px': '250px'}"
-      data-kt-drawer-direction='start'
-      data-kt-drawer-toggle='#kt_aside_mobile_toggle'
+      data-im-drawer='true'
+      data-im-drawer-name='aside'
+      data-im-drawer-activate='{default: true, lg: false}'
+      data-im-drawer-overlay='true'
+      data-im-drawer-width="{default:'200px', '300px': '250px'}"
+      data-im-drawer-direction='start'
+      data-im-drawer-toggle='#im_aside_mobile_toggle'
       ref={asideRef}
     >
       {/* begin::Brand */}
-      <div className='aside-logo flex-column-auto' id='kt_aside_logo'>
+      <div className='aside-logo flex-column-auto' id='im_aside_logo'>
         {/* begin::Logo */}
         {aside.theme === 'dark' && (
           <Link to='/dashboard'>
@@ -50,12 +50,12 @@ const AsideDefault: FC = () => {
         {/* begin::Aside toggler */}
         {aside.minimize && (
           <div
-            id='kt_aside_toggle'
+            id='im_aside_toggle'
             className='btn btn-icon w-auto px-0 btn-active-color-primary aside-toggle'
-            data-kt-toggle='true'
-            data-kt-toggle-state='active'
-            data-kt-toggle-target='body'
-            data-kt-toggle-name='aside-minimize'
+            data-im-toggle='true'
+            data-im-toggle-state='active'
+            data-im-toggle-target='body'
+            data-im-toggle-name='aside-minimize'
             onClick={minimize}
           >
             <KTSVG
@@ -75,7 +75,7 @@ const AsideDefault: FC = () => {
       {/* end::Aside menu */}
 
       {/* begin::Footer */}
-      <div className='aside-footer flex-column-auto pt-5 pb-7 px-5' id='kt_aside_footer'>
+      <div className='aside-footer flex-column-auto pt-5 pb-7 px-5' id='im_aside_footer'>
         <a
           target='_blank'
           className='btn btn-custom btn-primary w-100'

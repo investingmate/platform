@@ -93,7 +93,7 @@ export class LayoutSetup {
       document.body.removeAttribute(attr.name)
     })
     document.body.setAttribute('style', '')
-    document.body.setAttribute('id', 'kt_body')
+    document.body.setAttribute('id', 'im_body')
     if (config.main?.body?.backgroundImage) {
       document.body.style.backgroundImage = `url('${config.main.body.backgroundImage}')`
     }
@@ -146,11 +146,11 @@ export class LayoutSetup {
     if (typeOptions) {
       let bodyStyles: string = ''
       if (typeOptions.height) {
-        bodyStyles += ` --kt-toolbar-height: ${typeOptions.height};`
+        bodyStyles += ` --im-toolbar-height: ${typeOptions.height};`
       }
 
       if (typeOptions.heightAndTabletMobileMode) {
-        bodyStyles += ` --kt-toolbar-height-tablet-and-mobile: ${typeOptions.heightAndTabletMobileMode};`
+        bodyStyles += ` --im-toolbar-height-tablet-and-mobile: ${typeOptions.heightAndTabletMobileMode};`
       }
       document.body.setAttribute('style', bodyStyles)
     }
@@ -174,11 +174,11 @@ export class LayoutSetup {
       this.classes.pageTitle.push('mb-5')
       this.classes.pageTitle.push('mb-lg-0')
 
-      LayoutSetup.attributes.pageTitle.set('data-kt-swapper', true)
-      LayoutSetup.attributes.pageTitle.set('data-kt-swapper-mode', 'prepend')
+      LayoutSetup.attributes.pageTitle.set('data-im-swapper', true)
+      LayoutSetup.attributes.pageTitle.set('data-im-swapper-mode', 'prepend')
       LayoutSetup.attributes.pageTitle.set(
-        'data-kt-swapper-parent',
-        `{ default: '#kt_content_container', '${config.responsiveBreakpoint}': '${config.responsiveTarget}'}`
+        'data-im-swapper-parent',
+        `{ default: '#im_content_container', '${config.responsiveBreakpoint}': '${config.responsiveTarget}'}`
       )
     }
   }
@@ -209,7 +209,7 @@ export class LayoutSetup {
 
     // Default minimized
     if (config.minimized) {
-      document.body.setAttribute('data-kt-aside-minimize', 'on')
+      document.body.setAttribute('data-im-aside-minimize', 'on')
     }
 
     // Hoverable on minimize

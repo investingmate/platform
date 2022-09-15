@@ -27,7 +27,7 @@
   // Integration
   .app-main {
     // Sidebar
-    [data-kt-app-sidebar-sticky='true'] & {
+    [data-im-app-sidebar-sticky='true'] & {
       margin-left: calc(
         var(--im-app-sidebar-width) + var(--im-app-sidebar-gap-start, 0px) +
           var(--im-app-sidebar-gap-end, 0px)
@@ -35,7 +35,7 @@
     }
 
     // Sidebar Panel
-    [data-kt-app-sidebar-panel-sticky='true'] & {
+    [data-im-app-sidebar-panel-sticky='true'] & {
       margin-left: calc(
         var(--im-app-sidebar-width) + var(--im-app-sidebar-gap-start, 0px) +
           var(--im-app-sidebar-gap-end, 0px) + var(--im-app-sidebar-panel-width) +
@@ -44,7 +44,7 @@
     }
 
     // Aside
-    [data-kt-app-aside-sticky='true'] & {
+    [data-im-app-aside-sticky='true'] & {
       margin-right: calc(
         var(--im-app-aside-width) + var(--im-app-aside-gap-start, 0px) +
           var(--im-app-aside-gap-end, 0px)

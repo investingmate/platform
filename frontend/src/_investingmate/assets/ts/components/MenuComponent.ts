@@ -65,7 +65,7 @@ class MenuComponent {
     this.element = _element
     this.options = Object.assign(defaultMenuOptions, options)
     this.instanceUid = getUniqueIdWithPrefix('menu')
-    // this.element.setAttribute('data-kt-menu', 'true')
+    // this.element.setAttribute('data-im-menu', 'true')
     this._setTriggerElement()
     this._update()
     DataUtil.set(this.element, 'menu', this)
@@ -75,20 +75,20 @@ class MenuComponent {
   // Set external trigger element
   private _setTriggerElement = () => {
     const target = document.querySelector(
-      `[data-kt-menu-target="#${this.element.getAttribute('id')}"`
+      `[data-im-menu-target="#${this.element.getAttribute('id')}"`
     )
 
     if (target) {
       this.triggerElement = target as HTMLElement
-    } else if (this.element.closest('[data-kt-menu-trigger]')) {
-      this.triggerElement = this.element.closest('[data-kt-menu-trigger]') as HTMLElement
+    } else if (this.element.closest('[data-im-menu-trigger]')) {
+      this.triggerElement = this.element.closest('[data-im-menu-trigger]') as HTMLElement
     } else if (
       this.element.parentNode &&
-      getElementChild(this.element.parentNode as HTMLElement, '[data-kt-menu-trigger]')
+      getElementChild(this.element.parentNode as HTMLElement, '[data-im-menu-trigger]')
     ) {
       const child = getElementChild(
         this.element.parentNode as HTMLElement,
-        '[data-kt-menu-trigger]'
+        '[data-im-menu-trigger]'
       )
       if (child) {
         this.triggerElement = child
@@ -108,8 +108,8 @@ class MenuComponent {
   // Get item option(through html attributes)
   private _getItemOption = (item: HTMLElement, name: string) => {
     let value: string | JSON | null | boolean = null
-    if (item && item.hasAttribute('data-kt-menu-' + name)) {
-      const attr = item.getAttribute('data-kt-menu-' + name) || ''
+    if (item && item.hasAttribute('data-im-menu-' + name)) {
+      const attr = item.getAttribute('data-im-menu-' + name) || ''
       value = getAttributeValueByBreakpoint(attr)
       if (value !== null && String(value) === 'true') {
         value = true
@@ -128,7 +128,7 @@ class MenuComponent {
     }
 
     // Element has item toggler attribute
-    if (_element.hasAttribute('data-kt-menu-trigger')) {
+    if (_element.hasAttribute('data-im-menu-trigger')) {
       return _element
     }
 
@@ -139,7 +139,7 @@ class MenuComponent {
     }
 
     // Item is parent of element
-    const item = _element.closest<HTMLElement>('.menu-item[data-kt-menu-trigger]')
+    const item = _element.closest<HTMLElement>('.menu-item[data-im-menu-trigger]')
     if (item) {
       return item
     }
@@ -166,7 +166,7 @@ class MenuComponent {
       return subItem as HTMLElement
     }
 
-    const parentItem = sub.closest<HTMLElement>('.menu-item[data-kt-menu-trigger]')
+    const parentItem = sub.closest<HTMLElement>('.menu-item[data-im-menu-trigger]')
     if (sub && parentItem) {
       return parentItem
     }
@@ -254,8 +254,8 @@ class MenuComponent {
     }
 
     if (selector) {
-      //element = selector.querySelector('.show.menu-item[data-kt-menu-trigger]');
-      const element = selector.querySelector<HTMLElement>('.menu-item[data-kt-menu-trigger]')
+      //element = selector.querySelector('.show.menu-item[data-im-menu-trigger]');
+      const element = selector.querySelector<HTMLElement>('.menu-item[data-im-menu-trigger]')
       if (element) {
         return element
       }
@@ -360,7 +360,7 @@ class MenuComponent {
 
   // Test if item has sub
   private _hasItemSub = (item: HTMLElement) => {
-    return item.classList.contains('menu-item') && item.hasAttribute('data-kt-menu-trigger')
+    return item.classList.contains('menu-item') && item.hasAttribute('data-im-menu-trigger')
   }
 
   // Get link element
@@ -566,7 +566,7 @@ class MenuComponent {
 
   // Hide all shown accordions of item
   private _hideAccordions = (item: HTMLElement) => {
-    const itemsToHide = this.element.querySelectorAll('.show[data-kt-menu-trigger]')
+    const itemsToHide = this.element.querySelectorAll('.show[data-im-menu-trigger]')
     if (itemsToHide && itemsToHide.length > 0) {
       for (var i = 0, len = itemsToHide.length; i < len; i++) {
         const itemToHide = itemsToHide[i] as HTMLElement
@@ -609,7 +609,7 @@ class MenuComponent {
 
   // Update all item state classes if item sub type changed
   private _update = () => {
-    const items = this.element.querySelectorAll('.menu-item[data-kt-menu-trigger]')
+    const items = this.element.querySelectorAll('.menu-item[data-im-menu-trigger]')
     items.forEach((el) => this._reset(el as HTMLElement))
   }
 
@@ -896,7 +896,7 @@ class MenuComponent {
   // Hide all dropdowns and skip one if provided
   public static hideDropdowns = (skip: HTMLElement | undefined) => {
     const items = document.querySelectorAll<HTMLElement>(
-      '.show.menu-dropdown[data-kt-menu-trigger]'
+      '.show.menu-dropdown[data-im-menu-trigger]'
     )
 
     if (items && items.length > 0) {
@@ -923,7 +923,7 @@ class MenuComponent {
   }
 
   public static updateDropdowns = () => {
-    const items = document.querySelectorAll('.show.menu-dropdown[data-kt-menu-trigger]')
+    const items = document.querySelectorAll('.show.menu-dropdown[data-im-menu-trigger]')
     if (items && items.length > 0) {
       for (var i = 0, len = items.length; i < len; i++) {
         var item = items[i]
@@ -951,7 +951,7 @@ class MenuComponent {
   public static initGlobalHandlers = () => {
     // Dropdown handler
     document.addEventListener('click', (e) => {
-      const menuItems = document.querySelectorAll('.show.menu-dropdown[data-kt-menu-trigger]')
+      const menuItems = document.querySelectorAll('.show.menu-dropdown[data-im-menu-trigger]')
       if (menuItems && menuItems.length > 0) {
         for (let i = 0; i < menuItems.length; i++) {
           const item = menuItems[i] as HTMLElement
@@ -976,7 +976,7 @@ class MenuComponent {
     // Sub toggle handler
     DOMEventHandlerUtil.on(
       document.body,
-      '.menu-item[data-kt-menu-trigger] > .menu-link, [data-kt-menu-trigger]:not(.menu-item):not([data-kt-menu-trigger="auto"])',
+      '.menu-item[data-im-menu-trigger] > .menu-link, [data-im-menu-trigger]:not(.menu-item):not([data-im-menu-trigger="auto"])',
       'click',
       function (this: HTMLElement, e: Event) {
         const menu = MenuComponent.getInstance(this) as MenuComponent
@@ -989,7 +989,7 @@ class MenuComponent {
     // // Link handler
     DOMEventHandlerUtil.on(
       document.body,
-      '.menu-item:not([data-kt-menu-trigger]) > .menu-link',
+      '.menu-item:not([data-im-menu-trigger]) > .menu-link',
       'click',
       function (this: HTMLElement, e: Event) {
         e.stopPropagation()
@@ -1003,7 +1003,7 @@ class MenuComponent {
     // Dismiss handler
     DOMEventHandlerUtil.on(
       document.body,
-      '[data-kt-menu-dismiss="true"]',
+      '[data-im-menu-dismiss="true"]',
       'click',
       function (this: HTMLElement, e: Event) {
         const menu = MenuComponent.getInstance(this) as MenuComponent
@@ -1016,7 +1016,7 @@ class MenuComponent {
     // Mouseover handler
     DOMEventHandlerUtil.on(
       document.body,
-      '[data-kt-menu-trigger], .menu-sub',
+      '[data-im-menu-trigger], .menu-sub',
       'mouseover',
       function (this: HTMLElement, e: Event) {
         const menu = MenuComponent.getInstance(this) as MenuComponent
@@ -1029,7 +1029,7 @@ class MenuComponent {
     // Mouseout handler
     DOMEventHandlerUtil.on(
       document.body,
-      '[data-kt-menu-trigger], .menu-sub',
+      '[data-im-menu-trigger], .menu-sub',
       'mouseout',
       function (this: HTMLElement, e: Event) {
         const menu = MenuComponent.getInstance(this) as MenuComponent
@@ -1046,7 +1046,7 @@ class MenuComponent {
         timer,
         () => {
           // Locate and update Drawer instances on window resize
-          const elements = document.querySelectorAll('[data-kt-menu="true"]')
+          const elements = document.querySelectorAll('[data-im-menu="true"]')
           elements.forEach((el) => {
             const menu = MenuComponent.getInstance(el as HTMLElement)
             if (menu) {
@@ -1061,11 +1061,11 @@ class MenuComponent {
 
   public static bootstrap = () => {
     MenuComponent.initGlobalHandlers()
-    MenuComponent.createInstances('[data-kt-menu="true"]')
+    MenuComponent.createInstances('[data-im-menu="true"]')
   }
 
   public static reinitialization = () => {
-    MenuComponent.createInstances('[data-kt-menu="true"]')
+    MenuComponent.createInstances('[data-im-menu="true"]')
   }
 
   public static createInsance = (

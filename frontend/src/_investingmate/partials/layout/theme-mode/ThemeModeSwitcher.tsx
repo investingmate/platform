@@ -28,9 +28,9 @@ const ThemeModeSwitcher = ({
       <a
         href='#'
         className={clsx('btn btn-icon ', toggleBtnClass)}
-        data-kt-menu-trigger={menuTrigger}
-        data-kt-menu-attach='parent'
-        data-kt-menu-placement={menuPlacement}
+        data-im-menu-trigger={menuTrigger}
+        data-im-menu-attach='parent'
+        data-im-menu-placement={menuPlacement}
       >
         {mode === 'dark' && (
           <KTSVG
@@ -51,7 +51,7 @@ const ThemeModeSwitcher = ({
       {/* begin::Menu */}
       <div
         className='menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-title-gray-700 menu-icon-muted menu-active-bg menu-state-primary fw-semibold py-4 fs-base w-175px'
-        data-kt-menu='true'
+        data-im-menu='true'
       >
         {/* begin::Menu item */}
         <div className='menu-item px-3 my-0'>
@@ -60,7 +60,7 @@ const ThemeModeSwitcher = ({
             className={clsx('menu-link px-3 py-2', {active: menuMode === 'light'})}
             onClick={() => switchMode('light')}
           >
-            <span className='menu-icon' data-kt-element='icon'>
+            <span className='menu-icon' data-im-element='icon'>
               <KTSVG path='/media/icons/duotune/general/gen060.svg' className='svg-icon-3' />
             </span>
             <span className='menu-title'>Light</span>
@@ -75,7 +75,7 @@ const ThemeModeSwitcher = ({
             className={clsx('menu-link px-3 py-2', {active: menuMode === 'dark'})}
             onClick={() => switchMode('dark')}
           >
-            <span className='menu-icon' data-kt-element='icon'>
+            <span className='menu-icon' data-im-element='icon'>
               <KTSVG path='/media/icons/duotune/general/gen061.svg' className='svg-icon-3' />
             </span>
             <span className='menu-title'>Dark</span>
@@ -90,7 +90,7 @@ const ThemeModeSwitcher = ({
             className={clsx('menu-link px-3 py-2', {active: menuMode === 'system'})}
             onClick={() => switchMode('system')}
           >
-            <span className='menu-icon' data-kt-element='icon'>
+            <span className='menu-icon' data-im-element='icon'>
               <KTSVG path='/media/icons/duotune/general/gen062.svg' className='svg-icon-3' />
             </span>
             <span className='menu-title'>System</span>

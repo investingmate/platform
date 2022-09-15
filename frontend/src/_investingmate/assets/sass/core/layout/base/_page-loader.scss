@@ -3,7 +3,7 @@
 //
 
 // CSS3 Transitions only after page load(.page-loading class added to body tag and remove with JS on page load)
-[data-kt-app-page-loading='on'] * {
+[data-im-app-page-loading='on'] * {
   transition: none !important;
 }
 
@@ -18,7 +18,7 @@
   z-index: 1000;
   display: none;
 
-  [data-kt-app-page-loading='on'] & {
+  [data-im-app-page-loading='on'] & {
     display: flex;
     justify-content: center;
     align-items: center;

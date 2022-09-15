@@ -31,7 +31,7 @@
   .app-footer {
     height: var(--im-app-footer-height);
 
-    [data-kt-app-footer-fixed='true'] & {
+    [data-im-app-footer-fixed='true'] & {
       @include property(z-index, $app-footer-fixed-z-index);
       position: fixed;
       left: 0;
@@ -43,7 +43,7 @@
   // Integration
   .app-footer {
     // Sidebar
-    [data-kt-app-sidebar-fixed='true'][data-kt-app-sidebar-push-footer='true'] & {
+    [data-im-app-sidebar-fixed='true'][data-im-app-sidebar-push-footer='true'] & {
       left: calc(
         var(--im-app-sidebar-width) + var(--im-app-sidebar-gap-start, 0px) +
           var(--im-app-sidebar-gap-end, 0px)
@@ -51,7 +51,7 @@
     }
 
     // Sidebar Panel
-    [data-kt-app-sidebar-panel-fixed='true'][data-kt-app-sidebar-panel-push-footer='true'] & {
+    [data-im-app-sidebar-panel-fixed='true'][data-im-app-sidebar-panel-push-footer='true'] & {
       left: calc(
         var(--im-app-sidebar-width) + var(--im-app-sidebar-gap-start, 0px) +
           var(--im-app-sidebar-gap-end, 0px) + var(--im-app-sidebar-panel-width) +
@@ -60,7 +60,7 @@
     }
 
     // Aside
-    [data-kt-app-aside-fixed='true'][data-kt-app-aside-push-footer='true'] & {
+    [data-im-app-aside-fixed='true'][data-im-app-aside-push-footer='true'] & {
       right: calc(
         var(--im-app-aside-width) + var(--im-app-aside-gap-start, 0px) +
           var(--im-app-aside-gap-end, 0px)
@@ -89,7 +89,7 @@
   .app-footer {
     height: var(--im-app-footer-height);
 
-    [data-kt-app-footer-fixed-mobile='true'] & {
+    [data-im-app-footer-fixed-mobile='true'] & {
       @include property(z-index, $app-footer-fixed-z-index-mobile);
       position: fixed;
       left: 0;

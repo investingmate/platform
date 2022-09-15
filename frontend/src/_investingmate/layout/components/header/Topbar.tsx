@@ -27,10 +27,10 @@ const Topbar = () => {
             'btn btn-icon btn-active-light-primary btn-custom',
             toolbarButtonHeightClass
           )}
-          data-kt-menu-trigger='click'
-          data-kt-menu-attach='parent'
-          data-kt-menu-placement='bottom-end'
-          data-kt-menu-flip='bottom'
+          data-im-menu-trigger='click'
+          data-im-menu-attach='parent'
+          data-im-menu-placement='bottom-end'
+          data-im-menu-flip='bottom'
         >
           <KTSVG path='/media/flags/australia.svg' className={toolbarButtonIconSizeClass} />
         </div>
@@ -54,10 +54,10 @@ const Topbar = () => {
         {/* begin::Toggle */}
         <div
           className={clsx('cursor-pointer symbol', toolbarUserAvatarHeightClass)}
-          data-kt-menu-trigger='click'
-          data-kt-menu-attach='parent'
-          data-kt-menu-placement='bottom-end'
-          data-kt-menu-flip='bottom'
+          data-im-menu-trigger='click'
+          data-im-menu-attach='parent'
+          data-im-menu-placement='bottom-end'
+          data-im-menu-flip='bottom'
         >
           <img
             alt={`${currentUser?.given_name} ${currentUser?.family_name}`}

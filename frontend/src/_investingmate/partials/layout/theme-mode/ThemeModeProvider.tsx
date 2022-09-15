@@ -19,8 +19,8 @@ const themeModeSwitchHelper = (_mode: ThemeModeType) => {
   document.body.style.backgroundImage = `url("${toAbsoluteUrl(imageUrl)}")`
 }
 
-const themeModeLSKey = 'kt_theme_mode_value'
-const themeMenuModeLSKey = 'kt_theme_mode_menu'
+const themeModeLSKey = 'im_theme_mode_value'
+const themeMenuModeLSKey = 'im_theme_mode_menu'
 
 const getThemeModeFromLocalStorage = (lsKey: string): ThemeModeType => {
   if (!localStorage) {
