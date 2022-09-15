@@ -1,7 +1,7 @@
 import {Auth} from 'aws-amplify'
 import {Link} from 'react-router-dom'
 import {toAbsoluteUrl} from '../../../../_investingmate/helpers'
-import {useIntl} from "react-intl";
+import {useIntl} from 'react-intl'
 
 const GoogleLogin = () => {
   const intl = useIntl()

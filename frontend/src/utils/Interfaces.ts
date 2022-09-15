@@ -1,8 +1,8 @@
 export interface ErrorInfo {
-  error?: any;
+  error?: any
   url?: string
 }
 export interface IUser {
-  username: string;
+  username: string
   password: string
 }

@@ -1,10 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import React from 'react'
 import {KTSVG, toAbsoluteUrl} from '../../../_investingmate/helpers'
-// import {useLocation} from 'react-router'
 
 const CompaniesHeader = () => {
-  // const location = useLocation()
-
   return (
     <div className='card mb-5 mb-xl-10'>
       <div className='card-body pt-9 pb-0'>

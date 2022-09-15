@@ -1,6 +1,6 @@
 import * as Sentry from '@sentry/browser'
 import config from '../config'
-import {ErrorInfo} from "../utils/Interfaces";
+import {ErrorInfo} from '../utils/Interfaces'
 
 const isLocal = process.env.NODE_ENV === 'development'
 

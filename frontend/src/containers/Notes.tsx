@@ -8,8 +8,8 @@ import LoaderButton from '../components/LoaderButton'
 import config from '../config'
 
 interface Note {
-  attachmentURL?: string,
-  attachment?: string,
+  attachmentURL?: string
+  attachment?: string
 }
 export default function Notes() {
   const file = useRef(null)

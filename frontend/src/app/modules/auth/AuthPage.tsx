@@ -5,8 +5,8 @@ import {Registration} from './components/Registration'
 import {ForgotPassword} from './components/ForgotPassword'
 import {Login} from './components/Login'
 import {toAbsoluteUrl} from '../../../_investingmate/helpers'
-import {HomeLanguages} from "../../../_investingmate/partials/layout/header-menus/HomeLanguages";
-import {useIntl} from "react-intl";
+import {HomeLanguages} from '../../../_investingmate/partials/layout/header-menus/HomeLanguages'
+import {useIntl} from 'react-intl'
 
 const AuthLayout = () => {
   const intl = useIntl()

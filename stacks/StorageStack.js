@@ -2,7 +2,7 @@ import { Bucket, Table } from "@serverless-stack/resources";
 
 export function StorageStack({ stack }) {
   // Create an S3 bucket
-  const bucket = new Bucket(stack, "Uuploads", {
+  const bucket = new Bucket(stack, "uploads", {
     cors: [
       {
         maxAge: "1 day",

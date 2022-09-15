@@ -69,10 +69,10 @@ export function ForgotPassword() {
   })
 
   interface Values {
-    email: string;
-    confirmationCode: string;
-    password: string;
-    confirmPassword: string;
+    email: string
+    confirmationCode: string
+    password: string
+    confirmPassword: string
   }
 
   const formik2 = useFormik({

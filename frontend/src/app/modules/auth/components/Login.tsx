@@ -8,7 +8,7 @@ import {useAuth} from '../core/Auth'
 import {GoogleLogin} from './GoogleLogin'
 import {onError} from '../../../../lib/errorLib'
 import {toAbsoluteUrl, useQuery} from '../../../../_investingmate/helpers'
-import {useIntl} from "react-intl";
+import {useIntl} from 'react-intl'
 
 const initialValues = {
   email: 'csalucasnascimento@gmail.com',
@@ -231,7 +231,9 @@ export function Login() {
       >
         {/* begin::Heading */}
         <div className='text-center mb-10'>
-          <h1 className='text-dark mb-3'>{intl.formatMessage({id: 'LOGIN.SIGN_IN_TO_INVESTINGMATE'})}</h1>
+          <h1 className='text-dark mb-3'>
+            {intl.formatMessage({id: 'LOGIN.SIGN_IN_TO_INVESTINGMATE'})}
+          </h1>
           <div className='text-gray-400 fw-bold fs-4'>
             {intl.formatMessage({id: 'LOGIN.NEW_HERE'})}{' '}
             <Link to='/auth/registration' className='link-primary fw-bolder'>
@@ -326,15 +328,14 @@ export function Login() {
             className='btn btn-lg btn-primary w-100 mb-5'
             disabled={formik.isSubmitting || !formik.isValid}
           >
-            {!loading && <span className='indicator-label'>
-              {intl.formatMessage({id: 'LOGIN.CONTINUE'})}
-            </span>
-            }
+            {!loading && (
+              <span className='indicator-label'>{intl.formatMessage({id: 'LOGIN.CONTINUE'})}</span>
+            )}
             {loading && (
               <span className='indicator-progress' style={{display: 'block'}}>
-              {intl.formatMessage({id: 'LOGIN.PLEASE_WAIT'})}
-              <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
-            </span>
+                {intl.formatMessage({id: 'LOGIN.PLEASE_WAIT'})}
+                <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
+              </span>
             )}
           </button>
 
@@ -353,7 +354,5 @@ export function Login() {
     )
   }
 
-  return <div className='Login'>
-    {!email ? renderForm() : renderFormConfirm()}
-  </div>
+  return <div className='Login'>{!email ? renderForm() : renderFormConfirm()}</div>
 }

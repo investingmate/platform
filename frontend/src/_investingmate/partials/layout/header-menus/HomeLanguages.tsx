@@ -27,10 +27,8 @@ const HomeLanguages: FC = () => {
   const lang = useLang()
   const currentLanguage = languages.find((x) => x.lang === lang)
   return (
-    <div
-      className='home-menu menu-item px-5'
-    >
-      <a href='#' className='menu-link px-5' onClick={()=> setClicked(!clicked)}>
+    <div className='home-menu menu-item px-5'>
+      <a href='#' className='menu-link px-5' onClick={() => setClicked(!clicked)}>
         <span className='menu-title position-relative'>
           <span className='fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0 current-language'>
             {currentLanguage?.name}{' '}
@@ -43,7 +41,13 @@ const HomeLanguages: FC = () => {
         </span>
       </a>
 
-      <div className={!clicked ? 'menu-sub menu-sub-dropdown w-175px py-4' : 'menu-sub menu-sub-dropdown w-175px py-4 display'}>
+      <div
+        className={
+          !clicked
+            ? 'menu-sub menu-sub-dropdown w-175px py-4'
+            : 'menu-sub menu-sub-dropdown w-175px py-4 display'
+        }
+      >
         {languages.map((l) => (
           <div
             className='menu-item px-3'

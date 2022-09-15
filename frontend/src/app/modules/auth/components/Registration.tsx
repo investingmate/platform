@@ -7,7 +7,7 @@ import {Link, useNavigate} from 'react-router-dom'
 import {useAuth} from '../core/Auth'
 import {onError} from '../../../../lib/errorLib'
 import {toAbsoluteUrl, useQuery} from '../../../../_investingmate/helpers'
-import {IUser} from "../../../../utils/Interfaces";
+import {IUser} from '../../../../utils/Interfaces'
 
 const initialValues = {
   firstname: 'Lucas',
