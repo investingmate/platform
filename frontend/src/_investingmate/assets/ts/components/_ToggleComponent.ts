@@ -65,7 +65,7 @@ class ToggleComponent {
   // Event handlers
   private _toggle = () => {
     // Trigger "after.toggle" event
-    EventHandlerUtil.trigger(this.element, 'kt.toggle.change')
+    EventHandlerUtil.trigger(this.element, 'im.toggle.change')
 
     if (this._isEnabled()) {
       this._disable()
@@ -74,7 +74,7 @@ class ToggleComponent {
     }
 
     // Trigger "before.toggle" event
-    EventHandlerUtil.trigger(this.element, 'kt.toggle.changed')
+    EventHandlerUtil.trigger(this.element, 'im.toggle.changed')
     return this
   }
 
@@ -83,7 +83,7 @@ class ToggleComponent {
       return
     }
 
-    EventHandlerUtil.trigger(this.element, 'kt.toggle.enable')
+    EventHandlerUtil.trigger(this.element, 'im.toggle.enable')
     this.target?.setAttribute(this.attribute, 'on')
     if (this.state.length > 0) {
       this.element.classList.add(this.state)
@@ -93,7 +93,7 @@ class ToggleComponent {
       CookieComponent.set(this.attribute, 'on', {})
     }
 
-    EventHandlerUtil.trigger(this.element, 'kt.toggle.enabled')
+    EventHandlerUtil.trigger(this.element, 'im.toggle.enabled')
     return this
   }
 
@@ -102,7 +102,7 @@ class ToggleComponent {
       return false
     }
 
-    EventHandlerUtil.trigger(this.element, 'kt.toggle.disable')
+    EventHandlerUtil.trigger(this.element, 'im.toggle.disable')
     this.target?.removeAttribute(this.attribute)
 
     if (this.state.length > 0) {
@@ -113,7 +113,7 @@ class ToggleComponent {
       CookieComponent.delete(this.attribute)
     }
 
-    EventHandlerUtil.trigger(this.element, 'kt.toggle.disabled')
+    EventHandlerUtil.trigger(this.element, 'im.toggle.disabled')
     return this
   }
 

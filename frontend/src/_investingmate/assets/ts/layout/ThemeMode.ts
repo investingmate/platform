@@ -7,8 +7,8 @@ class ThemeMode {
   element: HTMLElement | null = null
 
   private getParamName = (postfix: string): string => {
-    const ktName = document.body.hasAttribute('data-im-name')
-    const name = ktName ? ktName + '_' : ''
+    const imName = document.body.hasAttribute('data-im-name')
+    const name = imName ? imName + '_' : ''
     return 'im_' + name + 'theme_mode_' + postfix
   }
 
@@ -117,7 +117,7 @@ class ThemeMode {
   private initMode = (): void => {
     this.setMode(this.getMode(), this.getMenuMode())
     if (this.element) {
-      EventHandlerUtil.trigger(this.element, 'kt.thememode.init')
+      EventHandlerUtil.trigger(this.element, 'im.thememode.init')
     }
   }
 

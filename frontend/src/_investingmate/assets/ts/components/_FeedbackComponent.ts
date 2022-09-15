@@ -78,7 +78,7 @@ class FeedbackComponent {
   // ** Public API  ** //
   ///////////////////////
   public show = () => {
-    if (EventHandlerUtil.trigger(this.element, 'kt.feedback.show') === false) {
+    if (EventHandlerUtil.trigger(this.element, 'im.feedback.show') === false) {
       return
     }
 
@@ -86,13 +86,13 @@ class FeedbackComponent {
       this.showPopup()
     }
 
-    EventHandlerUtil.trigger(this.element, 'kt.feedback.shown')
+    EventHandlerUtil.trigger(this.element, 'im.feedback.shown')
 
     return this
   }
 
   public hide = () => {
-    if (EventHandlerUtil.trigger(this.element, 'kt.feedback.hide') === false) {
+    if (EventHandlerUtil.trigger(this.element, 'im.feedback.hide') === false) {
       return
     }
 
@@ -101,7 +101,7 @@ class FeedbackComponent {
     }
 
     this.shown = false
-    EventHandlerUtil.trigger(this.element, 'kt.feedback.hidden')
+    EventHandlerUtil.trigger(this.element, 'im.feedback.hidden')
     return this
   }
 

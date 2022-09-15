@@ -81,8 +81,8 @@ class StickyComponent {
         }
 
         if (this.eventTriggerState === true) {
-          EventHandlerUtil.trigger(this.element, 'kt.sticky.on')
-          EventHandlerUtil.trigger(this.element, 'kt.sticky.change')
+          EventHandlerUtil.trigger(this.element, 'im.sticky.on')
+          EventHandlerUtil.trigger(this.element, 'im.sticky.change')
 
           this.eventTriggerState = false
         }
@@ -94,8 +94,8 @@ class StickyComponent {
         }
 
         if (this.eventTriggerState === false) {
-          EventHandlerUtil.trigger(this.element, 'kt.sticky.off')
-          EventHandlerUtil.trigger(this.element, 'kt.sticky.change')
+          EventHandlerUtil.trigger(this.element, 'im.sticky.off')
+          EventHandlerUtil.trigger(this.element, 'im.sticky.change')
 
           this.eventTriggerState = true
         }
@@ -113,8 +113,8 @@ class StickyComponent {
       }
 
       if (this.eventTriggerState === true) {
-        EventHandlerUtil.trigger(this.element, 'kt.sticky.on')
-        EventHandlerUtil.trigger(this.element, 'kt.sticky.change')
+        EventHandlerUtil.trigger(this.element, 'im.sticky.on')
+        EventHandlerUtil.trigger(this.element, 'im.sticky.change')
         this.eventTriggerState = false
       }
     } else {
@@ -125,8 +125,8 @@ class StickyComponent {
       }
 
       if (this.eventTriggerState === false) {
-        EventHandlerUtil.trigger(this.element, 'kt.sticky.off')
-        EventHandlerUtil.trigger(this.element, 'kt.sticky.change')
+        EventHandlerUtil.trigger(this.element, 'im.sticky.off')
+        EventHandlerUtil.trigger(this.element, 'im.sticky.change')
         this.eventTriggerState = true
       }
     }
