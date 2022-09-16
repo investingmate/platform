@@ -7,8 +7,12 @@ const GoogleLogin = () => {
   const intl = useIntl()
 
   const signIn = async () => {
-    // @ts-ignore TODO check this later
+    // @ts-ignore
     await Auth.federatedSignIn({provider: 'Google'})
+    /*
+    * I've tried this, but it didn't work
+    *     await Auth.federatedSignIn({provider: CognitoHostedUIIdentityProvider.Google})
+    * */
   }
 
   return (

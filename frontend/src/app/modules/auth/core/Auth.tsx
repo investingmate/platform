@@ -15,7 +15,7 @@ import {UserModel} from './_models'
 import {WithChildren} from '../../../../_investingmate/helpers'
 
 type AuthContextProps = {
-  auth: boolean | undefined
+  auth: any
   currentUser: UserModel | undefined
   setCurrentUser: Dispatch<SetStateAction<UserModel | undefined>>
   logout: () => void
@@ -35,7 +35,7 @@ const useAuth = () => {
 }
 
 const AuthProvider: FC<WithChildren> = ({children}) => {
-  const [auth] = useState<boolean>(authHelper.getAuth())
+  const [auth] = useState<any>(authHelper.getAuth())
   const [currentUser, setCurrentUser] = useState<UserModel | undefined>()
 
   const logout = async () => {

@@ -1,8 +1,13 @@
-// @ts-nocheck TODO check this later
 import {Navigate, useLocation} from 'react-router-dom'
 import {useAppContext} from '../lib/contextLib'
+import * as React from "react";
 
-export default function AuthenticatedRoute({children}) {
+interface AuthenticatedRouteProps {
+  children: React.ReactNode
+}
+
+export default function AuthenticatedRoute(props: AuthenticatedRouteProps) {
+  const {children} = props
   const {pathname, search} = useLocation()
   const {isAuthenticated} = useAppContext()
 

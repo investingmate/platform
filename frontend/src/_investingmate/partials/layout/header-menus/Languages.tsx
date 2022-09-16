@@ -1,26 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import clsx from 'clsx'
 import {FC} from 'react'
-import {toAbsoluteUrl} from '../../../helpers'
 import {useLang, setLanguage} from '../../../i18n/InvestingMatei18n'
-
-const languages = [
-  {
-    lang: 'en',
-    name: 'English',
-    flag: toAbsoluteUrl('/media/flags/united-states.svg'),
-  },
-  {
-    lang: 'es',
-    name: 'Spanish',
-    flag: toAbsoluteUrl('/media/flags/spain.svg'),
-  },
-  {
-    lang: 'pt',
-    name: 'Portuguese',
-    flag: toAbsoluteUrl('/media/flags/brazil.svg'),
-  },
-]
+import {languages} from "../../../../utils/LanguagesContants";
 
 const Languages: FC = () => {
   const lang = useLang()

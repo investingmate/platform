@@ -1,4 +1,3 @@
-// @ts-nocheck TODO check this later
 import React, {useRef, useState, useEffect} from 'react'
 import {useParams, useNavigate} from 'react-router-dom'
 import {API, Storage} from 'aws-amplify'
@@ -7,19 +6,20 @@ import Button from 'react-bootstrap/Button'
 import {onError} from '../../../../lib/errorLib'
 import {s3Upload} from '../../../../lib/awsLib'
 import config from '../../../../config'
+import {INote} from "../../../../utils/Interfaces";
 
 export function Companies() {
-  const file = useRef(null)
+  const file = useRef<any>(null)
   const {id} = useParams()
   const nav = useNavigate()
-  const [note, setNote] = useState(null)
+  const [note, setNote] = useState<INote | null>(null)
   const [content, setContent] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [isDeleting, setIsDeleting] = useState(false)
 
   useEffect(() => {
     function loadNote() {
-      return API.get('notes', `/notes/${id}`)
+      return API.get('notes', `/notes/${id}`, {})
     }
     async function onLoad() {
       try {
@@ -41,22 +41,22 @@ export function Companies() {
     return content.length > 0
   }
 
-  function formatFilename(str) {
+  function formatFilename(str: string) {
     return str.replace(/^\w+-/, '')
   }
 
-  function handleFileChange(event) {
+  function handleFileChange(event: any) {
     file.current = event.target.files[0]
   }
 
-  function saveNote(note) {
+  function saveNote(note: INote) {
     return API.put('notes', `/notes/${id}`, {
       body: note,
     })
   }
 
   function deleteNote() {
-    return API.del('notes', `/notes/${id}`)
+    return API.del('notes', `/notes/${id}`, {})
   }
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -73,7 +73,7 @@ export function Companies() {
       }
       await saveNote({
         content,
-        attachment: attachment || note.attachment,
+        attachment: attachment || note?.attachment,
       })
       nav('/')
     } catch (e) {
@@ -82,7 +82,7 @@ export function Companies() {
     }
   }
 
-  async function handleDelete(event) {
+  async function handleDelete(event: React.FormEvent<HTMLButtonElement>) {
     event.preventDefault()
     const confirmed = window.confirm('Are you sure you want to delete this note?')
     if (!confirmed) {
@@ -111,9 +111,9 @@ export function Companies() {
           </Form.Group>
           <Form.Group controlId='file'>
             <Form.Label>Attachment</Form.Label>
-            {note.attachment && (
+            {note && note.attachment && (
               <p>
-                <a target='_blank' rel='noopener noreferrer' href={note.attachmentURL}>
+                <a target='_blank' rel='noopener noreferrer' href={note.attachmentURL ?? ""}>
                   {formatFilename(note.attachment)}
                 </a>
               </p>

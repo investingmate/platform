@@ -12,7 +12,7 @@ interface Note {
   attachment?: string
 }
 export default function Notes() {
-  const file = useRef(null)
+  const file = useRef<any>({})
   const {id} = useParams()
   const nav = useNavigate()
   const [note, setNote] = useState<Note>({})
@@ -65,7 +65,6 @@ export default function Notes() {
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     let attachment
     event.preventDefault()
-    // @ts-ignore TODO check this later
     if (file.current && file.current.size > config.MAX_ATTACHMENT_SIZE) {
       alert(`Please pick a file smaller than ${config.MAX_ATTACHMENT_SIZE / 1000000} MB.`)
       return

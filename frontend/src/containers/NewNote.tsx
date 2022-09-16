@@ -1,4 +1,4 @@
-// @ts-nocheck TODO check this later
+import * as React from "react";
 import {useRef, useState} from 'react'
 import {API} from 'aws-amplify'
 import Form from 'react-bootstrap/Form'
@@ -7,9 +7,10 @@ import LoaderButton from '../components/LoaderButton'
 import {s3Upload} from '../lib/awsLib'
 import {onError} from '../lib/errorLib'
 import config from '../config'
+import {INote} from "../utils/Interfaces";
 
 export default function NewNote() {
-  const file = useRef(null)
+  const file = useRef<any>({})
   const nav = useNavigate()
   const [content, setContent] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -18,7 +19,7 @@ export default function NewNote() {
     return content.length > 0
   }
 
-  function handleFileChange(event) {
+  function handleFileChange(event: any) {
     file.current = event.target.files[0]
   }
 
@@ -39,7 +40,7 @@ export default function NewNote() {
     }
   }
 
-  function createNote(note) {
+  function createNote(note: INote) {
     return API.post('notes', '/notes', {
       body: note,
     })

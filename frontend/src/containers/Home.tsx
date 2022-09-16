@@ -1,4 +1,3 @@
-// @ts-nocheck TODO check this later
 import {useState, useEffect} from 'react'
 import {API} from 'aws-amplify'
 import ListGroup from 'react-bootstrap/ListGroup'
@@ -6,6 +5,12 @@ import {BsPencilSquare} from 'react-icons/bs'
 import {LinkContainer} from 'react-router-bootstrap'
 import {useAppContext} from '../lib/contextLib'
 import {onError} from '../lib/errorLib'
+
+interface INote {
+  noteId: string | number;
+  content: string;
+  createdAt: string;
+}
 
 export default function Home() {
   const [notes, setNotes] = useState([])
@@ -29,10 +34,10 @@ export default function Home() {
   }, [isAuthenticated])
 
   function loadNotes() {
-    return API.get('notes', '/notes')
+    return API.get('notes', '/notes', {})
   }
 
-  function renderNotesList(notes) {
+  function renderNotesList(notes: INote[]) {
     return (
       <>
         <LinkContainer to='/notes/new'>
@@ -41,15 +46,18 @@ export default function Home() {
             <span className='ml-2 font-weight-bold'>Create a new note</span>
           </ListGroup.Item>
         </LinkContainer>
-        {notes.map(({noteId, content, createdAt}) => (
-          <LinkContainer key={noteId} to={`/notes/${noteId}`}>
-            <ListGroup.Item action>
-              <span className='font-weight-bold'>{content.trim().split('\n')[0]}</span>
-              <br />
-              <span className='text-muted'>Created: {new Date(createdAt).toLocaleString()}</span>
-            </ListGroup.Item>
-          </LinkContainer>
-        ))}
+        {notes.map((note: INote) => {
+          const {noteId, content, createdAt} = note
+          return (
+            <LinkContainer key={noteId} to={`/notes/${noteId}`}>
+              <ListGroup.Item action>
+                <span className='font-weight-bold'>{content.trim().split('\n')[0]}</span>
+                <br />
+                <span className='text-muted'>Created: {new Date(createdAt).toLocaleString()}</span>
+              </ListGroup.Item>
+            </LinkContainer>
+          )
+        })}
       </>
     )
   }

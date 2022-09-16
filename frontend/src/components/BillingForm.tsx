@@ -1,11 +1,17 @@
-// @ts-nocheck TODO check this later
-import {useState} from 'react'
+import React, {useState} from 'react'
 import Form from 'react-bootstrap/Form'
 import {CardElement, useStripe, useElements} from '@stripe/react-stripe-js'
 import LoaderButton from './LoaderButton'
 import {useFormFields} from '../lib/hooksLib'
+import {Token} from "@stripe/stripe-js";
 
-export default function BillingForm({isLoading, onSubmit}) {
+interface BillingFormProps {
+  isLoading: boolean;
+  onSubmit: (storage: string, token: Token | undefined, error: any) => void
+}
+
+export default function BillingForm(props: BillingFormProps) {
+  const {isLoading, onSubmit} = props
   const stripe = useStripe()
   const elements = useElements()
   const [fields, handleFieldChange] = useFormFields({
@@ -14,22 +20,24 @@ export default function BillingForm({isLoading, onSubmit}) {
   })
   const [isProcessing, setIsProcessing] = useState(false)
   const [isCardComplete, setIsCardComplete] = useState(false)
-  isLoading = isProcessing || isLoading
+  const isLoadingUpdated = isProcessing || isLoading
 
   function validateForm() {
     return stripe && elements && fields.name !== '' && fields.storage !== '' && isCardComplete
   }
 
-  async function handleSubmitClick(event) {
+  async function handleSubmitClick(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
     if (!stripe || !elements) {
       return
     }
     setIsProcessing(true)
     const cardElement = elements.getElement(CardElement)
-    const {token, error} = await stripe.createToken(cardElement)
-    setIsProcessing(false)
-    onSubmit(fields.storage, {token, error})
+    if(cardElement){
+      const {token, error} = await stripe.createToken(cardElement)
+      setIsProcessing(false)
+      onSubmit(fields.storage, token, error)
+    }
   }
 
   return (
@@ -72,7 +80,7 @@ export default function BillingForm({isLoading, onSubmit}) {
         block='true'
         size='lg'
         type='submit'
-        isLoading={isLoading}
+        isLoading={isLoadingUpdated}
         disabled={!validateForm()}
       >
         Purchase

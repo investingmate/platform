@@ -1,12 +1,15 @@
-// @ts-nocheck TODO check this later
 import {useState} from 'react'
 import {API} from 'aws-amplify'
 import {useNavigate} from 'react-router-dom'
-import {loadStripe} from '@stripe/stripe-js'
+import {loadStripe, Token} from '@stripe/stripe-js'
 import {Elements} from '@stripe/react-stripe-js'
 import config from '../config'
 import {onError} from '../lib/errorLib'
 import BillingForm from '../components/BillingForm'
+
+const fontsData = {
+  fonts: [{cssSrc: 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800'}]
+}
 
 export default function Settings() {
   const nav = useNavigate()
@@ -19,7 +22,7 @@ export default function Settings() {
     })
   }
 
-  async function handleFormSubmit(storage, {token, error}) {
+  async function handleFormSubmit(storage: string, token: Token | undefined, error: any) {
     if (error) {
       onError(error)
       return
@@ -28,7 +31,7 @@ export default function Settings() {
     try {
       await billUser({
         storage,
-        source: token.id,
+        source: token?.id,
       })
       alert('Your card has been charged successfully!')
       nav('/')
@@ -42,11 +45,7 @@ export default function Settings() {
     <div className='Settings'>
       <Elements
         stripe={stripePromise}
-        fonts={[
-          {
-            cssSrc: 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800',
-          },
-        ]}
+        options={fontsData}
       >
         <BillingForm isLoading={isLoading} onSubmit={handleFormSubmit} />
       </Elements>

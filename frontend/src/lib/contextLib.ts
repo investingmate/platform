@@ -1,4 +1,4 @@
-// @ts-nocheck TODO check this later
+// TODO review this later
 const userHasAuthenticated = (status: boolean) => {}
 export function useAppContext() {
   return {
