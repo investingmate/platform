@@ -3,44 +3,44 @@
 //
 
 .form-control {
-  	color: var(--im-input-color);
-  	background-color: var(--im-input-bg);
-	border: $input-border-width solid var(--im-input-border-color);
-  	box-shadow: none !important;
-	//@include box-shadow(var(--im-input-box-shadow));
+  color: var(--im-input-color);
+  background-color: var(--im-input-bg);
+  border: $input-border-width solid var(--im-input-border-color);
+  box-shadow: none !important;
+  //@include box-shadow(var(--im-input-box-shadow));
 
-  	&:focus {
-		color: var(--im-input-focus-color);
-		background-color: var(--im-input-focus-bg);
-		border-color: var(--im-input-focus-border-color);
-		//box-shadow: var(--im-input-focus-box-shadow);
-  	}
+  &:focus {
+    color: var(--im-input-focus-color);
+    background-color: var(--im-input-focus-bg);
+    border-color: var(--im-input-focus-border-color);
+    //box-shadow: var(--im-input-focus-box-shadow);
+  }
 
-  	// Placeholder
-  	&::placeholder {
-    	color: var(--im-input-placeholder-color);
-  	}
+  // Placeholder
+  &::placeholder {
+    color: var(--im-input-placeholder-color);
+  }
 
-  	// Disabled and read-only inputs
-  	&:disabled,
-  	&[readonly] {
-    	color: var(--im-input-disabled-color);
-    	background-color: var(--im-input-disabled-bg);
-    	border-color: var(--im-input-disabled-border-color);
-  	}
+  // Disabled and read-only inputs
+  &:disabled,
+  &[readonly] {
+    color: var(--im-input-disabled-color);
+    background-color: var(--im-input-disabled-bg);
+    border-color: var(--im-input-disabled-border-color);
+  }
 
-  	// File input buttons theming
-  	&::file-selector-button {
-    	color: var(--im-form-file-button-color);
-    	@include gradient-bg(var(--im-form-file-button-bg));
-  	}
+  // File input buttons theming
+  &::file-selector-button {
+    color: var(--im-form-file-button-color);
+    @include gradient-bg(var(--im-form-file-button-bg));
+  }
 
-  	&:hover:not(:disabled):not([readonly])::file-selector-button {
-    	background-color: var(--im-form-file-button-hover-bg);
-  	}
+  &:hover:not(:disabled):not([readonly])::file-selector-button {
+    background-color: var(--im-form-file-button-hover-bg);
+  }
 }
 
 // Readonly controls as plain text
 .form-control-plaintext {
-  	color: var(--im-input-plaintext-color);
+  color: var(--im-input-plaintext-color);
 }

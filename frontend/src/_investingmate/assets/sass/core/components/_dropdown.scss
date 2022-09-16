@@ -1,16 +1,15 @@
-
 // The dropdown menu
 .dropdown-menu {
-	--#{$prefix}dropdown-color: var(--im-dropdown-color);
-	--#{$prefix}dropdown-bg: var(--im-dropdown-bg);
-	--#{$prefix}dropdown-border-color: var(--im-dropdown-border-color);
-	--#{$prefix}dropdown-divider-bg: var(--im-dropdown-divider-bg);
-	--#{$prefix}dropdown-box-shadow: var(--im-dropdown-box-shadow);
-	--#{$prefix}dropdown-link-color: var(--im-dropdown-link-color);
-	--#{$prefix}dropdown-link-hover-color: var(--im-dropdown-link-hover-color);
-	--#{$prefix}dropdown-link-hover-bg: var(--im-dropdown-link-hover-bg);
-	--#{$prefix}dropdown-link-active-color: var(--im-dropdown-link-active-color);
-	--#{$prefix}dropdown-link-active-bg: var(--im-dropdown-link-active-bg);
-	--#{$prefix}dropdown-link-disabled-color: var(--im-dropdown-link-disabled-color);
-	--#{$prefix}dropdown-header-color: var(--im-dropdown-header-color);
+  --#{$prefix}dropdown-color: var(--im-dropdown-color);
+  --#{$prefix}dropdown-bg: var(--im-dropdown-bg);
+  --#{$prefix}dropdown-border-color: var(--im-dropdown-border-color);
+  --#{$prefix}dropdown-divider-bg: var(--im-dropdown-divider-bg);
+  --#{$prefix}dropdown-box-shadow: var(--im-dropdown-box-shadow);
+  --#{$prefix}dropdown-link-color: var(--im-dropdown-link-color);
+  --#{$prefix}dropdown-link-hover-color: var(--im-dropdown-link-hover-color);
+  --#{$prefix}dropdown-link-hover-bg: var(--im-dropdown-link-hover-bg);
+  --#{$prefix}dropdown-link-active-color: var(--im-dropdown-link-active-color);
+  --#{$prefix}dropdown-link-active-bg: var(--im-dropdown-link-active-bg);
+  --#{$prefix}dropdown-link-disabled-color: var(--im-dropdown-link-disabled-color);
+  --#{$prefix}dropdown-header-color: var(--im-dropdown-header-color);
 }

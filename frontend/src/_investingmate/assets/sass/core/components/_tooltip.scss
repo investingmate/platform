@@ -2,30 +2,29 @@
 //  Tooltip
 //
 
-
 // Base
 .tooltip {
-    --#{$prefix}tooltip-color: var(--im-tooltip-color);
-    --#{$prefix}tooltip-bg: var(--im-tooltip-bg);
-    --#{$prefix}tooltip-opacity: var(--im-tooltip-opacity);
+  --#{$prefix}tooltip-color: var(--im-tooltip-color);
+  --#{$prefix}tooltip-bg: var(--im-tooltip-bg);
+  --#{$prefix}tooltip-opacity: var(--im-tooltip-opacity);
 
+  .tooltip-inner {
+    box-shadow: var(--im-tooltip-box-shadow);
+  }
+
+  &.tooltop-auto-width {
     .tooltip-inner {
-        box-shadow: var(--im-tooltip-box-shadow);
+      white-space: nowrap;
+      max-width: none;
     }
+  }
 
-    &.tooltop-auto-width {
-       	.tooltip-inner {
-       		white-space: nowrap;
-  			max-width: none;
-        }
-    }
-
-    // Inverse
-    &.tooltip-inverse {
-        @include tooltip-theme(
-            $bg-color: var(--im-dark), 
-            $color: var(--im-dark-inverse),
-            $arrow-color: var(--im-dark),
-        );
-    }
+  // Inverse
+  &.tooltip-inverse {
+    @include tooltip-theme(
+      $bg-color: var(--im-dark),
+      $color: var(--im-dark-inverse),
+      $arrow-color: var(--im-dark)
+    );
+  }
 }
