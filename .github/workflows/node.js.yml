@@ -4,7 +4,9 @@
 name: Node.js CI
 
 on:
-  workflow_dispatch:
+  push:
+    branches-ignore:
+      - 'dependabot/*'
 
 jobs:
   build:
@@ -33,6 +35,7 @@ jobs:
   
   deploy_dev:
     - name: Deploy to Development
+      if: ${{ github.ref == 'refs/heads/development' }}
       needs: [build]
       runs-on: ubuntu-latest
       environment: Development
@@ -48,6 +51,7 @@ jobs:
 
   deploy_stag:
     - name: Deploy to Staging
+      if: ${{ github.ref == 'refs/heads/staging' }}
       needs: [deploy_dev]
       runs-on: ubuntu-latest
       environment: Staging
@@ -63,6 +67,7 @@ jobs:
 
   deploy_prod:
     - name: Deploy to Production
+      if: ${{ github.ref == 'refs/heads/production' }}
       needs: [deploy_stag]
       runs-on: ubuntu-latest
       environment: Production
