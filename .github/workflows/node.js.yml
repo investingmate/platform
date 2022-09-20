@@ -34,49 +34,49 @@ jobs:
           CI: false
   
   deploy_dev:
-    - name: Deploy to Development
-      if: ${{ github.ref == 'refs/heads/development' }}
-      needs: [build]
-      runs-on: ubuntu-latest
-      environment: Development
+    name: Deploy to Development
+    if: ${{ github.ref == 'refs/heads/development' }}
+    needs: [build]
+    runs-on: ubuntu-latest
+    environment: Development
 
     steps: 
       - name: npm install and build
-          env:
-            AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
-            AWS_SECRET_ACCESS_KEY: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
-          run: |
-            npm install
-            npx sst deploy --stage dev
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
+        run: |
+          npm install
+          npx sst deploy --stage dev
 
   deploy_stag:
-    - name: Deploy to Staging
-      if: ${{ github.ref == 'refs/heads/staging' }}
-      needs: [deploy_dev]
-      runs-on: ubuntu-latest
-      environment: Staging
+    name: Deploy to Staging
+    if: ${{ github.ref == 'refs/heads/staging' }}
+    needs: [deploy_dev]
+    runs-on: ubuntu-latest
+    environment: Staging
 
     steps: 
       - name: npm install and build
-          env:
-            AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
-            AWS_SECRET_ACCESS_KEY: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
-          run: |
-            npm install
-            npx sst deploy --stage stag
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
+        run: |
+          npm install
+          npx sst deploy --stage stag
 
   deploy_prod:
-    - name: Deploy to Production
-      if: ${{ github.ref == 'refs/heads/production' }}
-      needs: [deploy_stag]
-      runs-on: ubuntu-latest
-      environment: Production
+    name: Deploy to Production
+    if: ${{ github.ref == 'refs/heads/production' }}
+    needs: [deploy_stag]
+    runs-on: ubuntu-latest
+    environment: Production
 
     steps: 
       - name: npm install and build
-          env:
-            AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
-            AWS_SECRET_ACCESS_KEY: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
-          run: |
-            npm install
-            npx sst deploy --stage prod
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
+        run: |
+          npm install
+          npx sst deploy --stage prod
