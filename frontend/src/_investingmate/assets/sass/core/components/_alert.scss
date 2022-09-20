@@ -1,15 +1,15 @@
 //
 // Alert
 //
-	
-@each $name, $value in $theme-colors {
-	.alert-#{$name} {
-		color: var(--im-#{$name});
-		border-color: var(--im-#{$name});
-		background-color: var(--im-#{$name}-light);
 
-		.alert-link {
-    		color: var(--im-#{$name});
-  		}
-	}
+@each $name, $value in $theme-colors {
+  .alert-#{$name} {
+    color: var(--im-#{$name});
+    border-color: var(--im-#{$name});
+    background-color: var(--im-#{$name}-light);
+
+    .alert-link {
+      color: var(--im-#{$name});
+    }
+  }
 }

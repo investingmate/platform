@@ -1,3 +1,4 @@
+import { CertificateStack } from "./CertificateStack";
 import { StorageStack } from "./StorageStack";
 import { ApiStack } from "./ApiStack";
 import { AuthStack } from "./AuthStack";
@@ -17,6 +18,7 @@ export default function (app) {
     },
   });
   app
+    .stack(CertificateStack)
     .stack(StorageStack)
     .stack(ConfigStack)
     .stack(ApiStack)

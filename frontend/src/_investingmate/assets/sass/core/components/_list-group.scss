@@ -3,17 +3,17 @@
 //
 
 .list-group {
-	--#{$prefix}list-group-color: var(--im-list-group-color);
-	--#{$prefix}list-group-bg: var(--im-list-group-bg);
-	--#{$prefix}list-group-border-color: var(--im-list-group-border-color);
-	--#{$prefix}list-group-action-color: var(--im-list-group-action-color);
-	--#{$prefix}list-group-action-hover-color: var(--im-list-group-action-hover-color);
-	--#{$prefix}list-group-action-hover-bg: var(--im-list-group-hover-bg);
-	--#{$prefix}list-group-action-active-color: var(--im-list-group-action-active-color);
-	--#{$prefix}list-group-action-active-bg: var(--im-list-group-action-active-bg);
-	--#{$prefix}list-group-disabled-color: var(--im-list-group-disabled-color);
-	--#{$prefix}list-group-disabled-bg: var(--im-list-group-disabled-bg);
-	--#{$prefix}list-group-active-color: var(--im-list-group-active-color);
-	--#{$prefix}list-group-active-bg: var(--im-list-group-active-bg);
-	--#{$prefix}list-group-active-border-color: var(--im-list-group-active-border-color);
+  --#{$prefix}list-group-color: var(--im-list-group-color);
+  --#{$prefix}list-group-bg: var(--im-list-group-bg);
+  --#{$prefix}list-group-border-color: var(--im-list-group-border-color);
+  --#{$prefix}list-group-action-color: var(--im-list-group-action-color);
+  --#{$prefix}list-group-action-hover-color: var(--im-list-group-action-hover-color);
+  --#{$prefix}list-group-action-hover-bg: var(--im-list-group-hover-bg);
+  --#{$prefix}list-group-action-active-color: var(--im-list-group-action-active-color);
+  --#{$prefix}list-group-action-active-bg: var(--im-list-group-action-active-bg);
+  --#{$prefix}list-group-disabled-color: var(--im-list-group-disabled-color);
+  --#{$prefix}list-group-disabled-bg: var(--im-list-group-disabled-bg);
+  --#{$prefix}list-group-active-color: var(--im-list-group-active-color);
+  --#{$prefix}list-group-active-bg: var(--im-list-group-active-bg);
+  --#{$prefix}list-group-active-border-color: var(--im-list-group-active-border-color);
 }
