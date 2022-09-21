@@ -10,6 +10,7 @@ on:
 
 jobs:
   build:
+    name: Building Frontend
     runs-on: ubuntu-latest
 
     strategy:
@@ -24,13 +25,27 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-
+          working-directory: frontend
+          
+      - name: Cache node_modules
+        uses: actions/cache@v3
+        with:
+          working-directory: frontend
+          # A list of files, directories, and wildcard patterns to cache and restore
+          path: node_modules
+          # An explicit key for restoring and saving the cache
+          key: ubuntu-latest-node-v${{ matrix.node-version }}-deps-${{ hashFiles(format('{0}{1}', github.workspace, '/package-lock.json')) }}
+          
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        working-directory: frontend
+        run: npm install
+        
       - name: npm install, build and test frontend
+        working-directory: frontend
         env:
           CI: false
-        run: |
-          cd frontend && npm install
-          npm run build --if-present
+        run: npm run build --if-present
   
   deploy_dev:
     name: Deploy to Development
@@ -47,8 +62,6 @@ jobs:
         run: |
           npm install
           npx sst deploy --stage dev
-          with:
-            path: ${{ github.workspace }}
 
   deploy_stag:
     name: Deploy to Staging
