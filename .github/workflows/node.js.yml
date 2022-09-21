@@ -58,7 +58,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
         run: |
-          npm run sst deploy --stage dev
+          npm run deploy --stage dev
 
   deploy_stag:
     name: Deploy to Staging
@@ -73,7 +73,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
         run: |
-          npx sst deploy --stage stag
+          npm run deploy --stage stag
 
   deploy_prod:
     name: Deploy to Production
@@ -88,4 +88,4 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
         run: |
-          npx sst deploy --stage prod
+          npm run deploy --stage prod
