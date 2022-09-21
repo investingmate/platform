@@ -47,6 +47,8 @@ jobs:
         run: |
           npm install
           npx sst deploy --stage dev
+          with:
+            path: ${{ github.workspace }}
 
   deploy_stag:
     name: Deploy to Staging
