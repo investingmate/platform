@@ -29,18 +29,17 @@ jobs:
       - name: Cache node_modules
         uses: actions/cache@v3
         with:
-          working-directory: frontend
           # A list of files, directories, and wildcard patterns to cache and restore
-          path: node_modules
+          path: frontend/node_modules
           # An explicit key for restoring and saving the cache
-          key: ubuntu-latest-node-v${{ matrix.node-version }}-deps-${{ hashFiles(format('{0}{1}', github.workspace, '/package-lock.json')) }}
+          key: ubuntu-latest-node-v${{ matrix.node-version }}-deps-${{ hashFiles(format('{0}{1}', github.workspace, '/frontend/package-lock.json')) }}
           
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         working-directory: frontend
         run: npm install
         
-      - name: npm install, build and test frontend
+      - name: Build frontend
         working-directory: frontend
         env:
           CI: false
