@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    name: Building Frontend
+    name: Building
     runs-on: ubuntu-latest
 
     strategy:
@@ -34,21 +34,15 @@ jobs:
       - uses: actions/cache@v3
         id: npm-cache
         with:
-          path: frontend/${{ steps.npm-cache-dir.outputs.dir }}
+          path: ${{ steps.npm-cache-dir.outputs.dir }}
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
         
       - name: Install dependencies
         if: steps.npm-cache.outputs.cache-hit != 'true'
-        working-directory: frontend
-        run: npm install
-        
-      - name: Build frontend
-        working-directory: frontend
-        env:
-          CI: false
-        run: npm run build --if-present
+        run: |
+          npm install
   
   deploy_dev:
     name: Deploy to Development
@@ -64,7 +58,6 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
         run: |
-          npm install
           npx sst deploy --stage dev
 
   deploy_stag:
@@ -80,7 +73,6 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
         run: |
-          npm install
           npx sst deploy --stage stag
 
   deploy_prod:
@@ -96,5 +88,4 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
         run: |
-          npm install
           npx sst deploy --stage prod
