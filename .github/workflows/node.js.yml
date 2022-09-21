@@ -53,7 +53,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: npm install and build
+      - name: Npx SST Deploy Dev
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
@@ -68,7 +68,7 @@ jobs:
     environment: Staging
 
     steps: 
-      - name: npm install and build
+      - name: Npx SST Deploy Stag
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
@@ -83,7 +83,7 @@ jobs:
     environment: Production
 
     steps: 
-      - name: npm install and build
+      - name: Npx SST Deploy Prod
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
