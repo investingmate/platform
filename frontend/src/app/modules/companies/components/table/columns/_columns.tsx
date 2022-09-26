@@ -20,8 +20,8 @@ const usersColumns: ReadonlyArray<Column<User>> = [
     Cell: ({...props}) => <InfoCell user={props.data[props.row.index]} />,
   },
   {
-    Header: (props) => <CustomHeader tableProps={props} title='Role' className='min-w-125px' />,
-    accessor: 'role',
+    Header: (props) => <CustomHeader tableProps={props} title='Sector' className='min-w-125px' />,
+    accessor: 'sector',
   },
   // {
   //   Header: (props) => (
@@ -32,14 +32,14 @@ const usersColumns: ReadonlyArray<Column<User>> = [
   // },
   {
     Header: (props) => (
-      <CustomHeader tableProps={props} title='Two steps' className='min-w-125px' />
+      <CustomHeader tableProps={props} title='Market cap' className='min-w-125px' />
     ),
     id: 'two_steps',
     Cell: ({...props}) => <TwoStepsCell two_steps={props.data[props.row.index].two_steps} />,
   },
   {
     Header: (props) => (
-      <CustomHeader tableProps={props} title='Joined day' className='min-w-125px' />
+      <CustomHeader tableProps={props} title='Last price' className='min-w-125px' />
     ),
     accessor: 'joined_day',
   },

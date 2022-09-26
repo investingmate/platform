@@ -1,22 +1,12 @@
-const ListLoading = () => {
-  const styles = {
-    borderRadius: '0.475rem',
-    boxShadow: '0 0 50px 0 rgb(82 63 105 / 15%)',
-    backgroundColor: '#fff',
-    color: '#7e8299',
-    fontWeight: '500',
-    margin: '0',
-    padding: '1rem 2rem',
-    top: 'calc(50% - 2rem)',
-    left: 'calc(50% - 300px)',
-    height: '300px',
-    width: '300px',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
+import Lottie from "lottie-react";
+import loading from "../../../../../_investingmate/assets/animation/loading.json";
 
-  return <div style={{...styles, position: 'absolute', textAlign: 'center'}}>Processing...</div>
+const ListLoading = () => {
+  return (
+    <div className="loading-container">
+      <Lottie animationData={loading} loop={true} />
+    </div>
+  );
 }
 
 export {ListLoading}
