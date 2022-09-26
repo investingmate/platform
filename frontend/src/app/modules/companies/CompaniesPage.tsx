@@ -1,43 +1,38 @@
 import {Route, Routes, Outlet, Navigate} from 'react-router-dom'
-import {CompaniesHeader} from './CompaniesHeader'
-import {Companies} from './components/Companies'
+import {CompaniesListWrapper} from './components/CompaniesList'
+import {PageLink, PageTitle} from "../../../_investingmate/layout/core/PageData";
 
-// const notesBreadcrumbs = [
-//   {
-//     title: "Note Management",
-//     path: "/apps/notes",
-//     isSeparator: false,
-//     isActive: false,
-//   },
-//   {
-//     title: "",
-//     path: "",
-//     isSeparator: true,
-//     isActive: false,
-//   },
-// ];
+const usersBreadcrumbs: Array<PageLink> = [
+  {
+    title: 'User Management',
+    path: '/apps/user-management/users',
+    isSeparator: false,
+    isActive: false,
+  },
+  {
+    title: '',
+    path: '',
+    isSeparator: true,
+    isActive: false,
+  },
+]
 
 const CompaniesPage = () => {
+  console.log('render')
   return (
     <Routes>
-      <Route
-        element={
-          <>
-            <CompaniesHeader />
-            <Outlet />
-          </>
-        }
-      >
+      <Route element={<Outlet />}>
         <Route
-          path='overview'
+          path='companies-list'
           element={
             <>
-              <Companies />
+              <PageTitle breadcrumbs={usersBreadcrumbs}>Companies list</PageTitle>
+              <CompaniesListWrapper />
             </>
           }
         />
       </Route>
-      <Route index element={<Navigate to='/companies/overview' />} />
+      <Route index element={<Navigate to='/companies/companies-list' />} />
     </Routes>
   )
 }

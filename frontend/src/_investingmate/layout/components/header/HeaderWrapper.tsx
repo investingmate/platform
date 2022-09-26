@@ -2,7 +2,7 @@
 import clsx from 'clsx'
 import React from 'react'
 import {Link} from 'react-router-dom'
-import {KTSVG, toAbsoluteUrl} from '../../../helpers'
+import {IMSVG, toAbsoluteUrl} from '../../../helpers'
 import {useLayout} from '../../core'
 import {DefaultTitle} from './page-title/DefaultTitle'
 import {Topbar} from './Topbar'
@@ -30,7 +30,7 @@ export function HeaderWrapper() {
               className='btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px'
               id='im_aside_mobile_toggle'
             >
-              <KTSVG path='/media/icons/duotune/abstract/abs015.svg' className='svg-icon-2x mt-1' />
+              <IMSVG path='/media/icons/duotune/abstract/abs015.svg' className='svg-icon-2x mt-1' />
             </div>
           </div>
         )}

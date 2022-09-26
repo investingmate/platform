@@ -6,7 +6,7 @@ import {
   ToggleComponent,
   StickyComponent,
 } from '../../assets/ts/components'
-import {KTSVG} from '../../helpers'
+import {IMSVG} from '../../helpers'
 
 export function ScrollTop() {
   const {pathname} = useLocation()
@@ -51,7 +51,7 @@ export function ScrollTop() {
 
   return (
     <div id='im_scrolltop' className='scrolltop' data-im-scrolltop='true'>
-      <KTSVG path='/media/icons/duotune/arrows/arr066.svg' />
+      <IMSVG path='/media/icons/duotune/arrows/arr066.svg' />
     </div>
   )
 }

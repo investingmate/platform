@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import {KTSVG} from '../../../helpers'
+import {IMSVG} from '../../../helpers'
 import {ThemeModeType, useThemeMode} from './ThemeModeProvider'
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
@@ -33,14 +33,14 @@ const ThemeModeSwitcher = ({
         data-im-menu-placement={menuPlacement}
       >
         {mode === 'dark' && (
-          <KTSVG
+          <IMSVG
             path='/media/icons/duotune/general/gen061.svg'
             className={clsx('theme-light-hide', toggleBtnIconClass)}
           />
         )}
 
         {mode === 'light' && (
-          <KTSVG
+          <IMSVG
             path='/media/icons/duotune/general/gen060.svg'
             className={clsx('theme-dark-hide', toggleBtnIconClass)}
           />
@@ -61,7 +61,7 @@ const ThemeModeSwitcher = ({
             onClick={() => switchMode('light')}
           >
             <span className='menu-icon' data-im-element='icon'>
-              <KTSVG path='/media/icons/duotune/general/gen060.svg' className='svg-icon-3' />
+              <IMSVG path='/media/icons/duotune/general/gen060.svg' className='svg-icon-3' />
             </span>
             <span className='menu-title'>Light</span>
           </a>
@@ -76,7 +76,7 @@ const ThemeModeSwitcher = ({
             onClick={() => switchMode('dark')}
           >
             <span className='menu-icon' data-im-element='icon'>
-              <KTSVG path='/media/icons/duotune/general/gen061.svg' className='svg-icon-3' />
+              <IMSVG path='/media/icons/duotune/general/gen061.svg' className='svg-icon-3' />
             </span>
             <span className='menu-title'>Dark</span>
           </a>
@@ -91,7 +91,7 @@ const ThemeModeSwitcher = ({
             onClick={() => switchMode('system')}
           >
             <span className='menu-icon' data-im-element='icon'>
-              <KTSVG path='/media/icons/duotune/general/gen062.svg' className='svg-icon-3' />
+              <IMSVG path='/media/icons/duotune/general/gen062.svg' className='svg-icon-3' />
             </span>
             <span className='menu-title'>System</span>
           </a>

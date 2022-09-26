@@ -8,6 +8,7 @@ import config from './config'
 import {AuthProvider} from './app/modules/auth'
 import {AppRoutes} from './app/routing/AppRoutes'
 import {InvestingMateI18nProvider} from './_investingmate/i18n/InvestingMatei18n'
+import {QueryClient, QueryClientProvider} from 'react-query'
 
 Amplify.configure({
   Auth: {
@@ -41,14 +42,17 @@ Amplify.configure({
 })
 
 initSentry()
-
+const queryClient = new QueryClient()
 const container = document.getElementById('root')
 if (container) {
   createRoot(container).render(
-    <InvestingMateI18nProvider>
-      <AuthProvider>
-        <AppRoutes />
-      </AuthProvider>
-    </InvestingMateI18nProvider>
+    <QueryClientProvider client={queryClient}>
+      <InvestingMateI18nProvider>
+        <AuthProvider>
+          <AppRoutes />
+        </AuthProvider>
+      </InvestingMateI18nProvider>
+    </QueryClientProvider>
+
   )
 }

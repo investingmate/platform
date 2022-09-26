@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-import {KTSVG, toAbsoluteUrl} from '../../../_investingmate/helpers'
+import {IMSVG, toAbsoluteUrl} from '../../../../../_investingmate/helpers'
 
 const CompaniesHeader = () => {
   return (
@@ -22,7 +22,7 @@ const CompaniesHeader = () => {
                     Max Smith
                   </a>
                   <a href='#'>
-                    <KTSVG
+                    <IMSVG
                       path='/media/icons/duotune/general/gen026.svg'
                       className='svg-icon-1 svg-icon-primary'
                     />
@@ -42,7 +42,7 @@ const CompaniesHeader = () => {
                     href='#'
                     className='d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2'
                   >
-                    <KTSVG
+                    <IMSVG
                       path='/media/icons/duotune/communication/com006.svg'
                       className='svg-icon-4 me-1'
                     />
@@ -52,7 +52,7 @@ const CompaniesHeader = () => {
                     href='#'
                     className='d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2'
                   >
-                    <KTSVG
+                    <IMSVG
                       path='/media/icons/duotune/general/gen018.svg'
                       className='svg-icon-4 me-1'
                     />
@@ -62,7 +62,7 @@ const CompaniesHeader = () => {
                     href='#'
                     className='d-flex align-items-center text-gray-400 text-hover-primary mb-2'
                   >
-                    <KTSVG
+                    <IMSVG
                       path='/media/icons/duotune/communication/com011.svg'
                       className='svg-icon-4 me-1'
                     />
@@ -73,7 +73,7 @@ const CompaniesHeader = () => {
 
               <div className='d-flex my-4'>
                 <a href='#' className='btn btn-sm btn-light me-2' id='im_user_follow_button'>
-                  <KTSVG
+                  <IMSVG
                     path='/media/icons/duotune/arrows/arr012.svg'
                     className='svg-icon-3 d-none'
                   />
@@ -92,7 +92,7 @@ const CompaniesHeader = () => {
                 <div className='d-flex flex-wrap'>
                   <div className='border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3'>
                     <div className='d-flex align-items-center'>
-                      <KTSVG
+                      <IMSVG
                         path='/media/icons/duotune/arrows/arr066.svg'
                         className='svg-icon-3 svg-icon-success me-2'
                       />
@@ -104,7 +104,7 @@ const CompaniesHeader = () => {
 
                   <div className='border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3'>
                     <div className='d-flex align-items-center'>
-                      <KTSVG
+                      <IMSVG
                         path='/media/icons/duotune/arrows/arr065.svg'
                         className='svg-icon-3 svg-icon-danger me-2'
                       />
@@ -116,7 +116,7 @@ const CompaniesHeader = () => {
 
                   <div className='border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3'>
                     <div className='d-flex align-items-center'>
-                      <KTSVG
+                      <IMSVG
                         path='/media/icons/duotune/arrows/arr066.svg'
                         className='svg-icon-3 svg-icon-success me-2'
                       />

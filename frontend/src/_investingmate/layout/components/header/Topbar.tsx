@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import {KTSVG, toAbsoluteUrl} from '../../../helpers'
+import {IMSVG, toAbsoluteUrl} from '../../../helpers'
 import {
   // HeaderNotificationsMenu,
   HeaderUserMenu,
@@ -32,7 +32,7 @@ const Topbar = () => {
           data-im-menu-placement='bottom-end'
           data-im-menu-flip='bottom'
         >
-          <KTSVG path='/media/flags/australia.svg' className={toolbarButtonIconSizeClass} />
+          <IMSVG path='/media/flags/australia.svg' className={toolbarButtonIconSizeClass} />
         </div>
         {/* <QuickLinks /> */}
         {/* end::Menu wrapper */}
