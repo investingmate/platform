@@ -47,11 +47,26 @@ jobs:
   deploy_dev:
     name: Deploy to Development
     if: ${{ github.ref == 'refs/heads/development' }}
-    needs: [build]
     runs-on: ubuntu-latest
     environment: Development
+    strategy:
+      matrix:
+        node-version: [16.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+          
+      - name: Get npm cache directory
+        id: npm-cache-dir
+        run: |
+          echo "::set-output name=dir::$(npm config get cache)"
+          
       - uses: actions/cache@v3
         id: npm-cache
         with:
@@ -59,6 +74,11 @@ jobs:
           key: ${{ runner.os }}-node-v3-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
+        
+      - name: Install dependencies
+        if: steps.npm-cache.outputs.cache-hit != 'true'
+        run: |
+          npm install
             
       - uses: actions/checkout@v3
       - name: Npx SST Deploy Dev
