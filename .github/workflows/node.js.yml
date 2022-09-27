@@ -52,7 +52,7 @@ jobs:
     environment: Development
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/cache@v3
       - name: Npx SST Deploy Dev
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
