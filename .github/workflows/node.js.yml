@@ -35,7 +35,7 @@ jobs:
         id: npm-cache
         with:
           path: ${{ steps.npm-cache-dir.outputs.dir }}
-          key: ${{ runner.os }}-node-v2-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-node-v3-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
         
