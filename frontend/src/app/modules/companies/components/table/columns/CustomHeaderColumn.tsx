@@ -1,16 +1,16 @@
-// @ts-nocheck
-import {FC} from 'react'
+import {CSSProperties, FC} from 'react'
 import {ColumnInstance} from 'react-table'
-import {User} from '../../core/_models'
+// import {User} from '../../core/_models'
 
 type Props = {
-  column: ColumnInstance<User>
+  column: ColumnInstance
+  style?: CSSProperties | undefined
 }
 
-const CustomHeaderColumn: FC<Props> = ({column}) => (
+const CustomHeaderColumn: FC<Props> = ({column, style}) => (
   <>
     {column.Header && typeof column.Header === 'string' ? (
-      <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+      <th style={style} {...column.getHeaderProps()}>{column.render('Header')}</th>
     ) : (
       column.render('Header')
     )}

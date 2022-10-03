@@ -1,6 +1,6 @@
 import {ID, Response} from '../../../../_investingmate/helpers'
 
-export type User = {
+export type Company = {
   id?: ID
   name?: string
   avatar?: string
@@ -17,9 +17,9 @@ export type User = {
   }
 }
 
-export type UsersQueryResponse = Response<Array<User>>
+export type CompaniesQueryResponse = Response<Array<Company>>
 
-export const initialUser: User = {
+export const initialUser: Company = {
   avatar: 'avatars/300-6.jpg',
   position: 'Art Director',
   role: 'Administrator',

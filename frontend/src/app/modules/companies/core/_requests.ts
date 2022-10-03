@@ -1,46 +1,46 @@
 import axios, {AxiosResponse} from 'axios'
 import {ID, Response} from '../../../../_investingmate/helpers'
-import {User, UsersQueryResponse} from './_models'
+import {Company, CompaniesQueryResponse} from './_models'
 
-const API_URL = process.env.REACT_APP_THEME_API_URL
+const API_URL = process.env.REACT_APP_API_URL
 const COMPANY_URL = `${API_URL}/company`
-const USER_URL = `${API_URL}/user`
-const GET_USERS_URL = `${API_URL}/users/query`
+const Company_URL = `${API_URL}/Company`
+const GET_COMPANIES_URL = `${API_URL}companies/list`
+// const GET_COMPANIES_URL = `${API_URL}/companies/query`
 
-const getUsers = (query: string): Promise<UsersQueryResponse> => {
+console.log({API_URL})
+console.log({GET_COMPANIES_URL})
+
+const getCompanies = (query: string): Promise<CompaniesQueryResponse> => {
   return axios
-    .get(`${GET_USERS_URL}?${query}`)
-    .then((d: AxiosResponse<UsersQueryResponse>) => d.data)
+    .get(`${GET_COMPANIES_URL}`)
+    // .get(`${GET_COMPANIES_URL}?${query}`)
+    .then((d: AxiosResponse<CompaniesQueryResponse>) => d.data)
 }
 
-const getUserById = (id: ID): Promise<User | undefined> => {
+const getCompanyById = (id: ID): Promise<Company | undefined> => {
   return axios
-    .get(`${USER_URL}/${id}`)
-    .then((response: AxiosResponse<Response<User>>) => response.data)
-    .then((response: Response<User>) => response.data)
+    .get(`${Company_URL}/${id}`)
+    .then((response: AxiosResponse<Response<Company>>) => response.data)
+    .then((response: Response<Company>) => response.data)
 }
 
-const createUser = (user: User): Promise<User | undefined> => {
+const createCompany = (Company: Company): Promise<Company | undefined> => {
   return axios
-    .put(USER_URL, user)
-    .then((response: AxiosResponse<Response<User>>) => response.data)
-    .then((response: Response<User>) => response.data)
+    .put(Company_URL, Company)
+    .then((response: AxiosResponse<Response<Company>>) => response.data)
+    .then((response: Response<Company>) => response.data)
 }
 
-const updateUser = (user: User): Promise<User | undefined> => {
+const updateCompany = (Company: Company): Promise<Company | undefined> => {
   return axios
-    .post(`${USER_URL}/${user.id}`, user)
-    .then((response: AxiosResponse<Response<User>>) => response.data)
-    .then((response: Response<User>) => response.data)
+    .post(`${Company_URL}/${Company.id}`, Company)
+    .then((response: AxiosResponse<Response<Company>>) => response.data)
+    .then((response: Response<Company>) => response.data)
 }
 
-const deleteUser = (userId: ID): Promise<void> => {
-  return axios.delete(`${USER_URL}/${userId}`).then(() => {})
-}
-
-const deleteSelectedUsers = (userIds: Array<ID>): Promise<void> => {
-  const requests = userIds.map((id) => axios.delete(`${USER_URL}/${id}`))
-  return axios.all(requests).then(() => {})
+const deleteCompany = (CompanyId: ID): Promise<void> => {
+  return axios.delete(`${Company_URL}/${CompanyId}`).then(() => {})
 }
 
 const deleteSelectedCompanies = (ids: Array<ID>): Promise<void> => {
@@ -48,4 +48,4 @@ const deleteSelectedCompanies = (ids: Array<ID>): Promise<void> => {
   return axios.all(requests).then(() => {})
 }
 
-export {getUsers, deleteUser, deleteSelectedUsers, getUserById, createUser, updateUser, deleteSelectedCompanies}
+export {getCompanies, deleteCompany, getCompanyById, createCompany, updateCompany, deleteSelectedCompanies}

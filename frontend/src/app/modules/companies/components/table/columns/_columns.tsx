@@ -2,13 +2,13 @@
 import {Column} from 'react-table'
 import {InfoCell} from './InfoCell'
 import {TwoStepsCell} from './TwoStepsCell'
-import {ActionsCell} from './ActionsCell'
+// import {ActionsCell} from './ActionsCell'
 import {SelectionCell} from './SelectionCell'
 import {CustomHeader} from './CustomHeader'
 import {SelectionHeader} from './SelectionHeader'
 import {User} from '../../core/_models'
 
-const usersColumns: ReadonlyArray<Column<User>> = [
+const companiesColumns: ReadonlyArray<Column<User>> = [
   {
     Header: (props) => <SelectionHeader tableProps={props} />,
     id: 'selection',
@@ -41,15 +41,15 @@ const usersColumns: ReadonlyArray<Column<User>> = [
     Header: (props) => (
       <CustomHeader tableProps={props} title='Last price' className='min-w-125px' />
     ),
-    accessor: 'joined_day',
+    accessor: 'last_price',
   },
-  {
-    Header: (props) => (
-      <CustomHeader tableProps={props} title='Actions' className='text-end min-w-100px' />
-    ),
-    id: 'actions',
-    Cell: ({...props}) => <ActionsCell id={props.data[props.row.index].id} />,
-  },
+  // {
+  //   Header: (props) => (
+  //     <CustomHeader tableProps={props} title='Actions' className='text-end min-w-100px' />
+  //   ),
+  //   id: 'actions',
+  //   Cell: ({...props}) => <ActionsCell id={props.data[props.row.index].id} />,
+  // },
 ]
 
-export {usersColumns}
+export {companiesColumns}

@@ -5,7 +5,7 @@ import {MenuComponent} from '../../../../../../_investingmate/assets/ts/componen
 import {ID, IMSVG, QUERIES} from '../../../../../../_investingmate/helpers'
 import {useListView} from '../../../core/ListViewProvider'
 import {useQueryResponse} from '../../../core/QueryResponseProvider'
-import {deleteUser} from '../../../core/_requests'
+import {deleteCompany} from "../../../core/_requests";
 
 type Props = {
   id: ID
@@ -24,11 +24,11 @@ const ActionsCell: FC<Props> = ({id}) => {
     setItemIdForUpdate(id)
   }
 
-  const deleteItem = useMutation(() => deleteUser(id), {
+  const deleteItem = useMutation(() => deleteCompany(id), {
     // 💡 response of the mutation is passed to onSuccess
     onSuccess: () => {
       // ✅ update detail view directly
-      queryClient.invalidateQueries([`${QUERIES.USERS_LIST}-${query}`])
+      queryClient.invalidateQueries([`${QUERIES.COMPANIES_LIST}-${query}`])
     },
   })
 

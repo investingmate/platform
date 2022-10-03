@@ -13,7 +13,7 @@ const CompaniesListGrouping = () => {
     // 💡 response of the mutation is passed to onSuccess
     onSuccess: () => {
       // ✅ update detail view directly
-      queryClient.invalidateQueries([`${QUERIES.USERS_LIST}-${query}`])
+      queryClient.invalidateQueries([`${QUERIES.COMPANIES_LIST}-${query}`])
       clearSelected()
     },
   })

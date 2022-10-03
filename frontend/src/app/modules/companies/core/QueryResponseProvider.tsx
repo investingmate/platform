@@ -10,11 +10,11 @@ import {
   stringifyRequestQuery,
   WithChildren,
 } from '../../../../_investingmate/helpers'
-import {getUsers} from './_requests'
-import {User} from './_models'
+import {getCompanies} from './_requests'
 import {useQueryRequest} from './QueryRequestProvider'
+import {Company} from "./_models";
 
-const QueryResponseContext = createResponseContext<User>(initialQueryResponse)
+const QueryResponseContext = createResponseContext<Company>(initialQueryResponse)
 const QueryResponseProvider: FC<WithChildren> = ({children}) => {
   console.log('QueryResponseProvider')
   const {state} = useQueryRequest()
@@ -32,9 +32,9 @@ const QueryResponseProvider: FC<WithChildren> = ({children}) => {
     refetch,
     data: response,
   } = useQuery(
-    `${QUERIES.USERS_LIST}-${query}`,
+    `${QUERIES.COMPANIES_LIST}-${query}`,
     () => {
-      return getUsers(query)
+      return getCompanies(query)
     },
     {cacheTime: 0, keepPreviousData: true, refetchOnWindowFocus: false}
   )
