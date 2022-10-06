@@ -56,11 +56,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      
-      - name: Deploying Development
-        uses: serverless/github-action@v3.1
-        with:
-          args: deploy --stage dev
+
+      - name: Serverless Deploy
+        run: npx serverless deploy --stage dev
+
+      # - name: Serverless deploy
+      #   uses: serverless/github-action@v3.1
+      #   with:
+      #     args: deploy --stage dev
 
   deploy_stag:
     name: Deploy to Staging
