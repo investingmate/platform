@@ -4,97 +4,96 @@
 
 // General mode
 .app-wrapper {
-    display: flex;
+  display: flex;
 }
 
 // Desktop mode
 @include media-breakpoint-up(lg) {
-    // Integration
-    .app-wrapper {
-        transition: $app-wrapper-transition;
-        
-        // Header
-        [data-kt-app-header-sticky="on"] & {
-            margin-top: var(--im-app-header-height-actual);
-        }
+  // Integration
+  .app-wrapper {
+    transition: $app-wrapper-transition;
 
-        [data-kt-app-header-fixed="true"] & {
-            margin-top: var(--im-app-header-height);
-        }
-
-        // Toolbar
-        [data-kt-app-toolbar-sticky="on"] & {
-            margin-top: var(--im-app-toolbar-height-actual, 0px);
-        }
-
-        [data-kt-app-header-fixed="true"][data-kt-app-toolbar-sticky="on"] & {
-            margin-top: calc(var(--im-app-header-height-actual) + var(--im-app-toolbar-height-actual, 0px));
-        }
-
-        [data-kt-app-header-fixed="true"][data-kt-app-toolbar-fixed="true"] & {
-            margin-top: calc(var(--im-app-header-height) + var(--im-app-toolbar-height, 0px));
-        }
-
-        // Sidebar
-        [data-kt-app-sidebar-fixed="true"] & {
-            margin-left: calc(
-                var(--im-app-sidebar-width) + 
-                var(--im-app-sidebar-gap-start, 0px) + 
-                var(--im-app-sidebar-gap-end, 0px)
-            );
-        }
-
-        // Sidebar Panel
-        [data-kt-app-sidebar-panel-fixed="true"] & {
-            margin-left: calc(
-                var(--im-app-sidebar-width) + 
-                var(--im-app-sidebar-gap-start, 0px) + 
-                var(--im-app-sidebar-gap-end, 0px) +
-                var(--im-app-sidebar-panel-width) + 
-                var(--im-app-sidebar-panel-gap-start, 0px) + 
-                var(--im-app-sidebar-panel-gap-end, 0px)
-            );
-        }
-
-        // Aside
-        [data-kt-app-aside-fixed="true"] & {
-            margin-right: calc(
-                var(--im-app-aside-width) + 
-                var(--im-app-aside-gap-start, 0px) + 
-                var(--im-app-aside-gap-end, 0px)
-            );
-        }
-
-        // Footer
-        [data-kt-app-footer-fixed="true"] & {
-            margin-bottom: var(--im-app-footer-height);
-        }  
+    // Header
+    [data-im-app-header-sticky='on'] & {
+      margin-top: var(--im-app-header-height-actual);
     }
+
+    [data-im-app-header-fixed='true'] & {
+      margin-top: var(--im-app-header-height);
+    }
+
+    // Toolbar
+    [data-im-app-toolbar-sticky='on'] & {
+      margin-top: var(--im-app-toolbar-height-actual, 0px);
+    }
+
+    [data-im-app-header-fixed='true'][data-im-app-toolbar-sticky='on'] & {
+      margin-top: calc(
+        var(--im-app-header-height-actual) + var(--im-app-toolbar-height-actual, 0px)
+      );
+    }
+
+    [data-im-app-header-fixed='true'][data-im-app-toolbar-fixed='true'] & {
+      margin-top: calc(var(--im-app-header-height) + var(--im-app-toolbar-height, 0px));
+    }
+
+    // Sidebar
+    [data-im-app-sidebar-fixed='true'] & {
+      margin-left: calc(
+        var(--im-app-sidebar-width) + var(--im-app-sidebar-gap-start, 0px) +
+          var(--im-app-sidebar-gap-end, 0px)
+      );
+    }
+
+    // Sidebar Panel
+    [data-im-app-sidebar-panel-fixed='true'] & {
+      margin-left: calc(
+        var(--im-app-sidebar-width) + var(--im-app-sidebar-gap-start, 0px) +
+          var(--im-app-sidebar-gap-end, 0px) + var(--im-app-sidebar-panel-width) +
+          var(--im-app-sidebar-panel-gap-start, 0px) + var(--im-app-sidebar-panel-gap-end, 0px)
+      );
+    }
+
+    // Aside
+    [data-im-app-aside-fixed='true'] & {
+      margin-right: calc(
+        var(--im-app-aside-width) + var(--im-app-aside-gap-start, 0px) +
+          var(--im-app-aside-gap-end, 0px)
+      );
+    }
+
+    // Footer
+    [data-im-app-footer-fixed='true'] & {
+      margin-bottom: var(--im-app-footer-height);
+    }
+  }
 }
 
 // Tablet & mobile modes
 @include media-breakpoint-down(lg) {
-    // Integration
-    .app-wrapper {
-        transition: $app-wrapper-transition;
-        
-        // Header
-        [data-kt-app-header-sticky-mobile="on"] & {
-            margin-top: var(--im-app-header-height-actual);
-        }
+  // Integration
+  .app-wrapper {
+    transition: $app-wrapper-transition;
 
-        [data-kt-app-header-fixed-mobile="true"] & {
-            margin-top: var(--im-app-header-height);
-        }
-
-        // Toolbar
-        [data-kt-app-header-fixed-mobile="true"][data-kt-app-toolbar-sticky-mobile="on"] & {
-            margin-top: calc(var(--im-app-header-height-actual) + var(--im-app-toolbar-height-actual, 0px));
-        }
-
-        // Footer
-        [data-kt-app-footer-fixed-mobile="true"] & {
-            margin-bottom: var(--im-app-footer-height);
-        }  
+    // Header
+    [data-im-app-header-sticky-mobile='on'] & {
+      margin-top: var(--im-app-header-height-actual);
     }
+
+    [data-im-app-header-fixed-mobile='true'] & {
+      margin-top: var(--im-app-header-height);
+    }
+
+    // Toolbar
+    [data-im-app-header-fixed-mobile='true'][data-im-app-toolbar-sticky-mobile='on'] & {
+      margin-top: calc(
+        var(--im-app-header-height-actual) + var(--im-app-toolbar-height-actual, 0px)
+      );
+    }
+
+    // Footer
+    [data-im-app-footer-fixed-mobile='true'] & {
+      margin-bottom: var(--im-app-footer-height);
+    }
+  }
 }

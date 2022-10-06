@@ -3,15 +3,15 @@
 //
 
 .indicator-progress {
-    display: none;
+  display: none;
 
-    [data-kt-indicator="on"] > & {
-        display: inline-block;
-    }
+  [data-im-indicator='on'] > & {
+    display: inline-block;
+  }
 }
 
 .indicator-label {
-    [data-kt-indicator="on"] > & {
-        display: none;
-    }
+  [data-im-indicator='on'] > & {
+    display: none;
+  }
 }

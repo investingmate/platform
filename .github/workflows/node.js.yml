@@ -10,6 +10,7 @@ on:
 
 jobs:
   build:
+    name: Building
     runs-on: ubuntu-latest
 
     strategy:
@@ -24,60 +25,95 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-
-      - name: npm install, build and test frontend
+          
+      - name: Get npm cache directory
+        id: npm-cache-dir
         run: |
-          cd frontend
+          echo "::set-output name=dir::$(npm config get cache)"
+          
+      - uses: actions/cache@v3
+        id: npm-cache
+        with:
+          path: ${{ steps.npm-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-node-v3-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+        
+      - name: Install dependencies
+        if: steps.npm-cache.outputs.cache-hit != 'true'
+        run: |
           npm install
-          npm run build --if-present
-        env:
-          CI: false
   
   deploy_dev:
-    - name: Deploy to Development
-      if: ${{ github.ref == 'refs/heads/development' }}
-      needs: [build]
-      runs-on: ubuntu-latest
-      environment: Development
+    name: Deploy to Development
+    if: ${{ github.ref == 'refs/heads/development' }}
+    runs-on: ubuntu-latest
+    environment: Development
+    strategy:
+      matrix:
+        node-version: [16.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
-    steps: 
-      - name: npm install and build
-          env:
-            AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
-            AWS_SECRET_ACCESS_KEY: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
-          run: |
-            npm install
-            npx sst deploy --stage dev
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+          
+      - name: Get npm cache directory
+        id: npm-cache-dir
+        run: |
+          echo "::set-output name=dir::$(npm config get cache)"
+          
+      - uses: actions/cache@v3
+        id: npm-cache
+        with:
+          path: ${{ steps.npm-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-node-v3-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+        
+      - name: Install dependencies
+        if: steps.npm-cache.outputs.cache-hit != 'true'
+        run: |
+          npm install
+            
+      - uses: actions/checkout@v3
+      - name: Npx SST Deploy Dev
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
+        run: |
+          npm run deploy --stage dev
 
   deploy_stag:
-    - name: Deploy to Staging
-      if: ${{ github.ref == 'refs/heads/staging' }}
-      needs: [deploy_dev]
-      runs-on: ubuntu-latest
-      environment: Staging
+    name: Deploy to Staging
+    if: ${{ github.ref == 'refs/heads/staging' }}
+    needs: [deploy_dev]
+    runs-on: ubuntu-latest
+    environment: Staging
 
     steps: 
-      - name: npm install and build
-          env:
-            AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
-            AWS_SECRET_ACCESS_KEY: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
-          run: |
-            npm install
-            npx sst deploy --stage stag
+      - name: Npx SST Deploy Stag
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
+        run: |
+          npm run deploy --stage stag
 
   deploy_prod:
-    - name: Deploy to Production
-      if: ${{ github.ref == 'refs/heads/production' }}
-      needs: [deploy_stag]
-      runs-on: ubuntu-latest
-      environment: Production
+    name: Deploy to Production
+    if: ${{ github.ref == 'refs/heads/production' }}
+    needs: [deploy_stag]
+    runs-on: ubuntu-latest
+    environment: Production
 
     steps: 
-      - name: npm install and build
-          env:
-            AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
-            AWS_SECRET_ACCESS_KEY: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
-          run: |
-            npm install
-            npx sst deploy --stage prod
-
+      - name: Npx SST Deploy Prod
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
+        run: |
+          npm run deploy --stage prod
