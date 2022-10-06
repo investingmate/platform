@@ -9,14 +9,53 @@ on:
       - "dependabot/*"
 
 jobs:
-  build:
-    name: Building
+  # build:
+  #   name: Building
+  #   runs-on: ubuntu-latest
+
+  #   strategy:
+  #     matrix:
+  #       node-version: [16.x]
+  #       # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - name: Use Node.js ${{ matrix.node-version }}
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: ${{ matrix.node-version }}
+  #         cache: "npm"
+
+  #     - name: Get npm cache directory
+  #       id: npm-cache-dir
+  #       run: |
+  #         echo "::set-output name=dir::$(npm config get cache)"
+
+  #     - uses: actions/cache@v3
+  #       id: npm-cache
+  #       with:
+  #         path: ${{ steps.npm-cache-dir.outputs.dir }}
+  #         key: ${{ runner.os }}-node-v3-${{ hashFiles('**/package-lock.json') }}
+  #         restore-keys: |
+  #           ${{ runner.os }}-node-
+
+  #     - name: Install dependencies
+  #       if: steps.npm-cache.outputs.cache-hit != 'true'
+  #       run: |
+  #         npm install
+
+  deploy_dev:
+    name: Deploy to Development
+    if: ${{ github.ref == 'refs/heads/development' }}
     runs-on: ubuntu-latest
+    environment: Development
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
 
     strategy:
       matrix:
         node-version: [16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
       - uses: actions/checkout@v3
@@ -35,35 +74,17 @@ jobs:
         id: npm-cache
         with:
           path: ${{ steps.npm-cache-dir.outputs.dir }}
-          key: ${{ runner.os }}-node-v3-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-node-dev-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-node-
+            ${{ runner.os }}-node-dev-
 
       - name: Install dependencies
         if: steps.npm-cache.outputs.cache-hit != 'true'
         run: |
           npm install
 
-  deploy_dev:
-    name: Deploy to Development
-    if: ${{ github.ref == 'refs/heads/development' }}
-    needs: [build]
-    runs-on: ubuntu-latest
-    environment: Development
-    env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
-
-    steps:
-      - uses: actions/checkout@v3
-
       - name: Serverless Deploy
         run: npx serverless deploy --stage dev
-
-      # - name: Serverless deploy
-      #   uses: serverless/github-action@v3.1
-      #   with:
-      #     args: deploy --stage dev
 
   deploy_stag:
     name: Deploy to Staging
