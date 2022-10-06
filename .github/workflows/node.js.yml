@@ -6,7 +6,7 @@ name: Node.js CI
 on:
   push:
     branches-ignore:
-      - 'dependabot/*'
+      - "dependabot/*"
 
 jobs:
   build:
@@ -25,12 +25,12 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-          
+
       - name: Get npm cache directory
         id: npm-cache-dir
         run: |
           echo "::set-output name=dir::$(npm config get cache)"
-          
+
       - uses: actions/cache@v3
         id: npm-cache
         with:
@@ -38,55 +38,27 @@ jobs:
           key: ${{ runner.os }}-node-v3-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-        
+
       - name: Install dependencies
         if: steps.npm-cache.outputs.cache-hit != 'true'
         run: |
           npm install
-  
+
   deploy_dev:
     name: Deploy to Development
     if: ${{ github.ref == 'refs/heads/development' }}
+    needs: [build]
     runs-on: ubuntu-latest
     environment: Development
-    strategy:
-      matrix:
-        node-version: [16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      - name: Serverless deploy
+        uses: serverless/github-action@v3.1
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: "npm"
-          
-      - name: Get npm cache directory
-        id: npm-cache-dir
-        run: |
-          echo "::set-output name=dir::$(npm config get cache)"
-          
-      - uses: actions/cache@v3
-        id: npm-cache
-        with:
-          path: ${{ steps.npm-cache-dir.outputs.dir }}
-          key: ${{ runner.os }}-node-v3-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-        
-      - name: Install dependencies
-        if: steps.npm-cache.outputs.cache-hit != 'true'
-        run: |
-          npm install
-            
-      - uses: actions/checkout@v3
-      - name: Npx SST Deploy Dev
+          args: deploy --stage dev
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
-        run: |
-          npm run deploy --stage dev
 
   deploy_stag:
     name: Deploy to Staging
@@ -95,7 +67,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: Staging
 
-    steps: 
+    steps:
       - name: Npx SST Deploy Stag
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
@@ -110,7 +82,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: Production
 
-    steps: 
+    steps:
       - name: Npx SST Deploy Prod
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
