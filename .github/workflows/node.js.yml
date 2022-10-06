@@ -50,16 +50,17 @@ jobs:
     needs: [build]
     runs-on: ubuntu-latest
     environment: Development
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
 
     steps:
       - uses: actions/checkout@v3
+      
       - name: Deploying Development
         uses: serverless/github-action@v3.1
         with:
           args: deploy --stage dev
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
 
   deploy_stag:
     name: Deploy to Staging
