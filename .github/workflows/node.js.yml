@@ -52,10 +52,11 @@ jobs:
     environment: Development
 
     steps:
+      - name: Deploying
       - uses: actions/checkout@v3
 
-      - uses: serverless/github-action@v3.1
       - name: Serverless deploy
+      - uses: serverless/github-action@v3.1
         with:
           args: deploy --stage dev
         env:
