@@ -56,8 +56,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-
-      - name: Serverless deploy
+      
+      - name: Deploying Development
         uses: serverless/github-action@v3.1
         with:
           args: deploy --stage dev
