@@ -53,7 +53,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Deploying
 
       - uses: serverless/github-action@v3.1
       - name: Serverless deploy
