@@ -4,8 +4,7 @@ import {Company, CompaniesQueryResponse} from './_models'
 
 const API_URL = process.env.REACT_APP_API_URL
 const COMPANY_URL = `${API_URL}/company`
-const Company_URL = `${API_URL}/Company`
-const GET_COMPANIES_URL = `${API_URL}companies/list`
+const GET_COMPANIES_URL = `${API_URL}companies`
 // const GET_COMPANIES_URL = `${API_URL}/companies/query`
 
 console.log({API_URL})
@@ -20,27 +19,27 @@ const getCompanies = (query: string): Promise<CompaniesQueryResponse> => {
 
 const getCompanyById = (id: ID): Promise<Company | undefined> => {
   return axios
-    .get(`${Company_URL}/${id}`)
+    .get(`${COMPANY_URL}/${id}`)
     .then((response: AxiosResponse<Response<Company>>) => response.data)
     .then((response: Response<Company>) => response.data)
 }
 
 const createCompany = (Company: Company): Promise<Company | undefined> => {
   return axios
-    .put(Company_URL, Company)
+    .put(COMPANY_URL, Company)
     .then((response: AxiosResponse<Response<Company>>) => response.data)
     .then((response: Response<Company>) => response.data)
 }
 
 const updateCompany = (Company: Company): Promise<Company | undefined> => {
   return axios
-    .post(`${Company_URL}/${Company.id}`, Company)
+    .post(`${COMPANY_URL}/${Company.id}`, Company)
     .then((response: AxiosResponse<Response<Company>>) => response.data)
     .then((response: Response<Company>) => response.data)
 }
 
 const deleteCompany = (CompanyId: ID): Promise<void> => {
-  return axios.delete(`${Company_URL}/${CompanyId}`).then(() => {})
+  return axios.delete(`${COMPANY_URL}/${CompanyId}`).then(() => {})
 }
 
 const deleteSelectedCompanies = (ids: Array<ID>): Promise<void> => {

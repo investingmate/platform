@@ -1,7 +1,7 @@
 import clsx from 'clsx'
-import {FC, PropsWithChildren, useMemo} from 'react'
+import React, {FC, PropsWithChildren, useMemo} from 'react'
 import {HeaderProps} from 'react-table'
-import {initialQueryState} from '../../../../../../_investingmate/helpers'
+import {IMSVG, initialQueryState} from '../../../../../../_investingmate/helpers'
 import {useQueryRequest} from '../../../core/QueryRequestProvider'
 import {Company} from "../../../core/_models";
 
@@ -44,17 +44,24 @@ const CustomHeader: FC<Props> = ({className, title, tableProps}) => {
   }
 
   return (
-    <th
-      {...tableProps.column.getHeaderProps()}
-      className={clsx(
-        className,
-        isSelectedForSorting && order !== undefined && `table-sort-${order}`
-      )}
-      style={{cursor: 'pointer'}}
-      onClick={sortColumn}
-    >
-      {title}
-    </th>
+    <div className="d-flex justify-content-around align-items-center">
+      {/*<IMSVG*/}
+      {/*  path='/media/icons/duotune/general/gen024.svg'*/}
+      {/*  className='svg-icon-3 svg-icon-primary p-5'*/}
+      {/*/>*/}
+      <i className="fas fa-regular fa-arrows-left-right m-3"></i>
+      <th
+        {...tableProps.column.getHeaderProps()}
+        className={clsx(
+          className,
+          isSelectedForSorting && order !== undefined && `table-sort-${order}`
+        )}
+        style={{cursor: 'pointer'}}
+        onClick={sortColumn}
+      >
+        {title}
+      </th>
+    </div>
   )
 }
 

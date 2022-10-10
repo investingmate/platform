@@ -32,7 +32,7 @@ const QueryResponseProvider: FC<WithChildren> = ({children}) => {
     refetch,
     data: response,
   } = useQuery(
-    `${QUERIES.COMPANIES_LIST}-${query}`,
+    `${QUERIES.COMPANIES}-${query}`,
     () => {
       return getCompanies(query)
     },
