@@ -1,28 +1,49 @@
-import {ID, Response} from '../../../../_investingmate/helpers'
+import {Response,ID} from '../../../../_investingmate/helpers'
 
 export type Company = {
-  id?: ID
-  name?: string
-  avatar?: string
-  email?: string
-  position?: string
-  role?: string
-  last_login?: string
-  two_steps?: boolean
-  joined_day?: string
-  online?: boolean
-  initials?: {
-    label: string
-    state: string
-  }
+  id: ID;
+  logo: string,
+  name: string,
+  ticker: string,
+  sector: string,
+  exchange: string,
+  website: string,
+  headline: {
+    current: number,
+    variation: number,
+    min_12_months: number,
+    max_12_months: number,
+    year_return: number,
+    current_month_return: number,
+    dividend_yield: number,
+    volume: number,
+    market_cap: number,
+    beta: number,
+    shares_issued: number,
+  },
 }
 
 export type CompaniesQueryResponse = Response<Array<Company>>
 
 export const initialUser: Company = {
-  avatar: 'avatars/300-6.jpg',
-  position: 'Art Director',
-  role: 'Administrator',
-  name: '',
-  email: '',
-}
+  id: 0,
+  logo: "",
+  name: "",
+  ticker: "",
+  sector: "",
+  exchange: "",
+  website: "",
+  headline: {
+    current: 0.0,
+    variation: 0.0,
+    min_12_months: 0.0,
+    max_12_months: 0.0,
+    year_return: 0.0,
+    current_month_return: 0.0,
+    dividend_yield: 0.0,
+    volume: 0.0,
+    market_cap: 0.0,
+    beta: 0.0,
+    shares_issued: 0,
+  },
+};

@@ -13,28 +13,28 @@ const InfoCell: FC<Props> = ({company}) => (
     {/* begin:: Avatar */}
     <div className='symbol symbol-circle symbol-50px overflow-hidden me-3'>
       <a href='#'>
-        {company.avatar ? (
-          <div className='symbol-label'>
-            <img src={toAbsoluteUrl(`/media/${company.avatar}`)} alt={company.name} className='w-100' />
-          </div>
-        ) : (
-          <div
-            className={clsx(
-              'symbol-label fs-3',
-              `bg-light-${company.initials?.state}`,
-              `text-${company.initials?.state}`
-            )}
-          >
-            {company.initials?.label}
-          </div>
-        )}
+        {/*{company.avatar ? (*/}
+        {/*  <div className='symbol-label'>*/}
+        {/*    <img src={toAbsoluteUrl(`/media/${company.avatar}`)} alt={company.name} className='w-100' />*/}
+        {/*  </div>*/}
+        {/*) : (*/}
+        {/*  <div*/}
+        {/*    className={clsx(*/}
+        {/*      'symbol-label fs-3',*/}
+        {/*      `bg-light-${company.initials?.state}`,*/}
+        {/*      `text-${company.initials?.state}`*/}
+        {/*    )}*/}
+        {/*  >*/}
+        {/*    {company.initials?.label}*/}
+        {/*  </div>*/}
+        {/*)}*/}
       </a>
     </div>
     <div className='d-flex flex-column'>
       <a href='#' className='text-gray-800 text-hover-primary mb-1'>
         {company.name}
       </a>
-      <span>{company.email}</span>
+      {/*<span>{company.email}</span>*/}
     </div>
   </div>
 )
