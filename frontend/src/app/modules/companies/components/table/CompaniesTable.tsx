@@ -1,149 +1,197 @@
-import {CSSProperties, useMemo, useState} from 'react'
-import {useTable, Row} from 'react-table'
-import {CustomHeaderColumn} from './columns/CustomHeaderColumn'
-import {CustomRow} from './columns/CustomRow'
-import {useQueryResponseData, useQueryResponseLoading} from '../../core/QueryResponseProvider'
-import {companiesColumns} from './columns/_columns'
-import {Company} from '../../core/_models'
-import {ListLoading} from '../loading/ListLoading'
-import {ListPagination} from '../pagination/ListPagination'
-import {IMCardBody} from '../../../../../_investingmate/helpers'
-import {DragDropContext, Droppable, Draggable, DropResult} from 'react-beautiful-dnd';
-import {COLOURS, GRIDS} from "../../../../../utils/DesignContants";
+import React, {FC, useMemo} from 'react'
+import {
+  Column,
+  ColumnDef,
+  ColumnOrderState,
+  flexRender,
+  getCoreRowModel,
+  Header,
+  Table,
+  useReactTable,
+} from '@tanstack/react-table'
+
+import { useDrag, useDrop } from 'react-dnd'
+import {Company} from "../../core/_models";
+import {useQueryResponseData} from "../../core/QueryResponseProvider";
+import {IMSVG} from "../../../../../_investingmate/helpers";
+
+const defaultColumns: ColumnDef<Company>[] = [
+  {
+    accessorKey: 'logo',
+    id: 'logo',
+    header: '',
+    cell: info => info.getValue(),
+  },
+  {
+    accessorFn: row => row.ticker,
+    id: 'ticker',
+    header: 'Ticker',
+    cell: info => info.getValue(),
+  },
+  {
+    accessorFn: row => row.name,
+    id: 'name',
+    header: 'Name',
+    cell: info => info.getValue(),
+  },
+  {
+    accessorFn: row => row.sector,
+    id: 'sector',
+    header: 'Sector',
+    cell: info => info.getValue(),
+  },
+  {
+    accessorFn: row => row.exchange,
+    id: 'exchange',
+    header: 'Exchange',
+    cell: info => info.getValue(),
+  },
+  {
+    accessorFn: row => row.website,
+    id: 'website',
+    header: 'Website',
+    cell: info => info.getValue(),
+  },
+]
+
+const reorderColumn = (
+  draggedColumnId: string,
+  targetColumnId: string,
+  columnOrder: string[]
+): ColumnOrderState => {
+  columnOrder.splice(
+    columnOrder.indexOf(targetColumnId),
+    0,
+    columnOrder.splice(columnOrder.indexOf(draggedColumnId), 1)[0] as string
+  )
+  return [...columnOrder]
+}
+
+const DraggableColumnHeader: FC<{
+  header: Header<Company, unknown>
+  table: Table<Company>
+}> = ({ header, table }) => {
+  const { getState, setColumnOrder } = table
+  const { columnOrder } = getState()
+  const { column } = header
+
+  const [, dropRef] = useDrop({
+    accept: 'column',
+    drop: (draggedColumn: Column<Company>) => {
+      const newColumnOrder = reorderColumn(
+        draggedColumn.id,
+        column.id,
+        columnOrder
+      )
+      setColumnOrder(newColumnOrder)
+    },
+  })
+
+  const [{ isDragging }, dragRef, previewRef] = useDrag({
+    collect: monitor => ({
+      isDragging: monitor.isDragging(),
+    }),
+    item: () => column,
+    type: 'column',
+  })
+
+  return (
+    <th
+      ref={dropRef}
+      colSpan={header.colSpan}
+      style={{ opacity: isDragging ? 0.5 : 1, cursor: 'pointer'}}
+    >
+      <div ref={previewRef}>
+        <span
+          ref={dragRef}
+          className='symbol symbol-circle symbol-50px overflow-hidden me-3'
+        >
+        {header.isPlaceholder
+          ? null
+          : flexRender(header.column.columnDef.header, header.getContext())}
+          <i className="fas fa-regular fa-arrows-left-right m-3"></i>
+        </span>
+      </div>
+    </th>
+  )
+}
 
 const CompaniesTable = () => {
   const companies = useQueryResponseData()
   console.log({companies})
-  const isLoading = useQueryResponseLoading()
   const data = useMemo(() => companies, [companies])
-  const columns = useMemo(() => companiesColumns, [])
+  console.log({data})
+  const [columns] = React.useState(() => [...defaultColumns])
 
-  const {getTableProps, getTableBodyProps, headers, rows, prepareRow} = useTable({
-    columns,
+  const [columnOrder, setColumnOrder] = React.useState<ColumnOrderState>(
+    columns.map(column => column.id as string) //must start out with populated columnOrder so we can splice
+  )
+
+  const table = useReactTable({
     data,
+    columns,
+    state: {
+      columnOrder,
+    },
+    onColumnOrderChange: setColumnOrder,
+    getCoreRowModel: getCoreRowModel(),
+    debugTable: true,
+    debugHeaders: true,
+    debugColumns: true,
   })
-  const [itemsState, setItemsState] = useState<any[]>(headers);
-
-  const getItemStyle = (
-    isDragging: boolean,
-    draggableStyle: CSSProperties
-  ): CSSProperties | undefined => ({
-    // some basic styles to make the items look a bit nicer
-    userSelect: 'none',
-    margin: `0 ${GRIDS.EIGHT}px 0 0`,
-
-    // change background colour if dragging
-    background: isDragging ? 'rgba(245, 248, 250, 0.3)' : '',
-    color: isDragging ? COLOURS.PURPLE : '',
-
-    // styles we need to apply on draggables
-    ...draggableStyle,
-  });
-
-  // @ts-ignore
-  const getListStyle = isDraggingOver => ({
-    // background: isDraggingOver ? 'lightblue' : 'lightgrey',
-    display: 'flex',
-    padding: GRIDS.EIGHT,
-    overflow: 'auto',
-  });
-
-  // a little function to help us with reordering the result
-  const reorder = (list: any, startIndex: number, endIndex: number) => {
-    const result = Array.from(list);
-    const [removed] = result.splice(startIndex, 1);
-    result.splice(endIndex, 0, removed);
-    return result;
-  };
-
-  const onDragEnd = (result: DropResult) => {
-    // dropped outside the list
-    if (!result.destination) {
-      return;
-    }
-
-    const items = reorder(
-      itemsState,
-      result.source.index,
-      result.destination.index
-    );
-    setItemsState(items)
-  }
 
   return (
-    <IMCardBody className='py-4'>
-      <div className='table-responsive'>
-        <table
-          id='im_table_companies'
-          className='table align-middle table-row-dashed fs-6 gy-5 dataTable no-footer'
-          {...getTableProps()}
-        >
-          <thead>
-            <tr className='text-start text-muted fw-bolder fs-7 text-uppercase gs-0'>
-              <DragDropContext onDragEnd={onDragEnd}>
-                <Droppable droppableId="droppable" direction="horizontal">
-                  {(provided, snapshot) => (
-                    <div
-                      ref={provided.innerRef}
-                      style={getListStyle(snapshot.isDraggingOver)}
-                      {...provided.droppableProps}
-                    >
-                      {itemsState.map((item, index) => (
-                        <Draggable key={item.id} draggableId={item.id} index={index}>
-                          {(provided, snapshot) => (
-                            <div
-                              ref={provided.innerRef}
-                              {...provided.draggableProps}
-                              {...provided.dragHandleProps}
-                              style={getItemStyle(
-                                snapshot.isDragging,
-                                provided.draggableProps.style as CSSProperties
-                              )}
-                            >
-                              <CustomHeaderColumn
-                                // ref={provided.innerRef}
-                                {...provided.draggableProps}
-                                {...provided.dragHandleProps}
-                                style={getItemStyle(
-                                snapshot.isDragging,
-                                provided.draggableProps.style  as CSSProperties
-                                )}
-                                key={item.id}
-                                column={item}
-                              />
-                            </div>
-                          )}
-                        </Draggable>
-                      ))}
-                      {provided.placeholder}
-                    </div>
-                  )}
-                </Droppable>
-              </DragDropContext>
-            </tr>
-          </thead>
-          <tbody className='text-gray-600 fw-bold' {...getTableBodyProps()}>
-            {rows.length > 0 ? (
-              rows.map((row: Row<Company>, i) => {
-                prepareRow(row)
-                return <CustomRow row={row} key={`row-${i}-${row.id}`} />
-              })
-            ) : (
-              <tr>
-                <td colSpan={7}>
-                  <div className='d-flex text-center w-100 align-content-center justify-content-center'>
-                    No matching records found
+    <table
+      id='im_table_companies'
+      className='table align-middle table-row-dashed fs-6 gy-5 dataTable no-footer'
+    >
+      <thead>
+      {table.getHeaderGroups().map(headerGroup => (
+        <tr className='text-start text-muted fw-bolder fs-7 text-uppercase gs-0' key={headerGroup.id}>
+          {headerGroup.headers.map(header => (
+            <DraggableColumnHeader
+              key={header.id}
+              header={header}
+              table={table}
+            />
+          ))}
+        </tr>
+      ))}
+      </thead>
+      <tbody>
+      {table.getRowModel().rows.map(row => {
+        return (
+          <tr key={row.id}>
+            {row.getVisibleCells().map(cell => {
+              if(cell.column.id === 'logo'){
+                return (
+                  <div className='symbol symbol-circle symbol-50px overflow-hidden me-3'>
+                    <a href='#'>
+                      {row.original.logo.length > 0 ? (
+                        <div className='symbol-label'>
+                          <img src={row.original.logo} alt={row.original.name} className='w-100' />
+                        </div>
+                      ) : (
+                        <IMSVG
+                          path="/media/icons/duotune/general/gen006.svg"
+                          className="svg-icon svg-icon-3x svg-icon-warning"
+                        />
+                      )}
+                    </a>
                   </div>
+                )
+              }
+              return (
+                <td key={cell.id}>
+                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-      </div>
-      <ListPagination />
-      {isLoading && <ListLoading />}
-    </IMCardBody>
+              )
+            })}
+          </tr>
+        )
+      })}
+      </tbody>
+    </table>
   )
 }
-
 export {CompaniesTable}

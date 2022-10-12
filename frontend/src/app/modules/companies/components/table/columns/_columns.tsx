@@ -2,22 +2,27 @@
 import {Column} from 'react-table'
 import {InfoCell} from './InfoCell'
 import {TwoStepsCell} from './TwoStepsCell'
-// import {ActionsCell} from './ActionsCell'
-import {SelectionCell} from './SelectionCell'
 import {CustomHeader} from './CustomHeader'
-import {SelectionHeader} from './SelectionHeader'
-import {User} from '../../core/_models'
+// import {ActionsCell} from './ActionsCell'
+// import {SelectionCell} from './SelectionCell'
+// import {SelectionHeader} from './SelectionHeader'
+import {Company} from "../../../core/_models";
 
-const companiesColumns: ReadonlyArray<Column<User>> = [
+const companiesColumns: ReadonlyArray<Column<Company>> = [
+  // {
+  //   Header: (props) => <SelectionHeader tableProps={props} />,
+  //   id: 'selection',
+  //   Cell: ({...props}) => <SelectionCell id={props.data[props.row.index].id} />,
+  // },
   {
-    Header: (props) => <SelectionHeader tableProps={props} />,
-    id: 'selection',
-    Cell: ({...props}) => <SelectionCell id={props.data[props.row.index].id} />,
+    Header: (props) => <CustomHeader tableProps={props} title='Logo' className='min-w-125px' />,
+    id: 'logo',
+    Cell: ({...props}) => <InfoCell company={props.data[props.row.index]} />,
   },
   {
     Header: (props) => <CustomHeader tableProps={props} title='Name' className='min-w-125px' />,
     id: 'name',
-    Cell: ({...props}) => <InfoCell user={props.data[props.row.index]} />,
+    Cell: ({...props}) => <InfoCell company={props.data[props.row.index]} />,
   },
   {
     Header: (props) => <CustomHeader tableProps={props} title='Sector' className='min-w-125px' />,

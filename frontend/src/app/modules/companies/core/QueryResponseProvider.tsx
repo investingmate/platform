@@ -50,10 +50,6 @@ const useQueryResponse = () => useContext(QueryResponseContext)
 
 const useQueryResponseData = () => {
   const {response} = useQueryResponse()
-  if (!response) {
-    return []
-  }
-
   return response?.data || []
 }
 
