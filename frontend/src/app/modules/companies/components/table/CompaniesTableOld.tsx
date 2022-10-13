@@ -199,7 +199,7 @@ const CompaniesTable1 = () => {
           </tbody>
         </table>
       </div>
-      <ListPagination />
+      {/*<ListPagination />*/}
       {isLoading && <ListLoading />}
     </IMCardBody>
   )

@@ -3,7 +3,10 @@ import {
   ColumnDef,
   ColumnOrderState,
   flexRender,
-  getCoreRowModel, getSortedRowModel, SortingState,
+  getCoreRowModel,
+  getSortedRowModel,
+  getPaginationRowModel,
+  SortingState,
   useReactTable,
 } from '@tanstack/react-table'
 
@@ -11,6 +14,7 @@ import {Company} from "../../core/_models";
 import {useQueryResponseData} from "../../core/QueryResponseProvider";
 import {IMSVG} from "../../../../../_investingmate/helpers";
 import {DraggableColumnHeader} from "./columns/DraggableColumnHeader";
+import {ListPagination} from "../pagination/ListPagination";
 
 const defaultColumns: ColumnDef<Company>[] = [
   {
@@ -74,6 +78,7 @@ const CompaniesTable = () => {
     onColumnOrderChange: setColumnOrder,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
     debugTable: true,
     debugHeaders: true,
     debugColumns: true,
@@ -136,6 +141,7 @@ const CompaniesTable = () => {
         })}
         </tbody>
       </table>
+      <ListPagination table={table}/>
     </div>
   )
 }

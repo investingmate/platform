@@ -64,13 +64,13 @@ const DraggableColumnHeader: FC<{
           ref={dragRef}
           className='symbol symbol-circle symbol-50px overflow-hidden me-3'
         >
-          <i className="fas fa-regular fa-arrows-left-right m-3"></i>
+          <i className="fas fa-regular fa-arrows-left-right m-3"/>
           {header.isPlaceholder
           ? null
           : flexRender(header.column.columnDef.header, header.getContext())}
           {{
-            asc: <i className="fas fa-regular fa-arrow-up-short-wide m-3"></i>,
-            desc: <i className="fas fa-regular fa-arrow-down-short-wide m-3"></i>,
+            asc: <i className="fas fa-regular fa-arrow-up-short-wide m-3"/>,
+            desc: <i className="fas fa-regular fa-arrow-down-short-wide m-3"/>,
           }[header.column.getIsSorted() as string] ?? null}
         </span>
       </div>
