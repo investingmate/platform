@@ -1,26 +1,29 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import {useState, useEffect} from 'react'
-import {initialQueryState, IMSVG, useDebounce} from '../../../../../_investingmate/helpers'
-import {useQueryRequest} from '../../core/QueryRequestProvider'
+import React from 'react'
+import {IMSVG} from '../../../../../_investingmate/helpers'
 
-const CompaniesListSearchComponent = () => {
-  const {updateState} = useQueryRequest()
-  const [searchTerm, setSearchTerm] = useState<string>('')
-  // Debounce search term so that it only gives us latest value ...
-  // ... if searchTerm has not been updated within last 500ms.
-  // The goal is to only have the API call fire when user stops typing ...
-  // ... so that we aren't hitting our API rapidly.
-  const debouncedSearchTerm = useDebounce(searchTerm, 150)
-  // Effect for API call
-  useEffect(
-    () => {
-      if (debouncedSearchTerm !== undefined && searchTerm !== undefined) {
-        updateState({search: debouncedSearchTerm, ...initialQueryState})
-      }
-    },
-    [debouncedSearchTerm] // Only call effect if debounced search term changes
-    // More details about useDebounce: https://usehooks.com/useDebounce/
-  )
+const CompaniesListSearchComponent = ({
+    value: initialValue,
+    onChange,
+    debounce = 500,
+  }: {
+  value: string | number
+  onChange: (value: string | number) => void
+  debounce?: number
+} & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'>) => {
+  const [value, setValue] = React.useState(initialValue)
+
+  React.useEffect(() => {
+    setValue(initialValue)
+  }, [initialValue])
+
+  React.useEffect(() => {
+    const timeout = setTimeout(() => {
+      onChange(value)
+    }, debounce)
+
+    return () => clearTimeout(timeout)
+  }, [value])
 
   return (
     <div className='card-title'>
@@ -35,8 +38,7 @@ const CompaniesListSearchComponent = () => {
           data-im-user-table-filter='search'
           className='form-control form-control-solid w-250px ps-14'
           placeholder='Search company'
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          value={value} onChange={e => setValue(e.target.value)}
         />
       </div>
       {/* end::Search */}

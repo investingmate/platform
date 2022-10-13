@@ -1,12 +1,43 @@
 import React, {FC} from "react";
 import {Table} from "@tanstack/react-table";
-import {Company} from "../../core/_models";
 
 const ListPagination: FC<{
-  table: Table<Company>
+  table: Table<any>
 }> = ({ table }) => {
   return (
-    <div className="d-flex flex-lg-row justify-content-between w-100">
+    <div className="d-flex justify-content-between w-100 flex-column-auto">
+      <span>
+        <div>Page</div>
+        <strong>
+          {table.getState().pagination.pageIndex + 1} of{' '}
+          {table.getPageCount()}
+        </strong>
+      </span>
+        <span>
+        Go to page:
+        <input
+          type="number"
+          defaultValue={table.getState().pagination.pageIndex + 1}
+          onChange={e => {
+            const page = e.target.value ? Number(e.target.value) - 1 : 0
+            table.setPageIndex(page)
+          }}
+          className='form-control form-control-solid w-100px'
+        />
+      </span>
+      <select
+        value={table.getState().pagination.pageSize}
+        onChange={e => {
+          table.setPageSize(Number(e.target.value))
+        }}
+        className='form-select form-select-solid fw-bolder w-200px'
+      >
+        {[5, 10, 20, 30, 40, 50].map(pageSize => (
+          <option key={pageSize} value={pageSize}>
+            Show {pageSize}
+          </option>
+        ))}
+      </select>
       <div className="d-flex flex-lg-row justify-content-between">
         <button
           className='btn btn-light-primary me-3'
@@ -37,38 +68,6 @@ const ListPagination: FC<{
           <i className="fas fa-regular fa-forward m-3"/>
         </button>
       </div>
-      <span>
-        <div>Page</div>
-        <strong>
-          {table.getState().pagination.pageIndex + 1} of{' '}
-          {table.getPageCount()}
-        </strong>
-      </span>
-        <span>
-        Go to page:
-        <input
-          type="number"
-          defaultValue={table.getState().pagination.pageIndex + 1}
-          onChange={e => {
-            const page = e.target.value ? Number(e.target.value) - 1 : 0
-            table.setPageIndex(page)
-          }}
-          className='form-control form-control-solid w-100px'
-        />
-      </span>
-      <select
-        value={table.getState().pagination.pageSize}
-        onChange={e => {
-          table.setPageSize(Number(e.target.value))
-        }}
-        className='form-select form-select-solid fw-bolder w-200px'
-      >
-        {[5, 10, 15, 20, 25, 30, 40, 50].map(pageSize => (
-          <option key={pageSize} value={pageSize}>
-            Show {pageSize}
-          </option>
-        ))}
-      </select>
     </div>
   )
 }

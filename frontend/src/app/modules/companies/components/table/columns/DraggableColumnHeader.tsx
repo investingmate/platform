@@ -1,7 +1,6 @@
 import React, {FC} from 'react'
 import {Column, ColumnOrderState, flexRender, Header, Table} from "@tanstack/react-table";
 import {useDrag, useDrop} from "react-dnd";
-
 import {Company} from "../../../core/_models";
 
 const reorderColumn = (
@@ -19,7 +18,7 @@ const reorderColumn = (
 
 const DraggableColumnHeader: FC<{
   header: Header<Company, unknown>
-  table: Table<Company>
+  table: Table<any>
 }> = ({ header, table }) => {
   const { getState, setColumnOrder } = table
   const { columnOrder } = getState()

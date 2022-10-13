@@ -6,15 +6,23 @@ import {
   getCoreRowModel,
   getSortedRowModel,
   getPaginationRowModel,
+  getFilteredRowModel,
   SortingState,
-  useReactTable,
+  useReactTable, FilterFn,
 } from '@tanstack/react-table'
+import {
+  rankItem,
+} from '@tanstack/match-sorter-utils'
 
 import {Company} from "../../core/_models";
 import {useQueryResponseData} from "../../core/QueryResponseProvider";
 import {IMSVG} from "../../../../../_investingmate/helpers";
 import {DraggableColumnHeader} from "./columns/DraggableColumnHeader";
 import {ListPagination} from "../pagination/ListPagination";
+import {CompaniesListSearchComponent} from "../header/CompaniesListSearchComponent";
+import {CompaniesListGrouping} from "../header/CompaniesListGrouping";
+import {CompanyListToolbar} from "../header/CompanyListToolbar";
+import {useListView} from "../../core/ListViewProvider";
 
 const defaultColumns: ColumnDef<Company>[] = [
   {
@@ -55,12 +63,27 @@ const defaultColumns: ColumnDef<Company>[] = [
   },
 ]
 
+const fuzzyFilter: FilterFn<any> = (row, columnId, value, addMeta) => {
+  // Rank the item
+  const itemRank = rankItem(row.getValue(columnId), value)
+
+  // Store the itemRank info
+  addMeta({
+    itemRank,
+  })
+
+  // Return if the item should be filtered in/out
+  return itemRank.passed
+}
+
 const CompaniesTable = () => {
+  const {selected} = useListView()
   const companies = useQueryResponseData()
   console.log({companies})
   const data = useMemo(() => companies, [companies])
   console.log({data})
   const [columns] = React.useState(() => [...defaultColumns])
+  const [globalFilter, setGlobalFilter] = React.useState('')
 
   const [columnOrder, setColumnOrder] = React.useState<ColumnOrderState>(
     columns.map(column => column.id as string) //must start out with populated columnOrder so we can splice
@@ -70,13 +93,20 @@ const CompaniesTable = () => {
   const table = useReactTable({
     data,
     columns,
+    filterFns: {
+      fuzzy: fuzzyFilter,
+    },
     state: {
       columnOrder,
+      globalFilter,
       sorting,
     },
     onSortingChange: setSorting,
     onColumnOrderChange: setColumnOrder,
+    onGlobalFilterChange: setGlobalFilter,
+    globalFilterFn: fuzzyFilter,
     getCoreRowModel: getCoreRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     debugTable: true,
@@ -86,6 +116,15 @@ const CompaniesTable = () => {
 
   return (
     <div className="card-header border-0 pb-6">
+
+      <CompaniesListSearchComponent
+        value={globalFilter ?? ''}
+        onChange={value => setGlobalFilter(String(value))}
+      />
+      <div className='card-toolbar'>
+        {selected.length > 0 ? <CompaniesListGrouping /> : <CompanyListToolbar />}
+      </div>
+
       <table
         id='im_table_companies'
         className='table align-middle table-row-dashed fs-6 gy-5 dataTable no-footer'
