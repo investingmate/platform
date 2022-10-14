@@ -1,5 +1,10 @@
 import {Response,ID} from '../../../../_investingmate/helpers'
+import {ColumnDef} from "@tanstack/react-table";
 
+export type TColumn = ColumnDef<Company>
+  & {
+  status?: boolean,
+}
 export type Company = {
   id: ID;
   logo: string,
