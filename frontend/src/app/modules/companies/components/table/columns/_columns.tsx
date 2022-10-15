@@ -1,60 +1,106 @@
-// @ts-nocheck
-import {Column} from 'react-table'
-import {InfoCell} from './InfoCell'
-import {TwoStepsCell} from './TwoStepsCell'
-import {CustomHeader} from './CustomHeader'
-// import {ActionsCell} from './ActionsCell'
-// import {SelectionCell} from './SelectionCell'
-// import {SelectionHeader} from './SelectionHeader'
-import {Company} from "../../../core/_models";
+import {TColumn} from "../../../core/_models";
 
-const companiesColumns: ReadonlyArray<Column<Company>> = [
-  // {
-  //   Header: (props) => <SelectionHeader tableProps={props} />,
-  //   id: 'selection',
-  //   Cell: ({...props}) => <SelectionCell id={props.data[props.row.index].id} />,
-  // },
+export const defaultColumns: TColumn[] = [
   {
-    Header: (props) => <CustomHeader tableProps={props} title='Logo' className='min-w-125px' />,
+    accessorKey: 'logo',
     id: 'logo',
-    Cell: ({...props}) => <InfoCell company={props.data[props.row.index]} />,
+    header: '',
+    cell: info => info.getValue(),
   },
   {
-    Header: (props) => <CustomHeader tableProps={props} title='Name' className='min-w-125px' />,
+    accessorFn: row => row.ticker,
+    id: 'ticker',
+    header: 'Ticker',
+    cell: info => info.getValue(),
+  },
+  {
+    accessorFn: row => row.name,
     id: 'name',
-    Cell: ({...props}) => <InfoCell company={props.data[props.row.index]} />,
+    header: 'Name',
+    cell: info => info.getValue(),
   },
   {
-    Header: (props) => <CustomHeader tableProps={props} title='Sector' className='min-w-125px' />,
-    accessor: 'sector',
-  },
-  // {
-  //   Header: (props) => (
-  //     <CustomHeader tableProps={props} title='Last login' className='min-w-125px' />
-  //   ),
-  //   id: 'last_login',
-  //   Cell: ({...props}) => <UserLastLoginCell last_login={props.data[props.row.index].last_login} />,
-  // },
-  {
-    Header: (props) => (
-      <CustomHeader tableProps={props} title='Market cap' className='min-w-125px' />
-    ),
-    id: 'two_steps',
-    Cell: ({...props}) => <TwoStepsCell two_steps={props.data[props.row.index].two_steps} />,
+    accessorFn: row => row.sector,
+    id: 'sector',
+    header: 'Sector',
+    cell: info => info.getValue(),
   },
   {
-    Header: (props) => (
-      <CustomHeader tableProps={props} title='Last price' className='min-w-125px' />
-    ),
-    accessor: 'last_price',
+    accessorFn: row => row.exchange,
+    id: 'exchange',
+    header: 'Exchange',
+    cell: info => info.getValue(),
   },
-  // {
-  //   Header: (props) => (
-  //     <CustomHeader tableProps={props} title='Actions' className='text-end min-w-100px' />
-  //   ),
-  //   id: 'actions',
-  //   Cell: ({...props}) => <ActionsCell id={props.data[props.row.index].id} />,
-  // },
+  {
+    accessorFn: row => row.website,
+    id: 'website',
+    header: 'Website',
+    cell: info => info.getValue(),
+  },
+  {
+    accessorFn: row => row.headline.current,
+    id: 'current',
+    header: 'Current',
+    cell: info => info.getValue(),
+  },
+  {
+    accessorFn: row => row.headline.variation,
+    id: 'variation',
+    header: 'Variation',
+    cell: info => info.getValue(),
+  },
+  {
+    accessorFn: row => row.headline.min_12_months,
+    id: 'min_12_months',
+    header: 'Min 12 months',
+    cell: info => info.getValue(),
+  },
+  {
+    accessorFn: row => row.headline.max_12_months,
+    id: 'max_12_months',
+    header: 'Max 12 months',
+    cell: info => info.getValue(),
+  },
+  {
+    accessorFn: row => row.headline.year_return,
+    id: 'year_return',
+    header: 'Year return',
+    cell: info => info.getValue(),
+  },
+  {
+    accessorFn: row => row.headline.current_month_return,
+    id: 'current_month_return',
+    header: 'Current month return',
+    cell: info => info.getValue(),
+  },
+  {
+    accessorFn: row => row.headline.dividend_yield,
+    id: 'dividend_yield',
+    header: 'Dividend yield',
+    cell: info => info.getValue(),
+  },
+  {
+    accessorFn: row => row.headline.volume,
+    id: 'volume',
+    header: 'Volume',
+    cell: info => info.getValue(),
+  },
+  {
+    accessorFn: row => row.headline.market_cap,
+    id: 'market_cap',
+    header: 'Market cap',
+    cell: info => info.getValue(),
+  },
+  {
+    accessorFn: row => row.headline.beta,
+    id: 'beta',
+    header: 'Beta',
+    cell: info => info.getValue(),
+  },
+  {
+    accessorFn: row => row.headline.shares_issued,
+    id: 'shares_issued',
+    header: 'Shares issued',
+    cell: info => info.getValue(),
+  },
 ]
-
-export {companiesColumns}

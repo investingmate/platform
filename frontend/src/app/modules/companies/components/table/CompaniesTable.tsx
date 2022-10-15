@@ -23,45 +23,7 @@ import {CompaniesListGrouping} from "../header/CompaniesListGrouping";
 import {useListView} from "../../core/ListViewProvider";
 import {CompaniesListFilter} from "../header/CompaniesListFilter";
 import {CompaniesListDropDown} from "../header/CompaniesListDropdown";
-
-const defaultColumns: TColumn[] = [
-  {
-    accessorKey: 'logo',
-    id: 'logo',
-    header: '',
-    cell: info => info.getValue(),
-  },
-  {
-    accessorFn: row => row.ticker,
-    id: 'ticker',
-    header: 'Ticker',
-    cell: info => info.getValue(),
-  },
-  {
-    accessorFn: row => row.name,
-    id: 'name',
-    header: 'Name',
-    cell: info => info.getValue(),
-  },
-  {
-    accessorFn: row => row.sector,
-    id: 'sector',
-    header: 'Sector',
-    cell: info => info.getValue(),
-  },
-  {
-    accessorFn: row => row.exchange,
-    id: 'exchange',
-    header: 'Exchange',
-    cell: info => info.getValue(),
-  },
-  {
-    accessorFn: row => row.website,
-    id: 'website',
-    header: 'Website',
-    cell: info => info.getValue(),
-  },
-]
+import {defaultColumns} from "./columns/_columns";
 
 const fuzzyFilter: FilterFn<any> = (row, columnId, value, addMeta) => {
   // Rank the item
@@ -127,7 +89,6 @@ const CompaniesTable = () => {
 
   return (
     <div className="card-header border-0 pb-6">
-
       <CompaniesListSearchComponent
         value={globalFilter ?? ''}
         onChange={value => setGlobalFilter(String(value))}
@@ -141,62 +102,62 @@ const CompaniesTable = () => {
           </div>
         }
       </div>
-
-      <table
-        id='im_table_companies'
-        className='table align-middle table-row-dashed fs-6 gy-5 dataTable no-footer'
-      >
-        <thead>
-        {table.getHeaderGroups().map(headerGroup => (
-          <tr
-            className='text-start text-muted fw-bolder fs-7 text-uppercase gs-0'
-            key={headerGroup.id}
-          >
-            {headerGroup.headers.map(header => (
-              <DraggableColumnHeader
-                key={header.id}
-                header={header}
-                table={table}
-              />
-            ))}
-          </tr>
-        ))}
-        </thead>
-        <tbody>
-        {table.getRowModel().rows.slice(0, 10).map(row => {
-          return (
-            <tr key={row.id}>
-              {row.getVisibleCells().map(cell => {
-                if(cell.column.id === 'logo'){
-                  return (
-                    <th
-                      className='symbol symbol-circle symbol-50px overflow-hidden'
-                      key={cell.column.id}
-                    >
-                      {row.original.logo.length > 0 ? (
-                        <div className='symbol-label'>
-                          <img src={row.original.logo} alt={row.original.name} className='w-100' />
-                        </div>
-                      ) : (
-                        <IMSVG
-                          path="/media/icons/duotune/general/gen006.svg"
-                          className="svg-icon svg-icon-3x svg-icon-warning"
-                        />
-                      )}
-                    </th>
-                  )
-                }
-                return (
-                  <td key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </td>
-                )
-              })}
+      <div className='table-responsive'>
+        <table
+          id='im_table_companies'
+          className='table table-striped align-middle table-row-dashed fs-6 gy-5 dataTable no-footer'
+        >
+          <thead>
+          {table.getHeaderGroups().map(headerGroup => (
+            <tr
+              className='text-start text-muted fw-bolder fs-7 text-uppercase gs-0'
+              key={headerGroup.id}
+            >
+              {headerGroup.headers.map(header => (
+                <DraggableColumnHeader
+                  key={header.id}
+                  header={header}
+                  table={table}
+                />
+              ))}
             </tr>
-          )
-        })}
-        </tbody>
-      </table>
+          ))}
+          </thead>
+          <tbody>
+          {table.getRowModel().rows.slice(0, 10).map(row => {
+            return (
+              <tr key={row.id}>
+                {row.getVisibleCells().map(cell => {
+                  if(cell.column.id === 'logo'){
+                    return (
+                      <th
+                        key={cell.column.id}
+                      >
+                        {row.original.logo.length > 0 ? (
+                          <div className='symbol-label'>
+                            <img src={row.original.logo} alt={row.original.name} className='w-100' />
+                          </div>
+                        ) : (
+                          <IMSVG
+                            path="/media/icons/duotune/general/gen006.svg"
+                            className="svg-icon svg-icon-3x svg-icon-warning"
+                          />
+                        )}
+                      </th>
+                    )
+                  }
+                  return (
+                    <td key={cell.id}>
+                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                    </td>
+                  )
+                })}
+              </tr>
+            )
+          })}
+          </tbody>
+        </table>
+      </div>
       <ListPagination table={table}/>
     </div>
   )

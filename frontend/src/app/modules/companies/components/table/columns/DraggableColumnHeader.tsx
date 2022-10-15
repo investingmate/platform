@@ -61,7 +61,7 @@ const DraggableColumnHeader: FC<{
       >
         <span
           ref={dragRef}
-          className='symbol symbol-circle symbol-50px overflow-hidden me-3'
+          className='me-3'
         >
           <i className="fas fa-regular fa-arrows-left-right m-3"/>
           {header.isPlaceholder
