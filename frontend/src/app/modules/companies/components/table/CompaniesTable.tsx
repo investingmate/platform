@@ -24,6 +24,7 @@ import {useListView} from "../../core/ListViewProvider";
 import {CompaniesListFilter} from "../header/CompaniesListFilter";
 import {CompaniesListDropDown} from "../header/CompaniesListDropdown";
 import {defaultColumns} from "./columns/_columns";
+import {useNavigate} from "react-router-dom";
 
 const fuzzyFilter: FilterFn<any> = (row, columnId, value, addMeta) => {
   // Rank the item
@@ -39,6 +40,8 @@ const fuzzyFilter: FilterFn<any> = (row, columnId, value, addMeta) => {
 const CompaniesTable = () => {
   const {selected} = useListView()
   const companies = useQueryResponseData()
+  const nav = useNavigate()
+
   console.log({companies})
 
   const data = useMemo(() => companies, [companies])
@@ -87,6 +90,12 @@ const CompaniesTable = () => {
     setColumns(updatedCols)
   }, [columnsSelected])
 
+  const handleOnClick = (row: any) => {
+    console.log({row})
+    nav(`overview`, {state: {company: row}})
+    // nav(`overview/${row.ticker}`, {state: {company: row}})
+  }
+
   return (
     <div className="card-header border-0 pb-6">
       <CompaniesListSearchComponent
@@ -105,7 +114,7 @@ const CompaniesTable = () => {
       <div className='table-responsive'>
         <table
           id='im_table_companies'
-          className='table table-striped align-middle fs-6 gy-5 dataTable no-footer border table-rounded'
+          className='table table-hover align-middle fs-6 gy-5 dataTable no-footer border table-rounded'
         >
           <thead>
           {table.getHeaderGroups().map(headerGroup => (
@@ -126,7 +135,11 @@ const CompaniesTable = () => {
           <tbody>
           {table.getRowModel().rows.slice(0, 10).map(row => {
             return (
-              <tr key={row.id}>
+              <tr
+                key={row.id}
+                onClick={()=>handleOnClick(row)}
+                className="cursor-pointer btn-light"
+              >
                 {row.getVisibleCells().map(cell => {
                   if(cell.column.id === 'logo'){
                     return (

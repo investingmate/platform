@@ -25,7 +25,6 @@ const DraggableColumnHeader: FC<{
   const { columnOrder } = getState()
   const { column } = header
 
-  console.log({column})
   const [, dropRef] = useDrop({
     accept: 'column',
     drop: (draggedColumn: Column<Company>) => {
