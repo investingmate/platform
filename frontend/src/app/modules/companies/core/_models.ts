@@ -4,6 +4,7 @@ import {ColumnDef} from "@tanstack/react-table";
 export type TColumn = ColumnDef<Company>
   & {
   status?: boolean,
+  description?: string,
 }
 export type Company = {
   id: ID;

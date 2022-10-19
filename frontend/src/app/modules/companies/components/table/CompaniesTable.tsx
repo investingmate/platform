@@ -105,7 +105,7 @@ const CompaniesTable = () => {
       <div className='table-responsive'>
         <table
           id='im_table_companies'
-          className='table table-striped align-middle table-row-dashed fs-6 gy-5 dataTable no-footer'
+          className='table table-striped align-middle fs-6 gy-5 dataTable no-footer border table-rounded'
         >
           <thead>
           {table.getHeaderGroups().map(headerGroup => (
