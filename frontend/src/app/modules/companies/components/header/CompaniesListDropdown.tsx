@@ -40,7 +40,7 @@ const CompaniesListDropDown = (props: ICompaniesListDropdown) => {
         />
       </button>
       <div
-        className='menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold w-300px'
+        className='menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold w-350px'
         data-im-menu='true'
       >
         <div className='px-7 py-5'>
@@ -49,10 +49,31 @@ const CompaniesListDropDown = (props: ICompaniesListDropdown) => {
         <div className='separator border-gray-200'/>
 
         <div className='px-7 py-5' data-im-user-table-filter='form'>
-          <div className='mb-10'>
-            <div className='d-flex flex-wrap'>
+          <div className='d-flex mb-10'>
+            <div className='d-flex flex-column'>
               {
-                columns.map((col) => {
+                columns.slice(0, columns.length / 2 + 1).map((col) => {
+                  if(col && col.header && col.header.length > 0){
+                    return (
+                      <label key={col.id} className='m-3 form-check form-check-sm form-check-custom form-check-solid'>
+                        <input
+                          className='form-check-input'
+                          type='checkbox'
+                          value={col.id}
+                          checked={col.status}
+                          onChange={() => handleChange(col)}
+                        />
+                        <span className='form-check-label'>{`${col.header}`}</span>
+                      </label>
+                    )
+                  }
+                  return null
+                })
+              }
+            </div>
+            <div className='d-flex flex-column'>
+              {
+                columns.slice(columns.length / 2 + 1, columns.length).map((col) => {
                   if(col && col.header && col.header.length > 0){
                     return (
                       <label key={col.id} className='m-3 form-check form-check-sm form-check-custom form-check-solid'>

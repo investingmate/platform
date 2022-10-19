@@ -48,7 +48,8 @@ const DraggableColumnHeader: FC<{
     <th
       ref={dropRef}
       colSpan={header.colSpan}
-      style={{ opacity: isDragging ? 0.5 : 1, cursor: 'pointer'}}
+      style={{ opacity: isDragging ? 0.5 : 1, cursor: 'pointer' }}
+      className={`min-w-${header.getSize()}px`}
     >
       <div
         ref={previewRef}
