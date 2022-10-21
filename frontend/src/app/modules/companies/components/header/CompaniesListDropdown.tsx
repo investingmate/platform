@@ -6,9 +6,11 @@ import {TColumn} from "../../core/_models";
 interface ICompaniesListDropdown {
   columns: TColumn[],
   setColumns: (columns: any) => void
+  isFilterEnabled: boolean,
+  setIsFilterEnabled: (state: boolean) => void
 }
 const CompaniesListDropDown = (props: ICompaniesListDropdown) => {
-  const {columns, setColumns} = props;
+  const {columns, setColumns, isFilterEnabled, setIsFilterEnabled} = props;
 
   useEffect(() => {
     MenuComponent.reinitialization()
@@ -43,6 +45,24 @@ const CompaniesListDropDown = (props: ICompaniesListDropdown) => {
         className='menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold w-350px'
         data-im-menu='true'
       >
+        <div className='px-7 py-5'>
+          <div className='fs-5 text-dark fw-bolder'>Filters</div>
+        </div>
+        <div className='separator border-gray-200'/>
+        <div className='px-7 py-5'>
+          <label className='m-3 form-check form-check-sm form-check-custom form-check-solid'>
+            <input
+              className='form-check-input'
+              type='checkbox'
+              value={isFilterEnabled ? 'enabled' : 'disabled'}
+              checked={isFilterEnabled}
+              onChange={() => setIsFilterEnabled(!isFilterEnabled)}
+            />
+            <span className='form-check-label'>Display Filters</span>
+          </label>
+        </div>
+        <div className='separator border-gray-200'/>
+
         <div className='px-7 py-5'>
           <div className='fs-5 text-dark fw-bolder'>Columns selection</div>
         </div>

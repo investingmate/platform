@@ -3,6 +3,7 @@ import {Column, ColumnOrderState, flexRender, Header, Table} from "@tanstack/rea
 import {useDrag, useDrop} from "react-dnd";
 import {Company} from "../../../core/_models";
 import {defaultColumnsDescription} from "./_columns";
+import {CompaniesFilter} from "../../header/CompaniesFilter";
 
 const reorderColumn = (
   draggedColumnId: string,
@@ -19,8 +20,9 @@ const reorderColumn = (
 
 const DraggableColumnHeader: FC<{
   header: Header<Company, unknown>
-  table: Table<any>
-}> = ({ header, table }) => {
+  table: Table<any>,
+  isFilterEnabled: boolean
+}> = ({ header, table,isFilterEnabled }) => {
   const { getState, setColumnOrder } = table
   const { columnOrder } = getState()
   const { column } = header
@@ -45,33 +47,35 @@ const DraggableColumnHeader: FC<{
     type: 'column',
   })
 
+  console.log('header.getSize()', header.getSize())
   // get the description about the header
-  const desc = defaultColumnsDescription.find(col => col.id === header.column.columnDef.id)
+  const colInfo = defaultColumnsDescription.find(col => col.id === header.column.columnDef.id)
   return (
     <th
       ref={dropRef}
       colSpan={header.colSpan}
-      style={{ opacity: isDragging ? 0.5 : 1, cursor: 'pointer' }}
+      style={{ opacity: isDragging ? 0.5 : 1, cursor: 'pointer', minWidth: `${header.getSize()}px` }}
       className={`min-w-${header.getSize()}px`}
     >
-      <div
-        data-bs-toggle='tooltip'
-        data-bs-placement='top'
-        data-bs-trigger='hover'
-        title={desc && desc.description ? desc.description : ''}
-      >
+      <div className="d-flex flex-column">
         <div
-          ref={previewRef}
-          {...{
-            className: header.column.getCanSort()
-              ? 'cursor-pointer select-none'
-              : '',
-            onClick: header.column.getToggleSortingHandler(),
-          }}
+          data-bs-toggle='tooltip'
+          data-bs-placement='top'
+          data-bs-trigger='hover'
+          title={colInfo && colInfo.description ? colInfo.description : ''}
         >
+          <div
+            ref={previewRef}
+            {...{
+              className: header.column.getCanSort()
+                ? 'cursor-pointer select-none'
+                : '',
+              onClick: header.column.getToggleSortingHandler(),
+            }}
+          >
           <span
             ref={dragRef}
-            className='me-3'
+            className='me-3 d-flex align-items-center'
           >
             <i className="fas fa-regular fa-arrows-left-right m-3"/>
             {header.isPlaceholder
@@ -82,7 +86,15 @@ const DraggableColumnHeader: FC<{
               desc: <i className="fas fa-regular fa-arrow-down-short-wide m-3"/>,
             }[header.column.getIsSorted() as string] ?? null}
           </span>
+          </div>
         </div>
+        {isFilterEnabled && header.column.getCanFilter() ? (
+            <div>
+              <CompaniesFilter column={header.column} table={table} />
+            </div>
+          ) :
+          null
+        }
       </div>
     </th>
   )

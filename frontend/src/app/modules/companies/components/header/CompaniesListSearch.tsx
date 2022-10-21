@@ -2,7 +2,7 @@
 import React from 'react'
 import {IMSVG} from '../../../../../_investingmate/helpers'
 
-const CompaniesListSearchComponent = ({
+const CompaniesListSearch = ({
     value: initialValue,
     onChange,
     debounce = 500,
@@ -38,7 +38,8 @@ const CompaniesListSearchComponent = ({
           data-im-user-table-filter='search'
           className='form-control form-control-solid w-250px ps-14'
           placeholder='Search company'
-          value={value} onChange={e => setValue(e.target.value)}
+          value={value}
+          onChange={e => setValue(e.target.value)}
         />
       </div>
       {/* end::Search */}
@@ -46,4 +47,4 @@ const CompaniesListSearchComponent = ({
   )
 }
 
-export {CompaniesListSearchComponent}
+export {CompaniesListSearch}
