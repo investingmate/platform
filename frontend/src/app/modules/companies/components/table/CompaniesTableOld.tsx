@@ -16,13 +16,10 @@ import {CustomHeader} from "./columns/CustomHeader";
 
 const CompaniesTable1 = () => {
   const companies = useQueryResponseData()
-  console.log({companies})
   const isLoading = useQueryResponseLoading()
   const data = useMemo(() => companies, [companies])
-  console.log({data})
   const headerKeys = companies && companies.length > 0 ? Object.keys(companies[0]) : []
   const companiesColumns = headerKeys.map((header)=>{
-    console.log('header', {header})
     return (
       {
         Header: (props: PropsWithChildren<HeaderProps<Company>>) => <CustomHeader tableProps={props} title={header.toUpperCase()} className='min-w-125px' />,
@@ -35,20 +32,14 @@ const CompaniesTable1 = () => {
       }
     )
   })
-  console.log({companiesColumns})
   const columns = useMemo(() => companiesColumns, [companies])
-  console.log({columns})
 
   const {getTableProps, getTableBodyProps, headers, rows, prepareRow} = useTable({
     columns,
     data,
   })
-  console.log({headers})
   const [itemsState, setItemsState] = useState<any[]>(headers);
   // const [rowsState, setRowsState] = useState<any[]>(data);
-  console.log({data})
-  console.log({itemsState})
-  // console.log({rowsState})
 
   useEffect(() => {
     setItemsState(headers)

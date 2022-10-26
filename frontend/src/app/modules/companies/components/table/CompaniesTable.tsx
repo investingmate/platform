@@ -44,11 +44,7 @@ const CompaniesTable = () => {
   const {selected} = useListView()
   const companies = useQueryResponseData()
   const nav = useNavigate()
-
-  console.log({companies})
-
   const data = useMemo(() => companies, [companies])
-  console.log({data})
 
   const [isFilterEnabled, setIsFilterEnabled] = React.useState(true)
   const MIN_SIZE = isFilterEnabled ? 160 : 100;

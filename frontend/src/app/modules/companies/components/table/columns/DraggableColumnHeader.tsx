@@ -47,7 +47,6 @@ const DraggableColumnHeader: FC<{
     type: 'column',
   })
 
-  console.log('header.getSize()', header.getSize())
   // get the description about the header
   const colInfo = defaultColumnsDescription.find(col => col.id === header.column.columnDef.id)
   return (
