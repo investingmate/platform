@@ -6,6 +6,7 @@ import {IMSVG, toAbsoluteUrl} from '../../../helpers'
 import {useLayout} from '../../core'
 import {DefaultTitle} from './page-title/DefaultTitle'
 import {Topbar} from './Topbar'
+import {Header} from "./Header";
 
 export function HeaderWrapper() {
   const {config, classes, attributes} = useLayout()
@@ -58,7 +59,7 @@ export function HeaderWrapper() {
           {/* begin::Navbar */}
           {header.left === 'menu' && (
             <div className='d-flex align-items-stretch' id='im_header_nav'>
-              {/*<Header />*/}
+              <Header />
             </div>
           )}
 

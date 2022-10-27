@@ -84,18 +84,18 @@ const ThemeModeSwitcher = ({
         {/* end::Menu item */}
 
         {/* begin::Menu item */}
-        <div className='menu-item px-3 my-0'>
-          <a
-            href='#'
-            className={clsx('menu-link px-3 py-2', {active: menuMode === 'system'})}
-            onClick={() => switchMode('system')}
-          >
-            <span className='menu-icon' data-im-element='icon'>
-              <IMSVG path='/media/icons/duotune/general/gen062.svg' className='svg-icon-3' />
-            </span>
-            <span className='menu-title'>System</span>
-          </a>
-        </div>
+        {/*<div className='menu-item px-3 my-0'>*/}
+        {/*  <a*/}
+        {/*    href='#'*/}
+        {/*    className={clsx('menu-link px-3 py-2', {active: menuMode === 'system'})}*/}
+        {/*    onClick={() => switchMode('system')}*/}
+        {/*  >*/}
+        {/*    <span className='menu-icon' data-im-element='icon'>*/}
+        {/*      <IMSVG path='/media/icons/duotune/general/gen062.svg' className='svg-icon-3' />*/}
+        {/*    </span>*/}
+        {/*    <span className='menu-title'>System</span>*/}
+        {/*  </a>*/}
+        {/*</div>*/}
         {/* end::Menu item */}
       </div>
       {/* end::Menu */}

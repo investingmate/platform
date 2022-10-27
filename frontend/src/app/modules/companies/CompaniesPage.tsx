@@ -12,7 +12,7 @@ const companiesBreadcrumbs: Array<PageLink> = [
   },
   {
     title: 'Company overview',
-    path: '/companies/overview/:ticker',
+    path: '/companies/company-overview?ticker=:ticker',
     isSeparator: true,
     isActive: false,
   },
@@ -26,13 +26,13 @@ const CompaniesPage = () => {
           path='companies'
           element={
             <>
-              <PageTitle breadcrumbs={companiesBreadcrumbs}>Companies list</PageTitle>
+              <PageTitle breadcrumbs={companiesBreadcrumbs}>Companies</PageTitle>
               <CompaniesListWrapper />
             </>
           }
         />
         <Route
-          path='overview/:ticker'
+          path='company-overview'
           element={
             <>
               <PageTitle breadcrumbs={companiesBreadcrumbs}>Company overview</PageTitle>
@@ -41,7 +41,12 @@ const CompaniesPage = () => {
           }
         />
       </Route>
-      <Route index element={<CompaniesListWrapper />} />
+      <Route index element={
+        <>
+          <PageTitle breadcrumbs={[]}>Companies</PageTitle>
+          <CompaniesListWrapper />
+        </>
+      } />
     </Routes>
   )
 }
