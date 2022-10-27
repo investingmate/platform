@@ -1,13 +1,13 @@
 import {IMCard} from "../../../_investingmate/helpers";
-// import {useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 
 const CompanyOverviewPage = () => {
-  // const {company} = useParams()
-  // console.log({company})
+  const {ticker} = useParams()
+  console.log({ticker})
   return (
     <>
       <IMCard>
-        TODO
+        TODO this page, TICKER: {ticker}
       </IMCard>
     </>
   )

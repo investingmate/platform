@@ -53,6 +53,5 @@ if (container) {
         </AuthProvider>
       </InvestingMateI18nProvider>
     </QueryClientProvider>
-
   )
 }

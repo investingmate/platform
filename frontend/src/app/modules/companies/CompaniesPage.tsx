@@ -12,7 +12,7 @@ const companiesBreadcrumbs: Array<PageLink> = [
   },
   {
     title: 'Company overview',
-    path: '/companies/overview',
+    path: '/companies/overview/:ticker',
     isSeparator: true,
     isActive: false,
   },
@@ -32,7 +32,7 @@ const CompaniesPage = () => {
           }
         />
         <Route
-          path='overview'
+          path='overview/:ticker'
           element={
             <>
               <PageTitle breadcrumbs={companiesBreadcrumbs}>Company overview</PageTitle>
