@@ -78,5 +78,8 @@
   "LOGIN.CONTINUE_WITH_GOOGLE": "Continue with Google",
   "PAGES.ABOUT": "About",
   "PAGES.CONTACT": "Contact",
-  "PAGES.CONTACT_US": "Contact us"
+  "PAGES.CONTACT_US": "Contact us",
+  "COMPANIES.EXCHANGE": "Exchange",
+  "COMPANIES.TICKER": "Ticker",
+  "COMPANIES.SECTOR": "Sector"
 }

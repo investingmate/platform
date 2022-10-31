@@ -4,6 +4,7 @@ import {useDrag, useDrop} from "react-dnd";
 import {Company} from "../../../core/_models";
 import {defaultColumnsDescription} from "./_columns";
 import {CompaniesFilter} from "../../header/CompaniesFilter";
+import {CustomTooltip} from "../../../../../../components/CustomTooltip";
 
 const reorderColumn = (
   draggedColumnId: string,
@@ -57,11 +58,8 @@ const DraggableColumnHeader: FC<{
       className={`min-w-${header.getSize()}px`}
     >
       <div className="d-flex flex-column">
-        <div
-          data-bs-toggle='tooltip'
-          data-bs-placement='top'
-          data-bs-trigger='hover'
-          title={colInfo && colInfo.description ? colInfo.description : ''}
+        <CustomTooltip
+          description={colInfo && colInfo.description ? colInfo.description : ''}
         >
           <div
             ref={previewRef}
@@ -86,7 +84,7 @@ const DraggableColumnHeader: FC<{
             }[header.column.getIsSorted() as string] ?? null}
           </span>
           </div>
-        </div>
+        </CustomTooltip>
         {isFilterEnabled && header.column.getCanFilter() ? (
             <div>
               <CompaniesFilter column={header.column} table={table} />
