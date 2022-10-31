@@ -1,18 +1,26 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react'
+import React, {useState} from 'react'
 import {IMSVG, toAbsoluteUrl} from '../../../../../_investingmate/helpers'
 import {Company} from "../../core/_models";
 import {useIntl} from "react-intl";
 import {customStringfy} from "../../../../../utils/HelperFunctions";
 import {defaultColumnsDescription} from "../table/columns/_columns";
 import {CustomTooltip} from "../../../../../components/CustomTooltip";
+import {Link, useLocation} from "react-router-dom";
 
-interface CompanyHeaderProps {
-  company: Company
-}
+const CompaniesHeader = () => {
+  const [isOnWatchList, setIsOnWatchList] = useState(false);
 
-const CompaniesHeader = (props: CompanyHeaderProps) => {
-  const {company}=props
+  const location = useLocation();
+  let company: Company | undefined = undefined;
+  let state: any;
+  // getting the company details from state
+  if(location && location.state){
+    state = location.state
+    if(state && state.company)
+      company = state.company && JSON.parse(state.company);
+  }
+
   console.log({company})
 
   const headlineArray = company && company.headline ?
@@ -23,6 +31,11 @@ const CompaniesHeader = (props: CompanyHeaderProps) => {
     }
   }): []
 
+  const handleWatchList = () => {
+    // TODO save it on backend
+    setIsOnWatchList(!isOnWatchList);
+  }
+
   return (
     <div className='card mb-5 mb-xl-10'>
       <div className='card-body pt-9 pb-0'>
@@ -30,7 +43,7 @@ const CompaniesHeader = (props: CompanyHeaderProps) => {
           <div className='me-7 mb-4'>
             <div className='symbol symbol-100px symbol-lg-160px symbol-fixed position-relative'>
               {
-                company.logo.length > 0 ?
+                company && company.logo.length > 0 ?
                 <img src={toAbsoluteUrl(company.logo)} alt={`${company.name} logo`} /> :
                 <IMSVG
                   path="/media/icons/duotune/general/gen006.svg"
@@ -44,8 +57,8 @@ const CompaniesHeader = (props: CompanyHeaderProps) => {
             <div className='d-flex justify-content-between align-items-start flex-wrap mb-2'>
               <div className='d-flex flex-column'>
                 <div className='d-flex align-items-center mb-2'>
-                  <a href={company.website} className='text-gray-800 text-hover-primary fs-2 fw-bolder me-1' target="_blank" rel="noreferrer">
-                    {company.name}
+                  <a href={company && company.website} className='text-gray-800 text-hover-primary fs-2 fw-bolder me-1' target="_blank" rel="noreferrer">
+                    {company && company.name}
                   </a>
                   {/*<a href=''>*/}
                   {/*  <IMSVG*/}
@@ -72,7 +85,7 @@ const CompaniesHeader = (props: CompanyHeaderProps) => {
                     >
                       {useIntl().formatMessage({id: 'COMPANIES.EXCHANGE'})}:&nbsp;
                     </span>
-                    {company.exchange}
+                    {company && company.exchange}
                   </span>
                   <div className="separator-vertical"/>
                   <span
@@ -83,7 +96,7 @@ const CompaniesHeader = (props: CompanyHeaderProps) => {
                     >
                       {useIntl().formatMessage({id: 'COMPANIES.TICKER'})}:&nbsp;
                     </span>
-                    {company.ticker}
+                    {company && company.ticker}
                   </span>
                   <span
                     className='d-flex align-items-center text-gray-600 me-5'
@@ -93,25 +106,35 @@ const CompaniesHeader = (props: CompanyHeaderProps) => {
                     >
                       {useIntl().formatMessage({id: 'COMPANIES.SECTOR'})}:&nbsp;
                     </span>
-                    {company.sector}
+                    {company && company.sector}
                   </span>
                 </div>
               </div>
 
-              {/*<div className='d-flex my-4'>*/}
-              {/*  <a href='' className='btn btn-sm btn-light me-2' id='im_user_follow_button'>*/}
-              {/*    <IMSVG*/}
-              {/*      path='/media/icons/duotune/arrows/arr012.svg'*/}
-              {/*      className='svg-icon-3 d-none'*/}
-              {/*    />*/}
-
-              {/*    <span className='indicator-label'>Follow</span>*/}
-              {/*    <span className='indicator-progress'>*/}
-              {/*      Please wait...*/}
-              {/*      <span className='spinner-border spinner-border-sm align-middle ms-2'></span>*/}
-              {/*    </span>*/}
-              {/*  </a>*/}
-              {/*</div>*/}
+              <div className='d-flex my-4'>
+                <div
+                  onClick={()=>handleWatchList()}
+                  className={
+                    !isOnWatchList ?
+                      'btn btn-sm btn-outline btn-outline-info' :
+                      'btn btn-sm btn-primary'
+                  }
+                  id='im_user_follow_button'
+                >
+                  {
+                    isOnWatchList ?
+                    <span className='indicator-label'>
+                      <i className="fas fa-regular fa-star mx-2 fs-2"/>
+                      Remove from Watchlist
+                    </span>
+                    :
+                    <span className='indicator-label text-info'>
+                      <i className="fas fa-regular fa-star mx-2 fs-2 text-info"/>
+                      Add to Watchlist
+                    </span>
+                  }
+                </div>
+              </div>
             </div>
 
             <div className='d-flex flex-wrap flex-stack'>
@@ -148,6 +171,34 @@ const CompaniesHeader = (props: CompanyHeaderProps) => {
               </div>
             </div>
           </div>
+        </div>
+        <div className='d-flex overflow-auto h-55px'>
+          <ul className='nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bolder flex-nowrap'>
+            <li className='nav-item'>
+              <Link
+                className={
+                  `nav-link text-active-primary me-6 ` +
+                  (window.location.pathname === '/companies/company-overview' && 'active')
+                }
+                to='/companies/company-overview'
+                state={{company: JSON.stringify(company)}}
+              >
+                Overview
+              </Link>
+            </li>
+            <li className='nav-item'>
+              <Link
+                className={
+                  `nav-link text-active-primary me-6 ` +
+                  (window.location.pathname === '/companies/company-financials' && 'active')
+                }
+                to='/companies/company-financials'
+                state={{company: JSON.stringify(company)}}
+              >
+                Financials
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
     </div>

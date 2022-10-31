@@ -1,15 +1,16 @@
 import {IMCard} from "../../../_investingmate/helpers";
 import {CompaniesHeader} from "./components/header/CompaniesHeader";
 
-const CompanyOverviewPage = () => {
+const CompanyFinancialsPage = () => {
+
   return (
     <>
       <IMCard>
         <CompaniesHeader />
-        OVERVIEW
+        FINANCIALS
       </IMCard>
     </>
   )
 }
 
-export default CompanyOverviewPage
+export default CompanyFinancialsPage

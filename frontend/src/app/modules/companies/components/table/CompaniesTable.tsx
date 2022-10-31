@@ -225,7 +225,8 @@ const CompaniesTable = () => {
   const handleOnClick = (row: any) => {
     console.log({row})
     nav(
-      `company-overview?ticker=${row.original.ticker.toLowerCase()}`,
+      `company-overview`,
+      // `company-overview?ticker=${row.original.ticker.toLowerCase()}`,
       {state: {company: JSON.stringify(row.original)}}
     )
   }

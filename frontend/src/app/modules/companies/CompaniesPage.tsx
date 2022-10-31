@@ -2,6 +2,7 @@ import {Route, Routes, Outlet} from 'react-router-dom'
 import {CompaniesListWrapper} from './components/CompaniesList'
 import CompanyOverviewPage from "./CompanyOverviewPage";
 import {PageLink, PageTitle} from "../../../_investingmate/layout/core/PageData";
+import CompanyFinancialsPage from "./CompanyFinancialsPage";
 
 const companiesBreadcrumbs: Array<PageLink> = [
   {
@@ -13,6 +14,12 @@ const companiesBreadcrumbs: Array<PageLink> = [
   {
     title: 'Company overview',
     path: '/companies/company-overview?ticker=:ticker',
+    isSeparator: true,
+    isActive: false,
+  },
+  {
+    title: 'Company financials',
+    path: '/companies/company-financials',
     isSeparator: true,
     isActive: false,
   },
@@ -35,8 +42,17 @@ const CompaniesPage = () => {
           path='company-overview'
           element={
             <>
-              <PageTitle breadcrumbs={companiesBreadcrumbs}>Company overview</PageTitle>
+              <PageTitle breadcrumbs={companiesBreadcrumbs}>Company Overview</PageTitle>
               <CompanyOverviewPage />
+            </>
+          }
+        />
+        <Route
+          path='company-financials'
+          element={
+            <>
+              <PageTitle breadcrumbs={companiesBreadcrumbs}>Company Financials</PageTitle>
+              <CompanyFinancialsPage />
             </>
           }
         />
