@@ -46,7 +46,7 @@ const CompaniesCharts = (props: Props) => {
               }
               onClick={()=>setIsLineGraphEnabled(!isLineGraphEnabled)}
             >
-              <i className="fas fa-regular fa-chart-bar fs-2"></i>
+              <i className="fas fa-regular fa-chart-column fs-2"></i>
             </div>
             <div
               className={
