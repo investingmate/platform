@@ -53,3 +53,8 @@ export const initialUser: Company = {
     shares_issued: 0,
   },
 };
+
+export interface IHeadline {
+  label: string
+  value: number
+}

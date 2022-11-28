@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, {useEffect, useRef} from 'react'
 import ApexCharts, {ApexOptions} from 'apexcharts'
-import {IMSVG} from '../../../helpers'
 import {getCSS, getCSSVariableValue} from '../../../assets/ts/_utils'
 import {useThemeMode} from '../../layout/theme-mode/ThemeModeProvider'
+import {IMSVG} from "../../../helpers";
 
 type Props = {
   className?: string
@@ -40,34 +40,6 @@ const BarChartsWidget: React.FC<Props> = ({className}) => {
 
   return (
     <div className={`card ${className}`}>
-      {/*/!* begin::Header *!/*/}
-      {/*<div className='card-header border-0 pt-5'>*/}
-      {/*  /!* begin::Title *!/*/}
-      {/*  <h3 className='card-title align-items-start flex-column'>*/}
-      {/*    <span className='card-label fw-bold fs-3 mb-1'>Recent Statistics</span>*/}
-
-      {/*    <span className='text-muted fw-semibold fs-7'>More than 400 new members</span>*/}
-      {/*  </h3>*/}
-      {/*  /!* end::Title *!/*/}
-
-      {/*  /!* begin::Toolbar *!/*/}
-      {/*  <div className='card-toolbar'>*/}
-      {/*    /!* begin::Menu *!/*/}
-      {/*    <button*/}
-      {/*      type='button'*/}
-      {/*      className='btn btn-sm btn-icon btn-color-primary btn-active-light-primary'*/}
-      {/*      data-im-menu-trigger='click'*/}
-      {/*      data-im-menu-placement='bottom-end'*/}
-      {/*      data-im-menu-flip='top-end'*/}
-      {/*    >*/}
-      {/*      <IMSVG path='/media/icons/duotune/general/gen024.svg' className='svg-icon-2' />*/}
-      {/*    </button>*/}
-      {/*    /!* end::Menu *!/*/}
-      {/*  </div>*/}
-      {/*  /!* end::Toolbar *!/*/}
-      {/*</div>*/}
-      {/*/!* end::Header *!/*/}
-
       {/* begin::Body */}
       <div className='card-body'>
         {/* begin::Chart */}
@@ -75,6 +47,32 @@ const BarChartsWidget: React.FC<Props> = ({className}) => {
         {/* end::Chart */}
       </div>
       {/* end::Body */}
+
+      <div className='card-header border-0 pt-5'>
+        {/* begin::Title */}
+        <h3 className='card-title align-items-start flex-column'>
+          <span className='card-label fw-bold fs-3 mb-1'>Recent Statistics</span>
+
+          <span className='text-muted fw-semibold fs-7'>More than 400 new members</span>
+        </h3>
+        {/* end::Title */}
+
+        {/* begin::Toolbar */}
+        <div className='card-toolbar'>
+          {/* begin::Menu */}
+          <button
+            type='button'
+            className='btn btn-sm btn-icon btn-color-primary btn-active-light-primary'
+            data-im-menu-trigger='click'
+            data-im-menu-placement='bottom-end'
+            data-im-menu-flip='top-end'
+          >
+            <IMSVG path='/media/icons/duotune/general/gen024.svg' className='svg-icon-2' />
+          </button>
+          {/* end::Menu */}
+        </div>
+        {/* end::Toolbar */}
+      </div>
     </div>
   )
 }

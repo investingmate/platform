@@ -1,23 +1,15 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, {useState} from 'react'
 import {IMSVG, toAbsoluteUrl} from '../../../../../_investingmate/helpers'
-import {Company} from "../../core/_models";
+import {Company, IHeadline} from "../../core/_models";
 import {useIntl} from "react-intl";
-import {customStringfy} from "../../../../../utils/HelperFunctions";
 import {defaultColumnsDescription} from "../table/columns/_columns";
-import {CustomTooltip} from "../../../../../components/CustomTooltip";
 import {Link, useLocation} from "react-router-dom";
-import {Modal} from "react-bootstrap";
-import {BarChartsWidget} from "../../../../../_investingmate/partials/widges/charts/BarChartsWidget";
-import {LineChartsWidget} from "../../../../../_investingmate/partials/widges/charts/LineChartsWidget";
+import {CompaniesModal} from "../CompaniesModal";
+import {CompaniesIndicator} from "../CompaniesIndicator";
 
-interface IHeadline {
-  label: string
-  value: number
-}
 const CompaniesHeader = () => {
   const [isOnWatchList, setIsOnWatchList] = useState(false);
-  const [isLineGraphEnabled, setIsLineGraphEnabled] = useState(false);
   const [modal, setModal] = useState(false);
   const [headline, setHeadline] = useState<IHeadline | undefined>(undefined);
 
@@ -47,7 +39,6 @@ const CompaniesHeader = () => {
   }
 
   const handleModal = (headline: IHeadline) => {
-    console.log('headline', headline)
     if(headline) {
       setModal(true)
       setHeadline(headline)
@@ -56,88 +47,8 @@ const CompaniesHeader = () => {
 
   return (
     <div className='card mb-5 mb-xl-10'>
-      {modal &&
-        <Modal
-          aria-hidden='true'
-          dialogClassName='modal-dialog modal-dialog-centered'
-          show={modal}
-          onHide={()=>setModal(false)}
-        >
-          <div className="">
-            <div className="modal-content">
-              <div className="modal-header">
-                {headline && headline.label && <h5 className="modal-title">{customStringfy(headline.label)}</h5>}
-                <div
-                  className="btn btn-icon btn-light-primary btn-custom ms-2"
-                  onClick={()=>setModal(false)}
-                  aria-label="Close"
-                >
-                  <IMSVG
-                    path="/media/icons/duotune/arrows/arr061.svg"
-                    className="svg-icon svg-icon-2x"
-                  />
-                </div>
-              </div>
-              <div className='card'>
-                {/* begin::Header */}
-                <div className='card-header border-0 pt-5'>
-                  <div className='card-title align-items-start flex-row'>
-                    <div
-                      className={
-                        isLineGraphEnabled ?
-                        "btn btn-icon btn-light-primary btn-active-primary active btn-custom ms-2" :
-                        "btn btn-icon btn-light-primary btn-custom ms-2"
-                      }
-                      onClick={()=>setIsLineGraphEnabled(!isLineGraphEnabled)}
-                    >
-                      <i className="fas fa-regular fa-chart-line fs-2"></i>
-                    </div>
-                    <div
-                      className={
-                        !isLineGraphEnabled ?
-                          "btn btn-icon btn-light-primary btn-active-primary active btn-custom ms-2" :
-                          "btn btn-icon btn-light-primary btn-custom ms-2"
-                      }
-                      onClick={()=>setIsLineGraphEnabled(!isLineGraphEnabled)}
-                    >
-                      <i className="fas fa-regular fa-chart-bar fs-2"></i>
-                    </div>
-                  </div>
+      <CompaniesModal modalStatus={modal} setModalStatus={setModal} headline={headline} />
 
-                  {/* begin::Toolbar */}
-                  <div className='card-toolbar' data-im-buttons='true'>
-                    <a
-                      className='btn btn-sm btn-color-muted btn-active btn-active-primary active px-4 me-1'
-                      id='im_charts_widget_3_year_btn'
-                    >
-                      Year
-                    </a>
-
-                    <a
-                      className='btn btn-sm btn-color-muted btn-active btn-active-primary px-4 me-1'
-                      id='im_charts_widget_3_month_btn'
-                    >
-                      Month
-                    </a>
-
-                    <a
-                      className='btn btn-sm btn-color-muted btn-active btn-active-primary px-4'
-                      id='im_charts_widget_3_week_btn'
-                    >
-                      Week
-                    </a>
-                  </div>
-                  {/* end::Toolbar */}
-                </div>
-                {/* end::Header */}
-              </div>
-              <div className="modal-body">
-                {isLineGraphEnabled ? <LineChartsWidget/> : <BarChartsWidget/>}
-              </div>
-            </div>
-          </div>
-        </Modal>
-      }
       <div className='card-body pt-9 pb-0'>
         <div className='d-flex flex-wrap flex-sm-nowrap mb-3'>
           <div className='me-7 mb-4'>
@@ -246,27 +157,13 @@ const CompaniesHeader = () => {
                       <div
                         key={headline.label}
                       >
-                        <div className='d-flex align-items-center justify-content-between border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3'>
-                          <CustomTooltip
-                            description={colInfo && colInfo.description ? colInfo.description : ''}
-                          >
-                          <div className='d-flex align-items-center'>
-                            {/*TODO we need to check how we will be able to define which arrow to show*/}
-                            {headline.value % 2 === 0 ?
-                              <IMSVG
-                                path='/media/icons/duotune/arrows/arr066.svg'
-                                className='svg-icon-3 svg-icon-success me-2'
-                              />
-                              :
-                              <IMSVG
-                                path='/media/icons/duotune/arrows/arr065.svg'
-                                className='svg-icon-3 svg-icon-danger me-2'
-                              />
-                            }
-                            <div className='fs-2 fw-bolder'>{headline.value}</div>
-                          </div>
-                          <div className='fw-bold fs-6 text-gray-400'>{customStringfy(headline.label)}</div>
-                          </CustomTooltip>
+                        <CompaniesIndicator
+                          description={colInfo ? colInfo.description : ''}
+                          label={headline.label}
+                          value={headline.value}
+                          // TODO we need to check how we will be able to define which arrow to show
+                          status={headline.value % 2 === 0 ? 'UP' : 'DOWN'}
+                        >
                           <div
                             role="button"
                             onClick={()=>handleModal(headline)}
@@ -278,7 +175,7 @@ const CompaniesHeader = () => {
                               <i className="fas fa-regular fa-chart-line fs-2"></i>
                             </div>
                           </div>
-                        </div>
+                        </CompaniesIndicator>
                       </div>
                     )
                   })}
