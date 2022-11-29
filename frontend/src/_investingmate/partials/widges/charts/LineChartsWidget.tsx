@@ -3,12 +3,14 @@ import React, {useEffect, useRef} from 'react'
 import ApexCharts, {ApexOptions} from 'apexcharts'
 import {getCSS, getCSSVariableValue} from '../../../assets/ts/_utils'
 import {useThemeMode} from '../../layout/theme-mode/ThemeModeProvider'
+import {createArrayOfData, createArrayOfYears} from "../../../../utils/HelperFunctions";
 
 type Props = {
   className?: string
+  label: string
 }
 
-const LineChartsWidget: React.FC<Props> = ({className}) => {
+const LineChartsWidget: React.FC<Props> = ({className, label}) => {
   const chartRef = useRef<HTMLDivElement | null>(null)
   const {mode} = useThemeMode()
   const refreshMode = () => {
@@ -18,7 +20,7 @@ const LineChartsWidget: React.FC<Props> = ({className}) => {
 
     const height = parseInt(getCSS(chartRef.current, 'height'))
 
-    const chart = new ApexCharts(chartRef.current, getChartOptions(height))
+    const chart = new ApexCharts(chartRef.current, getChartOptions(height, label))
     if (chart) {
       chart.render()
     }
@@ -85,17 +87,17 @@ const LineChartsWidget: React.FC<Props> = ({className}) => {
 
 export {LineChartsWidget}
 
-function getChartOptions(height: number): ApexOptions {
-  const labelColor = getCSSVariableValue('--im-gray-500')
-  const borderColor = getCSSVariableValue('--im-gray-200')
+function getChartOptions(height: number, label: string): ApexOptions {
+  const labelColor = getCSSVariableValue('--im-gray-600')
+  const borderColor = getCSSVariableValue('--im-gray-300')
   const baseColor = getCSSVariableValue('--im-info')
   const lightColor = getCSSVariableValue('--im-info-light')
 
   return {
     series: [
       {
-        name: 'Net Profit',
-        data: [30, 40, 40, 90, 90, 70, 70],
+        name: label,
+        data: createArrayOfData(),
       },
     ],
     chart: {
@@ -111,7 +113,11 @@ function getChartOptions(height: number): ApexOptions {
       show: false,
     },
     dataLabels: {
-      enabled: false,
+      enabled: true,
+      style: {
+        colors: [baseColor],
+        fontSize: '12px'
+      },
     },
     fill: {
       type: 'solid',
@@ -124,7 +130,7 @@ function getChartOptions(height: number): ApexOptions {
       colors: [baseColor],
     },
     xaxis: {
-      categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+      categories: createArrayOfYears(),
       axisBorder: {
         show: false,
       },

@@ -11,11 +11,11 @@ const CustomOverlayInfo = (props: CustomOverlayInfoProps) => {
   const {title = 'Info', description} = props
   return (
     <OverlayTrigger
-      trigger="hover"
+      trigger={['hover', 'focus']}
       placement='top'
       overlay={
         <Popover>
-          <Popover.Header as="h3"><strong>{title}</strong></Popover.Header>
+          <Popover.Header as='h3'><strong>{title}</strong></Popover.Header>
           <Popover.Body>
             {description}
           </Popover.Body>
@@ -23,13 +23,13 @@ const CustomOverlayInfo = (props: CustomOverlayInfoProps) => {
       }
     >
       <div
-        role="button"
-        className="min-w-35px d-flex align-items-center justify-content-end"
+        role='button'
+        className='min-w-35px d-flex align-items-center justify-content-end'
       >
         <div
-          className="btn-icon"
+          className='btn-icon'
         >
-          <i className="fas fa-regular fa-question-circle mx-2 fs-2 text-gray-500"/>
+          <i className='fas fa-regular fa-question-circle mx-2 fs-2 text-gray-500'/>
         </div>
       </div>
     </OverlayTrigger>

@@ -1,10 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, {useState} from 'react'
-import {BarChartsWidget} from "../../../../../_investingmate/partials/widges/charts/BarChartsWidget";
-import {LineChartsWidget} from "../../../../../_investingmate/partials/widges/charts/LineChartsWidget";
-import {CompaniesIndicator} from "../CompaniesIndicator";
+import {BarChartsWidget} from '../../../../../_investingmate/partials/widges/charts/BarChartsWidget';
+import {LineChartsWidget} from '../../../../../_investingmate/partials/widges/charts/LineChartsWidget';
+import {CompaniesIndicator} from '../CompaniesIndicator';
 
 interface Props {
+  label: string
 }
 
 const indicators = [{
@@ -30,6 +31,7 @@ const indicators = [{
 }];
 
 const CompaniesCharts = (props: Props) => {
+  const {label} = props;
   const [isLineGraphEnabled, setIsLineGraphEnabled] = useState(false);
 
   return (
@@ -41,22 +43,22 @@ const CompaniesCharts = (props: Props) => {
             <div
               className={
                 !isLineGraphEnabled ?
-                  "btn btn-icon btn-light-primary btn-active-primary active btn-custom ms-2" :
-                  "btn btn-icon btn-light-primary btn-custom ms-2"
+                  'btn btn-icon btn-light-primary btn-active-primary active btn-custom ms-2' :
+                  'btn btn-icon btn-light-primary btn-custom ms-2'
               }
               onClick={()=>setIsLineGraphEnabled(!isLineGraphEnabled)}
             >
-              <i className="fas fa-regular fa-chart-column fs-2"></i>
+              <i className='fas fa-regular fa-chart-column fs-2'></i>
             </div>
             <div
               className={
                 isLineGraphEnabled ?
-                  "btn btn-icon btn-light-primary btn-active-primary active btn-custom ms-2" :
-                  "btn btn-icon btn-light-primary btn-custom ms-2"
+                  'btn btn-icon btn-light-primary btn-active-primary active btn-custom ms-2' :
+                  'btn btn-icon btn-light-primary btn-custom ms-2'
               }
               onClick={()=>setIsLineGraphEnabled(!isLineGraphEnabled)}
             >
-              <i className="fas fa-regular fa-chart-line fs-2"></i>
+              <i className='fas fa-regular fa-chart-line fs-2'></i>
             </div>
           </div>
 
@@ -77,8 +79,8 @@ const CompaniesCharts = (props: Props) => {
         </div>
         {/* end::Header */}
       </div>
-      <div className="modal-body">
-        {isLineGraphEnabled ? <LineChartsWidget/> : <BarChartsWidget/>}
+      <div className='modal-body'>
+        { isLineGraphEnabled ? <LineChartsWidget label={label}/> : <BarChartsWidget label={label}/> }
       </div>
     </div>
   )

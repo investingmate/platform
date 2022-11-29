@@ -36,7 +36,7 @@ const CompaniesModal = (props: Props) => {
                 <i className="fas fa-regular fa-close fs-2"></i>
               </div>
             </div>
-            <CompaniesCharts />
+            {headline && headline.label && <CompaniesCharts label={customStringfy(headline.label)}/>}
           </div>
         </Modal>
       }

@@ -3,13 +3,14 @@ import React, {useEffect, useRef} from 'react'
 import ApexCharts, {ApexOptions} from 'apexcharts'
 import {getCSS, getCSSVariableValue} from '../../../assets/ts/_utils'
 import {useThemeMode} from '../../layout/theme-mode/ThemeModeProvider'
-import {IMSVG} from "../../../helpers";
+import {createArrayOfData, createArrayOfYears} from "../../../../utils/HelperFunctions";
 
 type Props = {
-  className?: string
+  className?: string;
+  label: string
 }
 
-const BarChartsWidget: React.FC<Props> = ({className}) => {
+const BarChartsWidget: React.FC<Props> = ({className, label}) => {
   const chartRef = useRef<HTMLDivElement | null>(null)
   const {mode} = useThemeMode()
 
@@ -30,7 +31,7 @@ const BarChartsWidget: React.FC<Props> = ({className}) => {
 
     const height = parseInt(getCSS(chartRef.current, 'height'))
 
-    const chart = new ApexCharts(chartRef.current, getChartOptions(height))
+    const chart = new ApexCharts(chartRef.current, getChartOptions(height, label))
     if (chart) {
       chart.render()
     }
@@ -47,53 +48,23 @@ const BarChartsWidget: React.FC<Props> = ({className}) => {
         {/* end::Chart */}
       </div>
       {/* end::Body */}
-
-      <div className='card-header border-0 pt-5'>
-        {/* begin::Title */}
-        <h3 className='card-title align-items-start flex-column'>
-          <span className='card-label fw-bold fs-3 mb-1'>Recent Statistics</span>
-
-          <span className='text-muted fw-semibold fs-7'>More than 400 new members</span>
-        </h3>
-        {/* end::Title */}
-
-        {/* begin::Toolbar */}
-        <div className='card-toolbar'>
-          {/* begin::Menu */}
-          <button
-            type='button'
-            className='btn btn-sm btn-icon btn-color-primary btn-active-light-primary'
-            data-im-menu-trigger='click'
-            data-im-menu-placement='bottom-end'
-            data-im-menu-flip='top-end'
-          >
-            <IMSVG path='/media/icons/duotune/general/gen024.svg' className='svg-icon-2' />
-          </button>
-          {/* end::Menu */}
-        </div>
-        {/* end::Toolbar */}
-      </div>
     </div>
   )
 }
 
 export {BarChartsWidget}
 
-function getChartOptions(height: number): ApexOptions {
-  const labelColor = getCSSVariableValue('--im-gray-500')
-  const borderColor = getCSSVariableValue('--im-gray-200')
+function getChartOptions(height: number, label: string): ApexOptions {
+  const labelColor = getCSSVariableValue('--im-gray-600')
+  const borderColor = getCSSVariableValue('--im-gray-300')
   const baseColor = getCSSVariableValue('--im-primary')
   const secondaryColor = getCSSVariableValue('--im-gray-300')
 
   return {
     series: [
       {
-        name: 'Net Profit',
-        data: [44, 55, 57, 56, 61, 58],
-      },
-      {
-        name: 'Revenue',
-        data: [76, 85, 101, 98, 87, 105],
+        name: label,
+        data: createArrayOfData(),
       },
     ],
     chart: {
@@ -107,7 +78,7 @@ function getChartOptions(height: number): ApexOptions {
     plotOptions: {
       bar: {
         horizontal: false,
-        columnWidth: '30%',
+        columnWidth: '60%',
         borderRadius: 5,
       },
     },
@@ -115,7 +86,10 @@ function getChartOptions(height: number): ApexOptions {
       show: false,
     },
     dataLabels: {
-      enabled: false,
+      enabled: true,
+      style: {
+        fontSize: '12px'
+      },
     },
     stroke: {
       show: true,
@@ -123,7 +97,7 @@ function getChartOptions(height: number): ApexOptions {
       colors: ['transparent'],
     },
     xaxis: {
-      categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+      categories: createArrayOfYears(),
       axisBorder: {
         show: false,
       },
@@ -133,7 +107,7 @@ function getChartOptions(height: number): ApexOptions {
       labels: {
         style: {
           colors: labelColor,
-          fontSize: '12px',
+          fontSize: '14px',
         },
       },
     },
@@ -141,7 +115,7 @@ function getChartOptions(height: number): ApexOptions {
       labels: {
         style: {
           colors: labelColor,
-          fontSize: '12px',
+          fontSize: '14px',
         },
       },
     },
@@ -171,7 +145,7 @@ function getChartOptions(height: number): ApexOptions {
     },
     tooltip: {
       style: {
-        fontSize: '12px',
+        fontSize: '14px',
       },
       y: {
         formatter: function (val) {
