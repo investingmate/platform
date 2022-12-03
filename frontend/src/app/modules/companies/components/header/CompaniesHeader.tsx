@@ -57,26 +57,25 @@ const CompaniesHeader = () => {
   return (
     <div className='card'>
       <CompaniesModal modalStatus={modal} setModalStatus={setModal} headline={headline} />
-
-      <div className='card-body p-5 pt-0 pb-0'>
+      <div className='card-body p-5 pb-0 mb-xl-10'>
         <div className='d-flex flex-wrap flex-sm-nowrap mb-3'>
-          <div className='me-7 mb-4'>
-            <div className='symbol symbol-100px symbol-lg-160px symbol-fixed position-relative'>
-              {
-                company && company.logo.length > 0 ?
-                <img src={toAbsoluteUrl(company.logo)} alt={`${company.name} logo`} /> :
-                <IMSVG
-                  path="/media/icons/duotune/general/gen006.svg"
-                  className="svg-icon svg-icon-5x svg-icon-warning"
-                />
-              }
-            </div>
-          </div>
-
           <div className='flex-grow-1'>
             <div className='d-flex justify-content-between align-items-start flex-wrap mb-2'>
               <div className='d-flex flex-column'>
                 <div className='d-flex align-items-center mb-2'>
+                  <div className='mb-2'>
+                    <div className='symbol symbol-100px symbol-lg-160px symbol-fixed position-relative'>
+                      {
+                        company && company.logo.length > 0 ?
+                          <img src={toAbsoluteUrl(company.logo)} alt={`${company.name} logo`} /> :
+                          <IMSVG
+                            path="/media/icons/duotune/general/gen006.svg"
+                            className="svg-icon svg-icon-5x svg-icon-warning"
+                          />
+                      }
+                    </div>
+                  </div>
+
                   <a href={company && company.website} className='text-gray-800 text-hover-primary fs-2 fw-bolder me-1' target="_blank" rel="noreferrer">
                     {company && company.name}
                   </a>

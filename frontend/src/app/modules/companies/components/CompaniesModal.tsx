@@ -15,7 +15,7 @@ const CompaniesModal = (props: Props) => {
   const { headline, modalStatus, setModalStatus } = props;
 
   return (
-    <div className='card mb-5 mb-xl-10'>
+    <div className='card'>
       {modalStatus &&
         <Modal
           aria-hidden='true'
