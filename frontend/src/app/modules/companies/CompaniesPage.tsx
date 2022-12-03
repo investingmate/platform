@@ -3,6 +3,7 @@ import {CompaniesListWrapper} from './components/CompaniesList'
 import CompanyOverviewPage from "./CompanyOverviewPage";
 import {PageLink, PageTitle} from "../../../_investingmate/layout/core/PageData";
 import CompanyFinancialsPage from "./CompanyFinancialsPage";
+import {DataDisclaimer} from "../../../components/DataDisclaimer";
 
 const companiesBreadcrumbs: Array<PageLink> = [
   {
@@ -44,6 +45,7 @@ const CompaniesPage = () => {
             <>
               <PageTitle breadcrumbs={companiesBreadcrumbs}>Company Overview</PageTitle>
               <CompanyOverviewPage />
+              <DataDisclaimer />
             </>
           }
         />
@@ -53,6 +55,7 @@ const CompaniesPage = () => {
             <>
               <PageTitle breadcrumbs={companiesBreadcrumbs}>Company Financials</PageTitle>
               <CompanyFinancialsPage />
+              <DataDisclaimer />
             </>
           }
         />
