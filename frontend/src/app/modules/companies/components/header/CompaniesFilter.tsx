@@ -33,7 +33,7 @@ function DebouncedInput({
       className='d-flex align-items-center position-relative my-1'
       // style={{width: type === 'number' ? '47%' : '100%'}}
     >
-      {list !== "logolist" &&
+      {list !== "logolist" && list !== "favlist" &&
         <IMSVG
           path={
             type === 'text' ?
@@ -48,10 +48,10 @@ function DebouncedInput({
         className='form-control form-control-solid ps-14'
         value={value}
         onChange={e => setValue(e.target.value)}
-        disabled={list === "logolist"}
+        disabled={list === "logolist" || list === "favlist"}
         style={{
-          backgroundColor: list === "logolist" ? 'white' : 'auto',
-          borderColor: list === "logolist" ? 'white' : 'auto'
+          backgroundColor: list === "logolist" || list === "favlist" ? 'white' : 'auto',
+          borderColor: list === "logolist" || list === "favlist" ? 'white' : 'auto'
         }}
       />
     </div>
@@ -115,8 +115,8 @@ export function CompaniesFilter({
   ) : (
     <>
       <datalist id={column.id + 'list'}>
-        {sortedUniqueValues.slice(0, 5000).map((value: any) => (
-          <option value={value} key={value} />
+        {sortedUniqueValues.slice(0, 5000).map((value: any, index: number) => (
+          <option value={value} key={`${value}-${index}`} />
         ))}
       </datalist>
       <DebouncedInput

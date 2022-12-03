@@ -8,6 +8,7 @@ export type TColumn = ColumnDef<Company>
 }
 export type Company = {
   id: ID;
+  fav: boolean,
   logo: string,
   name: string,
   ticker: string,
@@ -33,6 +34,7 @@ export type CompaniesQueryResponse = Response<Array<Company>>
 
 export const initialUser: Company = {
   id: 0,
+  fav: false,
   logo: "",
   name: "",
   ticker: "",

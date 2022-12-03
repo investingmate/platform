@@ -18,7 +18,7 @@ import {
   rankItem,
 } from '@tanstack/match-sorter-utils'
 
-import {TColumn} from "../../core/_models";
+import {Company, TColumn} from "../../core/_models";
 import {useQueryResponseData} from "../../core/QueryResponseProvider";
 import {IMSVG} from "../../../../../_investingmate/helpers";
 import {DraggableColumnHeader} from "./columns/DraggableColumnHeader";
@@ -28,6 +28,7 @@ import {CompaniesListGrouping} from "../header/CompaniesListGrouping";
 import {useListView} from "../../core/ListViewProvider";
 import {CompaniesListDropDown} from "../header/CompaniesListDropdown";
 import {useNavigate} from "react-router-dom";
+import {addToWatchlist, removeFromWatchlist} from "../../../../../utils/HelperFunctions";
 
 const fuzzyFilter: FilterFn<any> = (row, columnId, value, addMeta) => {
   // Rank the item
@@ -49,6 +50,13 @@ const CompaniesTable = () => {
   const [isFilterEnabled, setIsFilterEnabled] = React.useState(true)
   const MIN_SIZE = isFilterEnabled ? 160 : 100;
   const defaultColumns: TColumn[] = [
+    {
+      accessorKey: 'fav',
+      id: 'fav',
+      header: '',
+      cell: info => info.getValue(),
+      size: 50,
+    },
     {
       accessorKey: 'logo',
       id: 'logo',
@@ -223,12 +231,30 @@ const CompaniesTable = () => {
   }, [columnsSelected])
 
   const handleOnClick = (row: any) => {
-    console.log({row})
     nav(
       `company-overview`,
       // `company-overview?ticker=${row.original.ticker.toLowerCase()}`,
       {state: {company: JSON.stringify(row.original)}}
     )
+  }
+
+  const handleFav = (row: any) => {
+    const isFav = checkWatchlistState(row)
+    if(!isFav){
+      addToWatchlist(row.original)
+    } else {
+      removeFromWatchlist(row.original)
+    }
+    setColumns(defaultColumns)
+  }
+
+  const checkWatchlistState = (row: any) => {
+    const newList = localStorage.getItem('watchList')
+    if(newList){
+      const filtered = JSON.parse(newList).filter((i:Company) => i && i.ticker === row.original.ticker);
+      return filtered.length > 0;
+    }
+    return false
   }
 
   return (
@@ -278,7 +304,6 @@ const CompaniesTable = () => {
             return (
               <tr
                 key={row.id}
-                onClick={()=>handleOnClick(row)}
                 className="cursor-pointer btn-light"
               >
                 {row.getVisibleCells().map(cell => {
@@ -299,9 +324,32 @@ const CompaniesTable = () => {
                         )}
                       </th>
                     )
+                  } else if (cell.column.id === 'fav'){
+                    return (
+                      <th
+                        key={cell.column.id}
+                        onClick={()=>handleFav(row)}
+                      >
+                        <>
+                          {
+                            checkWatchlistState(row) ?
+                            <span className='indicator-label'>
+                              <i className="fas fa-regular fa-star mx-2 fs-2 text-info"/>
+                            </span>
+                              :
+                            <span className='indicator-label text-info'>
+                              <i className="fas fa-regular fa-star mx-2 fs-2"/>
+                            </span>
+                          }
+                        </>
+                      </th>
+                    )
                   }
                   return (
-                    <td key={cell.id}>
+                    <td
+                      key={cell.id}
+                      onClick={()=>handleOnClick(row)}
+                    >
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
                     </td>
                   )

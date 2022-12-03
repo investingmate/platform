@@ -7,9 +7,10 @@ import {defaultColumnsDescription} from "../table/columns/_columns";
 import {Link, useLocation} from "react-router-dom";
 import {CompaniesModal} from "../CompaniesModal";
 import {CompaniesIndicator} from "../CompaniesIndicator";
+import {addToWatchlist, removeFromWatchlist} from "../../../../../utils/HelperFunctions";
 
 const CompaniesHeader = () => {
-  const [isOnWatchList, setIsOnWatchList] = useState(false);
+  const intl = useIntl()
   const [modal, setModal] = useState(false);
   const [headline, setHeadline] = useState<IHeadline | undefined>(undefined);
 
@@ -33,9 +34,24 @@ const CompaniesHeader = () => {
     }
   }): []
 
+  const newList = localStorage.getItem('watchList')
+  let watchState = false
+  if(newList && company){
+    const filtered = JSON.parse(newList).filter((i:Company) => i && i.ticker === (company && company.ticker));
+    if(filtered.length > 0){
+      watchState = true
+    }
+  }
+
+  const [isOnWatchList, setIsOnWatchList] = useState(watchState);
+
   const handleWatchList = () => {
-    // TODO save it on backend
     setIsOnWatchList(!isOnWatchList);
+    if(company && !isOnWatchList){
+      addToWatchlist(company)
+    } else if(company && isOnWatchList){
+      removeFromWatchlist(company)
+    }
   }
 
   const handleModal = (headline: IHeadline) => {
@@ -136,12 +152,12 @@ const CompaniesHeader = () => {
                     isOnWatchList ?
                     <span className='indicator-label'>
                       <i className="fas fa-regular fa-star mx-2 fs-2"/>
-                      Remove from Watchlist
+                      {intl.formatMessage({id: 'COMPANIES.REMOVE_WATCHLIST'})}
                     </span>
                     :
                     <span className='indicator-label text-info'>
                       <i className="fas fa-regular fa-star mx-2 fs-2 text-info"/>
-                      Add to Watchlist
+                      {intl.formatMessage({id: 'COMPANIES.ADD_WATCHLIST'})}
                     </span>
                   }
                 </div>

@@ -1,3 +1,4 @@
+import {Company} from "../app/modules/companies/core/_models";
 
 export const customStringfy = (str: string) => {
   let newStr = str.replaceAll("_", ' ');
@@ -25,3 +26,29 @@ export const createArrayOfData = (): number[] => {
   }
   return arrayOfData;
 }
+
+export const addToWatchlist = (company: Company) => {
+  const list = localStorage.getItem('watchList')
+  if(!list){
+    localStorage.setItem('watchList', JSON.stringify([]))
+  }
+  const newList = localStorage.getItem('watchList')
+  if(newList){
+    const findIndex = JSON.parse(newList).findIndex((i:Company) => i && i.ticker === company.ticker);
+    if(findIndex === -1){
+      const list = JSON.parse(newList)
+      list.push(company)
+      localStorage.setItem('watchList', JSON.stringify(list))
+    }
+  }
+};
+
+export const removeFromWatchlist = (company: Company) => {
+  const newList = localStorage.getItem('watchList')
+  if(newList){
+    const filtered = JSON.parse(newList).filter((i:Company) => i && i.ticker !== company.ticker);
+    if(filtered){
+      localStorage.setItem('watchList', JSON.stringify(filtered))
+    }
+  }
+};
