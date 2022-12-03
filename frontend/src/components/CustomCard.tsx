@@ -8,23 +8,19 @@ interface Props {
 const CustomCard = (props: Props) => {
   const { title, children } = props;
   return (
-    <div className='card'>
+    <div className='card mt-5'>
       <div
         className='card-header border-0 cursor-pointer'
       >
         <div className='card-title m-0'>
-          <h3 className='fw-bolder m-0'>
+          <h6 className='fw-bolder m-0'>
             {title}
-          </h3>
+          </h6>
         </div>
       </div>
       <div>
         <div className='card-body border-top p-9'>
-          <div className='d-flex rounded border-dashed border border-dashed p-6'>
-            <div className='d-flex flex-stack flex-grow-1'>
-              {children}
-            </div>
-          </div>
+          {children}
         </div>
       </div>
     </div>

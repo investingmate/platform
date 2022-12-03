@@ -1,24 +1,22 @@
 import {IMCard} from "../../../_investingmate/helpers";
 import {CompaniesHeader} from "./components/header/CompaniesHeader";
-// import TradingViewWidget from "react-tradingview-widget";
+import {useLocation} from "react-router-dom";
+import {getCurrentCompany} from "./core/GetCurrentCompany";
+import {PriceGraph} from "./components/overview/PriceGraph";
+import {CorporateOverview} from "./components/overview/CorporateOverview";
+import {DividendHistory} from "./components/overview/DividendHistory";
 
 const CompanyOverviewPage = () => {
+  const location = useLocation();
+  const company = getCurrentCompany(location);
+  console.log('comp', company)
   return (
-    <>
-      <IMCard className="pb-5 table-responsive">
-        <CompaniesHeader />
-        {/*<TradingViewWidget*/}
-        {/*  symbol="NASDAQ:AAPL"*/}
-        {/*  timezone="Australia/Sydney"*/}
-        {/*  withdateranges*/}
-        {/*  details*/}
-        {/*  calendar*/}
-        {/*  show_popup_button*/}
-        {/*  popup_width={window.screen.width * 0.9 ?? "1000"}*/}
-        {/*  popup_height={window.screen.height * 0.8 ?? "650"}*/}
-        {/*/>*/}
-      </IMCard>
-    </>
+    <IMCard className="pb-5 table-responsive">
+      <CompaniesHeader />
+      <PriceGraph />
+      <CorporateOverview />
+      <DividendHistory />
+    </IMCard>
   )
 }
 

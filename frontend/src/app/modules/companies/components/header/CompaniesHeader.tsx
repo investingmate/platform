@@ -8,21 +8,14 @@ import {Link, useLocation} from "react-router-dom";
 import {CompaniesModal} from "../CompaniesModal";
 import {CompaniesIndicator} from "../CompaniesIndicator";
 import {addToWatchlist, removeFromWatchlist} from "../../../../../utils/HelperFunctions";
+import {getCurrentCompany} from "../../core/GetCurrentCompany";
 
 const CompaniesHeader = () => {
   const intl = useIntl()
   const [modal, setModal] = useState(false);
   const [headline, setHeadline] = useState<IHeadline | undefined>(undefined);
-
   const location = useLocation();
-  let company: Company | undefined = undefined;
-  let state: any;
-  // getting the company details from state
-  if(location && location.state){
-    state = location.state
-    if(state && state.company)
-      company = state.company && JSON.parse(state.company);
-  }
+  const company = getCurrentCompany(location);
 
   console.log({company})
 
@@ -62,7 +55,7 @@ const CompaniesHeader = () => {
   }
 
   return (
-    <div className='card mb-5 mb-xl-10'>
+    <div className='card'>
       <CompaniesModal modalStatus={modal} setModalStatus={setModal} headline={headline} />
 
       <div className='card-body p-5 pt-0 pb-0'>
