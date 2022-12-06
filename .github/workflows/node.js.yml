@@ -52,8 +52,7 @@ jobs:
       - name: Serverless Deploy
         uses: serverless/github-action@v3.1
         with:
-          args: deploy
-          stage: dev
+          args: deploy --stage dev
 
   deploy_stag:
     name: Deploy to Staging
