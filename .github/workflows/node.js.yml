@@ -9,40 +9,6 @@ on:
       - "dependabot/*"
 
 jobs:
-  # build:
-  #   name: Building
-  #   runs-on: ubuntu-latest
-
-  #   strategy:
-  #     matrix:
-  #       node-version: [16.x]
-  #       # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #     - name: Use Node.js ${{ matrix.node-version }}
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version: ${{ matrix.node-version }}
-  #         cache: "npm"
-
-  #     - name: Get npm cache directory
-  #       id: npm-cache-dir
-  #       run: |
-  #         echo "::set-output name=dir::$(npm config get cache)"
-
-  #     - uses: actions/cache@v3
-  #       id: npm-cache
-  #       with:
-  #         path: ${{ steps.npm-cache-dir.outputs.dir }}
-  #         key: ${{ runner.os }}-node-v3-${{ hashFiles('**/package-lock.json') }}
-  #         restore-keys: |
-  #           ${{ runner.os }}-node-
-
-  #     - name: Install dependencies
-  #       if: steps.npm-cache.outputs.cache-hit != 'true'
-  #       run: |
-  #         npm install
 
   deploy_dev:
     name: Deploy to Development
@@ -74,9 +40,9 @@ jobs:
         id: npm-cache
         with:
           path: ${{ steps.npm-cache-dir.outputs.dir }}
-          key: ${{ runner.os }}-node-dev-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-node-dev-
+            ${{ runner.os }}-node-
 
       - name: Install dependencies
         if: steps.npm-cache.outputs.cache-hit != 'true'
@@ -84,7 +50,10 @@ jobs:
           npm install
 
       - name: Serverless Deploy
-        run: npx serverless deploy --stage dev
+        uses: serverless/github-action@v3.1
+        with:
+          args: deploy
+          stage: dev
 
   deploy_stag:
     name: Deploy to Staging
