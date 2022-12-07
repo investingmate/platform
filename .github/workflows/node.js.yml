@@ -6,16 +6,56 @@ name: Node.js CI
 on:
   push:
     branches-ignore:
-      - 'dependabot/*'
+      - "dependabot/*"
 
 jobs:
-  build:
+  # build:
+  #   name: Building
+  #   runs-on: ubuntu-latest
+
+  #   strategy:
+  #     matrix:
+  #       node-version: [16.x]
+  #       # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - name: Use Node.js ${{ matrix.node-version }}
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: ${{ matrix.node-version }}
+  #         cache: "npm"
+
+  #     - name: Get npm cache directory
+  #       id: npm-cache-dir
+  #       run: |
+  #         echo "::set-output name=dir::$(npm config get cache)"
+
+  #     - uses: actions/cache@v3
+  #       id: npm-cache
+  #       with:
+  #         path: ${{ steps.npm-cache-dir.outputs.dir }}
+  #         key: ${{ runner.os }}-node-v3-${{ hashFiles('**/package-lock.json') }}
+  #         restore-keys: |
+  #           ${{ runner.os }}-node-
+
+  #     - name: Install dependencies
+  #       if: steps.npm-cache.outputs.cache-hit != 'true'
+  #       run: |
+  #         npm install
+
+  deploy_dev:
+    name: Deploy to Development
+    if: ${{ github.ref == 'refs/heads/development' }}
     runs-on: ubuntu-latest
+    environment: Development
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
 
     strategy:
       matrix:
         node-version: [16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
       - uses: actions/checkout@v3
@@ -25,29 +65,26 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
 
-      - name: npm install, build and test frontend
+      - name: Get npm cache directory
+        id: npm-cache-dir
         run: |
-          cd frontend
-          npm install
-          npm run build --if-present
-        env:
-          CI: false
-  
-  deploy_dev:
-    name: Deploy to Development
-    if: ${{ github.ref == 'refs/heads/development' }}
-    needs: [build]
-    runs-on: ubuntu-latest
-    environment: Development
+          echo "::set-output name=dir::$(npm config get cache)"
 
-    steps: 
-      - name: npm install and build
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
+      - uses: actions/cache@v3
+        id: npm-cache
+        with:
+          path: ${{ steps.npm-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-node-dev-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-dev-
+
+      - name: Install dependencies
+        if: steps.npm-cache.outputs.cache-hit != 'true'
         run: |
           npm install
-          npx sst deploy --stage dev
+
+      - name: Serverless Deploy
+        run: npx serverless deploy --stage dev
 
   deploy_stag:
     name: Deploy to Staging
@@ -56,14 +93,13 @@ jobs:
     runs-on: ubuntu-latest
     environment: Staging
 
-    steps: 
-      - name: npm install and build
+    steps:
+      - name: Npx SST Deploy Stag
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
         run: |
-          npm install
-          npx sst deploy --stage stag
+          npm run deploy --stage stag
 
   deploy_prod:
     name: Deploy to Production
@@ -72,11 +108,10 @@ jobs:
     runs-on: ubuntu-latest
     environment: Production
 
-    steps: 
-      - name: npm install and build
+    steps:
+      - name: Npx SST Deploy Prod
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
         run: |
-          npm install
-          npx sst deploy --stage prod
+          npm run deploy --stage prod
