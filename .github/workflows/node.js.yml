@@ -45,7 +45,7 @@ jobs:
 
       - name: Install dependencies
         if: steps.npm-cache.outputs.cache-hit != 'true'
-      - run: npm ci
+        run: npm ci
 
       - name: Serverless Deploy
         uses: serverless/github-action@v3.1
