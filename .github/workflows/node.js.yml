@@ -41,7 +41,7 @@ jobs:
             ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
 
       - name: Install dependencies
-        if: steps.npm-cache.outputs.cache-hit != 'true'
+        #if: steps.npm-cache.outputs.cache-hit != 'true'
         run: |
           npm ci
 
@@ -50,7 +50,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
-          npm run deploy
+          npm run deploy --stage dev
 
   deploy_stag:
     name: Deploy to Staging
