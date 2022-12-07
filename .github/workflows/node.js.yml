@@ -9,7 +9,6 @@ on:
       - "dependabot/*"
 
 jobs:
-
   deploy_dev:
     name: Deploy to Development
     if: ${{ github.ref == 'refs/heads/development' }}
@@ -44,6 +43,11 @@ jobs:
         #if: steps.npm-cache.outputs.cache-hit != 'true'
         run: |
           npm ci
+
+      - name: Install front end dependencies
+        #if: steps.npm-cache.outputs.cache-hit != 'true'
+        run: |
+          cd frontend && npm ci
 
       - name: Npx SST Deploy Dev
         env:
