@@ -15,7 +15,7 @@ export function FrontendStack({ stack, app }) {
   const site = new ReactStaticSite(stack, "frontend", {
     customDomain: {
       domainName: `${appPrefix}.${certDomain}`,
-      domainAlias: `www.${appPrefix}.${domain}`,
+      domainAlias: `www.${appPrefix}.${certDomain}`,
       cdk: {
         hostedZone: { ...hostedZone },
         certificate: { ...certificate },
