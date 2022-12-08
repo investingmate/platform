@@ -10,7 +10,7 @@ export function FrontendStack({ stack, app }) {
   const { bucket } = use(StorageStack);
   const { certificate, hostedZone, domain: certDomain } = use(CertificateStack);
 
-  const appPrefix = app.stage === "prod" ? "app" : app.stage + "-app";
+  const appPrefix = app.stage === "prod" ? "app" : `app.${app.stage}`;
 
   const site = new ReactStaticSite(stack, "frontend", {
     customDomain: {
