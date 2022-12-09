@@ -18,7 +18,7 @@ import {
   rankItem,
 } from '@tanstack/match-sorter-utils'
 
-import {Company, TColumn} from "../../core/_models";
+import {Company, TCompanyColumn} from "../../core/_models";
 import {useQueryResponseData} from "../../core/QueryResponseProvider";
 import {IMSVG} from "../../../../../_investingmate/helpers";
 import {DraggableColumnHeader} from "./columns/DraggableColumnHeader";
@@ -49,7 +49,7 @@ const CompaniesTable = () => {
 
   const [isFilterEnabled, setIsFilterEnabled] = React.useState(true)
   const MIN_SIZE = isFilterEnabled ? 160 : 100;
-  const defaultColumns: TColumn[] = [
+  const defaultColumns: TCompanyColumn[] = [
     {
       accessorKey: 'fav',
       id: 'fav',
@@ -221,7 +221,7 @@ const CompaniesTable = () => {
 
   // display the columns selected only
   useEffect(() => {
-    const updatedCols: TColumn[] = []
+    const updatedCols: TCompanyColumn[] = []
     columnsSelected.forEach(col => {
       if(col.status){
         updatedCols.push(col)
@@ -285,7 +285,7 @@ const CompaniesTable = () => {
           <thead>
           {table.getHeaderGroups().map(headerGroup => (
             <tr
-              className='text-start text-muted fw-bolder fs-7 text-uppercase gs-0'
+              className='text-start fw-bolder fs-7 text-uppercase gs-0'
               key={headerGroup.id}
             >
               {headerGroup.headers.map(header => (

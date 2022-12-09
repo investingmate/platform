@@ -1,6 +1,6 @@
-import {TColumn} from "../../../core/_models";
+import {TCompanyColumn} from "../../../core/_models";
 
-export const defaultColumnsDescription: TColumn[] = [
+export const defaultColumnsDescription: TCompanyColumn[] = [
   {
     id: 'ticker',
     description: 'Here we can put a description about: Ticker',

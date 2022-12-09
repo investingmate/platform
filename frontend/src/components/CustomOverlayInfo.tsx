@@ -29,7 +29,7 @@ const CustomOverlayInfo = (props: CustomOverlayInfoProps) => {
         <div
           className='btn-icon'
         >
-          <i className='fas fa-regular fa-question-circle mx-2 fs-2 text-gray-500'/>
+          <i className='fas fa-regular fa-question-circle mx-2 fs-2 text-gray-400'/>
         </div>
       </div>
     </OverlayTrigger>

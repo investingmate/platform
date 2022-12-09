@@ -1,7 +1,7 @@
 import {Response,ID} from '../../../../_investingmate/helpers'
 import {ColumnDef} from "@tanstack/react-table";
 
-export type TColumn = ColumnDef<Company>
+export type TCompanyColumn = ColumnDef<Company>
   & {
   status?: boolean,
   description?: string,
@@ -28,11 +28,12 @@ export type Company = {
     beta: number,
     shares_issued: number,
   },
+  dividends_history: Dividend[]
 }
 
 export type CompaniesQueryResponse = Response<Array<Company>>
 
-export const initialUser: Company = {
+export const initialCompany: Company = {
   id: 0,
   fav: false,
   logo: "",
@@ -54,9 +55,29 @@ export const initialUser: Company = {
     beta: 0.0,
     shares_issued: 0,
   },
+  dividends_history: [{
+    date: '',
+    amount: '',
+    franking: '',
+    gross: '',
+    type: '',
+    payable: '',
+  }]
 };
 
 export interface IHeadline {
   label: string
   value: number
+}
+
+export type TDividendsColumn = ColumnDef<Dividend>
+
+export type Dividend = {
+  id?: ID;
+  date: string,
+  amount: string,
+  franking: string,
+  gross: string,
+  type: string,
+  payable: string,
 }

@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react'
 import {MenuComponent} from '../../../../../_investingmate/assets/ts/components'
-import { IMSVG} from '../../../../../_investingmate/helpers'
-import {TColumn} from "../../core/_models";
+import {IMSVG} from '../../../../../_investingmate/helpers'
+import {TCompanyColumn} from "../../core/_models";
 
 interface ICompaniesListDropdown {
-  columns: TColumn[],
+  columns: TCompanyColumn[],
   setColumns: (columns: any) => void
   isFilterEnabled: boolean,
   setIsFilterEnabled: (state: boolean) => void
@@ -17,7 +17,7 @@ const CompaniesListDropDown = (props: ICompaniesListDropdown) => {
   }, [])
 
   // update the status of the column
-  const handleChange = (col: TColumn) => {
+  const handleChange = (col: TCompanyColumn) => {
     const updatedCols = columns.map((c) => {
       if (col.id === c.id){
         c.status = !c.status

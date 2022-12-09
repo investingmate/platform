@@ -35,7 +35,7 @@ const CompaniesIndicator = (props: Props) => {
 
           <CustomOverlayInfo description={description ?? ''} />
         </div>
-        <div className='fw-bold fs-6 text-gray-400'>{customStringfy(label)}</div>
+        <div className='fw-bold fs-6 text-gray-800'>{customStringfy(label)}</div>
       </div>
       {children && children}
     </div>

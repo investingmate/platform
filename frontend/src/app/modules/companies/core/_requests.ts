@@ -1,6 +1,6 @@
 import axios, {AxiosResponse} from 'axios'
 import {ID, Response} from '../../../../_investingmate/helpers'
-import {Company, CompaniesQueryResponse} from './_models'
+import {Company, CompaniesQueryResponse, Dividend} from './_models'
 
 const API_URL = process.env.REACT_APP_API_URL
 const REACT_APP_AUTH_DOMAIN = process.env.REACT_APP_AUTH_DOMAIN
@@ -12,6 +12,25 @@ console.log({REACT_APP_AUTH_DOMAIN})
 console.log({API_URL})
 console.log({GET_COMPANIES_URL})
 
+function randomDate(start: Date, end: Date) {
+  return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+}
+
+const getDividendHistory = () => {
+  const limit = Math.floor(Math.random() * 10)+1;
+  const data: Dividend[] = []
+  for(let index = 0; index <= limit; index++){
+    data.push({
+      date: randomDate(new Date(2012, 1, 1), new Date()).toString(),
+      amount: `$${Math.floor(Math.random() * 10) + 1 + index}.00`,
+      franking: `${Math.floor(Math.random() * 10) + 1 + index}%`,
+      gross: `$${Math.floor(Math.random() * 10) + 1 + index}.00`,
+      type: Math.floor(Math.random() * 10) + 1 + index % 2 === 0 ? 'Final' : 'Interim',
+      payable: randomDate(new Date(2012, 1, 1), new Date()).toString(),
+    })
+  }
+  return data
+}
 // @ts-ignore
 const slugfy = (name) => {
   if (!name) return null;
@@ -72,6 +91,8 @@ const _companies = COMPANIES.map((company, index) => {
   let exchange = company.split(" ").join("").substring(7, 12).toLowerCase()
   exchange = exchange[0].toUpperCase() + exchange.slice(1);
   const website = `https://www.${company.split(" ").join("").toLowerCase()}.com`;
+
+  const dividends = getDividendHistory();
   return {
     [slugfy(company)]: {
       ...COMPANY_TEMPLATE,
@@ -92,7 +113,8 @@ const _companies = COMPANIES.map((company, index) => {
         market_cap: Math.floor(Math.random() * 10) + 1 + index,
         beta: Math.floor(Math.random() * 10) + 1 + index,
         shares_issued: Math.floor(Math.random() * 10) + 1 + index,
-      }
+      },
+      dividends_history: dividends
     },
   };
 });

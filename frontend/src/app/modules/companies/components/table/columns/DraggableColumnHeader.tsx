@@ -20,10 +20,12 @@ const reorderColumn = (
 }
 
 const DraggableColumnHeader: FC<{
-  header: Header<Company, unknown>
+  header: Header<any, unknown>
   table: Table<any>,
   isFilterEnabled: boolean
-}> = ({ header, table,isFilterEnabled }) => {
+  isDragEnabled?: boolean
+}> = (props) => {
+  const { header, table, isFilterEnabled, isDragEnabled = true } = props
   const { getState, setColumnOrder } = table
   const { columnOrder } = getState()
   const { column } = header
@@ -70,19 +72,19 @@ const DraggableColumnHeader: FC<{
               onClick: header.column.getToggleSortingHandler(),
             }}
           >
-          <span
-            ref={dragRef}
-            className='me-3 d-flex align-items-center'
-          >
-            <i className="fas fa-regular fa-arrows-left-right m-3"/>
-            {header.isPlaceholder
-              ? null
-              : flexRender(header.column.columnDef.header, header.getContext())}
-            {{
-              asc: <i className="fas fa-regular fa-arrow-up-short-wide m-3"/>,
-              desc: <i className="fas fa-regular fa-arrow-down-short-wide m-3"/>,
-            }[header.column.getIsSorted() as string] ?? null}
-          </span>
+            <span
+              ref={isDragEnabled ? dragRef : null}
+              className='me-3 d-flex align-items-center im-primary'
+            >
+              {isDragEnabled && <i className="fas fa-regular fa-arrows-left-right m-3 im-primary"/>}
+              {header.isPlaceholder
+                ? null
+                : flexRender(header.column.columnDef.header, header.getContext())}
+              {{
+                asc: <i className="fas fa-regular fa-arrow-up-short-wide m-3 im-primary"/>,
+                desc: <i className="fas fa-regular fa-arrow-down-short-wide m-3 im-primary"/>,
+              }[header.column.getIsSorted() as string] ?? null}
+            </span>
           </div>
         </CustomTooltip>
         {isFilterEnabled && header.column.getCanFilter() ? (

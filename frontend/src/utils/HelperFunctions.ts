@@ -1,4 +1,5 @@
 import {Company} from "../app/modules/companies/core/_models";
+import moment from "moment";
 
 export const customStringfy = (str: string) => {
   let newStr = str.replaceAll("_", ' ');
@@ -51,4 +52,8 @@ export const removeFromWatchlist = (company: Company) => {
       localStorage.setItem('watchList', JSON.stringify(filtered))
     }
   }
+};
+
+export const dateFormatter = (date: any) => {
+  return moment(date).format('DD/MM/YYYY');
 };
