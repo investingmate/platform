@@ -8,7 +8,7 @@ import { ConfigStack } from "./ConfigStack";
 export function AuthStack({ stack, app }) {
   const { bucket } = use(StorageStack);
   const { api } = use(ApiStack);
-  const { googleClientId, googleClientSecret } = use(ConfigStack);
+  const { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } = use(ConfigStack);
 
   const url =
     app.stage !== "local"
@@ -31,8 +31,8 @@ export function AuthStack({ stack, app }) {
   });
 
   const provider = new cognito.UserPoolIdentityProviderGoogle(stack, "Google", {
-    clientId: googleClientId,
-    clientSecret: googleClientSecret,
+    clientId: GOOGLE_CLIENT_ID,
+    clientSecret: GOOGLE_CLIENT_SECRET,
     userPool: auth.cdk.userPool,
     scopes: ["profile", "email", "openid"],
     attributeMapping: {
