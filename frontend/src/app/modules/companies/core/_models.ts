@@ -57,9 +57,9 @@ export const initialCompany: Company = {
   },
   dividends_history: [{
     date: '',
-    amount: '',
-    franking: '',
-    gross: '',
+    amount: 0.0,
+    franking: 0.0,
+    gross: 0.0,
     type: '',
     payable: '',
   }]
@@ -75,9 +75,9 @@ export type TDividendsColumn = ColumnDef<Dividend>
 export type Dividend = {
   id?: ID;
   date: string,
-  amount: string,
-  franking: string,
-  gross: string,
+  amount: number,
+  franking: number,
+  gross: number,
   type: string,
   payable: string,
 }

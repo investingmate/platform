@@ -32,19 +32,19 @@ const DividendsTable = () => {
         accessorFn: row => row.amount,
         id: 'amount',
         header: 'Amount',
-        cell: info => info.getValue(),
+        cell: info => `$${info.getValue()}.00`,
       },
       {
         accessorFn: row => row.franking,
         id: 'franking',
         header: 'Franking',
-        cell: info => info.getValue(),
+        cell: info => `${info.getValue()}%`,
       },
       {
         accessorFn: row => row.gross,
         id: 'Gross',
         header: 'Gross',
-        cell: info => info.getValue(),
+        cell: info => `$${info.getValue()}.00`,
       },
       {
         accessorFn: row => row.type,
