@@ -1,44 +1,19 @@
-import React, {useEffect, useMemo} from 'react'
+import React from 'react'
 import {
-  ColumnOrderState,
   SortingState,
-  FilterFn,
-  ColumnFiltersState,
   flexRender,
   getCoreRowModel,
   getSortedRowModel,
   getPaginationRowModel,
   useReactTable,
-  getFacetedRowModel,
-  getFilteredRowModel,
-  getFacetedUniqueValues,
-  getFacetedMinMaxValues,
 } from '@tanstack/react-table'
-import {
-  rankItem,
-} from '@tanstack/match-sorter-utils'
 
-import {Dividend, TDividendsColumn} from "../../core/_models";
+import {TDividendsColumn} from "../../core/_models";
 import {DraggableColumnHeader} from "./columns/DraggableColumnHeader";
 import {ListPagination} from "../pagination/ListPagination";
 import {useLocation} from "react-router-dom";
 import {getCurrentCompany} from "../../core/GetCurrentCompany";
 import {dateFormatter} from "../../../../../utils/HelperFunctions";
-
-const fuzzyFilter: FilterFn<any> = (row, columnId, value, addMeta) => {
-  // Rank the item
-  const itemRank = rankItem(row.getValue(columnId), value)
-  // Store the itemRank info
-  addMeta({
-    itemRank,
-  })
-  // Return if the item should be filtered in/out
-  return itemRank.passed
-}
-
-
-// const data:Dividend[] = []
-// console.log('company', company)
 
 const DividendsTable = () => {
   const location = useLocation();
