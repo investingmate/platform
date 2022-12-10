@@ -6,12 +6,10 @@ export function ApiStack({ stack, app }) {
   const { table } = use(StorageStack);
   const { certificate, hostedZone, domain } = use(CertificateStack);
 
-  const apiPrefix = app.stage === "prod" ? "api" : app.stage + "-api";
-
   // Create the API
   const api = new Api(stack, "api", {
     customDomain: {
-      domainName: `${apiPrefix}.${domain}`,
+      domainName: `api.${domain}`,
       cdk: {
         hostedZone: { ...hostedZone },
         certificate: { ...certificate },
