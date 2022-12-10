@@ -10,7 +10,10 @@ export function AuthStack({ stack, app }) {
   const { api } = use(ApiStack);
   const { googleClientId, googleClientSecret } = use(ConfigStack);
 
-  const url = `https://app.${app.stage}.investingmate.com.au`;
+  const url =
+    app.stage !== "local"
+      ? `https://app.${app.stage}.investingmate.com.au`
+      : "http://localhost:3000";
 
   const auth = new Cognito(stack, "auth", {
     login: ["email"],
