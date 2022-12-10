@@ -49,15 +49,13 @@ jobs:
         run: |
           cd frontend && npm ci
 
-      - name: Npx SST Set Secrets Dev
-        run: |
-          npx sst secrets --stage dev set GOOGLE_CLIENT_ID ${{ secrets.GOOGLE_CLIENT_ID }} GOOGLE_CLIENT_SECRET ${{ secrets.GOOGLE_CLIENT_SECRET }}
-
       - name: Npx SST Deploy Dev
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
+          npx sst secrets set GOOGLE_CLIENT_ID ${{ secrets.GOOGLE_CLIENT_ID }} --stage dev &&
+          npx sst secrets set GOOGLE_CLIENT_SECRET ${{ secrets.GOOGLE_CLIENT_SECRET }} --stage dev &&
           npx sst deploy --stage dev
 
   deploy_stag:
