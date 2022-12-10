@@ -51,7 +51,8 @@ jobs:
 
       - name: Npx SST Set Secrets Dev
         run: |
-          npx sst secrets --stage dev set GOOGLE_CLIENT_ID ${{ secrets.GOOGLE_CLIENT_ID }} GOOGLE_CLIENT_SECRET ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          npx sst secrets set GOOGLE_CLIENT_ID ${{ secrets.GOOGLE_CLIENT_ID }} --stage dev &&
+          npx sst secrets set GOOGLE_CLIENT_SECRET ${{ secrets.GOOGLE_CLIENT_SECRET }} --stage dev
 
       - name: Npx SST Deploy Dev
         env:
