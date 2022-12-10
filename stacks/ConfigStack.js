@@ -6,8 +6,8 @@ export function ConfigStack({ stack }) {
   const SENTRY_DNS = new Config.Secret(stack, "SENTRY_DNS");
 
   return {
-    googleClientId: GOOGLE_CLIENT_ID,
-    googleClientSecret: GOOGLE_CLIENT_SECRET,
-    sentryDns: SENTRY_DNS,
+    GOOGLE_CLIENT_ID,
+    GOOGLE_CLIENT_SECRET,
+    SENTRY_DNS,
   };
 }

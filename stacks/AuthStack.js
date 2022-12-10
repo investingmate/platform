@@ -3,14 +3,15 @@ import * as cognito from "aws-cdk-lib/aws-cognito";
 import { Cognito, use } from "@serverless-stack/resources";
 import { StorageStack } from "./StorageStack";
 import { ApiStack } from "./ApiStack";
-import { ConfigStack } from "./ConfigStack";
 
 export function AuthStack({ stack, app }) {
   const { bucket } = use(StorageStack);
   const { api } = use(ApiStack);
-  const { googleClientId, googleClientSecret } = use(ConfigStack);
 
-  const url = `https://app.${app.stage}.investingmate.com.au`;
+  const url =
+    app.stage !== "local"
+      ? `https://app.${app.stage}.investingmate.com.au`
+      : "http://localhost:3000";
 
   const auth = new Cognito(stack, "auth", {
     login: ["email"],
@@ -28,8 +29,8 @@ export function AuthStack({ stack, app }) {
   });
 
   const provider = new cognito.UserPoolIdentityProviderGoogle(stack, "Google", {
-    clientId: googleClientId,
-    clientSecret: googleClientSecret,
+    clientId: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     userPool: auth.cdk.userPool,
     scopes: ["profile", "email", "openid"],
     attributeMapping: {
