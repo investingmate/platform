@@ -8,7 +8,7 @@ interface Props {
 const CustomCard = (props: Props) => {
   const { title, children } = props;
   return (
-    <div className='card mt-5'>
+    <div className='card mt-0'>
       <div
         className='card-header border-0 cursor-pointer'
       >

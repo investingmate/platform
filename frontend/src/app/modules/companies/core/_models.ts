@@ -28,7 +28,8 @@ export type Company = {
     beta: number,
     shares_issued: number,
   },
-  dividends_history: Dividend[]
+  dividends_history: Dividend[],
+  indicators_group: IndicatorGroup[]
 }
 
 export type CompaniesQueryResponse = Response<Array<Company>>
@@ -62,6 +63,15 @@ export const initialCompany: Company = {
     gross: 0.0,
     type: '',
     payable: '',
+  }],
+  indicators_group: [{
+    name: '',
+    indicators: [{
+      year: '',
+      amount: 0.0,
+      name: '',
+      description: '',
+    }]
   }]
 };
 
@@ -80,4 +90,18 @@ export type Dividend = {
   gross: number,
   type: string,
   payable: string,
+}
+
+export type IndicatorGroup = {
+  id?: ID;
+  name: string,
+  indicators: Indicator[]
+}
+
+export type Indicator = {
+  id?: ID;
+  year: string,
+  amount: number,
+  name: string,
+  description: string,
 }

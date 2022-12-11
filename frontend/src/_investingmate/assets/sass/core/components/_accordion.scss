@@ -19,6 +19,10 @@
   // According heading
   .accordion-header {
     cursor: pointer;
+    button {
+      font-weight: bold;
+      font-size: 1.10rem;
+    }
   }
 
   // Icon toggle mode
@@ -71,4 +75,10 @@
       padding-right: 0;
     }
   }
+}
+
+.accordion-item{
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  //border: none!important;
 }
