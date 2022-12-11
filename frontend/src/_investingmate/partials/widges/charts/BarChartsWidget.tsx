@@ -3,10 +3,10 @@ import React, {useEffect, useRef} from 'react'
 import ApexCharts, {ApexOptions} from 'apexcharts'
 import {getCSS, getCSSVariableValue} from '../../../assets/ts/_utils'
 import {useThemeMode} from '../../layout/theme-mode/ThemeModeProvider'
-import {createArrayOfData, createArrayOfYears} from "../../../../utils/HelperFunctions";
+import {createArrayOfData, createArrayOfYears} from '../../../../utils/HelperFunctions'
 
 type Props = {
-  className?: string;
+  className?: string
   label: string
 }
 
@@ -22,6 +22,7 @@ const BarChartsWidget: React.FC<Props> = ({className, label}) => {
         chart.destroy()
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chartRef, mode])
 
   const refreshChart = () => {
@@ -88,7 +89,7 @@ function getChartOptions(height: number, label: string): ApexOptions {
     dataLabels: {
       enabled: true,
       style: {
-        fontSize: '12px'
+        fontSize: '12px',
       },
     },
     stroke: {

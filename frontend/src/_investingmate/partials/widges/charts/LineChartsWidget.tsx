@@ -3,7 +3,7 @@ import React, {useEffect, useRef} from 'react'
 import ApexCharts, {ApexOptions} from 'apexcharts'
 import {getCSS, getCSSVariableValue} from '../../../assets/ts/_utils'
 import {useThemeMode} from '../../layout/theme-mode/ThemeModeProvider'
-import {createArrayOfData, createArrayOfYears} from "../../../../utils/HelperFunctions";
+import {createArrayOfData, createArrayOfYears} from '../../../../utils/HelperFunctions'
 
 type Props = {
   className?: string
@@ -36,6 +36,7 @@ const LineChartsWidget: React.FC<Props> = ({className, label}) => {
         chart.destroy()
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chartRef, mode])
 
   return (
@@ -116,7 +117,7 @@ function getChartOptions(height: number, label: string): ApexOptions {
       enabled: true,
       style: {
         colors: [baseColor],
-        fontSize: '12px'
+        fontSize: '12px',
       },
     },
     fill: {

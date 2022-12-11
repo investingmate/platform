@@ -1,6 +1,6 @@
 import React from 'react'
-import {Column, Table} from "@tanstack/react-table";
-import {IMSVG} from "../../../../../_investingmate/helpers";
+import {Column, Table} from '@tanstack/react-table'
+import {IMSVG} from '../../../../../_investingmate/helpers'
 
 // A debounced input react component
 function DebouncedInput({
@@ -26,32 +26,32 @@ function DebouncedInput({
     }, debounce)
 
     return () => clearTimeout(timeout)
-  }, [value])
+  }, [value, debounce])
 
   return (
     <div
       className='d-flex align-items-center position-relative my-1'
       // style={{width: type === 'number' ? '47%' : '100%'}}
     >
-      {list !== "logolist" && list !== "favlist" &&
+      {list !== 'logolist' && list !== 'favlist' && (
         <IMSVG
           path={
-            type === 'text' ?
-            '/media/icons/duotune/general/gen021.svg' :
-            '/media/icons/duotune/general/gen031.svg'
+            type === 'text'
+              ? '/media/icons/duotune/general/gen021.svg'
+              : '/media/icons/duotune/general/gen031.svg'
           }
           className='svg-icon-1 position-absolute ms-6'
         />
-      }
+      )}
       <input
         {...props}
         className='form-control form-control-solid ps-14'
         value={value}
-        onChange={e => setValue(e.target.value)}
-        disabled={list === "logolist" || list === "favlist"}
+        onChange={(e) => setValue(e.target.value)}
+        disabled={list === 'logolist' || list === 'favlist'}
         style={{
-          backgroundColor: list === "logolist" || list === "favlist" ? 'white' : 'auto',
-          borderColor: list === "logolist" || list === "favlist" ? 'white' : 'auto'
+          backgroundColor: list === 'logolist' || list === 'favlist' ? 'white' : 'auto',
+          borderColor: list === 'logolist' || list === 'favlist' ? 'white' : 'auto',
         }}
       />
     </div>
@@ -59,15 +59,13 @@ function DebouncedInput({
 }
 
 export function CompaniesFilter({
-    column,
-    table,
-  }: {
+  column,
+  table,
+}: {
   column: Column<any, unknown>
   table: Table<any>
 }) {
-  const firstValue = table
-    .getPreFilteredRowModel()
-    .flatRows[0]?.getValue(column.id)
+  const firstValue = table.getPreFilteredRowModel().flatRows[0]?.getValue(column.id)
 
   const columnFilterValue = column.getFilterValue()
 
@@ -76,38 +74,31 @@ export function CompaniesFilter({
       typeof firstValue === 'number'
         ? []
         : Array.from(column.getFacetedUniqueValues().keys()).sort(),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [column.getFacetedUniqueValues()]
   )
 
   return typeof firstValue === 'number' ? (
     <div>
-      <div className="d-flex flex-column">
+      <div className='d-flex flex-column'>
         <DebouncedInput
-          type="number"
+          type='number'
           min={Number(column.getFacetedMinMaxValues()?.[0] ?? '')}
           max={Number(column.getFacetedMinMaxValues()?.[1] ?? '')}
           value={(columnFilterValue as [number, number])?.[0] ?? ''}
-          onChange={value =>
-            column.setFilterValue((old: [number, number]) => [value, old?.[1]])
-          }
+          onChange={(value) => column.setFilterValue((old: [number, number]) => [value, old?.[1]])}
           placeholder={`Min ${
-            column.getFacetedMinMaxValues()?.[0]
-              ? `(${column.getFacetedMinMaxValues()?.[0]})`
-              : ''
+            column.getFacetedMinMaxValues()?.[0] ? `(${column.getFacetedMinMaxValues()?.[0]})` : ''
           }`}
         />
         <DebouncedInput
-          type="number"
+          type='number'
           min={Number(column.getFacetedMinMaxValues()?.[0] ?? '')}
           max={Number(column.getFacetedMinMaxValues()?.[1] ?? '')}
           value={(columnFilterValue as [number, number])?.[1] ?? ''}
-          onChange={value =>
-            column.setFilterValue((old: [number, number]) => [old?.[0], value])
-          }
+          onChange={(value) => column.setFilterValue((old: [number, number]) => [old?.[0], value])}
           placeholder={`Max ${
-            column.getFacetedMinMaxValues()?.[1]
-              ? `(${column.getFacetedMinMaxValues()?.[1]})`
-              : ''
+            column.getFacetedMinMaxValues()?.[1] ? `(${column.getFacetedMinMaxValues()?.[1]})` : ''
           }`}
         />
       </div>
@@ -120,13 +111,13 @@ export function CompaniesFilter({
         ))}
       </datalist>
       <DebouncedInput
-        type="text"
+        type='text'
         value={(columnFilterValue ?? '') as string}
-        onChange={value => column.setFilterValue(value)}
+        onChange={(value) => column.setFilterValue(value)}
         placeholder={`Search (${column.getFacetedUniqueValues().size})`}
         list={column.id + 'list'}
       />
-      <div className="h-1" />
+      <div className='h-1' />
     </>
   )
 }

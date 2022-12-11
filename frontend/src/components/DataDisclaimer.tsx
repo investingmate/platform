@@ -1,6 +1,6 @@
 import React from 'react'
-import {useIntl} from 'react-intl';
-import {CustomCard} from "./CustomCard";
+import {useIntl} from 'react-intl'
+import {CustomCard} from './CustomCard'
 
 const DataDisclaimer = () => {
   const intl = useIntl()
@@ -10,16 +10,12 @@ const DataDisclaimer = () => {
         <div className='d-flex flex-stack flex-grow-1'>
           <div className='fw'>
             <div className='fs-7 text-gray-600'>
-              <p>
-                {intl.formatMessage({id: 'COMPANIES.DATA_DISCLAIMER_INFO1'})}
-              </p>
-              <p>
-                {intl.formatMessage({id: 'COMPANIES.DATA_DISCLAIMER_INFO2'})}
-              </p>
-              <p className="mb-0">
-                <a className='fw-bolder' href='#'>
+              <p>{intl.formatMessage({id: 'COMPANIES.DATA_DISCLAIMER_INFO1'})}</p>
+              <p>{intl.formatMessage({id: 'COMPANIES.DATA_DISCLAIMER_INFO2'})}</p>
+              <p className='mb-0'>
+                <button className='fw-bolder'>
                   {intl.formatMessage({id: 'COMPANIES.READ_MORE'})}
-                </a>
+                </button>
               </p>
             </div>
           </div>
