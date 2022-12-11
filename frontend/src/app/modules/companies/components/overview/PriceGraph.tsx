@@ -1,6 +1,6 @@
 import React from 'react'
-import {useIntl} from 'react-intl';
-import {CustomCard} from "../../../../../components/CustomCard";
+import {useIntl} from 'react-intl'
+import {CustomCard} from '../../../../../components/CustomCard'
 // import TradingViewWidget from "react-tradingview-widget";
 
 const PriceGraph = () => {
