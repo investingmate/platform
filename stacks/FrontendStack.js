@@ -11,7 +11,9 @@ export function FrontendStack({ stack, app }) {
   const { certificate, hostedZone, domain: certDomain } = use(CertificateStack);
 
   const appDomain =
-    app.stage === "local" ? "http://localhost:3000" : `app.${certDomain}`;
+    app.stage === "local"
+      ? "http://localhost:3000"
+      : `https://app.${certDomain}`;
 
   const site = new ReactStaticSite(stack, "frontend", {
     customDomain: {
