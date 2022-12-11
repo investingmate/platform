@@ -37,6 +37,7 @@ const slugfy = (name) => {
   const a = "àáäâãåăæçèéëêǵḧìíïîḿńǹñòóöôœøṕŕßśșțùúüûǘẃẍÿź·/_,:;";
   const b = "aaaaaaaaceeeeghiiiimnnnooooooprssstuuuuuwxyz------";
   const p = new RegExp(a.split("").join("|"), "g");
+  
   return name
     .toString()
     .toLowerCase()
@@ -44,8 +45,10 @@ const slugfy = (name) => {
     // @ts-ignore
     .replace(p, (c) => b.charAt(a.indexOf(c)))
     .replace(/&/g, "-and-")
-    .replace(/[^\w]+/g, "")
-    .replace(/+/g, "-")
+    // eslint-disable-next-line
+    .replace(/[^\w\-]+/g, "")
+    // eslint-disable-next-line
+    .replace(/\-\-+/g, "-")
     .replace(/^-+/, "")
     .replace(/-+$/, "");
 };

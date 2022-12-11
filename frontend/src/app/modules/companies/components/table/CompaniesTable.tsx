@@ -190,7 +190,8 @@ const CompaniesTable = () => {
 
   useEffect(() => {
     setColumns(defaultColumns)
-  }, [isFilterEnabled, defaultColumns])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isFilterEnabled])
 
   const table = useReactTable({
     data,
