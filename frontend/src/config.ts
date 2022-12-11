@@ -14,6 +14,7 @@ const config = {
     IDENTITY_POOL_ID: process.env.REACT_APP_IDENTITY_POOL_ID,
     AUTH_DOMAIN: process.env.REACT_APP_AUTH_DOMAIN,
   },
+  DOMAIN: process.env.REACT_APP_DOMAIN,
   MAX_ATTACHMENT_SIZE: 5000000,
   SENTRY_DNS: 'https://6d806f0cd4be45c3903c528d830b89f5@o1352644.ingest.sentry.io/6634155',
   STRIPE_KEY: '',

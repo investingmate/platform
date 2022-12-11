@@ -10,6 +10,11 @@ export function FrontendStack({ stack, app }) {
   const { bucket } = use(StorageStack);
   const { certificate, hostedZone, domain: certDomain } = use(CertificateStack);
 
+  const appDomain =
+    app.stage === "local"
+      ? "http://localhost:3000"
+      : `https://app.${certDomain}`;
+
   const site = new ReactStaticSite(stack, "frontend", {
     customDomain: {
       domainName: `app.${certDomain}`,
@@ -28,6 +33,7 @@ export function FrontendStack({ stack, app }) {
       REACT_APP_IDENTITY_POOL_ID: auth.cognitoIdentityPoolId,
       REACT_APP_USER_POOL_CLIENT_ID: auth.userPoolClientId,
       REACT_APP_AUTH_DOMAIN: domain.domainName,
+      REACT_APP_DOMAIN: appDomain,
     },
   });
 
