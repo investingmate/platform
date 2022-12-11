@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-target-blank */
 // import {useIntl} from 'react-intl'
-import {KTSVG} from '../../../helpers'
+import {IMSVG} from '../../../helpers'
 // import { AsideMenuItemWithSub } from "./AsideMenuItemWithSub";
 import {AsideMenuItem} from './AsideMenuItem'
 
@@ -116,7 +116,7 @@ export function AsideMenuMain() {
           href={process.env.REACT_APP_PREVIEW_DOCS_URL + '/docs/changelog'}
         >
           <span className='menu-icon'>
-            <KTSVG path='/media/icons/duotune/general/gen005.svg' className='svg-icon-2' />
+            <IMSVG path='/media/icons/duotune/general/gen005.svg' className='svg-icon-2' />
           </span>
           <span className='menu-title'>Changelog {process.env.REACT_APP_VERSION}</span>
         </a>

@@ -1,0 +1,11 @@
+@import "variables.custom";
+
+.table-header{
+  background-color: $primary-light;
+  color: $primary-active;
+  height: 60px;
+}
+
+.im-primary{
+  color: $primary-active;
+}

@@ -7,7 +7,7 @@ type Props = {
   svgClassName?: string
 }
 
-const KTSVG: FC<Props> = ({className = '', path, svgClassName = 'mh-50px'}) => {
+const IMSVG: FC<Props> = ({className = '', path, svgClassName = 'mh-50px'}) => {
   return (
     <span className={`svg-icon ${className}`}>
       <SVG src={toAbsoluteUrl(path)} className={svgClassName} />
@@ -15,4 +15,4 @@ const KTSVG: FC<Props> = ({className = '', path, svgClassName = 'mh-50px'}) => {
   )
 }
 
-export {KTSVG}
+export {IMSVG}

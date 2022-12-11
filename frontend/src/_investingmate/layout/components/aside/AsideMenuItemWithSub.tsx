@@ -1,7 +1,7 @@
 import {FC} from 'react'
 import clsx from 'clsx'
 import {useLocation} from 'react-router'
-import {checkIsActive, KTSVG, WithChildren} from '../../../helpers'
+import {checkIsActive, IMSVG, WithChildren} from '../../../helpers'
 import {useLayout} from '../../core'
 
 type Props = {
@@ -39,7 +39,7 @@ const AsideMenuItemWithSub: FC<Props & WithChildren> = ({
         )}
         {icon && aside.menuIcon === 'svg' && (
           <span className='menu-icon'>
-            <KTSVG path={icon} className='svg-icon-2' />
+            <IMSVG path={icon} className='svg-icon-2' />
           </span>
         )}
         {fontIcon && aside.menuIcon === 'font' && <i className={clsx('bi fs-3', fontIcon)}></i>}

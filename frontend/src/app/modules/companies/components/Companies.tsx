@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom'
-import {KTSVG} from '../../../../_investingmate/helpers'
+import {IMSVG} from '../../../../_investingmate/helpers'
 
 const Companies = () => {
   return (
@@ -90,7 +90,7 @@ const Companies = () => {
         </div>
 
         <div className='notice d-flex bg-light-warning rounded border-warning border border-dashed p-6'>
-          <KTSVG
+          <IMSVG
             path='icons/duotune/general/gen044.svg'
             className='svg-icon-2tx svg-icon-warning me-4'
           />
