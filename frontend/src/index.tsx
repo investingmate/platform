@@ -19,8 +19,8 @@ Amplify.configure({
     oauth: {
       domain: `${config.cognito.AUTH_DOMAIN}.auth.${config.cognito.REGION}.amazoncognito.com`,
       scope: ['email', 'profile', 'openid', 'aws.cognito.signin.user.admin'],
-      redirectSignIn: 'http://localhost:3000',
-      redirectSignOut: 'http://localhost:3000',
+      redirectSignIn: config.DOMAIN,
+      redirectSignOut: config.DOMAIN,
       responseType: 'code',
     },
   },
