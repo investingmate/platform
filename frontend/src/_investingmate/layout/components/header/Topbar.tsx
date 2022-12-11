@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import {KTSVG, toAbsoluteUrl} from '../../../helpers'
+import {IMSVG, toAbsoluteUrl} from '../../../helpers'
 import {
   // HeaderNotificationsMenu,
   HeaderUserMenu,
@@ -8,6 +8,7 @@ import {
   // ThemeModeSwitcher,
 } from '../../../partials'
 import {useAuth} from '../../../../app/modules/auth'
+import React, {useState} from "react";
 
 const toolbarButtonMarginClass = 'ms-1 ms-lg-3',
   toolbarButtonHeightClass = 'w-30px h-30px w-md-40px h-md-40px',
@@ -16,12 +17,44 @@ const toolbarButtonMarginClass = 'ms-1 ms-lg-3',
 
 const Topbar = () => {
   const {currentUser} = useAuth()
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  function toggleFullscreen() {
+    /* @ts-ignore*/
+    const requestFullScreen = document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen || document.documentElement.mozRequestFullScreen;
+    /* @ts-ignore*/
+    const exitFullscreen = document.exitFullscreen || document.webkitExitFullscreen || document.mozCancelFullScreen;
+    /* @ts-ignore*/
+    const isFullscreen = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement;
+    if (isFullscreen) {
+      return exitFullscreen.bind(document)();
+    } else if (!isFullscreen) {
+      return requestFullScreen.bind(document.documentElement)();
+    }
+  }
 
   return (
     <div className='d-flex align-items-stretch flex-shrink-0'>
       {/* Quick links */}
       <div className={clsx('d-flex align-items-center', toolbarButtonMarginClass)}>
         {/* begin::Menu wrapper */}
+        <div
+          className={clsx(
+            'btn btn-icon btn-active-light-primary btn-custom position-relative mx-3',
+            toolbarButtonHeightClass
+          )}
+          onClick={()=>{
+            setIsExpanded(!isExpanded)
+            toggleFullscreen()
+          }}
+        >
+          {
+            isExpanded ?
+            <i className={`${toolbarButtonIconSizeClass}fas fa-solid fa-compress fs-1`}/> :
+            <i className={`${toolbarButtonIconSizeClass}fas fa-solid fa-expand fs-1`}/>
+          }
+        </div>
+
         <div
           className={clsx(
             'btn btn-icon btn-active-light-primary btn-custom',
@@ -32,7 +65,7 @@ const Topbar = () => {
           data-im-menu-placement='bottom-end'
           data-im-menu-flip='bottom'
         >
-          <KTSVG path='/media/flags/australia.svg' className={toolbarButtonIconSizeClass} />
+          <IMSVG path='/media/flags/australia.svg' className={toolbarButtonIconSizeClass} />
         </div>
         {/* <QuickLinks /> */}
         {/* end::Menu wrapper */}

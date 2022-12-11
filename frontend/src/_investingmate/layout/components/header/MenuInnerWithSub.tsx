@@ -1,7 +1,7 @@
 import {FC, useRef, useEffect} from 'react'
 import {useLocation} from 'react-router'
 import clsx from 'clsx'
-import {checkIsActive, KTSVG, WithChildren} from '../../../helpers'
+import {checkIsActive, IMSVG, WithChildren} from '../../../helpers'
 
 type Props = {
   to: string
@@ -52,7 +52,7 @@ const MenuInnerWithSub: FC<Props & WithChildren> = ({
 
         {icon && (
           <span className='menu-icon'>
-            <KTSVG path={icon} className='svg-icon-2' />
+            <IMSVG path={icon} className='svg-icon-2' />
           </span>
         )}
 

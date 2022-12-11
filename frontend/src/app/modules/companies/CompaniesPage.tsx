@@ -1,43 +1,71 @@
-import {Route, Routes, Outlet, Navigate} from 'react-router-dom'
-import {CompaniesHeader} from './CompaniesHeader'
-import {Companies} from './components/Companies'
+import {Route, Routes, Outlet} from 'react-router-dom'
+import {CompaniesListWrapper} from './components/CompaniesList'
+import CompanyOverviewPage from "./CompanyOverviewPage";
+import {PageLink, PageTitle} from "../../../_investingmate/layout/core/PageData";
+import CompanyFinancialsPage from "./CompanyFinancialsPage";
+import {DataDisclaimer} from "../../../components/DataDisclaimer";
 
-// const notesBreadcrumbs = [
-//   {
-//     title: "Note Management",
-//     path: "/apps/notes",
-//     isSeparator: false,
-//     isActive: false,
-//   },
-//   {
-//     title: "",
-//     path: "",
-//     isSeparator: true,
-//     isActive: false,
-//   },
-// ];
+const companiesBreadcrumbs: Array<PageLink> = [
+  {
+    title: 'Companies',
+    path: '/companies',
+    isSeparator: false,
+    isActive: false,
+  },
+  {
+    title: 'Company overview',
+    path: '/companies/company-overview?ticker=:ticker',
+    isSeparator: true,
+    isActive: false,
+  },
+  {
+    title: 'Company financials',
+    path: '/companies/company-financials',
+    isSeparator: true,
+    isActive: false,
+  },
+]
 
 const CompaniesPage = () => {
   return (
     <Routes>
-      <Route
-        element={
-          <>
-            <CompaniesHeader />
-            <Outlet />
-          </>
-        }
-      >
+      <Route element={<Outlet />}>
         <Route
-          path='overview'
+          path='companies'
           element={
             <>
-              <Companies />
+              <PageTitle breadcrumbs={companiesBreadcrumbs}>Companies</PageTitle>
+              <CompaniesListWrapper />
+            </>
+          }
+        />
+        <Route
+          path='company-overview'
+          element={
+            <>
+              <PageTitle breadcrumbs={companiesBreadcrumbs}>Company Overview</PageTitle>
+              <CompanyOverviewPage />
+              <DataDisclaimer />
+            </>
+          }
+        />
+        <Route
+          path='company-financials'
+          element={
+            <>
+              <PageTitle breadcrumbs={companiesBreadcrumbs}>Company Financials</PageTitle>
+              <CompanyFinancialsPage />
+              <DataDisclaimer />
             </>
           }
         />
       </Route>
-      <Route index element={<Navigate to='/companies/overview' />} />
+      <Route index element={
+        <>
+          <PageTitle breadcrumbs={[]}>Companies</PageTitle>
+          <CompaniesListWrapper />
+        </>
+      } />
     </Routes>
   )
 }

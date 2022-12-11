@@ -869,7 +869,6 @@ class MenuComponent {
     if (elementMenu) {
       return elementMenu as MenuComponent
     }
-    console.log(element)
     // Element has .menu parent
     const menu = element.closest('.menu')
     if (menu) {
