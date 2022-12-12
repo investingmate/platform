@@ -1,4 +1,4 @@
-import { Config } from "@serverless-stack/resources";
+import { Config } from "@serverless-stack/node/config";
 
 export function ConfigStack({ stack }) {
   const GOOGLE_CLIENT_ID = new Config.Secret(stack, "GOOGLE_CLIENT_ID");
