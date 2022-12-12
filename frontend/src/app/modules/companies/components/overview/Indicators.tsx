@@ -22,19 +22,9 @@ const Indicators = (props: IndicatorProps) => {
                         description={item.description ? item.description : ''}
                         label={item.name}
                         value={item.amount}
-                      >
-                        <div
-                          role="button"
-                          onClick={()=>{}}
-                          className="min-w-55px d-flex align-items-center justify-content-end"
-                        >
-                          <div
-                            className="btn btn-icon btn-light-primary btn-custom"
-                          >
-                            <i className="fas fa-regular fa-chart-line fs-2"></i>
-                          </div>
-                        </div>
-                      </CompaniesIndicator>
+                        key={item.name}
+                        showGraph={true}
+                      />
                     )
                   })}
                 </div>

@@ -18,7 +18,7 @@ const CompanyOverviewPage = () => {
   return (
     <IMCard className="pb-5 table-responsive">
       <CompaniesHeader />
-      <div className="card-body p-5 pt-0 pb-0 mb-xl-10">
+      <div className="card-body p-5 pt-6 pb-6 mb-xl-10">
         <Accordion defaultActiveKey={['0']} alwaysOpen>
           <Accordion.Item eventKey="0">
             <Accordion.Header>{intl.formatMessage({id: 'COMPANIES.CORPORATE_OVERVIEW'})}</Accordion.Header>

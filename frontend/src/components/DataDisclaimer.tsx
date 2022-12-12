@@ -13,9 +13,9 @@ const DataDisclaimer = () => {
               <p>{intl.formatMessage({id: 'COMPANIES.DATA_DISCLAIMER_INFO1'})}</p>
               <p>{intl.formatMessage({id: 'COMPANIES.DATA_DISCLAIMER_INFO2'})}</p>
               <p className='mb-0'>
-                <button className='fw-bolder'>
+                <a className='fw-bolder' href="#">
                   {intl.formatMessage({id: 'COMPANIES.READ_MORE'})}
-                </button>
+                </a>
               </p>
             </div>
           </div>
