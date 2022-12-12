@@ -1,4 +1,4 @@
-import { ReactStaticSite, use } from "@serverless-stack/resources";
+import { StaticSite, use } from "@serverless-stack/resources";
 import { ApiStack } from "./ApiStack";
 import { AuthStack } from "./AuthStack";
 import { StorageStack } from "./StorageStack";
@@ -15,7 +15,7 @@ export function FrontendStack({ stack, app }) {
       ? "http://localhost:3000"
       : `https://app.${certDomain}`;
 
-  const site = new ReactStaticSite(stack, "frontend", {
+  const site = new StaticSite(stack, "frontend", {
     customDomain: {
       domainName: `app.${certDomain}`,
       domainAlias: `www.app.${certDomain}`,
