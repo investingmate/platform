@@ -1,6 +1,6 @@
 import axios, {AxiosResponse} from 'axios'
 import {ID, Response} from '../../../../_investingmate/helpers'
-import {Company, CompaniesQueryResponse, Dividend} from './_models'
+import {Company, CompaniesQueryResponse, Dividend, Indicator, IndicatorGroup} from './_models'
 
 const API_URL = process.env.REACT_APP_API_URL
 const REACT_APP_AUTH_DOMAIN = process.env.REACT_APP_AUTH_DOMAIN
@@ -31,6 +31,30 @@ const getDividendHistory = () => {
   }
   return data
 }
+
+const indicatorGroup = ['VALUATION'];
+const indicators = ['D.Y', 'P/L', 'PEG RATIO', 'P/VP', 'EV/EBITDA'];
+
+const getIndicators = () => {
+  const indicatorGroups: IndicatorGroup[] = []
+  indicatorGroup.forEach((ind) => {
+    const data: Indicator[] = []
+    indicators.forEach((ind, index) => {
+      data.push({
+        year: randomDate(new Date(2012, 1, 1), new Date()).getFullYear().toString(),
+        amount: Math.floor(Math.random() * 10) + 1 + index,
+        name: ind,
+        description: `Description about: ${ind}`,
+      });
+    });
+    indicatorGroups.push({
+      name: ind,
+      indicators: data
+    });
+  })
+  return indicatorGroups;
+}
+
 // @ts-ignore
 const slugfy = (name) => {
   if (!name) return null;
@@ -96,6 +120,8 @@ const _companies = COMPANIES.map((company, index) => {
   const website = `https://www.${company.split(" ").join("").toLowerCase()}.com`;
 
   const dividends = getDividendHistory();
+  const indicators = getIndicators();
+
   return {
     [slugfy(company)]: {
       ...COMPANY_TEMPLATE,
@@ -117,7 +143,8 @@ const _companies = COMPANIES.map((company, index) => {
         beta: Math.floor(Math.random() * 10) + 1 + index,
         shares_issued: Math.floor(Math.random() * 10) + 1 + index,
       },
-      dividends_history: dividends
+      dividends_history: dividends,
+      indicators_group: indicators
     },
   };
 });

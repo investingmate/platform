@@ -1,12 +1,9 @@
 import React from 'react'
-import {useIntl} from 'react-intl'
-import {CustomCard} from '../../../../../components/CustomCard'
 // import TradingViewWidget from "react-tradingview-widget";
 
 const PriceGraph = () => {
-  const intl = useIntl()
   return (
-    <CustomCard title={intl.formatMessage({id: 'COMPANIES.PRICE_GRAPH'})}>
+    <div className='card-body p-9'>
       TODO
       {/*<TradingViewWidget*/}
       {/*  symbol="NASDAQ:AAPL"*/}
@@ -18,7 +15,7 @@ const PriceGraph = () => {
       {/*  popup_width={window.screen.width * 0.9 ?? "1000"}*/}
       {/*  popup_height={window.screen.height * 0.8 ?? "650"}*/}
       {/*/>*/}
-    </CustomCard>
+    </div>
   )
 }
 
