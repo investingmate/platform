@@ -22,7 +22,7 @@ export function FrontendStack({ stack, app }) {
       },
     },
     path: "frontend",
-    buildOutput: "dist",
+    buildOutput: "build",
     buildCommand: "npm run build",
     environment: {
       REACT_APP_API_URL: api.customDomainUrl || api.url,
