@@ -5,7 +5,7 @@ import {
 } from "aws-cdk-lib/aws-cognito";
 import { Cognito } from "@serverless-stack/resources";
 
-export function ç({ stack, app }) {
+export function AuthStack({ stack, app }) {
   const url =
     app.stage !== "local"
       ? `https://app.${app.stage}.investingmate.com.au`
