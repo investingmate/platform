@@ -7,17 +7,9 @@ export function CertificateStack({ stack, app }) {
       ? "investingmate.com.au"
       : `${app.stage}.investingmate.com.au`;
 
-  let hostedZone = route53.HostedZone.fromLookup(stack, "HostedZone", {
+  const hostedZone = route53.HostedZone.fromLookup(stack, "HostedZone", {
     domainName: domain,
   });
-
-  console.log("hostedZone", hostedZone.hostedZoneId);
-
-  if (hostedZone.hostedZoneId === "DUMMY") {
-    hostedZone = new route53.HostedZone(stack, "NewHostedZone", {
-      zoneName: domain,
-    });
-  }
 
   const rootZone = route53.HostedZone.fromHostedZoneAttributes(stack, "Zone", {
     hostedZoneId: hostedZone.hostedZoneId,
