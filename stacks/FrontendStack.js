@@ -13,7 +13,7 @@ export function FrontendStack({ stack, app }) {
   const appDomain =
     app.stage === "local" ? "http://localhost:3000" : `https://app.${domain}`;
 
-  const site = new StaticSite(stack, "frontend", {
+  new StaticSite(stack, "frontend", {
     customDomain: {
       domainName: `app.${domain}`,
       domainAlias: `www.app.${domain}`,
@@ -23,6 +23,8 @@ export function FrontendStack({ stack, app }) {
       },
     },
     path: "frontend",
+    buildCommand: "npm build",
+    buildOutput: "build",
     environment: {
       REACT_APP_API_URL: api.customDomainUrl || api.url,
       REACT_APP_REGION: app.region,
@@ -33,9 +35,5 @@ export function FrontendStack({ stack, app }) {
       REACT_APP_AUTH_DOMAIN: authDomain.domainName,
       REACT_APP_DOMAIN: appDomain,
     },
-  });
-
-  stack.addOutputs({
-    SiteUrl: site.customDomainUrl || site.url,
   });
 }
