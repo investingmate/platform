@@ -1,5 +1,5 @@
 import {
-  UserPoolIdentityProviderGoogle,
+  UserPoolClientIdentityProvider,
   UserPoolIdentityProviderGoogle,
   ProviderAttribute,
 } from "aws-cdk-lib/aws-cognito";
