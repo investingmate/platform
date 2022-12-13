@@ -16,15 +16,14 @@ export function FrontendStack({ stack, app }) {
   new StaticSite(stack, "frontend", {
     customDomain: {
       domainName: `app.${domain}`,
-      domainAlias: `www.app.${domain}`,
       cdk: {
         hostedZone: { ...hostedZone },
         certificate: { ...certificate },
       },
     },
     path: "frontend",
-    buildCommand: "npm build",
-    buildOutput: "build",
+    buildOutput: "dist",
+    buildCommand: "npm run build",
     environment: {
       REACT_APP_API_URL: api.customDomainUrl || api.url,
       REACT_APP_REGION: app.region,
