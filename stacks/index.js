@@ -19,7 +19,7 @@ export default function (app) {
   app
     .stack(CertificateStack)
     .stack(StorageStack)
-    .stack(ApiStack)
     .stack(AuthStack)
+    .stack(ApiStack)
     .stack(FrontendStack);
 }
