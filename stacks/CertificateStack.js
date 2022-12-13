@@ -11,6 +11,8 @@ export function CertificateStack({ stack, app }) {
     domainName: domain,
   });
 
+  console.log("hostedZone", hostedZone);
+
   if (!hostedZone) {
     hostedZone = new route53.HostedZone(stack, "HostedZone", {
       zoneName: domain,
