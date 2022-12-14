@@ -10,11 +10,11 @@ import {toAbsoluteUrl, useQuery} from '../../../../_investingmate/helpers'
 import {IUser} from '../../../../utils/Interfaces'
 
 const initialValues = {
-  firstname: 'Lucas',
-  lastname: 'Nascimento',
-  email: 'csalucasnascimento@gmail.com',
-  password: 'Aus.2013!',
-  confirmPassword: 'Aus.2013!',
+  firstname: '',
+  lastname: '',
+  email: '',
+  password: '',
+  confirmPassword: '',
   acceptTerms: false,
 }
 

@@ -11,8 +11,8 @@ import {toAbsoluteUrl, useQuery} from '../../../../_investingmate/helpers'
 import {useIntl} from 'react-intl'
 
 const initialValues = {
-  email: 'csalucasnascimento@gmail.com',
-  password: 'Aus.2013!',
+  email: '',
+  password: '',
 }
 
 const initialValues2 = {

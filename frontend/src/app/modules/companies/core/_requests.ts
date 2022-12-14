@@ -61,7 +61,7 @@ const slugfy = (name) => {
   const a = "àáäâãåăæçèéëêǵḧìíïîḿńǹñòóöôœøṕŕßśșțùúüûǘẃẍÿź·/_,:;";
   const b = "aaaaaaaaceeeeghiiiimnnnooooooprssstuuuuuwxyz------";
   const p = new RegExp(a.split("").join("|"), "g");
-  
+
   return name
     .toString()
     .toLowerCase()
@@ -110,6 +110,7 @@ const COMPANY_TEMPLATE = {
     beta: Math.floor(Math.random() * 10) + 1,
     shares_issued: Math.floor(Math.random() * 10) + 1,
   },
+  corporate_overview: ""
 };
 
 const _companies = COMPANIES.map((company, index) => {
@@ -144,7 +145,26 @@ const _companies = COMPANIES.map((company, index) => {
         shares_issued: Math.floor(Math.random() * 10) + 1 + index,
       },
       dividends_history: dividends,
-      indicators_group: indicators
+      indicators_group: indicators,
+      corporate_overview: {
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        details: [{
+          label: 'Head Office',
+          value: 'Sydney NSW 2000'
+        },{
+          label: 'Website',
+          value: website
+        },{
+          label: 'Registry',
+          value: 'Link Market Services'
+        },{
+          label: 'Auditor',
+          value: 'Lorem ipsum dolor sit amet.'
+        },{
+          label: 'Date Listed',
+          value: '20/12/1988'
+        }]
+      }
     },
   };
 });

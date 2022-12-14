@@ -8,7 +8,7 @@ import {onError} from '../../../../lib/errorLib'
 import {useQuery} from '../../../../_investingmate/helpers'
 
 const initialValues = {
-  email: 'csalucasnascimento@gmail.com',
+  email: '',
 }
 
 const schema = Yup.object().shape({

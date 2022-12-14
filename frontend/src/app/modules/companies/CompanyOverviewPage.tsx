@@ -3,7 +3,7 @@ import {CompaniesHeader} from "./components/header/CompaniesHeader";
 import {useLocation} from "react-router-dom";
 import {getCurrentCompany} from "./core/GetCurrentCompany";
 import {PriceGraph} from "./components/overview/PriceGraph";
-import {CorporateOverview} from "./components/overview/CorporateOverview";
+import {CorporateOverviewComponent} from "./components/overview/CorporateOverview";
 import {DividendHistory} from "./components/overview/DividendHistory";
 import {Indicators} from "./components/overview/Indicators";
 import Accordion from 'react-bootstrap/Accordion';
@@ -21,9 +21,9 @@ const CompanyOverviewPage = () => {
       <div className="card-body p-5 pt-6 pb-6 mb-xl-10">
         <Accordion defaultActiveKey={['0']} alwaysOpen>
           <Accordion.Item eventKey="0">
-            <Accordion.Header>{intl.formatMessage({id: 'COMPANIES.CORPORATE_OVERVIEW'})}</Accordion.Header>
+            <Accordion.Header>{intl.formatMessage({id: 'COMPANIES.CORPORATE'})}</Accordion.Header>
             <Accordion.Body>
-              <CorporateOverview />
+              <CorporateOverviewComponent overview={company.corporate_overview}/>
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="1">
