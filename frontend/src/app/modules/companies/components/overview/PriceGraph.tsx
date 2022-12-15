@@ -3,7 +3,7 @@ import React from 'react'
 
 const PriceGraph = () => {
   return (
-    <div className='card-body p-9'>
+    <div className='card-body ps-3 pt-2 pb-2'>
       TODO
       {/*<TradingViewWidget*/}
       {/*  symbol="NASDAQ:AAPL"*/}

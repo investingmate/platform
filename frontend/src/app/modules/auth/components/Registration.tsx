@@ -10,11 +10,11 @@ import {toAbsoluteUrl, useQuery} from '../../../../_investingmate/helpers'
 import {IUser} from '../../../../utils/Interfaces'
 
 const initialValues = {
-  firstname: 'Lucas',
-  lastname: 'Nascimento',
-  email: 'csalucasnascimento@gmail.com',
-  password: 'Aus.2013!',
-  confirmPassword: 'Aus.2013!',
+  firstname: '',
+  lastname: '',
+  email: '',
+  password: '',
+  confirmPassword: '',
   acceptTerms: false,
 }
 
@@ -335,9 +335,9 @@ export function Registration() {
             className='form-check-label fw-bold text-gray-700 fs-6'
             htmlFor='im_login_toc_agree'
           >
-            I Agree the{' '}
+            I agree to the
             <Link to='/auth/terms' className='ms-1 link-primary'>
-              terms and conditions
+              Terms and Conditions
             </Link>
             .
           </label>

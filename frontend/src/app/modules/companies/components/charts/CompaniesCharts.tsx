@@ -71,6 +71,7 @@ const CompaniesCharts = (props: Props) => {
                   value={item.value}
                   label={item.label}
                   key={item.id}
+                  showGraph={false}
                 />
               )
             })}

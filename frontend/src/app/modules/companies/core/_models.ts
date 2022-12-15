@@ -29,7 +29,8 @@ export type Company = {
     shares_issued: number,
   },
   dividends_history: Dividend[],
-  indicators_group: IndicatorGroup[]
+  indicators_group: IndicatorGroup[],
+  corporate_overview: CorporateOverview
 }
 
 export type CompaniesQueryResponse = Response<Array<Company>>
@@ -72,7 +73,26 @@ export const initialCompany: Company = {
       name: '',
       description: '',
     }]
-  }]
+  }],
+  corporate_overview: {
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    details: [{
+      label: 'Head Office',
+      value: 'Sydney NSW 2000'
+    },{
+      label: 'Website',
+      value: 'www.website.com.au'
+    },{
+      label: 'Registry',
+      value: 'Link Market Services'
+    },{
+      label: 'Auditor',
+      value: 'Lorem ipsum dolor sit amet.'
+    },{
+      label: 'Date Listed',
+      value: '20/12/1988'
+    }]
+  }
 };
 
 export interface IHeadline {
@@ -92,6 +112,10 @@ export type Dividend = {
   payable: string,
 }
 
+
+
+export type TIndicatorColumn = ColumnDef<Indicator>
+
 export type IndicatorGroup = {
   id?: ID;
   name: string,
@@ -104,4 +128,15 @@ export type Indicator = {
   amount: number,
   name: string,
   description: string,
+  history_data?: Indicator[]
+}
+
+export type CorporateOverview = {
+  description: string,
+  details: CorporateDetails[]
+}
+
+export interface CorporateDetails {
+  label: string
+  value: string
 }

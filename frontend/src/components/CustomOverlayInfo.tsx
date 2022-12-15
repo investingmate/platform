@@ -27,9 +27,9 @@ const CustomOverlayInfo = (props: CustomOverlayInfoProps) => {
         className='min-w-35px d-flex align-items-center justify-content-end'
       >
         <div
-          className='btn-icon'
+          className='btn-icon d-flex justify-content-center'
         >
-          <i className='fas fa-regular fa-question-circle mx-2 fs-2 text-gray-400'/>
+          <i className="bi bi-question-circle mx-2 fs-4 text-gray-800"/>
         </div>
       </div>
     </OverlayTrigger>

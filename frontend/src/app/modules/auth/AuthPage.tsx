@@ -41,14 +41,10 @@ const AuthLayout = () => {
       </div>
       {/* end::Content */}
       {/* begin::Footer */}
-      <div className='d-flex flex-center flex-column-auto p-10'>
+      <div className='d-flex flex-center flex-column-auto p-10 pt-0'>
         <div className='d-flex align-items-center fw-bold fs-6'>
           <a href='#' className='text-muted text-hover-primary px-2'>
             {intl.formatMessage({id: 'PAGES.ABOUT'})}
-          </a>
-
-          <a href='#' className='text-muted text-hover-primary px-2'>
-            {intl.formatMessage({id: 'PAGES.CONTACT'})}
           </a>
 
           <a href='#' className='text-muted text-hover-primary px-2'>

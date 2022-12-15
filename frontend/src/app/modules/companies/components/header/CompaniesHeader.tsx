@@ -1,19 +1,16 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, {useState} from 'react'
 import {IMSVG, toAbsoluteUrl} from '../../../../../_investingmate/helpers'
-import {Company, IHeadline} from "../../core/_models";
+import {Company} from "../../core/_models";
 import {useIntl} from "react-intl";
 import {defaultColumnsDescription} from "../table/columns/_columns";
 import {Link, useLocation} from "react-router-dom";
-import {CompaniesModal} from "../CompaniesModal";
 import {CompaniesIndicator} from "../CompaniesIndicator";
 import {addToWatchlist, removeFromWatchlist} from "../../../../../utils/HelperFunctions";
 import {getCurrentCompany} from "../../core/GetCurrentCompany";
 
 const CompaniesHeader = () => {
   const intl = useIntl()
-  const [modal, setModal] = useState(false);
-  const [headline, setHeadline] = useState<IHeadline | undefined>(undefined);
   const location = useLocation();
   const company = getCurrentCompany(location);
 
@@ -47,16 +44,8 @@ const CompaniesHeader = () => {
     }
   }
 
-  const handleModal = (headline: IHeadline) => {
-    if(headline) {
-      setModal(true)
-      setHeadline(headline)
-    }
-  }
-
   return (
     <div className='card'>
-      <CompaniesModal modalStatus={modal} setModalStatus={setModal} headline={headline} />
       <div className='card-body p-5 pb-0 mb-xl-10'>
         <div className='d-flex flex-wrap flex-sm-nowrap mb-3'>
           <div className='flex-grow-1'>
@@ -171,19 +160,8 @@ const CompaniesHeader = () => {
                           value={headline.value}
                           // TODO we need to check how we will be able to define which arrow to show
                           status={headline.value % 2 === 0 ? 'UP' : 'DOWN'}
-                        >
-                          <div
-                            role="button"
-                            onClick={()=>handleModal(headline)}
-                            className="min-w-55px d-flex align-items-center justify-content-end"
-                          >
-                            <div
-                              className="btn btn-icon btn-light-primary btn-custom"
-                            >
-                              <i className="fas fa-regular fa-chart-line fs-2"></i>
-                            </div>
-                          </div>
-                        </CompaniesIndicator>
+                          showGraph={true}
+                        />
                       </div>
                     )
                   })}

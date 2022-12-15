@@ -89,11 +89,15 @@
   "COMPANIES.DATA_DISCLAIMER_INFO2": "All information should be independently verified before relying on it for any purpose.",
   "COMPANIES.READ_MORE": "Read more.",
   "COMPANIES.PRICE_GRAPH": "Price Graph",
-  "COMPANIES.CORPORATE_OVERVIEW": "Corporate Overview",
+  "COMPANIES.CORPORATE": "Corporate",
+  "COMPANIES.OVERVIEW": "Overview",
+  "COMPANIES.DETAILS": "Details",
   "COMPANIES.INDICATORS": "Indicators",
   "COMPANIES.DIVIDEND_HISTORY": "Dividend History",
   "COMPANIES.FINANCIALS_SUMMARY": "Summary",
   "COMPANIES.INCOME_STATEMENT": "Income Statement",
   "COMPANIES.BALANCE_SHEET": "Balance Sheet",
-  "COMPANIES.CASH_FLOW": "Cash Flow"
+  "COMPANIES.CASH_FLOW": "Cash Flow",
+  "COMPANIES.CURRENT": "Current",
+  "COMPANIES.HISTORY": "History"
 }

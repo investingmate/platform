@@ -14,7 +14,7 @@ const Companies = () => {
         </Link>
       </div>
 
-      <div className='card-body p-9'>
+      <div className='card-body ps-3 pt-2 pb-2'>
         <div className='row mb-7'>
           <label className='col-lg-4 fw-bold text-muted'>Full Name</label>
 

@@ -1,20 +1,48 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {CustomCard} from "../../../../../components/CustomCard";
 import {IndicatorGroup} from "../../core/_models";
 import {CompaniesIndicator} from "../CompaniesIndicator";
+import {ButtonGroup} from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import {useIntl} from "react-intl";
+import {IndicatorsTable} from "../table/IndicatorsTable";
 
 interface IndicatorProps {
   indicatorsData: IndicatorGroup[]
 }
 const Indicators = (props: IndicatorProps) => {
   const { indicatorsData } = props
+  const [isListEnabled, setIsListEnabled] = useState(false);
+  const intl = useIntl()
+
   return (
     <div className='card-body p-0'>
-      {indicatorsData && indicatorsData.map(indicator => {
+      <div className='d-flex justify-content-end'>
+        <ButtonGroup className="mb-0">
+          <Button
+            className="border border-info"
+            variant={isListEnabled ? "outline-primary" : "primary"}
+            active={!isListEnabled}
+            onClick={() => setIsListEnabled(false)}
+          >
+            <i className='bi bi-grid fs-2 me-2' />
+            {intl.formatMessage({id: 'COMPANIES.CURRENT'})}
+          </Button>
+          <Button
+            className="border border-info"
+            variant={!isListEnabled ? "outline-primary" : "primary"}
+            active={isListEnabled}
+            onClick={() => setIsListEnabled(true)}>
+            <i className='bi bi-list-ul fs-2 me-2'/>
+            {intl.formatMessage({id: 'COMPANIES.HISTORY'})}
+          </Button>
+        </ButtonGroup>
+      </div>
+      {!isListEnabled && indicatorsData && indicatorsData.map(indicator => {
         return (
           <CustomCard key={indicator.name} title={indicator.name}>
             <div className='d-flex flex-wrap flex-stack'>
-              <div className='d-flex flex-column flex-grow-1 pe-8'>
+              <div className='d-flex flex-column pe-8'>
                 <div className='d-flex flex-wrap'>
                   {indicator.indicators && indicator.indicators.map(item => {
                     return (
@@ -22,27 +50,24 @@ const Indicators = (props: IndicatorProps) => {
                         description={item.description ? item.description : ''}
                         label={item.name}
                         value={item.amount}
-                      >
-                        <div
-                          role="button"
-                          onClick={()=>{}}
-                          className="min-w-55px d-flex align-items-center justify-content-end"
-                        >
-                          <div
-                            className="btn btn-icon btn-light-primary btn-custom"
-                          >
-                            <i className="fas fa-regular fa-chart-line fs-2"></i>
-                          </div>
-                        </div>
-                      </CompaniesIndicator>
+                        key={item.name}
+                        showGraph={true}
+                      />
                     )
                   })}
                 </div>
               </div>
             </div>
-          </CustomCard>
-        )
+          </CustomCard>)
       })}
+      {isListEnabled && indicatorsData && indicatorsData.map(indicator => {
+        return (
+          <CustomCard
+            title={indicator.name.toUpperCase()}
+          >
+            <IndicatorsTable indicators={indicator.indicators} />
+          </CustomCard>
+        )})}
     </div>
   )
 }
