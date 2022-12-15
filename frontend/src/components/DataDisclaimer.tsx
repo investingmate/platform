@@ -14,6 +14,7 @@ const DataDisclaimer = () => {
                 <p>{intl.formatMessage({id: 'COMPANIES.DATA_DISCLAIMER_INFO1'})}</p>
                 <p>{intl.formatMessage({id: 'COMPANIES.DATA_DISCLAIMER_INFO2'})}</p>
                 <p className='mb-0'>
+                  {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                   <a className='fw-bolder' href="#">
                     {intl.formatMessage({id: 'COMPANIES.READ_MORE'})}
                   </a>
