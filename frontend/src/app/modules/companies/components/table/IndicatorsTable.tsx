@@ -58,7 +58,7 @@ const IndicatorsTable = (props: Props) => {
   const finalLabels = name.concat(labels)
   const columns = React.useMemo<TIndicatorColumn[]>(
     () => finalLabels,
-    []
+    [finalLabels]
   )
 
   const [data] = React.useState(() => [...defaultData])
