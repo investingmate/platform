@@ -97,5 +97,7 @@
   "COMPANIES.FINANCIALS_SUMMARY": "Summary",
   "COMPANIES.INCOME_STATEMENT": "Income Statement",
   "COMPANIES.BALANCE_SHEET": "Balance Sheet",
-  "COMPANIES.CASH_FLOW": "Cash Flow"
+  "COMPANIES.CASH_FLOW": "Cash Flow",
+  "COMPANIES.CURRENT": "Current",
+  "COMPANIES.HISTORY": "History"
 }
