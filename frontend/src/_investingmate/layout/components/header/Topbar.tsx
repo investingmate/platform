@@ -1,3 +1,4 @@
+// @ts-nocheck
 import clsx from 'clsx';
 import { IMSVG, toAbsoluteUrl } from '../../../helpers';
 import {
