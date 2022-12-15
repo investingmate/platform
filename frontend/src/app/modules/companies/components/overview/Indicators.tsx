@@ -17,7 +17,7 @@ const Indicators = (props: IndicatorProps) => {
 
   return (
     <div className='card-body p-0'>
-      <div className=''>
+      <div className='d-flex justify-content-end'>
         <ButtonGroup className="mb-0">
           <Button
             className="border border-info"
@@ -42,7 +42,7 @@ const Indicators = (props: IndicatorProps) => {
         return (
           <CustomCard key={indicator.name} title={indicator.name}>
             <div className='d-flex flex-wrap flex-stack'>
-              <div className='d-flex flex-column flex-grow-1 pe-8'>
+              <div className='d-flex flex-column pe-8'>
                 <div className='d-flex flex-wrap'>
                   {indicator.indicators && indicator.indicators.map(item => {
                     return (
@@ -65,13 +65,7 @@ const Indicators = (props: IndicatorProps) => {
           <CustomCard
             title={indicator.name.toUpperCase()}
           >
-            <div className='d-flex flex-wrap flex-stack'>
-              <div className='d-flex flex-column flex-grow-1 pe-8'>
-                <div className='d-flex flex-wrap'>
-                  <IndicatorsTable indicators={indicator.indicators} />
-                </div>
-              </div>
-            </div>
+            <IndicatorsTable indicators={indicator.indicators} />
           </CustomCard>
         )})}
     </div>

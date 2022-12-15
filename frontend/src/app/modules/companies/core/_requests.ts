@@ -8,9 +8,9 @@ const COMPANY_URL = `${API_URL}/company`
 const GET_COMPANIES_URL = `${API_URL}companies`
 // const GET_COMPANIES_URL = `${API_URL}/companies/query`
 
-console.log({REACT_APP_AUTH_DOMAIN})
-console.log({API_URL})
-console.log({GET_COMPANIES_URL})
+// console.log({REACT_APP_AUTH_DOMAIN})
+// console.log({API_URL})
+// console.log({GET_COMPANIES_URL})
 
 function randomDate(start: Date, end: Date) {
   return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
@@ -37,14 +37,28 @@ const indicators = ['D.Y', 'P/L', 'PEG RATIO', 'P/VP', 'EV/EBITDA'];
 
 const getIndicators = () => {
   const indicatorGroups: IndicatorGroup[] = []
+  const currentYear = 22
+  const years = 10
+
   indicatorGroup.forEach((ind) => {
     const data: Indicator[] = []
     indicators.forEach((ind, index) => {
+      const historyData = []
+      for(let i = 0; i < years; i++){
+        historyData.push({
+          year: `20${currentYear-i}`,
+          // year: randomDate(new Date(2012, 1, 1), new Date()).getFullYear().toString(),
+          amount: Math.floor(Math.random() * 10) + 1 + index,
+          name: ind,
+          description: `Description about: ${ind}`,
+        });
+      }
       data.push({
-        year: randomDate(new Date(2012, 1, 1), new Date()).getFullYear().toString(),
+        year: `20${currentYear}`,
         amount: Math.floor(Math.random() * 10) + 1 + index,
         name: ind,
         description: `Description about: ${ind}`,
+        history_data: historyData
       });
     });
     indicatorGroups.push({

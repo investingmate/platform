@@ -8,62 +8,56 @@ import {
   useReactTable,
 } from '@tanstack/react-table'
 
-import {Indicator, TDividendsColumn} from "../../core/_models";
+import {Indicator, TIndicatorColumn} from "../../core/_models";
 import {DraggableColumnHeader} from "./columns/DraggableColumnHeader";
 import {ListPagination} from "../pagination/ListPagination";
-import {useLocation} from "react-router-dom";
-import {getCurrentCompany} from "../../core/GetCurrentCompany";
-import {dateFormatter} from "../../../../../utils/HelperFunctions";
 
 interface Props {
   indicators: Indicator[]
 }
 const IndicatorsTable = (props: Props) => {
-  const {indicators} = props;
-  console.log({indicators})
-  const location = useLocation();
-  const company = getCurrentCompany(location);
-  const defaultData = company.dividends_history ?? []
 
-  const columns = React.useMemo<TDividendsColumn[]>(
-    () => [
-      {
-        accessorFn: row => row.date,
-        id: 'date',
-        header: 'Date',
-        cell: info => dateFormatter(info.getValue()),
-      },
-      {
-        accessorFn: row => row.amount,
-        id: 'amount',
-        header: 'Amount',
-        cell: info => `$${info.getValue()}.00`,
-      },
-      {
-        accessorFn: row => row.franking,
-        id: 'franking',
-        header: 'Franking',
-        cell: info => `${info.getValue()}%`,
-      },
-      {
-        accessorFn: row => row.gross,
-        id: 'Gross',
-        header: 'Gross',
-        cell: info => `$${info.getValue()}.00`,
-      },
-      {
-        accessorFn: row => row.type,
-        id: 'type',
-        header: 'Type',
-        cell: info => info.getValue(),
-      },
-      {
-        accessorFn: row => row.payable,
-        id: 'payable',
-        header: 'Payable',
-        cell: info => dateFormatter(info.getValue()),
-      },
-    ],
+  const {indicators} = props;
+  const defaultData = indicators ?? []
+
+  const labels =
+    !(indicators && indicators.length > 0 &&
+    indicators[0].history_data) ? [] :
+    indicators[0].history_data.map((his, index) => {
+      return {
+        accessorFn: (row: Indicator) => {
+          let value = '0.0';
+
+          if(row && row.history_data && row.history_data[index].amount){
+            value = row.history_data[index].amount.toFixed(2)
+
+            if(row.history_data[index].name === 'D.Y'){
+              value = value + ' %'
+            }
+          }
+
+          return value
+        },
+        id: his.year,
+        header: his.year,
+        cell: (info: { getValue: () => any; }) => info.getValue(),
+        size: 100,
+      }
+    })
+
+  const name = [
+    {
+      accessorFn: (row: { name: any; }) => row.name,
+      id: 'name',
+      header: 'Indicator',
+      cell: (info: { getValue: () => any; }) => info.getValue(),
+      size: 100,
+    },
+  ]
+  // @ts-ignore
+  const finalLabels = name.concat(labels)
+  const columns = React.useMemo<TIndicatorColumn[]>(
+    () => finalLabels,
     []
   )
 

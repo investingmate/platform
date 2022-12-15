@@ -112,6 +112,10 @@ export type Dividend = {
   payable: string,
 }
 
+
+
+export type TIndicatorColumn = ColumnDef<Indicator>
+
 export type IndicatorGroup = {
   id?: ID;
   name: string,
@@ -124,6 +128,7 @@ export type Indicator = {
   amount: number,
   name: string,
   description: string,
+  history_data?: Indicator[]
 }
 
 export type CorporateOverview = {

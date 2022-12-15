@@ -25,7 +25,7 @@ const CorporateOverviewComponent = (props: Props) => {
       <div className="mt-6">
         {overview.details.map(detail => {
           return (
-            <div className="d-flex">
+            <div className="d-flex" key={detail.label}>
               <h6 className="min-w-100px">{detail.label}:</h6>
               <p>{detail.value}</p>
             </div>
