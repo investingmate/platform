@@ -18,9 +18,9 @@ const Indicators = (props: IndicatorProps) => {
   return (
     <div className='card-body p-0'>
       <div className='d-flex justify-content-end'>
-        <ButtonGroup className='mb-0'>
+        <ButtonGroup className='mb-0 btn-group-custom'>
           <Button
-            className='border border-info'
+            className='border border-info min-w-140px'
             variant={isListEnabled ? 'outline-primary' : 'primary'}
             active={!isListEnabled}
             onClick={() => setIsListEnabled(false)}
@@ -29,7 +29,7 @@ const Indicators = (props: IndicatorProps) => {
             {intl.formatMessage({ id: 'COMPANIES.CURRENT' })}
           </Button>
           <Button
-            className='border border-info'
+            className='border border-info min-w-140px'
             variant={!isListEnabled ? 'outline-primary' : 'primary'}
             active={isListEnabled}
             onClick={() => setIsListEnabled(true)}

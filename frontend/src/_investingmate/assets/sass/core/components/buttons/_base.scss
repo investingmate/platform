@@ -169,3 +169,9 @@
     transition: transform 0.3s ease;
   }
 }
+
+.btn-group-custom {
+  button {
+    min-width: 140px !important;
+  }
+}
