@@ -1,29 +1,29 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React from 'react'
-import {IMSVG} from '../../../../../_investingmate/helpers'
+import React from 'react';
+import { IMSVG } from '../../../../../_investingmate/helpers';
 
 const CompaniesListSearch = ({
-    value: initialValue,
-    onChange,
-    debounce = 500,
-  }: {
-  value: string | number
-  onChange: (value: string | number) => void
-  debounce?: number
+  value: initialValue,
+  onChange,
+  debounce = 500,
+}: {
+  value: string | number;
+  onChange: (value: string | number) => void;
+  debounce?: number;
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'>) => {
-  const [value, setValue] = React.useState(initialValue)
+  const [value, setValue] = React.useState(initialValue);
 
   React.useEffect(() => {
-    setValue(initialValue)
-  }, [initialValue])
+    setValue(initialValue);
+  }, [initialValue]);
 
   React.useEffect(() => {
     const timeout = setTimeout(() => {
-      onChange(value)
-    }, debounce)
+      onChange(value);
+    }, debounce);
 
-    return () => clearTimeout(timeout)
-  }, [value])
+    return () => clearTimeout(timeout);
+  }, [value]);
 
   return (
     <div className='card-title'>
@@ -39,12 +39,12 @@ const CompaniesListSearch = ({
           className='form-control form-control-solid w-250px ps-14'
           placeholder='Search company'
           value={value}
-          onChange={e => setValue(e.target.value)}
+          onChange={(e) => setValue(e.target.value)}
         />
       </div>
       {/* end::Search */}
     </div>
-  )
-}
+  );
+};
 
-export {CompaniesListSearch}
+export { CompaniesListSearch };

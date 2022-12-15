@@ -1,19 +1,19 @@
-import {FC, useRef, useEffect} from 'react'
-import {useLocation} from 'react-router'
-import clsx from 'clsx'
-import {checkIsActive, IMSVG, WithChildren} from '../../../helpers'
+import { FC, useRef, useEffect } from 'react';
+import { useLocation } from 'react-router';
+import clsx from 'clsx';
+import { checkIsActive, IMSVG, WithChildren } from '../../../helpers';
 
 type Props = {
-  to: string
-  title: string
-  icon?: string
-  fontIcon?: string
-  menuTrigger?: 'click' | `{default:'click', lg: 'hover'}`
-  menuPlacement?: 'right-start' | 'bottom-start'
-  hasArrow?: boolean
-  hasBullet?: boolean
-  isMega?: boolean
-}
+  to: string;
+  title: string;
+  icon?: string;
+  fontIcon?: string;
+  menuTrigger?: 'click' | `{default:'click', lg: 'hover'}`;
+  menuPlacement?: 'right-start' | 'bottom-start';
+  hasArrow?: boolean;
+  hasBullet?: boolean;
+  isMega?: boolean;
+};
 
 const MenuInnerWithSub: FC<Props & WithChildren> = ({
   children,
@@ -27,15 +27,15 @@ const MenuInnerWithSub: FC<Props & WithChildren> = ({
   hasBullet = false,
   isMega = false,
 }) => {
-  const menuItemRef = useRef<HTMLDivElement>(null)
-  const {pathname} = useLocation()
+  const menuItemRef = useRef<HTMLDivElement>(null);
+  const { pathname } = useLocation();
 
   useEffect(() => {
     if (menuItemRef.current && menuTrigger && menuPlacement) {
-      menuItemRef.current.setAttribute('data-im-menu-trigger', menuTrigger)
-      menuItemRef.current.setAttribute('data-im-menu-placement', menuPlacement)
+      menuItemRef.current.setAttribute('data-im-menu-trigger', menuTrigger);
+      menuItemRef.current.setAttribute('data-im-menu-placement', menuPlacement);
     }
-  }, [menuTrigger, menuPlacement])
+  }, [menuTrigger, menuPlacement]);
 
   return (
     <div ref={menuItemRef} className='menu-item menu-lg-down-accordion me-lg-1'>
@@ -76,7 +76,7 @@ const MenuInnerWithSub: FC<Props & WithChildren> = ({
         {children}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export {MenuInnerWithSub}
+export { MenuInnerWithSub };

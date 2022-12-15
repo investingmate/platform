@@ -1,13 +1,13 @@
-import {Auth} from 'aws-amplify'
-import {logError} from '../../../../lib/errorLib'
+import { Auth } from 'aws-amplify';
+import { logError } from '../../../../lib/errorLib';
 
 const getAuth = async (): Promise<any> => {
   try {
-    const {username} = await Auth.currentAuthenticatedUser()
-    if (username) return true
+    const { username } = await Auth.currentAuthenticatedUser();
+    if (username) return true;
   } catch (error: any) {
-    logError(error)
+    logError(error);
   }
-}
+};
 
-export {getAuth}
+export { getAuth };

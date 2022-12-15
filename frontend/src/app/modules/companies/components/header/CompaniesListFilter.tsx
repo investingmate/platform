@@ -1,29 +1,29 @@
-import {useEffect, useState} from 'react'
-import {MenuComponent} from '../../../../../_investingmate/assets/ts/components'
-import {initialQueryState, IMSVG} from '../../../../../_investingmate/helpers'
-import {useQueryRequest} from '../../core/QueryRequestProvider'
-import {useQueryResponse} from '../../core/QueryResponseProvider'
+import { useEffect, useState } from 'react';
+import { MenuComponent } from '../../../../../_investingmate/assets/ts/components';
+import { initialQueryState, IMSVG } from '../../../../../_investingmate/helpers';
+import { useQueryRequest } from '../../core/QueryRequestProvider';
+import { useQueryResponse } from '../../core/QueryResponseProvider';
 
 const CompaniesListFilter = () => {
-  const {updateState} = useQueryRequest()
-  const {isLoading} = useQueryResponse()
-  const [role, setRole] = useState<string | undefined>()
-  const [lastLogin, setLastLogin] = useState<string | undefined>()
+  const { updateState } = useQueryRequest();
+  const { isLoading } = useQueryResponse();
+  const [role, setRole] = useState<string | undefined>();
+  const [lastLogin, setLastLogin] = useState<string | undefined>();
 
   useEffect(() => {
-    MenuComponent.reinitialization()
-  }, [])
+    MenuComponent.reinitialization();
+  }, []);
 
   const resetData = () => {
-    updateState({filter: undefined, ...initialQueryState})
-  }
+    updateState({ filter: undefined, ...initialQueryState });
+  };
 
   const filterData = () => {
     updateState({
-      filter: {role, last_login: lastLogin},
+      filter: { role, last_login: lastLogin },
       ...initialQueryState,
-    })
-  }
+    });
+  };
 
   return (
     <>
@@ -127,7 +127,7 @@ const CompaniesListFilter = () => {
       </div>
       {/* end::SubMenu */}
     </>
-  )
-}
+  );
+};
 
-export {CompaniesListFilter}
+export { CompaniesListFilter };

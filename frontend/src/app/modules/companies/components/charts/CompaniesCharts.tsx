@@ -1,37 +1,42 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, {useState} from 'react'
-import {BarChartsWidget} from '../../../../../_investingmate/partials/widges/charts/BarChartsWidget';
-import {LineChartsWidget} from '../../../../../_investingmate/partials/widges/charts/LineChartsWidget';
-import {CompaniesIndicator} from '../CompaniesIndicator';
+import React, { useState } from 'react';
+import { BarChartsWidget } from '../../../../../_investingmate/partials/widges/charts/BarChartsWidget';
+import { LineChartsWidget } from '../../../../../_investingmate/partials/widges/charts/LineChartsWidget';
+import { CompaniesIndicator } from '../CompaniesIndicator';
 
 interface Props {
-  label: string
+  label: string;
 }
 
-const indicators = [{
-  id: 1,
-  label: 'Min',
-  description: 'Here we can display a desc.',
-  value: 0.121
-},{
-  id: 2,
-  label: 'Max',
-  description: 'Here we can display a desc.',
-  value: 0.124
-},{
-  id: 3,
-  label: 'Average',
-  description: 'Here we can display a desc.',
-  value: 0.122
-},{
-  id: 4,
-  label: 'Current',
-  description: 'Here we can display a desc.',
-  value: 0.123
-}];
+const indicators = [
+  {
+    id: 1,
+    label: 'Min',
+    description: 'Here we can display a desc.',
+    value: 0.121,
+  },
+  {
+    id: 2,
+    label: 'Max',
+    description: 'Here we can display a desc.',
+    value: 0.124,
+  },
+  {
+    id: 3,
+    label: 'Average',
+    description: 'Here we can display a desc.',
+    value: 0.122,
+  },
+  {
+    id: 4,
+    label: 'Current',
+    description: 'Here we can display a desc.',
+    value: 0.123,
+  },
+];
 
 const CompaniesCharts = (props: Props) => {
-  const {label} = props;
+  const { label } = props;
   const [isLineGraphEnabled, setIsLineGraphEnabled] = useState(false);
 
   return (
@@ -42,21 +47,21 @@ const CompaniesCharts = (props: Props) => {
           <div className='card-title align-items-start flex-row'>
             <div
               className={
-                !isLineGraphEnabled ?
-                  'btn btn-icon btn-light-primary btn-active-primary active btn-custom ms-2' :
-                  'btn btn-icon btn-light-primary btn-custom ms-2'
+                !isLineGraphEnabled
+                  ? 'btn btn-icon btn-light-primary btn-active-primary active btn-custom ms-2'
+                  : 'btn btn-icon btn-light-primary btn-custom ms-2'
               }
-              onClick={()=>setIsLineGraphEnabled(!isLineGraphEnabled)}
+              onClick={() => setIsLineGraphEnabled(!isLineGraphEnabled)}
             >
               <i className='fas fa-regular fa-chart-column fs-2'></i>
             </div>
             <div
               className={
-                isLineGraphEnabled ?
-                  'btn btn-icon btn-light-primary btn-active-primary active btn-custom ms-2' :
-                  'btn btn-icon btn-light-primary btn-custom ms-2'
+                isLineGraphEnabled
+                  ? 'btn btn-icon btn-light-primary btn-active-primary active btn-custom ms-2'
+                  : 'btn btn-icon btn-light-primary btn-custom ms-2'
               }
-              onClick={()=>setIsLineGraphEnabled(!isLineGraphEnabled)}
+              onClick={() => setIsLineGraphEnabled(!isLineGraphEnabled)}
             >
               <i className='fas fa-regular fa-chart-line fs-2'></i>
             </div>
@@ -64,8 +69,8 @@ const CompaniesCharts = (props: Props) => {
 
           {/* begin::Toolbar */}
           <div className='card-toolbar' data-im-buttons='true'>
-            {indicators.map(item => {
-              return  (
+            {indicators.map((item) => {
+              return (
                 <CompaniesIndicator
                   description={item.description}
                   value={item.value}
@@ -73,7 +78,7 @@ const CompaniesCharts = (props: Props) => {
                   key={item.id}
                   showGraph={false}
                 />
-              )
+              );
             })}
           </div>
           {/* end::Toolbar */}
@@ -81,10 +86,14 @@ const CompaniesCharts = (props: Props) => {
         {/* end::Header */}
       </div>
       <div className='modal-body'>
-        { isLineGraphEnabled ? <LineChartsWidget label={label}/> : <BarChartsWidget label={label}/> }
+        {isLineGraphEnabled ? (
+          <LineChartsWidget label={label} />
+        ) : (
+          <BarChartsWidget label={label} />
+        )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export {CompaniesCharts}
+export { CompaniesCharts };

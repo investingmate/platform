@@ -1,6 +1,6 @@
-import {FC} from 'react'
-import {Link} from 'react-router-dom'
-import {toAbsoluteUrl} from '../../../../_investingmate/helpers'
+import { FC } from 'react';
+import { Link } from 'react-router-dom';
+import { toAbsoluteUrl } from '../../../../_investingmate/helpers';
 
 const Error500: FC = () => {
   return (
@@ -66,7 +66,7 @@ const Error500: FC = () => {
       </div>
       {/*end::Authentication - Error 500*/}
     </div>
-  )
-}
+  );
+};
 
-export {Error500}
+export { Error500 };

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 // import TradingViewWidget from "react-tradingview-widget";
 
 const PriceGraph = () => {
@@ -16,7 +16,7 @@ const PriceGraph = () => {
       {/*  popup_height={window.screen.height * 0.8 ?? "650"}*/}
       {/*/>*/}
     </div>
-  )
-}
+  );
+};
 
-export {PriceGraph}
+export { PriceGraph };

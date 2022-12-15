@@ -1,4 +1,4 @@
-import {TCompanyColumn} from "../../../core/_models";
+import { TCompanyColumn } from '../../../core/_models';
 
 export const defaultColumnsDescription: TCompanyColumn[] = [
   {
@@ -65,4 +65,4 @@ export const defaultColumnsDescription: TCompanyColumn[] = [
     id: 'shares_issued',
     description: 'Here we can put a description about: Shares issued',
   },
-]
+];

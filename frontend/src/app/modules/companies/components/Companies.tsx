@@ -1,5 +1,5 @@
-import {Link} from 'react-router-dom'
-import {IMSVG} from '../../../../_investingmate/helpers'
+import { Link } from 'react-router-dom';
+import { IMSVG } from '../../../../_investingmate/helpers';
 
 const Companies = () => {
   return (
@@ -110,7 +110,7 @@ const Companies = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export {Companies}
+export { Companies };

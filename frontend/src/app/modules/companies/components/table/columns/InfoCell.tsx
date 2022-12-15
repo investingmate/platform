@@ -1,14 +1,14 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import {FC} from 'react'
-import {Company} from "../../../core/_models";
-import {IMSVG} from "../../../../../../_investingmate/helpers";
+import { FC } from 'react';
+import { Company } from '../../../core/_models';
+import { IMSVG } from '../../../../../../_investingmate/helpers';
 
 type Props = {
-  company: Company
-}
+  company: Company;
+};
 
-const InfoCell: FC<Props> = ({company}) => {
-  return(
+const InfoCell: FC<Props> = ({ company }) => {
+  return (
     <div className='d-flex align-items-center'>
       {/* begin:: Avatar */}
       <div className='symbol symbol-circle symbol-50px overflow-hidden me-3'>
@@ -19,8 +19,8 @@ const InfoCell: FC<Props> = ({company}) => {
             </div>
           ) : (
             <IMSVG
-              path="/media/icons/duotune/general/gen006.svg"
-              className="svg-icon svg-icon-3x svg-icon-warning"
+              path='/media/icons/duotune/general/gen006.svg'
+              className='svg-icon svg-icon-3x svg-icon-warning'
             />
           )}
         </a>
@@ -43,7 +43,7 @@ const InfoCell: FC<Props> = ({company}) => {
         </a>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export {InfoCell}
+export { InfoCell };

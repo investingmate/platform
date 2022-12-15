@@ -24,7 +24,7 @@ const Footer = () => {
       </div>
       {/* end::Container */}
     </div>
-  )
-}
+  );
+};
 
-export {Footer}
+export { Footer };

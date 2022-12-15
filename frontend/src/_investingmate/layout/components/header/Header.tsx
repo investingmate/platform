@@ -1,11 +1,11 @@
-import React, {FC} from 'react'
-import {PageLink, usePageData} from "../../core/PageData";
-import {Link} from "react-router-dom";
-import {useLayout} from "../../core";
+import React, { FC } from 'react';
+import { PageLink, usePageData } from '../../core/PageData';
+import { Link } from 'react-router-dom';
+import { useLayout } from '../../core';
 
 const Header: FC = () => {
-  const {pageTitle, pageDescription, pageBreadcrumbs} = usePageData()
-  const {config} = useLayout()
+  const { pageTitle, pageDescription, pageBreadcrumbs } = usePageData();
+  const { config } = useLayout();
   return (
     <div
       className='header-menu align-items-stretch'
@@ -46,7 +46,7 @@ const Header: FC = () => {
           config.pageTitle.breadCrumbs && (
             <>
               {config.pageTitle.direction === 'row' && (
-                <span className='h-100 border-gray-200 border-start mx-4'/>
+                <span className='h-100 border-gray-200 border-start mx-4' />
               )}
               <ul className='breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1'>
                 {Array.from(pageBreadcrumbs).map((item: PageLink, index) => (
@@ -61,7 +61,7 @@ const Header: FC = () => {
                         {item.title}
                       </Link>
                     ) : (
-                      <span className='bullet bg-gray-200 w-5px h-2px'/>
+                      <span className='bullet bg-gray-200 w-5px h-2px' />
                     )}
                   </li>
                 ))}
@@ -71,7 +71,7 @@ const Header: FC = () => {
           )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export {Header}
+export { Header };

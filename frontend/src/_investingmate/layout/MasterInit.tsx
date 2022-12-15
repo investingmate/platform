@@ -1,4 +1,4 @@
-import {useEffect, useRef} from 'react'
+import { useEffect, useRef } from 'react';
 import {
   MenuComponent,
   DrawerComponent,
@@ -7,34 +7,34 @@ import {
   StickyComponent,
   ToggleComponent,
   SwapperComponent,
-} from '../assets/ts/components'
-import { ThemeModeComponent } from '../assets/ts/layout'
+} from '../assets/ts/components';
+import { ThemeModeComponent } from '../assets/ts/layout';
 
-import {useLayout} from './core'
+import { useLayout } from './core';
 
 export function MasterInit() {
-  const {config} = useLayout()
-  const isFirstRun = useRef(true)
+  const { config } = useLayout();
+  const isFirstRun = useRef(true);
   const pluginsInitialization = () => {
-    isFirstRun.current = false
-    ThemeModeComponent.init()
+    isFirstRun.current = false;
+    ThemeModeComponent.init();
     setTimeout(() => {
-      ToggleComponent.bootstrap()
-      ScrollTopComponent.bootstrap()
-      DrawerComponent.bootstrap()
-      StickyComponent.bootstrap()
-      MenuComponent.bootstrap()
-      ScrollComponent.bootstrap()
-      SwapperComponent.bootstrap()
-    }, 500)
-  }
+      ToggleComponent.bootstrap();
+      ScrollTopComponent.bootstrap();
+      DrawerComponent.bootstrap();
+      StickyComponent.bootstrap();
+      MenuComponent.bootstrap();
+      ScrollComponent.bootstrap();
+      SwapperComponent.bootstrap();
+    }, 500);
+  };
 
   useEffect(() => {
     if (isFirstRun.current) {
-      isFirstRun.current = false
-      pluginsInitialization()
+      isFirstRun.current = false;
+      pluginsInitialization();
     }
-  }, [config])
+  }, [config]);
 
-  return <></>
+  return <></>;
 }

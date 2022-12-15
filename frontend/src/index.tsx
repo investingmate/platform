@@ -1,14 +1,14 @@
-import {createRoot} from 'react-dom/client'
-import './_investingmate/assets/sass/style.scss'
-import './_investingmate/assets/sass/plugins.scss'
-import './_investingmate/assets/sass/style.react.scss'
-import {Amplify} from 'aws-amplify'
-import {initSentry} from './lib/errorLib'
-import config from './config'
-import {AuthProvider} from './app/modules/auth'
-import {AppRoutes} from './app/routing/AppRoutes'
-import {InvestingMateI18nProvider} from './_investingmate/i18n/InvestingMatei18n'
-import {QueryClient, QueryClientProvider} from 'react-query'
+import { createRoot } from 'react-dom/client';
+import './_investingmate/assets/sass/style.scss';
+import './_investingmate/assets/sass/plugins.scss';
+import './_investingmate/assets/sass/style.react.scss';
+import { Amplify } from 'aws-amplify';
+import { initSentry } from './lib/errorLib';
+import config from './config';
+import { AuthProvider } from './app/modules/auth';
+import { AppRoutes } from './app/routing/AppRoutes';
+import { InvestingMateI18nProvider } from './_investingmate/i18n/InvestingMatei18n';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 Amplify.configure({
   Auth: {
@@ -39,11 +39,11 @@ Amplify.configure({
       },
     ],
   },
-})
+});
 
-initSentry()
-const queryClient = new QueryClient()
-const container = document.getElementById('root')
+initSentry();
+const queryClient = new QueryClient();
+const container = document.getElementById('root');
 if (container) {
   createRoot(container).render(
     <QueryClientProvider client={queryClient}>
@@ -53,5 +53,5 @@ if (container) {
         </AuthProvider>
       </InvestingMateI18nProvider>
     </QueryClientProvider>
-  )
+  );
 }

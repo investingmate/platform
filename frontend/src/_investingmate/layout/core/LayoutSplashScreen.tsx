@@ -6,68 +6,68 @@ import React, {
   useEffect,
   SetStateAction,
   Dispatch,
-} from 'react'
-import {WithChildren} from '../../helpers'
+} from 'react';
+import { WithChildren } from '../../helpers';
 
-const SplashScreenContext = createContext<Dispatch<SetStateAction<number>> | undefined>(undefined)
+const SplashScreenContext = createContext<Dispatch<SetStateAction<number>> | undefined>(undefined);
 
-const SplashScreenProvider: FC<WithChildren> = ({children}) => {
-  const [count, setCount] = useState(0)
-  let visible = count > 0
+const SplashScreenProvider: FC<WithChildren> = ({ children }) => {
+  const [count, setCount] = useState(0);
+  let visible = count > 0;
 
   useEffect(() => {
-    const splashScreen = document.getElementById('splash-screen')
+    const splashScreen = document.getElementById('splash-screen');
 
     // Show SplashScreen
     if (splashScreen && visible) {
-      splashScreen.classList.remove('hidden')
+      splashScreen.classList.remove('hidden');
 
       return () => {
-        splashScreen.classList.add('hidden')
-      }
+        splashScreen.classList.add('hidden');
+      };
     }
 
     // Hide SplashScreen
-    let timeout: number
+    let timeout: number;
     if (splashScreen && !visible) {
       timeout = window.setTimeout(() => {
-        splashScreen.classList.add('hidden')
-      }, 3000)
+        splashScreen.classList.add('hidden');
+      }, 3000);
     }
 
     return () => {
-      clearTimeout(timeout)
-    }
-  }, [visible])
+      clearTimeout(timeout);
+    };
+  }, [visible]);
 
-  return <SplashScreenContext.Provider value={setCount}>{children}</SplashScreenContext.Provider>
-}
+  return <SplashScreenContext.Provider value={setCount}>{children}</SplashScreenContext.Provider>;
+};
 
-const LayoutSplashScreen: FC<{visible?: boolean}> = ({visible = true}) => {
+const LayoutSplashScreen: FC<{ visible?: boolean }> = ({ visible = true }) => {
   // Everything are ready - remove splashscreen
-  const setCount = useContext(SplashScreenContext)
+  const setCount = useContext(SplashScreenContext);
 
   useEffect(() => {
     if (!visible) {
-      return
+      return;
     }
 
     if (setCount) {
       setCount((prev) => {
-        return prev + 1
-      })
+        return prev + 1;
+      });
     }
 
     return () => {
       if (setCount) {
         setCount((prev) => {
-          return prev - 1
-        })
+          return prev - 1;
+        });
       }
-    }
-  }, [setCount, visible])
+    };
+  }, [setCount, visible]);
 
-  return null
-}
+  return null;
+};
 
-export {SplashScreenProvider, LayoutSplashScreen}
+export { SplashScreenProvider, LayoutSplashScreen };

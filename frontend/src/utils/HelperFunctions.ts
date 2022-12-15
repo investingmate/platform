@@ -1,55 +1,57 @@
-import {Company} from "../app/modules/companies/core/_models";
-import moment from "moment";
+import { Company } from '../app/modules/companies/core/_models';
+import moment from 'moment';
 
 export const customStringfy = (str: string) => {
-  let newStr = str.replaceAll("_", ' ');
+  let newStr = str.replaceAll('_', ' ');
   return newStr[0].toUpperCase() + newStr.slice(1);
-}
+};
 
 export const createArrayOfYears = (): number[] => {
   const totalYears = 15;
   const currentYear = new Date().getFullYear();
   const firstYear = currentYear - totalYears;
   const arrayOfYears = [];
-  for (let i = 0; i <= totalYears; i++){
-      let year = firstYear + i;
-      arrayOfYears.push(year);
+  for (let i = 0; i <= totalYears; i++) {
+    let year = firstYear + i;
+    arrayOfYears.push(year);
   }
   return arrayOfYears;
-}
+};
 
 export const createArrayOfData = (): number[] => {
   const total = 15;
   const arrayOfData = [];
-  for (let i = 0; i <= total; i++){
+  for (let i = 0; i <= total; i++) {
     const data = Math.floor(Math.random() * 10) + i;
-     arrayOfData.push(data);
+    arrayOfData.push(data);
   }
   return arrayOfData;
-}
+};
 
 export const addToWatchlist = (company: Company) => {
-  const list = localStorage.getItem('watchList')
-  if(!list){
-    localStorage.setItem('watchList', JSON.stringify([]))
+  const list = localStorage.getItem('watchList');
+  if (!list) {
+    localStorage.setItem('watchList', JSON.stringify([]));
   }
-  const newList = localStorage.getItem('watchList')
-  if(newList){
-    const findIndex = JSON.parse(newList).findIndex((i:Company) => i && i.ticker === company.ticker);
-    if(findIndex === -1){
-      const list = JSON.parse(newList)
-      list.push(company)
-      localStorage.setItem('watchList', JSON.stringify(list))
+  const newList = localStorage.getItem('watchList');
+  if (newList) {
+    const findIndex = JSON.parse(newList).findIndex(
+      (i: Company) => i && i.ticker === company.ticker
+    );
+    if (findIndex === -1) {
+      const list = JSON.parse(newList);
+      list.push(company);
+      localStorage.setItem('watchList', JSON.stringify(list));
     }
   }
 };
 
 export const removeFromWatchlist = (company: Company) => {
-  const newList = localStorage.getItem('watchList')
-  if(newList){
-    const filtered = JSON.parse(newList).filter((i:Company) => i && i.ticker !== company.ticker);
-    if(filtered){
-      localStorage.setItem('watchList', JSON.stringify(filtered))
+  const newList = localStorage.getItem('watchList');
+  if (newList) {
+    const filtered = JSON.parse(newList).filter((i: Company) => i && i.ticker !== company.ticker);
+    if (filtered) {
+      localStorage.setItem('watchList', JSON.stringify(filtered));
     }
   }
 };

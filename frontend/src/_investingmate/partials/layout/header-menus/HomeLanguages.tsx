@@ -1,13 +1,13 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import clsx from 'clsx'
-import {FC, useState} from 'react'
-import {useLang, setLanguage} from '../../../i18n/InvestingMatei18n'
-import {languages} from "../../../../utils/LanguagesContants";
+import clsx from 'clsx';
+import { FC, useState } from 'react';
+import { useLang, setLanguage } from '../../../i18n/InvestingMatei18n';
+import { languages } from '../../../../utils/LanguagesContants';
 
 const HomeLanguages: FC = () => {
-  const [clicked, setClicked] = useState(false)
-  const lang = useLang()
-  const currentLanguage = languages.find((x) => x.lang === lang)
+  const [clicked, setClicked] = useState(false);
+  const lang = useLang();
+  const currentLanguage = languages.find((x) => x.lang === lang);
   return (
     <div className='home-menu menu-item px-5'>
       <a href='#' className='menu-link px-5' onClick={() => setClicked(!clicked)}>
@@ -35,13 +35,15 @@ const HomeLanguages: FC = () => {
             className='menu-item px-3'
             key={l.lang}
             onClick={() => {
-              setClicked(false)
-              setLanguage(l.lang)
+              setClicked(false);
+              setLanguage(l.lang);
             }}
           >
             <a
               href='#'
-              className={clsx('menu-link d-flex px-5', {active: l.lang === currentLanguage?.lang})}
+              className={clsx('menu-link d-flex px-5', {
+                active: l.lang === currentLanguage?.lang,
+              })}
             >
               <span className='symbol symbol-20px me-4'>
                 <img className='rounded-1' src={l.flag} alt='metronic' />
@@ -52,7 +54,7 @@ const HomeLanguages: FC = () => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export {HomeLanguages}
+export { HomeLanguages };

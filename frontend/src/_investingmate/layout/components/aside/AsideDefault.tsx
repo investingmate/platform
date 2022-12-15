@@ -1,23 +1,23 @@
 /* eslint-disable react/jsx-no-target-blank */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import {FC, useRef} from 'react'
-import {Link} from 'react-router-dom'
-import clsx from 'clsx'
-import {useLayout} from '../../core'
-import {IMSVG, toAbsoluteUrl} from '../../../helpers'
-import {AsideMenu} from './AsideMenu'
+import { FC, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import clsx from 'clsx';
+import { useLayout } from '../../core';
+import { IMSVG, toAbsoluteUrl } from '../../../helpers';
+import { AsideMenu } from './AsideMenu';
 
 const AsideDefault: FC = () => {
-  const {config, classes} = useLayout()
-  const asideRef = useRef<HTMLDivElement | null>(null)
-  const {aside} = config
+  const { config, classes } = useLayout();
+  const asideRef = useRef<HTMLDivElement | null>(null);
+  const { aside } = config;
 
   const minimize = () => {
-    asideRef.current?.classList.add('animating')
+    asideRef.current?.classList.add('animating');
     setTimeout(() => {
-      asideRef.current?.classList.remove('animating')
-    }, 300)
-  }
+      asideRef.current?.classList.remove('animating');
+    }, 300);
+  };
 
   return (
     <div
@@ -93,7 +93,7 @@ const AsideDefault: FC = () => {
       </div>
       {/* end::Footer */}
     </div>
-  )
-}
+  );
+};
 
-export {AsideDefault}
+export { AsideDefault };

@@ -1,42 +1,42 @@
-import React, {useState} from 'react'
-import Form from 'react-bootstrap/Form'
-import {CardElement, useStripe, useElements} from '@stripe/react-stripe-js'
-import LoaderButton from './LoaderButton'
-import {useFormFields} from '../lib/hooksLib'
-import {Token} from "@stripe/stripe-js";
+import React, { useState } from 'react';
+import Form from 'react-bootstrap/Form';
+import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import LoaderButton from './LoaderButton';
+import { useFormFields } from '../lib/hooksLib';
+import { Token } from '@stripe/stripe-js';
 
 interface BillingFormProps {
   isLoading: boolean;
-  onSubmit: (storage: string, token: Token | undefined, error: any) => void
+  onSubmit: (storage: string, token: Token | undefined, error: any) => void;
 }
 
 export default function BillingForm(props: BillingFormProps) {
-  const {isLoading, onSubmit} = props
-  const stripe = useStripe()
-  const elements = useElements()
+  const { isLoading, onSubmit } = props;
+  const stripe = useStripe();
+  const elements = useElements();
   const [fields, handleFieldChange] = useFormFields({
     name: '',
     storage: '',
-  })
-  const [isProcessing, setIsProcessing] = useState(false)
-  const [isCardComplete, setIsCardComplete] = useState(false)
-  const isLoadingUpdated = isProcessing || isLoading
+  });
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [isCardComplete, setIsCardComplete] = useState(false);
+  const isLoadingUpdated = isProcessing || isLoading;
 
   function validateForm() {
-    return stripe && elements && fields.name !== '' && fields.storage !== '' && isCardComplete
+    return stripe && elements && fields.name !== '' && fields.storage !== '' && isCardComplete;
   }
 
   async function handleSubmitClick(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault()
+    event.preventDefault();
     if (!stripe || !elements) {
-      return
+      return;
     }
-    setIsProcessing(true)
-    const cardElement = elements.getElement(CardElement)
-    if(cardElement){
-      const {token, error} = await stripe.createToken(cardElement)
-      setIsProcessing(false)
-      onSubmit(fields.storage, token, error)
+    setIsProcessing(true);
+    const cardElement = elements.getElement(CardElement);
+    if (cardElement) {
+      const { token, error } = await stripe.createToken(cardElement);
+      setIsProcessing(false);
+      onSubmit(fields.storage, token, error);
     }
   }
 
@@ -86,5 +86,5 @@ export default function BillingForm(props: BillingFormProps) {
         Purchase
       </LoaderButton>
     </Form>
-  )
+  );
 }

@@ -1,6 +1,6 @@
-import React from 'react'
-import {Column, Table} from '@tanstack/react-table'
-import {IMSVG} from '../../../../../_investingmate/helpers'
+import React from 'react';
+import { Column, Table } from '@tanstack/react-table';
+import { IMSVG } from '../../../../../_investingmate/helpers';
 
 // A debounced input react component
 function DebouncedInput({
@@ -9,25 +9,25 @@ function DebouncedInput({
   debounce = 500,
   ...props
 }: {
-  value: string | number
-  onChange: (value: string | number) => void
-  debounce?: number
+  value: string | number;
+  onChange: (value: string | number) => void;
+  debounce?: number;
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'>) {
-  const {type, list} = props
-  const [value, setValue] = React.useState(initialValue)
+  const { type, list } = props;
+  const [value, setValue] = React.useState(initialValue);
 
   React.useEffect(() => {
-    setValue(initialValue)
-  }, [initialValue])
+    setValue(initialValue);
+  }, [initialValue]);
 
   React.useEffect(() => {
     const timeout = setTimeout(() => {
-      onChange(value)
-    }, debounce)
+      onChange(value);
+    }, debounce);
 
-    return () => clearTimeout(timeout)
+    return () => clearTimeout(timeout);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value, debounce])
+  }, [value, debounce]);
 
   return (
     <div
@@ -56,19 +56,19 @@ function DebouncedInput({
         }}
       />
     </div>
-  )
+  );
 }
 
 export function CompaniesFilter({
   column,
   table,
 }: {
-  column: Column<any, unknown>
-  table: Table<any>
+  column: Column<any, unknown>;
+  table: Table<any>;
 }) {
-  const firstValue = table.getPreFilteredRowModel().flatRows[0]?.getValue(column.id)
+  const firstValue = table.getPreFilteredRowModel().flatRows[0]?.getValue(column.id);
 
-  const columnFilterValue = column.getFilterValue()
+  const columnFilterValue = column.getFilterValue();
 
   const sortedUniqueValues = React.useMemo(
     () =>
@@ -77,7 +77,7 @@ export function CompaniesFilter({
         : Array.from(column.getFacetedUniqueValues().keys()).sort(),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [column.getFacetedUniqueValues()]
-  )
+  );
 
   return typeof firstValue === 'number' ? (
     <div>
@@ -120,5 +120,5 @@ export function CompaniesFilter({
       />
       <div className='h-1' />
     </>
-  )
+  );
 }

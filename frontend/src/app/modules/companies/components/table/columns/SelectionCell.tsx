@@ -1,14 +1,14 @@
-import {FC, useMemo} from 'react'
-import {ID} from '../../../../../../_investingmate/helpers'
-import {useListView} from '../../../core/ListViewProvider'
+import { FC, useMemo } from 'react';
+import { ID } from '../../../../../../_investingmate/helpers';
+import { useListView } from '../../../core/ListViewProvider';
 
 type Props = {
-  id: ID
-}
+  id: ID;
+};
 
-const SelectionCell: FC<Props> = ({id}) => {
-  const {selected, onSelect} = useListView()
-  const isSelected = useMemo(() => selected.includes(id), [id, selected])
+const SelectionCell: FC<Props> = ({ id }) => {
+  const { selected, onSelect } = useListView();
+  const isSelected = useMemo(() => selected.includes(id), [id, selected]);
   return (
     <div className='form-check form-check-custom form-check-solid'>
       <input
@@ -20,7 +20,7 @@ const SelectionCell: FC<Props> = ({id}) => {
         onChange={() => onSelect(id)}
       />
     </div>
-  )
-}
+  );
+};
 
-export {SelectionCell}
+export { SelectionCell };

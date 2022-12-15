@@ -1,31 +1,38 @@
-import clsx from 'clsx'
-import {IMSVG, toAbsoluteUrl} from '../../../helpers'
+import clsx from 'clsx';
+import { IMSVG, toAbsoluteUrl } from '../../../helpers';
 import {
   // HeaderNotificationsMenu,
   HeaderUserMenu,
   // QuickLinks,
   // Search,
   // ThemeModeSwitcher,
-} from '../../../partials'
-import {useAuth} from '../../../../app/modules/auth'
-import React, {useState} from "react";
+} from '../../../partials';
+import { useAuth } from '../../../../app/modules/auth';
+import React, { useState } from 'react';
 
 const toolbarButtonMarginClass = 'ms-1 ms-lg-3',
   toolbarButtonHeightClass = 'w-30px h-30px w-md-40px h-md-40px',
   toolbarUserAvatarHeightClass = 'symbol-30px symbol-md-40px',
-  toolbarButtonIconSizeClass = 'svg-icon-3'
+  toolbarButtonIconSizeClass = 'svg-icon-3';
 
 const Topbar = () => {
-  const {currentUser} = useAuth()
+  const { currentUser } = useAuth();
   const [isExpanded, setIsExpanded] = useState(false);
 
   function toggleFullscreen() {
     /* @ts-ignore*/
-    const requestFullScreen = document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen || document.documentElement.mozRequestFullScreen;
+    const requestFullScreen =
+      document.documentElement.requestFullscreen ||
+      document.documentElement.webkitRequestFullscreen ||
+      document.documentElement.mozRequestFullScreen;
     /* @ts-ignore*/
-    const exitFullscreen = document.exitFullscreen || document.webkitExitFullscreen || document.mozCancelFullScreen;
+    const exitFullscreen =
+      document.exitFullscreen || document.webkitExitFullscreen || document.mozCancelFullScreen;
     /* @ts-ignore*/
-    const isFullscreen = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement;
+    const isFullscreen =
+      document.fullscreenElement ||
+      document.webkitFullscreenElement ||
+      document.mozFullScreenElement;
     if (isFullscreen) {
       return exitFullscreen.bind(document)();
     } else if (!isFullscreen) {
@@ -43,16 +50,16 @@ const Topbar = () => {
             'btn btn-icon btn-active-light-primary btn-custom position-relative mx-3',
             toolbarButtonHeightClass
           )}
-          onClick={()=>{
-            setIsExpanded(!isExpanded)
-            toggleFullscreen()
+          onClick={() => {
+            setIsExpanded(!isExpanded);
+            toggleFullscreen();
           }}
         >
-          {
-            isExpanded ?
-            <i className={`${toolbarButtonIconSizeClass}fas fa-solid fa-compress fs-1`}/> :
-            <i className={`${toolbarButtonIconSizeClass}fas fa-solid fa-expand fs-1`}/>
-          }
+          {isExpanded ? (
+            <i className={`${toolbarButtonIconSizeClass}fas fa-solid fa-compress fs-1`} />
+          ) : (
+            <i className={`${toolbarButtonIconSizeClass}fas fa-solid fa-expand fs-1`} />
+          )}
         </div>
 
         <div
@@ -102,7 +109,7 @@ const Topbar = () => {
       </div>
       {/* end::User */}
     </div>
-  )
-}
+  );
+};
 
-export {Topbar}
+export { Topbar };

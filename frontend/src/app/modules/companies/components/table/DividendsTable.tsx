@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
   SortingState,
   flexRender,
@@ -6,64 +6,64 @@ import {
   getSortedRowModel,
   getPaginationRowModel,
   useReactTable,
-} from '@tanstack/react-table'
+} from '@tanstack/react-table';
 
-import {TDividendsColumn} from "../../core/_models";
-import {DraggableColumnHeader} from "./columns/DraggableColumnHeader";
-import {ListPagination} from "../pagination/ListPagination";
-import {useLocation} from "react-router-dom";
-import {getCurrentCompany} from "../../core/GetCurrentCompany";
-import {dateFormatter} from "../../../../../utils/HelperFunctions";
+import { TDividendsColumn } from '../../core/_models';
+import { DraggableColumnHeader } from './columns/DraggableColumnHeader';
+import { ListPagination } from '../pagination/ListPagination';
+import { useLocation } from 'react-router-dom';
+import { getCurrentCompany } from '../../core/GetCurrentCompany';
+import { dateFormatter } from '../../../../../utils/HelperFunctions';
 
 const DividendsTable = () => {
   const location = useLocation();
   const company = getCurrentCompany(location);
-  const defaultData = company.dividends_history ?? []
+  const defaultData = company.dividends_history ?? [];
 
   const columns = React.useMemo<TDividendsColumn[]>(
     () => [
       {
-        accessorFn: row => row.date,
+        accessorFn: (row) => row.date,
         id: 'date',
         header: 'Date',
-        cell: info => dateFormatter(info.getValue()),
+        cell: (info) => dateFormatter(info.getValue()),
       },
       {
-        accessorFn: row => row.amount,
+        accessorFn: (row) => row.amount,
         id: 'amount',
         header: 'Amount',
-        cell: info => `$${info.getValue()}.00`,
+        cell: (info) => `$${info.getValue()}.00`,
       },
       {
-        accessorFn: row => row.franking,
+        accessorFn: (row) => row.franking,
         id: 'franking',
         header: 'Franking',
-        cell: info => `${info.getValue()}%`,
+        cell: (info) => `${info.getValue()}%`,
       },
       {
-        accessorFn: row => row.gross,
+        accessorFn: (row) => row.gross,
         id: 'Gross',
         header: 'Gross',
-        cell: info => `$${info.getValue()}.00`,
+        cell: (info) => `$${info.getValue()}.00`,
       },
       {
-        accessorFn: row => row.type,
+        accessorFn: (row) => row.type,
         id: 'type',
         header: 'Type',
-        cell: info => info.getValue(),
+        cell: (info) => info.getValue(),
       },
       {
-        accessorFn: row => row.payable,
+        accessorFn: (row) => row.payable,
         id: 'payable',
         header: 'Payable',
-        cell: info => dateFormatter(info.getValue()),
+        cell: (info) => dateFormatter(info.getValue()),
       },
     ],
     []
-  )
+  );
 
-  const [data] = React.useState(() => [...defaultData])
-  const [sorting, setSorting] = React.useState<SortingState>([])
+  const [data] = React.useState(() => [...defaultData]);
+  const [sorting, setSorting] = React.useState<SortingState>([]);
 
   const table = useReactTable({
     data,
@@ -75,56 +75,49 @@ const DividendsTable = () => {
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
-  })
+  });
 
   return (
-    <div className="border-0 pb-0 pt-2">
+    <div className='border-0 pb-0 pt-2'>
       <div className='table-responsive'>
-        <table
-          className='table table-hover align-middle fs-6 dataTable no-footer border table-rounded'
-        >
-          <thead className="table-header">
-          {table.getHeaderGroups().map(headerGroup => (
-            <tr
-              className='text-start fw-bolder fs-7 text-uppercase gs-0'
-              key={headerGroup.id}
-            >
-              {headerGroup.headers.map(header => (
-                <DraggableColumnHeader
-                  key={header.id}
-                  header={header}
-                  table={table}
-                  isFilterEnabled={false}
-                  isDragEnabled={false}
-                />
-              ))}
-            </tr>
-          ))}
+        <table className='table table-hover align-middle fs-6 dataTable no-footer border table-rounded'>
+          <thead className='table-header'>
+            {table.getHeaderGroups().map((headerGroup) => (
+              <tr className='text-start fw-bolder fs-7 text-uppercase gs-0' key={headerGroup.id}>
+                {headerGroup.headers.map((header) => (
+                  <DraggableColumnHeader
+                    key={header.id}
+                    header={header}
+                    table={table}
+                    isFilterEnabled={false}
+                    isDragEnabled={false}
+                  />
+                ))}
+              </tr>
+            ))}
           </thead>
           <tbody>
-          {table.getRowModel().rows.slice(0, 10).map(row => {
-            return (
-              <tr
-                key={row.id}
-                className="cursor-pointer btn-light"
-              >
-                {row.getVisibleCells().map(cell => {
-                  return (
-                    <td
-                      key={cell.id}
-                    >
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                    </td>
-                  )
-                })}
-              </tr>
-            )
-          })}
+            {table
+              .getRowModel()
+              .rows.slice(0, 10)
+              .map((row) => {
+                return (
+                  <tr key={row.id} className='cursor-pointer btn-light'>
+                    {row.getVisibleCells().map((cell) => {
+                      return (
+                        <td key={cell.id}>
+                          {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                );
+              })}
           </tbody>
         </table>
       </div>
-      <ListPagination table={table}/>
+      <ListPagination table={table} />
     </div>
-  )
-}
-export {DividendsTable}
+  );
+};
+export { DividendsTable };

@@ -1,36 +1,36 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import {FC, useEffect} from 'react'
-import {useMutation, useQueryClient} from 'react-query'
-import {MenuComponent} from '../../../../../../_investingmate/assets/ts/components'
-import {ID, IMSVG, QUERIES} from '../../../../../../_investingmate/helpers'
-import {useListView} from '../../../core/ListViewProvider'
-import {useQueryResponse} from '../../../core/QueryResponseProvider'
-import {deleteCompany} from "../../../core/_requests";
+import { FC, useEffect } from 'react';
+import { useMutation, useQueryClient } from 'react-query';
+import { MenuComponent } from '../../../../../../_investingmate/assets/ts/components';
+import { ID, IMSVG, QUERIES } from '../../../../../../_investingmate/helpers';
+import { useListView } from '../../../core/ListViewProvider';
+import { useQueryResponse } from '../../../core/QueryResponseProvider';
+import { deleteCompany } from '../../../core/_requests';
 
 type Props = {
-  id: ID
-}
+  id: ID;
+};
 
-const ActionsCell: FC<Props> = ({id}) => {
-  const {setItemIdForUpdate} = useListView()
-  const {query} = useQueryResponse()
-  const queryClient = useQueryClient()
+const ActionsCell: FC<Props> = ({ id }) => {
+  const { setItemIdForUpdate } = useListView();
+  const { query } = useQueryResponse();
+  const queryClient = useQueryClient();
 
   useEffect(() => {
-    MenuComponent.reinitialization()
-  }, [])
+    MenuComponent.reinitialization();
+  }, []);
 
   const openEditModal = () => {
-    setItemIdForUpdate(id)
-  }
+    setItemIdForUpdate(id);
+  };
 
   const deleteItem = useMutation(() => deleteCompany(id), {
     // 💡 response of the mutation is passed to onSuccess
     onSuccess: () => {
       // ✅ update detail view directly
-      queryClient.invalidateQueries([`${QUERIES.COMPANIES_LIST}-${query}`])
+      queryClient.invalidateQueries([`${QUERIES.COMPANIES_LIST}-${query}`]);
     },
-  })
+  });
 
   return (
     <>
@@ -70,7 +70,7 @@ const ActionsCell: FC<Props> = ({id}) => {
       </div>
       {/* end::Menu */}
     </>
-  )
-}
+  );
+};
 
-export {ActionsCell}
+export { ActionsCell };

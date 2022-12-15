@@ -1,35 +1,39 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, {useState} from 'react'
-import {IMSVG, toAbsoluteUrl} from '../../../../../_investingmate/helpers'
-import {Company} from "../../core/_models";
-import {useIntl} from "react-intl";
-import {defaultColumnsDescription} from "../table/columns/_columns";
-import {Link, useLocation} from "react-router-dom";
-import {CompaniesIndicator} from "../CompaniesIndicator";
-import {addToWatchlist, removeFromWatchlist} from "../../../../../utils/HelperFunctions";
-import {getCurrentCompany} from "../../core/GetCurrentCompany";
+import React, { useState } from 'react';
+import { IMSVG, toAbsoluteUrl } from '../../../../../_investingmate/helpers';
+import { Company } from '../../core/_models';
+import { useIntl } from 'react-intl';
+import { defaultColumnsDescription } from '../table/columns/_columns';
+import { Link, useLocation } from 'react-router-dom';
+import { CompaniesIndicator } from '../CompaniesIndicator';
+import { addToWatchlist, removeFromWatchlist } from '../../../../../utils/HelperFunctions';
+import { getCurrentCompany } from '../../core/GetCurrentCompany';
 
 const CompaniesHeader = () => {
-  const intl = useIntl()
+  const intl = useIntl();
   const location = useLocation();
   const company = getCurrentCompany(location);
 
-  console.log({company})
+  console.log({ company });
 
-  const headlineArray = company && company.headline ?
-  Object.entries(company.headline).map(entry => {
-    return  {
-      label: entry[0],
-      value: entry[1]
-    }
-  }): []
+  const headlineArray =
+    company && company.headline
+      ? Object.entries(company.headline).map((entry) => {
+          return {
+            label: entry[0],
+            value: entry[1],
+          };
+        })
+      : [];
 
-  const newList = localStorage.getItem('watchList')
-  let watchState = false
-  if(newList && company){
-    const filtered = JSON.parse(newList).filter((i:Company) => i && i.ticker === (company && company.ticker));
-    if(filtered.length > 0){
-      watchState = true
+  const newList = localStorage.getItem('watchList');
+  let watchState = false;
+  if (newList && company) {
+    const filtered = JSON.parse(newList).filter(
+      (i: Company) => i && i.ticker === (company && company.ticker)
+    );
+    if (filtered.length > 0) {
+      watchState = true;
     }
   }
 
@@ -37,12 +41,12 @@ const CompaniesHeader = () => {
 
   const handleWatchList = () => {
     setIsOnWatchList(!isOnWatchList);
-    if(company && !isOnWatchList){
-      addToWatchlist(company)
-    } else if(company && isOnWatchList){
-      removeFromWatchlist(company)
+    if (company && !isOnWatchList) {
+      addToWatchlist(company);
+    } else if (company && isOnWatchList) {
+      removeFromWatchlist(company);
     }
-  }
+  };
 
   return (
     <div className='card'>
@@ -54,18 +58,23 @@ const CompaniesHeader = () => {
                 <div className='d-flex align-items-center mb-2'>
                   <div className='mb-2'>
                     <div className='symbol symbol-100px symbol-lg-160px symbol-fixed position-relative'>
-                      {
-                        company && company.logo.length > 0 ?
-                          <img src={toAbsoluteUrl(company.logo)} alt={`${company.name} logo`} /> :
-                          <IMSVG
-                            path="/media/icons/duotune/general/gen006.svg"
-                            className="svg-icon svg-icon-5x svg-icon-warning"
-                          />
-                      }
+                      {company && company.logo.length > 0 ? (
+                        <img src={toAbsoluteUrl(company.logo)} alt={`${company.name} logo`} />
+                      ) : (
+                        <IMSVG
+                          path='/media/icons/duotune/general/gen006.svg'
+                          className='svg-icon svg-icon-5x svg-icon-warning'
+                        />
+                      )}
                     </div>
                   </div>
 
-                  <a href={company && company.website} className='text-gray-800 text-hover-primary fs-2 fw-bolder me-1' target="_blank" rel="noreferrer">
+                  <a
+                    href={company && company.website}
+                    className='text-gray-800 text-hover-primary fs-2 fw-bolder me-1'
+                    target='_blank'
+                    rel='noreferrer'
+                  >
                     {company && company.name}
                   </a>
                   {/*<a href=''>*/}
@@ -85,34 +94,22 @@ const CompaniesHeader = () => {
                 </div>
 
                 <div className='d-flex flex-wrap fw-bold fs-6 mb-4 pe-2'>
-                  <span
-                    className='d-flex align-items-center text-gray-600 me-5'
-                  >
-                    <span
-                      className='text-gray-900'
-                    >
-                      {useIntl().formatMessage({id: 'COMPANIES.EXCHANGE'})}:&nbsp;
+                  <span className='d-flex align-items-center text-gray-600 me-5'>
+                    <span className='text-gray-900'>
+                      {useIntl().formatMessage({ id: 'COMPANIES.EXCHANGE' })}:&nbsp;
                     </span>
                     {company && company.exchange}
                   </span>
-                  <div className="separator-vertical"/>
-                  <span
-                    className='d-flex align-items-center text-gray-600 me-5'
-                  >
-                    <span
-                      className='text-gray-900'
-                    >
-                      {useIntl().formatMessage({id: 'COMPANIES.TICKER'})}:&nbsp;
+                  <div className='separator-vertical' />
+                  <span className='d-flex align-items-center text-gray-600 me-5'>
+                    <span className='text-gray-900'>
+                      {useIntl().formatMessage({ id: 'COMPANIES.TICKER' })}:&nbsp;
                     </span>
                     {company && company.ticker}
                   </span>
-                  <span
-                    className='d-flex align-items-center text-gray-600 me-5'
-                  >
-                    <span
-                      className='text-gray-900'
-                    >
-                      {useIntl().formatMessage({id: 'COMPANIES.SECTOR'})}:&nbsp;
+                  <span className='d-flex align-items-center text-gray-600 me-5'>
+                    <span className='text-gray-900'>
+                      {useIntl().formatMessage({ id: 'COMPANIES.SECTOR' })}:&nbsp;
                     </span>
                     {company && company.sector}
                   </span>
@@ -121,26 +118,25 @@ const CompaniesHeader = () => {
 
               <div className='d-flex my-4'>
                 <div
-                  onClick={()=>handleWatchList()}
+                  onClick={() => handleWatchList()}
                   className={
-                    !isOnWatchList ?
-                      'btn btn-sm btn-outline btn-outline-info' :
-                      'btn btn-sm btn-primary'
+                    !isOnWatchList
+                      ? 'btn btn-sm btn-outline btn-outline-info'
+                      : 'btn btn-sm btn-primary'
                   }
                   id='im_user_follow_button'
                 >
-                  {
-                    isOnWatchList ?
+                  {isOnWatchList ? (
                     <span className='indicator-label'>
-                      <i className="fas fa-regular fa-star mx-2 fs-2"/>
-                      {intl.formatMessage({id: 'COMPANIES.REMOVE_WATCHLIST'})}
+                      <i className='fas fa-regular fa-star mx-2 fs-2' />
+                      {intl.formatMessage({ id: 'COMPANIES.REMOVE_WATCHLIST' })}
                     </span>
-                    :
+                  ) : (
                     <span className='indicator-label text-info'>
-                      <i className="fas fa-regular fa-star mx-2 fs-2 text-info"/>
-                      {intl.formatMessage({id: 'COMPANIES.ADD_WATCHLIST'})}
+                      <i className='fas fa-regular fa-star mx-2 fs-2 text-info' />
+                      {intl.formatMessage({ id: 'COMPANIES.ADD_WATCHLIST' })}
                     </span>
-                  }
+                  )}
                 </div>
               </div>
             </div>
@@ -149,11 +145,11 @@ const CompaniesHeader = () => {
               <div className='d-flex flex-column flex-grow-1 pe-8'>
                 <div className='d-flex flex-wrap'>
                   {headlineArray.map((headline) => {
-                    const colInfo = defaultColumnsDescription.find(col => col.id === headline.label)
+                    const colInfo = defaultColumnsDescription.find(
+                      (col) => col.id === headline.label
+                    );
                     return (
-                      <div
-                        key={headline.label}
-                      >
+                      <div key={headline.label}>
                         <CompaniesIndicator
                           description={colInfo ? colInfo.description : ''}
                           label={headline.label}
@@ -163,7 +159,7 @@ const CompaniesHeader = () => {
                           showGraph={true}
                         />
                       </div>
-                    )
+                    );
                   })}
                 </div>
               </div>
@@ -179,7 +175,7 @@ const CompaniesHeader = () => {
                   (window.location.pathname === '/companies/company-overview' && 'active')
                 }
                 to='/companies/company-overview'
-                state={{company: JSON.stringify(company)}}
+                state={{ company: JSON.stringify(company) }}
               >
                 Overview
               </Link>
@@ -191,7 +187,7 @@ const CompaniesHeader = () => {
                   (window.location.pathname === '/companies/company-financials' && 'active')
                 }
                 to='/companies/company-financials'
-                state={{company: JSON.stringify(company)}}
+                state={{ company: JSON.stringify(company) }}
               >
                 Financials
               </Link>
@@ -200,7 +196,7 @@ const CompaniesHeader = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export {CompaniesHeader}
+export { CompaniesHeader };

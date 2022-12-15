@@ -1,12 +1,12 @@
-import {Route, Routes, BrowserRouter, Navigate} from 'react-router-dom'
-import {PrivateRoutes} from './PrivateRoutes'
-import {ErrorsPage} from '../modules/errors/ErrorsPage'
-import {useAuth, Logout, AuthPage} from '../modules/auth'
-import {App} from '../App'
-import {FC} from 'react'
+import { Route, Routes, BrowserRouter, Navigate } from 'react-router-dom';
+import { PrivateRoutes } from './PrivateRoutes';
+import { ErrorsPage } from '../modules/errors/ErrorsPage';
+import { useAuth, Logout, AuthPage } from '../modules/auth';
+import { App } from '../App';
+import { FC } from 'react';
 
 const AppRoutes: FC = () => {
-  const {currentUser} = useAuth()
+  const { currentUser } = useAuth();
   return (
     <BrowserRouter>
       <Routes>
@@ -27,7 +27,7 @@ const AppRoutes: FC = () => {
         </Route>
       </Routes>
     </BrowserRouter>
-  )
-}
+  );
+};
 
-export {AppRoutes}
+export { AppRoutes };

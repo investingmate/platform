@@ -1,10 +1,10 @@
-import {useState, useEffect} from 'react'
-import {API} from 'aws-amplify'
-import ListGroup from 'react-bootstrap/ListGroup'
-import {BsPencilSquare} from 'react-icons/bs'
-import {LinkContainer} from 'react-router-bootstrap'
-import {useAppContext} from '../lib/contextLib'
-import {onError} from '../lib/errorLib'
+import { useState, useEffect } from 'react';
+import { API } from 'aws-amplify';
+import ListGroup from 'react-bootstrap/ListGroup';
+import { BsPencilSquare } from 'react-icons/bs';
+import { LinkContainer } from 'react-router-bootstrap';
+import { useAppContext } from '../lib/contextLib';
+import { onError } from '../lib/errorLib';
 
 interface INote {
   noteId: string | number;
@@ -13,28 +13,28 @@ interface INote {
 }
 
 export default function Home() {
-  const [notes, setNotes] = useState([])
-  const {isAuthenticated} = useAppContext()
-  const [isLoading, setIsLoading] = useState(true)
+  const [notes, setNotes] = useState([]);
+  const { isAuthenticated } = useAppContext();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function onLoad() {
       if (!isAuthenticated) {
-        return
+        return;
       }
       try {
-        const notes = await loadNotes()
-        setNotes(notes)
+        const notes = await loadNotes();
+        setNotes(notes);
       } catch (e) {
-        onError(e)
+        onError(e);
       }
-      setIsLoading(false)
+      setIsLoading(false);
     }
-    onLoad()
-  }, [isAuthenticated])
+    onLoad();
+  }, [isAuthenticated]);
 
   function loadNotes() {
-    return API.get('notes', '/notes', {})
+    return API.get('notes', '/notes', {});
   }
 
   function renderNotesList(notes: INote[]) {
@@ -47,7 +47,7 @@ export default function Home() {
           </ListGroup.Item>
         </LinkContainer>
         {notes.map((note: INote) => {
-          const {noteId, content, createdAt} = note
+          const { noteId, content, createdAt } = note;
           return (
             <LinkContainer key={noteId} to={`/notes/${noteId}`}>
               <ListGroup.Item action>
@@ -56,10 +56,10 @@ export default function Home() {
                 <span className='text-muted'>Created: {new Date(createdAt).toLocaleString()}</span>
               </ListGroup.Item>
             </LinkContainer>
-          )
+          );
         })}
       </>
-    )
+    );
   }
 
   function renderLander() {
@@ -68,7 +68,7 @@ export default function Home() {
         <h1>Scratch</h1>
         <p className='text-muted'>A simple note taking app</p>
       </div>
-    )
+    );
   }
 
   function renderNotes() {
@@ -77,8 +77,8 @@ export default function Home() {
         <h2 className='pb-3 mt-4 mb-3 border-bottom'>Your Notes</h2>
         <ListGroup>{!isLoading && renderNotesList(notes)}</ListGroup>
       </div>
-    )
+    );
   }
 
-  return <div className='Home'>{isAuthenticated ? renderNotes() : renderLander()}</div>
+  return <div className='Home'>{isAuthenticated ? renderNotes() : renderLander()}</div>;
 }

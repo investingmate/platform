@@ -1,28 +1,28 @@
-import {useEffect} from 'react'
-import {Outlet} from 'react-router-dom'
-import {AsideDefault} from './components/aside/AsideDefault'
-import {Footer} from './components/Footer'
-import {HeaderWrapper} from './components/header/HeaderWrapper'
-import {ScrollTop} from './components/ScrollTop'
-import {Content} from './components/Content'
-import {useLocation} from 'react-router-dom'
-import {MenuComponent} from '../assets/ts/components'
-import {PageDataProvider} from "./core/PageData";
-import {ThemeModeProvider} from "../partials/layout/theme-mode/ThemeModeProvider";
+import { useEffect } from 'react';
+import { Outlet } from 'react-router-dom';
+import { AsideDefault } from './components/aside/AsideDefault';
+import { Footer } from './components/Footer';
+import { HeaderWrapper } from './components/header/HeaderWrapper';
+import { ScrollTop } from './components/ScrollTop';
+import { Content } from './components/Content';
+import { useLocation } from 'react-router-dom';
+import { MenuComponent } from '../assets/ts/components';
+import { PageDataProvider } from './core/PageData';
+import { ThemeModeProvider } from '../partials/layout/theme-mode/ThemeModeProvider';
 
 const MasterLayout = () => {
-  const location = useLocation()
+  const location = useLocation();
   useEffect(() => {
     setTimeout(() => {
-      MenuComponent.reinitialization()
-    }, 500)
-  }, [])
+      MenuComponent.reinitialization();
+    }, 500);
+  }, []);
 
   useEffect(() => {
     setTimeout(() => {
-      MenuComponent.reinitialization()
-    }, 500)
-  }, [location.key])
+      MenuComponent.reinitialization();
+    }, 500);
+  }, [location.key]);
 
   return (
     <PageDataProvider>
@@ -51,7 +51,7 @@ const MasterLayout = () => {
         <ScrollTop />
       </ThemeModeProvider>
     </PageDataProvider>
-  )
-}
+  );
+};
 
-export {MasterLayout}
+export { MasterLayout };
