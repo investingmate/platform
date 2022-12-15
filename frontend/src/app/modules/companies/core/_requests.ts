@@ -3,9 +3,9 @@ import {ID, Response} from '../../../../_investingmate/helpers'
 import {Company, CompaniesQueryResponse, Dividend, Indicator, IndicatorGroup} from './_models'
 
 const API_URL = process.env.REACT_APP_API_URL
-const REACT_APP_AUTH_DOMAIN = process.env.REACT_APP_AUTH_DOMAIN
+// const REACT_APP_AUTH_DOMAIN = process.env.REACT_APP_AUTH_DOMAIN
 const COMPANY_URL = `${API_URL}/company`
-const GET_COMPANIES_URL = `${API_URL}companies`
+// const GET_COMPANIES_URL = `${API_URL}companies`
 // const GET_COMPANIES_URL = `${API_URL}/companies/query`
 
 // console.log({REACT_APP_AUTH_DOMAIN})
