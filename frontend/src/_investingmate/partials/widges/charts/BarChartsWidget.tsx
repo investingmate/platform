@@ -3,14 +3,15 @@ import React, { useEffect, useRef } from 'react';
 import ApexCharts, { ApexOptions } from 'apexcharts';
 import { getCSS, getCSSVariableValue } from '../../../assets/ts/_utils';
 import { useThemeMode } from '../../layout/theme-mode/ThemeModeProvider';
-import { createArrayOfData, createArrayOfYears } from '../../../../utils/HelperFunctions';
+import {Indicator} from "../../../../app/modules/companies/core/_models";
 
 type Props = {
   className?: string;
   label: string;
+  historyData: Indicator[]
 };
 
-const BarChartsWidget: React.FC<Props> = ({ className, label }) => {
+const BarChartsWidget: React.FC<Props> = ({ className, label , historyData }) => {
   const chartRef = useRef<HTMLDivElement | null>(null);
   const { mode } = useThemeMode();
 
@@ -32,7 +33,7 @@ const BarChartsWidget: React.FC<Props> = ({ className, label }) => {
 
     const height = parseInt(getCSS(chartRef.current, 'height'));
 
-    const chart = new ApexCharts(chartRef.current, getChartOptions(height, label));
+    const chart = new ApexCharts(chartRef.current, getChartOptions(height, label, historyData));
     if (chart) {
       chart.render();
     }
@@ -55,7 +56,7 @@ const BarChartsWidget: React.FC<Props> = ({ className, label }) => {
 
 export { BarChartsWidget };
 
-function getChartOptions(height: number, label: string): ApexOptions {
+function getChartOptions(height: number, label: string, data: any[]): ApexOptions {
   const labelColor = getCSSVariableValue('--im-gray-600');
   const borderColor = getCSSVariableValue('--im-gray-300');
   const baseColor = getCSSVariableValue('--im-primary');
@@ -65,7 +66,7 @@ function getChartOptions(height: number, label: string): ApexOptions {
     series: [
       {
         name: label,
-        data: createArrayOfData(),
+        data: data && data.map(item => item.amount),
       },
     ],
     chart: {
@@ -98,7 +99,7 @@ function getChartOptions(height: number, label: string): ApexOptions {
       colors: ['transparent'],
     },
     xaxis: {
-      categories: createArrayOfYears(),
+      categories: data && data.map(item => item.year),
       axisBorder: {
         show: false,
       },
@@ -150,7 +151,8 @@ function getChartOptions(height: number, label: string): ApexOptions {
       },
       y: {
         formatter: function (val) {
-          return '$' + val + ' thousands';
+          return '' + val + ' ';
+          // return '$' + val + ' ';
         },
       },
     },

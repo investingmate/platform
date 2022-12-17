@@ -5,7 +5,6 @@ import { Location } from 'history';
  * Getting the company details from state
  * */
 export const getCurrentCompany = (location: Location) => {
-  console.log('getCurrentCompany');
   let company: Company = initialCompany;
   let state: any;
   if (location && location.state) {

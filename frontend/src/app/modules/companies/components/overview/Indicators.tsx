@@ -69,7 +69,7 @@ const Indicators = (props: IndicatorProps) => {
         indicatorsData &&
         indicatorsData.map((indicator) => {
           return (
-            <CustomCard title={indicator.name.toUpperCase()}>
+            <CustomCard key={indicator.name} title={indicator.name.toUpperCase()}>
               <IndicatorsTable indicators={indicator.indicators} />
             </CustomCard>
           );

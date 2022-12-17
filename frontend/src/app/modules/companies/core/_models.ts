@@ -1,6 +1,23 @@
 import { Response, ID } from '../../../../_investingmate/helpers';
 import { ColumnDef } from '@tanstack/react-table';
 
+export type TIndicatorColumn = ColumnDef<Indicator>;
+
+export type IndicatorGroup = {
+  id?: ID;
+  name: string;
+  indicators: Indicator[];
+};
+
+export type Indicator = {
+  id?: ID;
+  year: string;
+  amount: number;
+  name: string;
+  description: string;
+  history_data?: Indicator[];
+};
+
 export type TCompanyColumn = ColumnDef<Company> & {
   status?: boolean;
   description?: string;
@@ -27,6 +44,19 @@ export type Company = {
     beta: number;
     shares_issued: number;
   };
+  headlines_history: {
+    current: Indicator[];
+    variation: Indicator[];
+    min_12_months: Indicator[];
+    max_12_months: Indicator[];
+    year_return: Indicator[];
+    current_month_return: Indicator[];
+    dividend_yield: Indicator[];
+    volume: Indicator[];
+    market_cap: Indicator[];
+    beta: Indicator[];
+    shares_issued: Indicator[];
+  },
   dividends_history: Dividend[];
   indicators_group: IndicatorGroup[];
   corporate_overview: CorporateOverview;
@@ -55,6 +85,96 @@ export const initialCompany: Company = {
     market_cap: 0.0,
     beta: 0.0,
     shares_issued: 0,
+  },
+  headlines_history: {
+    current: [
+      {
+        year: '',
+        amount: 0.0,
+        name: '',
+        description: '',
+      },
+    ],
+    variation: [
+      {
+        year: '',
+        amount: 0.0,
+        name: '',
+        description: '',
+      },
+    ],
+    min_12_months: [
+      {
+        year: '',
+        amount: 0.0,
+        name: '',
+        description: '',
+      },
+    ],
+    max_12_months: [
+      {
+        year: '',
+        amount: 0.0,
+        name: '',
+        description: '',
+      },
+    ],
+    year_return: [
+      {
+        year: '',
+        amount: 0.0,
+        name: '',
+        description: '',
+      },
+    ],
+    current_month_return: [
+      {
+        year: '',
+        amount: 0.0,
+        name: '',
+        description: '',
+      },
+    ],
+    dividend_yield: [
+      {
+        year: '',
+        amount: 0.0,
+        name: '',
+        description: '',
+      },
+    ],
+    volume: [
+      {
+        year: '',
+        amount: 0.0,
+        name: '',
+        description: '',
+      },
+    ],
+    market_cap: [
+      {
+        year: '',
+        amount: 0.0,
+        name: '',
+        description: '',
+      },
+    ],
+    beta: [
+      {
+        year: '',
+        amount: 0.0,
+        name: '',
+        description: '',
+      },
+    ],
+    shares_issued: [
+      {
+        year: '',
+        amount: 0.0,
+        name: '',
+        description: '',
+      },
+    ],
   },
   dividends_history: [
     {
@@ -122,23 +242,6 @@ export type Dividend = {
   gross: number;
   type: string;
   payable: string;
-};
-
-export type TIndicatorColumn = ColumnDef<Indicator>;
-
-export type IndicatorGroup = {
-  id?: ID;
-  name: string;
-  indicators: Indicator[];
-};
-
-export type Indicator = {
-  id?: ID;
-  year: string;
-  amount: number;
-  name: string;
-  description: string;
-  history_data?: Indicator[];
 };
 
 export type CorporateOverview = {

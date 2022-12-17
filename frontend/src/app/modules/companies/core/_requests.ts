@@ -3,14 +3,18 @@ import { ID, Response } from '../../../../_investingmate/helpers';
 import { Company, CompaniesQueryResponse, Dividend, Indicator, IndicatorGroup } from './_models';
 
 const API_URL = process.env.REACT_APP_API_URL;
-// const REACT_APP_AUTH_DOMAIN = process.env.REACT_APP_AUTH_DOMAIN
 const COMPANY_URL = `${API_URL}/company`;
+
+// const REACT_APP_AUTH_DOMAIN = process.env.REACT_APP_AUTH_DOMAIN
 // const GET_COMPANIES_URL = `${API_URL}companies`
 // const GET_COMPANIES_URL = `${API_URL}/companies/query`
 
 // console.log({REACT_APP_AUTH_DOMAIN})
 // console.log({API_URL})
 // console.log({GET_COMPANIES_URL})
+
+const currentYear = 22;
+const years = 10;
 
 function randomDate(start: Date, end: Date) {
   return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
@@ -37,8 +41,6 @@ const indicators = ['D.Y', 'P/L', 'PEG RATIO', 'P/VP', 'EV/EBITDA'];
 
 const getIndicators = () => {
   const indicatorGroups: IndicatorGroup[] = [];
-  const currentYear = 22;
-  const years = 10;
 
   indicatorGroup.forEach((ind) => {
     const data: Indicator[] = [];
@@ -47,7 +49,6 @@ const getIndicators = () => {
       for (let i = 0; i < years; i++) {
         historyData.push({
           year: `20${currentYear - i}`,
-          // year: randomDate(new Date(2012, 1, 1), new Date()).getFullYear().toString(),
           amount: Math.floor(Math.random() * 10) + 1 + index,
           name: ind,
           description: `Description about: ${ind}`,
@@ -129,6 +130,19 @@ const COMPANY_TEMPLATE = {
   corporate_overview: '',
 };
 
+const getHistoryData = (label: string) => {
+  const historyData = [];
+  for (let i = 0; i < years; i++) {
+    historyData.push({
+      year: `20${currentYear - i}`,
+      amount: Math.floor(Math.random() * 10) + 1,
+      name: label,
+      description: `Description about: ${label}`,
+    });
+  }
+  return historyData
+}
+
 const _companies = COMPANIES.map((company, index) => {
   let sector = company.split(' ').join('').substring(5, 10).toLowerCase();
   sector = sector[0].toUpperCase() + sector.slice(1);
@@ -159,6 +173,19 @@ const _companies = COMPANIES.map((company, index) => {
         market_cap: Math.floor(Math.random() * 10) + 1 + index,
         beta: Math.floor(Math.random() * 10) + 1 + index,
         shares_issued: Math.floor(Math.random() * 10) + 1 + index,
+      },
+      headlines_history: {
+        current: getHistoryData('current'),
+        variation: getHistoryData('variation'),
+        min_12_months: getHistoryData('min_12_months'),
+        max_12_months: getHistoryData('max_12_months'),
+        year_return: getHistoryData('year_return'),
+        current_month_return: getHistoryData('current_month_return'),
+        dividend_yield: getHistoryData('dividend_yield'),
+        volume: getHistoryData('volume'),
+        market_cap: getHistoryData('market_cap'),
+        beta: getHistoryData('beta'),
+        shares_issued: getHistoryData('shares_issued'),
       },
       dividends_history: dividends,
       indicators_group: indicators,

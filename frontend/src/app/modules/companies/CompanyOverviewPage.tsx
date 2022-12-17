@@ -10,11 +10,12 @@ import Accordion from 'react-bootstrap/Accordion';
 import { useIntl } from 'react-intl';
 
 const CompanyOverviewPage = () => {
-  const location = useLocation();
-  const company = getCurrentCompany(location);
   const intl = useIntl();
 
+  const location = useLocation();
+  const company = getCurrentCompany(location);
   console.log('comp', company);
+
   return (
     <IMCard className='pb-5 table-responsive'>
       <CompaniesHeader />

@@ -21,7 +21,6 @@ const CompaniesIndicator = (props: Props) => {
   const [headline, setHeadline] = useState<IHeadline | undefined>(undefined);
 
   const handleModal = (headline: IHeadline | undefined) => {
-    console.log('headline', headline);
     if (headline) {
       setModal(true);
       setHeadline(headline);
@@ -29,8 +28,8 @@ const CompaniesIndicator = (props: Props) => {
   };
 
   return (
-    <div className='d-flex align-items-center justify-content-between border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3'>
-      <CompaniesModal modalStatus={modal} setModalStatus={setModal} headline={headline} />
+    <div
+      className={!showGraph ? 'd-flex align-items-center justify-content-between border border-gray-300 border-dashed rounded min-w-85px py-3 px-4 me-6 mb-3' : `d-flex align-items-center justify-content-between border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3`}>
       <div>
         <div className='d-flex align-items-center'>
           {status === 'UP' && (
@@ -52,15 +51,18 @@ const CompaniesIndicator = (props: Props) => {
         <div className='fw-bold fs-6 text-gray-800'>{customStringfy(label)}</div>
       </div>
       {showGraph && (
-        <div
-          role='button'
-          onClick={() => handleModal({ label, value })}
-          className='min-w-55px d-flex align-items-center justify-content-end'
-        >
-          <div className='btn btn-icon btn-light-primary btn-custom'>
-            <i className='fas fa-regular fa-chart-line fs-2'></i>
+        <>
+          <CompaniesModal modalStatus={modal} setModalStatus={setModal} headline={headline} />
+          <div
+            role='button'
+            onClick={() => handleModal({ label, value })}
+            className='min-w-55px d-flex align-items-center justify-content-end'
+          >
+            <div className='btn btn-icon btn-light-primary btn-custom'>
+              <i className='fas fa-regular fa-chart-line fs-2'></i>
+            </div>
           </div>
-        </div>
+        </>
       )}
     </div>
   );
