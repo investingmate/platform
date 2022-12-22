@@ -1,6 +1,15 @@
 import axios, { AxiosResponse } from 'axios';
+import moment from 'moment-timezone';
 import { ID, Response } from '../../../../_investingmate/helpers';
-import { Company, CompaniesQueryResponse, Dividend, Indicator, IndicatorGroup } from './_models';
+import {
+  Company,
+  CompaniesQueryResponse,
+  Dividend,
+  Indicator,
+  IndicatorGroup,
+  PriceData,
+} from './_models';
+import { numberFormatter } from '../../../../utils/HelperFunctions';
 
 const API_URL = process.env.REACT_APP_API_URL;
 const COMPANY_URL = `${API_URL}/company`;
@@ -49,6 +58,7 @@ const getIndicators = () => {
       for (let i = 0; i < years; i++) {
         historyData.push({
           year: `20${currentYear - i}`,
+          label: `20${currentYear - i}`,
           amount: Math.floor(Math.random() * 10) + 1 + index,
           name: ind,
           description: `Description about: ${ind}`,
@@ -56,6 +66,7 @@ const getIndicators = () => {
       }
       data.push({
         year: `20${currentYear}`,
+        label: `20${currentYear}`,
         amount: Math.floor(Math.random() * 10) + 1 + index,
         name: ind,
         description: `Description about: ${ind}`,
@@ -135,13 +146,121 @@ const getHistoryData = (label: string) => {
   for (let i = 0; i < years; i++) {
     historyData.push({
       year: `20${currentYear - i}`,
-      amount: Math.floor(Math.random() * 10) + 1,
+      label: `20${currentYear - i}`,
+      amount: numberFormatter(Math.floor(Math.random() * 10) + 1),
       name: label,
       description: `Description about: ${label}`,
     });
   }
-  return historyData
-}
+  return historyData;
+};
+
+const getPriceData = (filter: string) => {
+  const today = new Date();
+  // starting ASX
+  const weekDay = moment(today).format('ddd');
+  const month = moment(today).format('MMM');
+  const day = moment(today).format('D');
+  const year = moment(today).get('year');
+  const time = '9:45:00';
+  const date = `${weekDay} ${month} ${day} ${year} ${time} GMT+1100 (Australian Eastern Daylight Time)`;
+
+  const priceData: PriceData[] = [];
+
+  if (filter === 'day') {
+    const priceCounter = 6 * 4;
+    // There are approximately 260 weekdays in one year.
+    for (let i = 1; i <= priceCounter + 1; i++) {
+      const currentDate = moment(date)
+        .add(15 * i, 'minutes')
+        .tz('Australia/Sydney');
+      priceData.push({
+        name: 'Price',
+        label: currentDate.format('hh:mm'),
+        year: year.toString(),
+        description: currentDate.format(),
+        amount: numberFormatter(parseFloat((Math.random() * (100 - 95) + 95).toFixed(2))),
+      });
+    }
+  } else if (filter === 'three_months') {
+    const priceCounter = 6 * 4;
+    // There are approximately 260 weekdays in one year.
+    for (let i = 1; i <= priceCounter + 1; i++) {
+      const currentDate = moment(date)
+        .add(15 * i, 'minutes')
+        .tz('Australia/Sydney');
+      priceData.push({
+        name: 'Price',
+        label: currentDate.format('DD/MM'),
+        year: year.toString(),
+        description: currentDate.format(),
+        amount: numberFormatter(parseFloat((Math.random() * (100 - 95) + 95).toFixed(2))),
+      });
+    }
+  } else if (filter === 'six_months') {
+    const priceCounter = 6 * 4;
+    // There are approximately 260 weekdays in one year.
+    for (let i = 1; i <= priceCounter + 1; i++) {
+      const currentDate = moment(date)
+        .add(15 * i, 'minutes')
+        .tz('Australia/Sydney');
+      priceData.push({
+        name: 'Price',
+        label: currentDate.format('DD/MM'),
+        year: year.toString(),
+        description: currentDate.format(),
+        amount: numberFormatter(parseFloat((Math.random() * (100 - 95) + 95).toFixed(2))),
+      });
+    }
+  } else if (filter === 'one_year') {
+    const priceCounter = 6 * 4;
+    // There are approximately 260 weekdays in one year.
+    for (let i = 1; i <= priceCounter + 1; i++) {
+      const currentDate = moment(date)
+        .add(15 * i, 'minutes')
+        .tz('Australia/Sydney');
+      priceData.push({
+        name: 'Price',
+        label: currentDate.format('MM'),
+        year: year.toString(),
+        description: currentDate.format(),
+        amount: numberFormatter(parseFloat((Math.random() * (100 - 95) + 95).toFixed(2))),
+      });
+    }
+  } else if (filter === 'five_years') {
+    const priceCounter = 6 * 4;
+    // There are approximately 260 weekdays in one year.
+    for (let i = 1; i <= priceCounter + 1; i++) {
+      const currentDate = moment(date)
+        .add(15 * i, 'minutes')
+        .tz('Australia/Sydney');
+      priceData.push({
+        name: 'Price',
+        label: currentDate.format('YY'),
+        year: year.toString(),
+        description: currentDate.format(),
+        amount: numberFormatter(parseFloat((Math.random() * (100 - 95) + 95).toFixed(2))),
+      });
+    }
+  } else if (filter === 'ten_years') {
+    const tenYears = moment().subtract(10, 'years').tz('Australia/Sydney').format();
+    const priceCounter = 6 * 4;
+    // There are approximately 260 weekdays in one year.
+    for (let i = 1; i <= priceCounter + 1; i++) {
+      const currentDate = moment(date)
+        .add(15 * i, 'minutes')
+        .tz('Australia/Sydney');
+      priceData.push({
+        name: 'Price',
+        label: currentDate.format('YY'),
+        year: year.toString(),
+        description: currentDate.format(),
+        amount: numberFormatter(parseFloat((Math.random() * (100 - 95) + 95).toFixed(2))),
+      });
+    }
+  }
+  return priceData;
+};
 
 const _companies = COMPANIES.map((company, index) => {
   let sector = company.split(' ').join('').substring(5, 10).toLowerCase();
@@ -214,6 +333,14 @@ const _companies = COMPANIES.map((company, index) => {
             value: '20/12/1988',
           },
         ],
+      },
+      price_data_history: {
+        day: getPriceData('day'),
+        three_months: getPriceData('three_months'),
+        six_months: getPriceData('six_months'),
+        one_year: getPriceData('one_year'),
+        five_years: getPriceData('five_years'),
+        ten_years: getPriceData('ten_years'),
       },
     },
   };

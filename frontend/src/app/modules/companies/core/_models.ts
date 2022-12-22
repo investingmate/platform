@@ -15,6 +15,7 @@ export type Indicator = {
   amount: number;
   name: string;
   description: string;
+  label: string;
   history_data?: Indicator[];
 };
 
@@ -56,10 +57,11 @@ export type Company = {
     market_cap: Indicator[];
     beta: Indicator[];
     shares_issued: Indicator[];
-  },
+  };
   dividends_history: Dividend[];
   indicators_group: IndicatorGroup[];
   corporate_overview: CorporateOverview;
+  price_data_history: PriceDataHistory;
 };
 
 export type CompaniesQueryResponse = Response<Array<Company>>;
@@ -92,6 +94,7 @@ export const initialCompany: Company = {
         year: '',
         amount: 0.0,
         name: '',
+        label: '',
         description: '',
       },
     ],
@@ -100,6 +103,7 @@ export const initialCompany: Company = {
         year: '',
         amount: 0.0,
         name: '',
+        label: '',
         description: '',
       },
     ],
@@ -108,6 +112,7 @@ export const initialCompany: Company = {
         year: '',
         amount: 0.0,
         name: '',
+        label: '',
         description: '',
       },
     ],
@@ -116,6 +121,7 @@ export const initialCompany: Company = {
         year: '',
         amount: 0.0,
         name: '',
+        label: '',
         description: '',
       },
     ],
@@ -124,6 +130,7 @@ export const initialCompany: Company = {
         year: '',
         amount: 0.0,
         name: '',
+        label: '',
         description: '',
       },
     ],
@@ -132,6 +139,7 @@ export const initialCompany: Company = {
         year: '',
         amount: 0.0,
         name: '',
+        label: '',
         description: '',
       },
     ],
@@ -140,6 +148,7 @@ export const initialCompany: Company = {
         year: '',
         amount: 0.0,
         name: '',
+        label: '',
         description: '',
       },
     ],
@@ -148,6 +157,7 @@ export const initialCompany: Company = {
         year: '',
         amount: 0.0,
         name: '',
+        label: '',
         description: '',
       },
     ],
@@ -156,6 +166,7 @@ export const initialCompany: Company = {
         year: '',
         amount: 0.0,
         name: '',
+        label: '',
         description: '',
       },
     ],
@@ -164,6 +175,7 @@ export const initialCompany: Company = {
         year: '',
         amount: 0.0,
         name: '',
+        label: '',
         description: '',
       },
     ],
@@ -172,6 +184,7 @@ export const initialCompany: Company = {
         year: '',
         amount: 0.0,
         name: '',
+        label: '',
         description: '',
       },
     ],
@@ -194,6 +207,7 @@ export const initialCompany: Company = {
           year: '',
           amount: 0.0,
           name: '',
+          label: '',
           description: '',
         },
       ],
@@ -225,6 +239,62 @@ export const initialCompany: Company = {
       },
     ],
   },
+  price_data_history: {
+    day: [
+      {
+        name: '',
+        label: '',
+        year: '',
+        description: '',
+        amount: 0.0,
+      },
+    ],
+    three_months: [
+      {
+        name: '',
+        label: '',
+        year: '',
+        description: '',
+        amount: 0.0,
+      },
+    ],
+    six_months: [
+      {
+        name: '',
+        label: '',
+        year: '',
+        description: '',
+        amount: 0.0,
+      },
+    ],
+    one_year: [
+      {
+        name: '',
+        label: '',
+        year: '',
+        description: '',
+        amount: 0.0,
+      },
+    ],
+    five_years: [
+      {
+        name: '',
+        label: '',
+        year: '',
+        description: '',
+        amount: 0.0,
+      },
+    ],
+    ten_years: [
+      {
+        name: '',
+        label: '',
+        year: '',
+        description: '',
+        amount: 0.0,
+      },
+    ],
+  },
 };
 
 export interface IHeadline {
@@ -252,4 +322,21 @@ export type CorporateOverview = {
 export interface CorporateDetails {
   label: string;
   value: string;
+}
+
+export interface PriceData {
+  name: string;
+  description: string;
+  label: string;
+  year: string;
+  amount: number;
+}
+
+export interface PriceDataHistory {
+  day: PriceData[];
+  three_months: PriceData[];
+  six_months: PriceData[];
+  one_year: PriceData[];
+  five_years: PriceData[];
+  ten_years: PriceData[];
 }

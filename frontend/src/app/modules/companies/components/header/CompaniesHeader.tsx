@@ -14,8 +14,6 @@ const CompaniesHeader = () => {
   const location = useLocation();
   const company = getCurrentCompany(location);
 
-  console.log({ company });
-
   const headlineArray =
     company && company.headline
       ? Object.entries(company.headline).map((entry) => {

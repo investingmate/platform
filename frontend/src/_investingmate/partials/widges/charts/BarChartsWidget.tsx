@@ -3,15 +3,14 @@ import React, { useEffect, useRef } from 'react';
 import ApexCharts, { ApexOptions } from 'apexcharts';
 import { getCSS, getCSSVariableValue } from '../../../assets/ts/_utils';
 import { useThemeMode } from '../../layout/theme-mode/ThemeModeProvider';
-import {Indicator} from "../../../../app/modules/companies/core/_models";
 
 type Props = {
   className?: string;
   label: string;
-  historyData: Indicator[]
+  data: any[];
 };
 
-const BarChartsWidget: React.FC<Props> = ({ className, label , historyData }) => {
+const BarChartsWidget: React.FC<Props> = ({ className, label, data }) => {
   const chartRef = useRef<HTMLDivElement | null>(null);
   const { mode } = useThemeMode();
 
@@ -33,7 +32,7 @@ const BarChartsWidget: React.FC<Props> = ({ className, label , historyData }) =>
 
     const height = parseInt(getCSS(chartRef.current, 'height'));
 
-    const chart = new ApexCharts(chartRef.current, getChartOptions(height, label, historyData));
+    const chart = new ApexCharts(chartRef.current, getChartOptions(height, label, data));
     if (chart) {
       chart.render();
     }
@@ -66,7 +65,7 @@ function getChartOptions(height: number, label: string, data: any[]): ApexOption
     series: [
       {
         name: label,
-        data: data && data.map(item => item.amount),
+        data: data && data.map((item) => item.amount),
       },
     ],
     chart: {
@@ -88,7 +87,7 @@ function getChartOptions(height: number, label: string, data: any[]): ApexOption
       show: false,
     },
     dataLabels: {
-      enabled: true,
+      enabled: data.length <= 10,
       style: {
         fontSize: '12px',
       },
@@ -99,7 +98,7 @@ function getChartOptions(height: number, label: string, data: any[]): ApexOption
       colors: ['transparent'],
     },
     xaxis: {
-      categories: data && data.map(item => item.year),
+      categories: data && data.map((item) => item.label),
       axisBorder: {
         show: false,
       },

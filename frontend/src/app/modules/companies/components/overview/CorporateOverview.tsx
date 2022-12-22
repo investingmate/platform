@@ -9,8 +9,6 @@ interface Props {
 const CorporateOverviewComponent = (props: Props) => {
   const { overview } = props;
   const intl = useIntl();
-
-  console.log('overview', overview);
   return (
     <div className='card-body ps-3 pt-2 pb-2'>
       <h5>{intl.formatMessage({ id: 'COMPANIES.OVERVIEW' })}</h5>

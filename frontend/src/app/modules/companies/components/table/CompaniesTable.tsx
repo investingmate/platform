@@ -217,9 +217,9 @@ const CompaniesTable = () => {
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
     getFacetedMinMaxValues: getFacetedMinMaxValues(),
-    debugTable: true,
-    debugHeaders: true,
-    debugColumns: true,
+    // debugTable: true,
+    // debugHeaders: true,
+    // debugColumns: true,
   });
 
   // display the columns selected only

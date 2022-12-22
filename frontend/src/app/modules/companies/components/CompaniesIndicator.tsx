@@ -29,7 +29,12 @@ const CompaniesIndicator = (props: Props) => {
 
   return (
     <div
-      className={!showGraph ? 'd-flex align-items-center justify-content-between border border-gray-300 border-dashed rounded min-w-85px py-3 px-4 me-6 mb-3' : `d-flex align-items-center justify-content-between border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3`}>
+      className={
+        !showGraph
+          ? 'd-flex align-items-center justify-content-between border border-gray-300 border-dashed rounded min-w-85px py-3 px-4 me-6 mb-3'
+          : `d-flex align-items-center justify-content-between border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3`
+      }
+    >
       <div>
         <div className='d-flex align-items-center'>
           {status === 'UP' && (
@@ -44,7 +49,7 @@ const CompaniesIndicator = (props: Props) => {
               className='svg-icon-3 svg-icon-danger me-2'
             />
           )}
-          <div className='fs-2 fw-bolder'>{value}</div>
+          <div className='fs-2 fw-bolder'>{value.toFixed(2)}</div>
 
           <CustomOverlayInfo description={description ?? ''} />
         </div>

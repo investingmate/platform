@@ -14,7 +14,6 @@ const CompanyOverviewPage = () => {
 
   const location = useLocation();
   const company = getCurrentCompany(location);
-  console.log('comp', company);
 
   return (
     <IMCard className='pb-5 table-responsive'>

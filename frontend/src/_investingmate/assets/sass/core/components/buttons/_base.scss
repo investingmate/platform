@@ -175,3 +175,10 @@
     min-width: 140px !important;
   }
 }
+
+.btn-group-custom-small {
+  button {
+    min-width: 50px !important;
+    max-width: 50px !important;
+  }
+}

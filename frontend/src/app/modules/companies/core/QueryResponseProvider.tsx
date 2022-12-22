@@ -16,7 +16,6 @@ import { Company } from './_models';
 
 const QueryResponseContext = createResponseContext<Company>(initialQueryResponse);
 const QueryResponseProvider: FC<WithChildren> = ({ children }) => {
-  console.log('QueryResponseProvider');
   const { state } = useQueryRequest();
   const [query, setQuery] = useState<string>(stringifyRequestQuery(state));
   const updatedQuery = useMemo(() => stringifyRequestQuery(state), [state]);

@@ -15,7 +15,7 @@ const CustomCard = (props: Props) => {
         </div>
       </div>
       <div>
-        <div className='card-body border-top p-3 pt-6'>{children}</div>
+        <div className='card-body border-top p-6'>{children}</div>
       </div>
     </div>
   );

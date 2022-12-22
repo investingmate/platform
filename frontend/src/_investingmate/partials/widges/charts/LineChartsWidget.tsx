@@ -3,19 +3,18 @@ import React, { useEffect, useRef } from 'react';
 import ApexCharts, { ApexOptions } from 'apexcharts';
 import { getCSS, getCSSVariableValue } from '../../../assets/ts/_utils';
 import { useThemeMode } from '../../layout/theme-mode/ThemeModeProvider';
-import {COLOURS} from "../../../../utils/DesignContants";
-import {Indicator} from "../../../../app/modules/companies/core/_models";
+import { COLOURS } from '../../../../utils/DesignContants';
 
 type Props = {
   className?: string;
   label: string;
-  historyData: Indicator[]
+  data: any[];
 };
 
-const LineChartsWidget: React.FC<Props> = ({ className, label, historyData }) => {
-
+const LineChartsWidget: React.FC<Props> = ({ className, label, data }) => {
   const chartRef = useRef<HTMLDivElement | null>(null);
   const { mode } = useThemeMode();
+
   const refreshMode = () => {
     if (!chartRef.current) {
       return;
@@ -23,7 +22,7 @@ const LineChartsWidget: React.FC<Props> = ({ className, label, historyData }) =>
 
     const height = parseInt(getCSS(chartRef.current, 'height'));
 
-    const chart = new ApexCharts(chartRef.current, getChartOptions(height, label, historyData));
+    const chart = new ApexCharts(chartRef.current, getChartOptions(height, label, data));
     if (chart) {
       chart.render();
     }
@@ -40,7 +39,7 @@ const LineChartsWidget: React.FC<Props> = ({ className, label, historyData }) =>
       }
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [chartRef, mode]);
+  }, [chartRef, mode, data]);
 
   return (
     <div className={`card ${className}`}>
@@ -95,13 +94,13 @@ function getChartOptions(height: number, label: string, data: any[]): ApexOption
   const labelColor = getCSSVariableValue('--im-gray-600');
   const borderColor = getCSSVariableValue('--im-gray-300');
   const lightColor = getCSSVariableValue('--im-info-light');
-  const baseColor = COLOURS.PURPLE
+  const baseColor = COLOURS.PURPLE;
 
   return {
     series: [
       {
         name: label,
-        data: data && data.map(item => item.amount),
+        data: data && data.map((item) => item.amount),
       },
     ],
     chart: {
@@ -117,7 +116,7 @@ function getChartOptions(height: number, label: string, data: any[]): ApexOption
       show: false,
     },
     dataLabels: {
-      enabled: true,
+      enabled: data.length <= 10,
       style: {
         colors: [baseColor],
         fontSize: '12px',
@@ -134,7 +133,7 @@ function getChartOptions(height: number, label: string, data: any[]): ApexOption
       colors: [baseColor],
     },
     xaxis: {
-      categories: data && data.map(item => item.year),
+      categories: data && data.map((item) => item.label),
       axisBorder: {
         show: false,
       },
