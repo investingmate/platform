@@ -9,8 +9,8 @@ import {
   IndicatorGroup,
   PriceData,
 } from './_models';
-import {numberFormatter, sortArrayOfObjects} from '../../../../utils/HelperFunctions';
-import momentJS from "moment";
+import { numberFormatter, sortArrayOfObjects } from '../../../../utils/HelperFunctions';
+import momentJS from 'moment';
 
 const API_URL = process.env.REACT_APP_API_URL;
 const COMPANY_URL = `${API_URL}/company`;
@@ -169,7 +169,7 @@ const getPriceData = (filter: string) => {
   const priceData: PriceData[] = [];
 
   const momentJS = require('moment'); // require
-  const now = new momentJS()
+  const now = new momentJS();
 
   if (filter === 'day') {
     const priceCounter = 6 * 4;
@@ -187,9 +187,9 @@ const getPriceData = (filter: string) => {
     }
   } else if (filter === 'three_months') {
     const threeMonths = moment().subtract(3, 'months').tz('Australia/Sydney').format();
-    const past = new momentJS(threeMonths)
-    const durationDays = moment.duration(now.diff(past)).days()
-    const durationMonths = moment.duration(now.diff(past)).months()
+    const past = new momentJS(threeMonths);
+    const durationDays = moment.duration(now.diff(past)).days();
+    const durationMonths = moment.duration(now.diff(past)).months();
     const total = durationMonths * 30 + durationDays;
 
     for (let i = 1; i <= total + 1; i++) {
@@ -204,9 +204,9 @@ const getPriceData = (filter: string) => {
     }
   } else if (filter === 'six_months') {
     const six = moment().subtract(6, 'months').tz('Australia/Sydney').format();
-    const past = new momentJS(six)
-    const durationDays = moment.duration(now.diff(past)).days()
-    const durationMonths = moment.duration(now.diff(past)).months()
+    const past = new momentJS(six);
+    const durationDays = moment.duration(now.diff(past)).days();
+    const durationMonths = moment.duration(now.diff(past)).months();
     const total = durationMonths * 30 + durationDays;
 
     for (let i = 1; i <= total + 1; i++) {
@@ -221,9 +221,9 @@ const getPriceData = (filter: string) => {
     }
   } else if (filter === 'one_year') {
     const twelve = moment().subtract(12, 'months').tz('Australia/Sydney').format();
-    const past = new momentJS(twelve)
-    const durationDays = moment.duration(now.diff(past)).days()
-    const durationMonths = moment.duration(now.diff(past)).months()
+    const past = new momentJS(twelve);
+    const durationDays = moment.duration(now.diff(past)).days();
+    const durationMonths = moment.duration(now.diff(past)).months();
     const total = durationMonths * 30 + durationDays;
 
     for (let i = 1; i <= total + 1; i++) {
@@ -238,9 +238,9 @@ const getPriceData = (filter: string) => {
     }
   } else if (filter === 'five_years') {
     const sixty = moment().subtract(60, 'months').tz('Australia/Sydney').format();
-    const past = new momentJS(sixty)
-    const durationDays = moment.duration(now.diff(past)).days()
-    const durationMonths = moment.duration(now.diff(past)).months()
+    const past = new momentJS(sixty);
+    const durationDays = moment.duration(now.diff(past)).days();
+    const durationMonths = moment.duration(now.diff(past)).months();
     const total = durationMonths * 30 + durationDays;
 
     for (let i = 1; i <= total + 1; i++) {
@@ -255,9 +255,9 @@ const getPriceData = (filter: string) => {
     }
   } else if (filter === 'ten_years') {
     const tenYears = moment().subtract(120, 'months').tz('Australia/Sydney').format();
-    const past = new momentJS(tenYears)
-    const durationDays = moment.duration(now.diff(past)).days()
-    const durationMonths = moment.duration(now.diff(past)).months()
+    const past = new momentJS(tenYears);
+    const durationDays = moment.duration(now.diff(past)).days();
+    const durationMonths = moment.duration(now.diff(past)).months();
     const total = durationMonths * 30 + durationDays;
 
     for (let i = 1; i <= total + 1; i++) {
@@ -271,17 +271,16 @@ const getPriceData = (filter: string) => {
       });
     }
   }
-  return priceData
+  return priceData;
 };
 
 const getFinancials = (filter: string) => {
-  const data = []
+  const data = [];
   data.push({
-    name: filter
+    name: filter,
   });
-  return data
+  return data;
 };
-
 
 const _companies = COMPANIES.map((company, index) => {
   let sector = company.split(' ').join('').substring(5, 10).toLowerCase();
@@ -368,7 +367,7 @@ const _companies = COMPANIES.map((company, index) => {
         income_statement: getFinancials('income_statement'),
         balance_sheet: getFinancials('balance_sheet'),
         cash_flow: getFinancials('cash_flow'),
-      }
+      },
     },
   };
 });

@@ -297,19 +297,27 @@ export const initialCompany: Company = {
     ],
   },
   financials: {
-    summary: [{
-      name: ''
-    }],
-    income_statement: [{
-      name: ''
-    }],
-    balance_sheet: [{
-      name: ''
-    }],
-    cash_flow: [{
-      name: ''
-    }],
-  }
+    summary: [
+      {
+        name: '',
+      },
+    ],
+    income_statement: [
+      {
+        name: '',
+      },
+    ],
+    balance_sheet: [
+      {
+        name: '',
+      },
+    ],
+    cash_flow: [
+      {
+        name: '',
+      },
+    ],
+  },
 };
 
 export interface IHeadline {

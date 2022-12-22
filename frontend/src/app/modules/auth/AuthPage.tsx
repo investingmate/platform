@@ -43,11 +43,21 @@ const AuthLayout = () => {
       {/* begin::Footer */}
       <div className='d-flex flex-center flex-column-auto p-10 pt-0'>
         <div className='d-flex align-items-center fw-bold fs-6'>
-          <a href='#' className='text-muted text-hover-primary px-2'>
+          <a
+            href='https://investingmate.com.au/'
+            target='_blank'
+            className='text-muted text-hover-primary px-2'
+            rel='noreferrer'
+          >
             {intl.formatMessage({ id: 'PAGES.ABOUT' })}
           </a>
 
-          <a href='#' className='text-muted text-hover-primary px-2'>
+          <a
+            href='https://investingmate.com.au/'
+            target='_blank'
+            className='text-muted text-hover-primary px-2'
+            rel='noreferrer'
+          >
             {intl.formatMessage({ id: 'PAGES.CONTACT_US' })}
           </a>
         </div>

@@ -10,9 +10,9 @@ export const numberFormatter = (num: number): number => {
   return parseFloat(num.toFixed(2));
 };
 
-export const sortArrayOfObjects = (arr: any [], key: any) => {
+export const sortArrayOfObjects = (arr: any[], key: any) => {
   return arr.sort((a, b) => (a[key] > b[key] ? 1 : -1));
-}
+};
 
 export const createArrayOfYears = (): number[] => {
   const totalYears = 15;
