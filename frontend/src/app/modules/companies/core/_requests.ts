@@ -9,7 +9,8 @@ import {
   IndicatorGroup,
   PriceData,
 } from './_models';
-import { numberFormatter } from '../../../../utils/HelperFunctions';
+import {numberFormatter, sortArrayOfObjects} from '../../../../utils/HelperFunctions';
+import momentJS from "moment";
 
 const API_URL = process.env.REACT_APP_API_URL;
 const COMPANY_URL = `${API_URL}/company`;
@@ -167,9 +168,11 @@ const getPriceData = (filter: string) => {
 
   const priceData: PriceData[] = [];
 
+  const momentJS = require('moment'); // require
+  const now = new momentJS()
+
   if (filter === 'day') {
     const priceCounter = 6 * 4;
-    // There are approximately 260 weekdays in one year.
     for (let i = 1; i <= priceCounter + 1; i++) {
       const currentDate = moment(date)
         .add(15 * i, 'minutes')
@@ -183,12 +186,14 @@ const getPriceData = (filter: string) => {
       });
     }
   } else if (filter === 'three_months') {
-    const priceCounter = 6 * 4;
-    // There are approximately 260 weekdays in one year.
-    for (let i = 1; i <= priceCounter + 1; i++) {
-      const currentDate = moment(date)
-        .add(15 * i, 'minutes')
-        .tz('Australia/Sydney');
+    const threeMonths = moment().subtract(3, 'months').tz('Australia/Sydney').format();
+    const past = new momentJS(threeMonths)
+    const durationDays = moment.duration(now.diff(past)).days()
+    const durationMonths = moment.duration(now.diff(past)).months()
+    const total = durationMonths * 30 + durationDays;
+
+    for (let i = 1; i <= total + 1; i++) {
+      const currentDate = past.add(1, 'days');
       priceData.push({
         name: 'Price',
         label: currentDate.format('DD/MM'),
@@ -198,12 +203,14 @@ const getPriceData = (filter: string) => {
       });
     }
   } else if (filter === 'six_months') {
-    const priceCounter = 6 * 4;
-    // There are approximately 260 weekdays in one year.
-    for (let i = 1; i <= priceCounter + 1; i++) {
-      const currentDate = moment(date)
-        .add(15 * i, 'minutes')
-        .tz('Australia/Sydney');
+    const six = moment().subtract(6, 'months').tz('Australia/Sydney').format();
+    const past = new momentJS(six)
+    const durationDays = moment.duration(now.diff(past)).days()
+    const durationMonths = moment.duration(now.diff(past)).months()
+    const total = durationMonths * 30 + durationDays;
+
+    for (let i = 1; i <= total + 1; i++) {
+      const currentDate = past.add(1, 'days');
       priceData.push({
         name: 'Price',
         label: currentDate.format('DD/MM'),
@@ -213,53 +220,58 @@ const getPriceData = (filter: string) => {
       });
     }
   } else if (filter === 'one_year') {
-    const priceCounter = 6 * 4;
-    // There are approximately 260 weekdays in one year.
-    for (let i = 1; i <= priceCounter + 1; i++) {
-      const currentDate = moment(date)
-        .add(15 * i, 'minutes')
-        .tz('Australia/Sydney');
+    const twelve = moment().subtract(12, 'months').tz('Australia/Sydney').format();
+    const past = new momentJS(twelve)
+    const durationDays = moment.duration(now.diff(past)).days()
+    const durationMonths = moment.duration(now.diff(past)).months()
+    const total = durationMonths * 30 + durationDays;
+
+    for (let i = 1; i <= total + 1; i++) {
+      const currentDate = past.add(1, 'days');
       priceData.push({
         name: 'Price',
-        label: currentDate.format('MM'),
+        label: currentDate.format('DD/MM'),
         year: year.toString(),
         description: currentDate.format(),
         amount: numberFormatter(parseFloat((Math.random() * (100 - 95) + 95).toFixed(2))),
       });
     }
   } else if (filter === 'five_years') {
-    const priceCounter = 6 * 4;
-    // There are approximately 260 weekdays in one year.
-    for (let i = 1; i <= priceCounter + 1; i++) {
-      const currentDate = moment(date)
-        .add(15 * i, 'minutes')
-        .tz('Australia/Sydney');
+    const sixty = moment().subtract(60, 'months').tz('Australia/Sydney').format();
+    const past = new momentJS(sixty)
+    const durationDays = moment.duration(now.diff(past)).days()
+    const durationMonths = moment.duration(now.diff(past)).months()
+    const total = durationMonths * 30 + durationDays;
+
+    for (let i = 1; i <= total + 1; i++) {
+      const currentDate = past.add(1, 'days');
       priceData.push({
         name: 'Price',
-        label: currentDate.format('YY'),
-        year: year.toString(),
+        label: currentDate.format('DD/MM/YYYY'),
+        year: currentDate.format('YYYY'),
         description: currentDate.format(),
         amount: numberFormatter(parseFloat((Math.random() * (100 - 95) + 95).toFixed(2))),
       });
     }
   } else if (filter === 'ten_years') {
-    const tenYears = moment().subtract(10, 'years').tz('Australia/Sydney').format();
-    const priceCounter = 6 * 4;
-    // There are approximately 260 weekdays in one year.
-    for (let i = 1; i <= priceCounter + 1; i++) {
-      const currentDate = moment(date)
-        .add(15 * i, 'minutes')
-        .tz('Australia/Sydney');
+    const tenYears = moment().subtract(120, 'months').tz('Australia/Sydney').format();
+    const past = new momentJS(tenYears)
+    const durationDays = moment.duration(now.diff(past)).days()
+    const durationMonths = moment.duration(now.diff(past)).months()
+    const total = durationMonths * 30 + durationDays;
+
+    for (let i = 1; i <= total + 1; i++) {
+      const currentDate = past.add(1, 'days');
       priceData.push({
         name: 'Price',
-        label: currentDate.format('YY'),
-        year: year.toString(),
+        label: currentDate.format('DD/MM/YYYY'),
+        year: currentDate.format('YYYY'),
         description: currentDate.format(),
         amount: numberFormatter(parseFloat((Math.random() * (100 - 95) + 95).toFixed(2))),
       });
     }
   }
-  return priceData;
+  return priceData
 };
 
 const _companies = COMPANIES.map((company, index) => {

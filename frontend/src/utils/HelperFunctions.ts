@@ -5,9 +5,14 @@ export const customStringfy = (str: string) => {
   let newStr = str.replaceAll('_', ' ');
   return newStr[0].toUpperCase() + newStr.slice(1);
 };
+
 export const numberFormatter = (num: number): number => {
   return parseFloat(num.toFixed(2));
 };
+
+export const sortArrayOfObjects = (arr: any [], key: any) => {
+  return arr.sort((a, b) => (a[key] > b[key] ? 1 : -1));
+}
 
 export const createArrayOfYears = (): number[] => {
   const totalYears = 15;

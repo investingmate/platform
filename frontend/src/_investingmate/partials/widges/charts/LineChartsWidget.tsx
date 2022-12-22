@@ -39,7 +39,7 @@ const LineChartsWidget: React.FC<Props> = ({ className, label, data }) => {
       }
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [chartRef, mode, data]);
+  }, [chartRef, mode, data, label]);
 
   return (
     <div className={`card ${className}`}>
@@ -141,6 +141,7 @@ function getChartOptions(height: number, label: string, data: any[]): ApexOption
         show: false,
       },
       labels: {
+        show: !label.includes('Price - '),
         style: {
           colors: labelColor,
           fontSize: '12px',
