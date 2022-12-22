@@ -98,29 +98,29 @@ export function AsideMenuMain() {
         title='Profile'
         fontIcon='bi-layers'
       />
-      <AsideMenuItem
-        to='/apps/user-management/users'
-        icon='/media/icons/duotune/general/gen051.svg'
-        title='User management'
-        fontIcon='bi-layers'
-      />
-      <div className='menu-item'>
-        <div className='menu-content'>
-          <div className='separator mx-1 my-4'></div>
-        </div>
-      </div>
-      <div className='menu-item'>
-        <a
-          target='_blank'
-          className='menu-link'
-          href={process.env.REACT_APP_PREVIEW_DOCS_URL + '/docs/changelog'}
-        >
-          <span className='menu-icon'>
-            <IMSVG path='/media/icons/duotune/general/gen005.svg' className='svg-icon-2' />
-          </span>
-          <span className='menu-title'>Changelog {process.env.REACT_APP_VERSION}</span>
-        </a>
-      </div>
+      {/*<AsideMenuItem*/}
+      {/*  to='/apps/user-management/users'*/}
+      {/*  icon='/media/icons/duotune/general/gen051.svg'*/}
+      {/*  title='User management'*/}
+      {/*  fontIcon='bi-layers'*/}
+      {/*/>*/}
+      {/*<div className='menu-item'>*/}
+      {/*  <div className='menu-content'>*/}
+      {/*    <div className='separator mx-1 my-4'></div>*/}
+      {/*  </div>*/}
+      {/*</div>*/}
+      {/*<div className='menu-item'>*/}
+      {/*  <a*/}
+      {/*    target='_blank'*/}
+      {/*    className='menu-link'*/}
+      {/*    href={process.env.REACT_APP_PREVIEW_DOCS_URL + '/docs/changelog'}*/}
+      {/*  >*/}
+      {/*    <span className='menu-icon'>*/}
+      {/*      <IMSVG path='/media/icons/duotune/general/gen005.svg' className='svg-icon-2' />*/}
+      {/*    </span>*/}
+      {/*    <span className='menu-title'>Changelog {process.env.REACT_APP_VERSION}</span>*/}
+      {/*  </a>*/}
+      {/*</div>*/}
     </>
   );
 }

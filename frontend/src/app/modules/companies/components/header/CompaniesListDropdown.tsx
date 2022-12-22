@@ -31,14 +31,14 @@ const CompaniesListDropDown = (props: ICompaniesListDropdown) => {
     <div>
       <button
         type='button'
-        className='btn btn-light-primary'
+        className='btn btn-light-primary d-flex justify-content-center'
         data-im-menu-trigger='click'
         data-im-menu-placement='bottom-end'
         data-im-menu-flip='top-end'
       >
         <IMSVG
           path='/media/icons/duotune/general/gen052.svg'
-          className='svg-icon-3 svg-icon-primary'
+          className='svg-icon-3 svg-icon-primary m-0'
         />
       </button>
       <div

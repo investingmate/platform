@@ -15,7 +15,7 @@ const DataDisclaimer = () => {
                 <p>{intl.formatMessage({ id: 'COMPANIES.DATA_DISCLAIMER_INFO2' })}</p>
                 <p className='mb-0'>
                   {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                  <a className='fw-bolder' href='#'>
+                  <a className='fw-bolder' href='https://investingmate.com.au/' target='_blank' rel="noreferrer">
                     {intl.formatMessage({ id: 'COMPANIES.READ_MORE' })}
                   </a>
                 </p>

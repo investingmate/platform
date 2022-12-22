@@ -62,6 +62,7 @@ export type Company = {
   indicators_group: IndicatorGroup[];
   corporate_overview: CorporateOverview;
   price_data_history: PriceDataHistory;
+  financials: Financials;
 };
 
 export type CompaniesQueryResponse = Response<Array<Company>>;
@@ -295,6 +296,20 @@ export const initialCompany: Company = {
       },
     ],
   },
+  financials: {
+    summary: [{
+      name: ''
+    }],
+    income_statement: [{
+      name: ''
+    }],
+    balance_sheet: [{
+      name: ''
+    }],
+    cash_flow: [{
+      name: ''
+    }],
+  }
 };
 
 export interface IHeadline {
@@ -339,4 +354,19 @@ export interface PriceDataHistory {
   one_year: PriceData[];
   five_years: PriceData[];
   ten_years: PriceData[];
+}
+
+export interface FinancialsData {
+  name: string;
+  // description: string;
+  // label: string;
+  // year: string;
+  // amount: number;
+}
+
+export interface Financials {
+  summary: FinancialsData[];
+  income_statement: FinancialsData[];
+  balance_sheet: FinancialsData[];
+  cash_flow: FinancialsData[];
 }

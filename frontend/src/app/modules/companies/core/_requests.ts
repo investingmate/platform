@@ -274,6 +274,15 @@ const getPriceData = (filter: string) => {
   return priceData
 };
 
+const getFinancials = (filter: string) => {
+  const data = []
+  data.push({
+    name: filter
+  });
+  return data
+};
+
+
 const _companies = COMPANIES.map((company, index) => {
   let sector = company.split(' ').join('').substring(5, 10).toLowerCase();
   sector = sector[0].toUpperCase() + sector.slice(1);
@@ -354,6 +363,12 @@ const _companies = COMPANIES.map((company, index) => {
         five_years: getPriceData('five_years'),
         ten_years: getPriceData('ten_years'),
       },
+      financials: {
+        summary: getFinancials('summary'),
+        income_statement: getFinancials('income_statement'),
+        balance_sheet: getFinancials('balance_sheet'),
+        cash_flow: getFinancials('cash_flow'),
+      }
     },
   };
 });
