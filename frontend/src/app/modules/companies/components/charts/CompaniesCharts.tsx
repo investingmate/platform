@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { BarChartsWidget } from '../../../../../_investingmate/partials/widges/charts/BarChartsWidget';
 import { LineChartsWidget } from '../../../../../_investingmate/partials/widges/charts/LineChartsWidget';
