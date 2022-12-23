@@ -1,7 +1,7 @@
 export const COLOURS = {
-  PURPLE: '#6663fb'
-}
+  PURPLE: '#6663fb',
+};
 
 export const GRIDS = {
-  EIGHT: 8
-}
+  EIGHT: 8,
+};

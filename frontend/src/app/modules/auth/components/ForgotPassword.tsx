@@ -1,15 +1,15 @@
-import {useState} from 'react'
-import * as Yup from 'yup'
-import clsx from 'clsx'
-import {Auth} from 'aws-amplify'
-import {Link, useNavigate} from 'react-router-dom'
-import {useFormik} from 'formik'
-import {onError} from '../../../../lib/errorLib'
-import {useQuery} from '../../../../_investingmate/helpers'
+import { useState } from 'react';
+import * as Yup from 'yup';
+import clsx from 'clsx';
+import { Auth } from 'aws-amplify';
+import { Link, useNavigate } from 'react-router-dom';
+import { useFormik } from 'formik';
+import { onError } from '../../../../lib/errorLib';
+import { useQuery } from '../../../../_investingmate/helpers';
 
 const initialValues = {
   email: '',
-}
+};
 
 const schema = Yup.object().shape({
   email: Yup.string()
@@ -17,14 +17,14 @@ const schema = Yup.object().shape({
     .min(3, 'Minimum 3 symbols')
     .max(50, 'Maximum 50 symbols')
     .required('Email is required'),
-})
+});
 
 const initialValues2 = {
   email: '',
   confirmationCode: '',
   password: '',
   confirmPassword: '',
-}
+};
 
 const schema2 = Yup.object().shape({
   confirmationCode: Yup.string()
@@ -41,38 +41,38 @@ const schema2 = Yup.object().shape({
       is: (val: string) => (val && val.length > 0 ? true : false),
       then: Yup.string().oneOf([Yup.ref('password')], "Password and Confirm Password didn't match"),
     }),
-})
+});
 
 export function ForgotPassword() {
-  const navigate = useNavigate()
-  const query = useQuery()
-  const email = query.get('email') ?? ''
-  const [loading, setLoading] = useState(false)
-  const [hasErrors, setHasErrors] = useState(false)
+  const navigate = useNavigate();
+  const query = useQuery();
+  const email = query.get('email') ?? '';
+  const [loading, setLoading] = useState(false);
+  const [hasErrors, setHasErrors] = useState(false);
 
   const formik = useFormik({
     initialValues,
     validationSchema: schema,
-    onSubmit: async (values, {setStatus, setSubmitting}) => {
-      setLoading(true)
+    onSubmit: async (values, { setStatus, setSubmitting }) => {
+      setLoading(true);
       try {
-        await Auth.forgotPassword(values.email)
-        setLoading(false)
-        navigate(`/auth/forgot-password?email=${values.email}`)
+        await Auth.forgotPassword(values.email);
+        setLoading(false);
+        navigate(`/auth/forgot-password?email=${values.email}`);
       } catch (error) {
-        onError(error)
-        setLoading(false)
-        setSubmitting(false)
-        setStatus('The login detail is incorrect')
+        onError(error);
+        setLoading(false);
+        setSubmitting(false);
+        setStatus('The login detail is incorrect');
       }
     },
-  })
+  });
 
   interface Values {
-    email: string
-    confirmationCode: string
-    password: string
-    confirmPassword: string
+    email: string;
+    confirmationCode: string;
+    password: string;
+    confirmPassword: string;
   }
 
   const formik2 = useFormik({
@@ -82,21 +82,21 @@ export function ForgotPassword() {
     },
     enableReinitialize: true,
     validationSchema: schema2,
-    onSubmit: async (values: Values, {setStatus, setSubmitting}) => {
-      setLoading(true)
-      setHasErrors(false)
+    onSubmit: async (values: Values, { setStatus, setSubmitting }) => {
+      setLoading(true);
+      setHasErrors(false);
       try {
-        await Auth.forgotPasswordSubmit(values.email, values.confirmationCode, values.password)
-        setHasErrors(false)
+        await Auth.forgotPasswordSubmit(values.email, values.confirmationCode, values.password);
+        setHasErrors(false);
       } catch (error) {
-        onError(error)
-        setHasErrors(true)
-        setLoading(false)
-        setSubmitting(false)
-        setStatus('The code is incorrect')
+        onError(error);
+        setHasErrors(true);
+        setLoading(false);
+        setSubmitting(false);
+        setStatus('The code is incorrect');
       }
     },
-  })
+  });
 
   const renderForm = () => (
     <form
@@ -131,7 +131,7 @@ export function ForgotPassword() {
           {...formik.getFieldProps('email')}
           className={clsx(
             'form-control form-control-lg form-control-solid',
-            {'is-invalid': formik.touched.email && formik.errors.email},
+            { 'is-invalid': formik.touched.email && formik.errors.email },
             {
               'is-valid': formik.touched.email && !formik.errors.email,
             }
@@ -175,7 +175,7 @@ export function ForgotPassword() {
       </div>
       {/* end::Form group */}
     </form>
-  )
+  );
 
   const renderFormConfirm = () => (
     <form
@@ -203,7 +203,7 @@ export function ForgotPassword() {
         <div className='mb-10 bg-light-info p-8 rounded'>
           <div className='text-info'>
             Password reset successful. Please
-            <Link to='/auth/login' className='link-primary fw-bolder' style={{marginLeft: '5px'}}>
+            <Link to='/auth/login' className='link-primary fw-bolder' style={{ marginLeft: '5px' }}>
               Sign In
             </Link>
           </div>
@@ -354,7 +354,7 @@ export function ForgotPassword() {
       </div>
       {/* end::Form group */}
     </form>
-  )
+  );
 
-  return <div className='Signup'>{!email ? renderForm() : renderFormConfirm()}</div>
+  return <div className='Signup'>{!email ? renderForm() : renderFormConfirm()}</div>;
 }

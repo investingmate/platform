@@ -6,32 +6,36 @@ import {
   getSortedRowModel,
   getPaginationRowModel,
   useReactTable,
+  getFilteredRowModel,
+  getFacetedRowModel,
+  getFacetedUniqueValues,
+  getFacetedMinMaxValues,
+  ColumnOrderState,
+  ColumnFiltersState,
 } from '@tanstack/react-table';
 
-import { Indicator, TIndicatorColumn } from '../../core/_models';
+import { FinancialsData, TFinancialColumn } from '../../core/_models';
 import { DraggableColumnHeader } from './columns/DraggableColumnHeader';
 import { ListPagination } from '../pagination/ListPagination';
+import { fuzzyFilter } from '../../../../../utils/HelperFunctions';
 
 interface Props {
-  indicators: Indicator[];
+  group: FinancialsData[];
+  title: string;
 }
-const IndicatorsTable = (props: Props) => {
-  const { indicators } = props;
-  const defaultData = indicators ?? [];
+const FinancialsTable = (props: Props) => {
+  const { group, title } = props;
+  const defaultData = group ?? [];
 
-  const labels = !(indicators && indicators.length > 0 && indicators[0].history_data)
+  const labels = !(group && group.length > 0 && group[0].history_data)
     ? []
-    : indicators[0].history_data.map((his, index) => {
+    : group[0].history_data.map((his, index) => {
         return {
-          accessorFn: (row: Indicator) => {
-            let value = '0.0';
+          accessorFn: (row: FinancialsData) => {
+            let value = 0;
 
             if (row && row.history_data && row.history_data[index].amount) {
-              value = row.history_data[index].amount.toFixed(2);
-
-              if (row.history_data[index].name === 'D.Y') {
-                value = value + ' %';
-              }
+              value = row.history_data[index].amount;
             }
 
             return value;
@@ -39,7 +43,7 @@ const IndicatorsTable = (props: Props) => {
           id: his.year,
           header: his.year,
           cell: (info: { getValue: () => any }) => info.getValue(),
-          size: 100,
+          size: 150,
         };
       });
 
@@ -47,28 +51,49 @@ const IndicatorsTable = (props: Props) => {
     {
       accessorFn: (row: { name: any }) => row.name,
       id: 'name',
-      header: 'Indicator',
+      header: title,
       cell: (info: { getValue: () => any }) => info.getValue(),
-      size: 100,
+      size: 250,
     },
   ];
   // @ts-ignore
   const finalLabels = name.concat(labels);
-  const columns = React.useMemo<TIndicatorColumn[]>(() => finalLabels, [finalLabels]);
+  const columns = React.useMemo<TFinancialColumn[]>(() => finalLabels, [finalLabels]);
 
   const [data] = React.useState(() => [...defaultData]);
   const [sorting, setSorting] = React.useState<SortingState>([]);
+  // const [columns, setColumns] = React.useState(() => [...finalLabels]);
+
+  const [globalFilter, setGlobalFilter] = React.useState('');
+  const [columnOrder, setColumnOrder] = React.useState<ColumnOrderState>(
+    columns.map((column) => column.id as string) //must start out with populated columnOrder so we can splice
+  );
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
 
   const table = useReactTable({
     data,
     columns,
     state: {
+      columnOrder,
+      globalFilter,
+      columnFilters,
       sorting,
     },
+    filterFns: {
+      fuzzy: fuzzyFilter,
+    },
     onSortingChange: setSorting,
+    onColumnFiltersChange: setColumnFilters,
+    onColumnOrderChange: setColumnOrder,
+    onGlobalFilterChange: setGlobalFilter,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    globalFilterFn: fuzzyFilter,
+    getFilteredRowModel: getFilteredRowModel(),
+    getFacetedRowModel: getFacetedRowModel(),
+    getFacetedUniqueValues: getFacetedUniqueValues(),
+    getFacetedMinMaxValues: getFacetedMinMaxValues(),
   });
 
   return (
@@ -83,8 +108,8 @@ const IndicatorsTable = (props: Props) => {
                     key={header.id}
                     header={header}
                     table={table}
-                    isFilterEnabled={false}
-                    isDragEnabled={false}
+                    isFilterEnabled
+                    isDragEnabled
                   />
                 ))}
               </tr>
@@ -114,4 +139,4 @@ const IndicatorsTable = (props: Props) => {
     </div>
   );
 };
-export { IndicatorsTable };
+export { FinancialsTable };

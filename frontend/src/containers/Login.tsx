@@ -1,32 +1,32 @@
-import React, {useState} from 'react'
-import {Auth} from 'aws-amplify'
-import Form from 'react-bootstrap/Form'
-import LoaderButton from '../components/LoaderButton'
-import {useAppContext} from '../lib/contextLib'
-import {useFormFields} from '../lib/hooksLib'
-import {onError} from '../lib/errorLib'
+import React, { useState } from 'react';
+import { Auth } from 'aws-amplify';
+import Form from 'react-bootstrap/Form';
+import LoaderButton from '../components/LoaderButton';
+import { useAppContext } from '../lib/contextLib';
+import { useFormFields } from '../lib/hooksLib';
+import { onError } from '../lib/errorLib';
 
 export default function Login() {
-  const {userHasAuthenticated} = useAppContext()
-  const [isLoading, setIsLoading] = useState(false)
+  const { userHasAuthenticated } = useAppContext();
+  const [isLoading, setIsLoading] = useState(false);
   const [fields, handleFieldChange] = useFormFields({
     email: '',
     password: '',
-  })
+  });
 
   function validateForm() {
-    return fields.email.length > 0 && fields.password.length > 0
+    return fields.email.length > 0 && fields.password.length > 0;
   }
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    setIsLoading(true)
+    event.preventDefault();
+    setIsLoading(true);
     try {
-      await Auth.signIn(fields.email, fields.password)
-      userHasAuthenticated(true)
+      await Auth.signIn(fields.email, fields.password);
+      userHasAuthenticated(true);
     } catch (e) {
-      onError(e)
-      setIsLoading(false)
+      onError(e);
+      setIsLoading(false);
     }
   }
 
@@ -52,5 +52,5 @@ export default function Login() {
         </LoaderButton>
       </Form>
     </div>
-  )
+  );
 }

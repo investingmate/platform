@@ -1,11 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import {Link} from 'react-router-dom'
-import {useAuth} from '../../../../app/modules/auth'
-import {Languages} from './Languages'
-import {toAbsoluteUrl} from '../../../helpers'
+import { Link } from 'react-router-dom';
+import { useAuth } from '../../../../app/modules/auth';
+import { Languages } from './Languages';
+import { toAbsoluteUrl } from '../../../helpers';
 
 const HeaderUserMenu = () => {
-  const {currentUser, logout} = useAuth()
+  const { currentUser, logout } = useAuth();
 
   return (
     <div
@@ -136,7 +136,7 @@ const HeaderUserMenu = () => {
         </a>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export {HeaderUserMenu}
+export { HeaderUserMenu };

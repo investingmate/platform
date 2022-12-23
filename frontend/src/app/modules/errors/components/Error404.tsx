@@ -1,6 +1,6 @@
-import {FC} from 'react'
-import {Link} from 'react-router-dom'
-import {toAbsoluteUrl} from '../../../../_investingmate/helpers'
+import { FC } from 'react';
+import { Link } from 'react-router-dom';
+import { toAbsoluteUrl } from '../../../../_investingmate/helpers';
 
 const Error404: FC = () => {
   return (
@@ -14,7 +14,7 @@ const Error404: FC = () => {
         />
         {/* end::Illustration */}
         {/* begin::Message */}
-        <h1 className='fw-bold mb-10' style={{color: '#A3A3C7'}}>
+        <h1 className='fw-bold mb-10' style={{ color: '#A3A3C7' }}>
           Seems there is nothing here
         </h1>
         {/* end::Message */}
@@ -25,7 +25,7 @@ const Error404: FC = () => {
         {/* end::Link */}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export {Error404}
+export { Error404 };

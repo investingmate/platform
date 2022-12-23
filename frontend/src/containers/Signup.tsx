@@ -1,11 +1,11 @@
-import React, {useState} from 'react'
-import {Auth} from 'aws-amplify'
-import Form from 'react-bootstrap/Form'
-import {useNavigate} from 'react-router-dom'
-import LoaderButton from '../components/LoaderButton'
-import {useAppContext} from '../lib/contextLib'
-import {useFormFields} from '../lib/hooksLib'
-import {onError} from '../lib/errorLib'
+import React, { useState } from 'react';
+import { Auth } from 'aws-amplify';
+import Form from 'react-bootstrap/Form';
+import { useNavigate } from 'react-router-dom';
+import LoaderButton from '../components/LoaderButton';
+import { useAppContext } from '../lib/contextLib';
+import { useFormFields } from '../lib/hooksLib';
+import { onError } from '../lib/errorLib';
 
 export default function Signup() {
   const [fields, handleFieldChange] = useFormFields({
@@ -13,50 +13,50 @@ export default function Signup() {
     password: '',
     confirmPassword: '',
     confirmationCode: '',
-  })
-  const nav = useNavigate()
-  const [newUser, setNewUser] = useState<any>(null)
-  const {userHasAuthenticated} = useAppContext()
-  const [isLoading, setIsLoading] = useState(false)
+  });
+  const nav = useNavigate();
+  const [newUser, setNewUser] = useState<any>(null);
+  const { userHasAuthenticated } = useAppContext();
+  const [isLoading, setIsLoading] = useState(false);
   function validateForm() {
     return (
       fields.email.length > 0 &&
       fields.password.length > 0 &&
       fields.password === fields.confirmPassword
-    )
+    );
   }
 
   function validateConfirmationForm() {
-    return fields.confirmationCode.length > 0
+    return fields.confirmationCode.length > 0;
   }
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    setIsLoading(true)
+    event.preventDefault();
+    setIsLoading(true);
     try {
       const newUser = await Auth.signUp({
         username: fields.email,
         password: fields.password,
-      })
-      setIsLoading(false)
-      setNewUser(newUser)
+      });
+      setIsLoading(false);
+      setNewUser(newUser);
     } catch (e) {
-      onError(e)
-      setIsLoading(false)
+      onError(e);
+      setIsLoading(false);
     }
   }
 
   async function handleConfirmationSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    setIsLoading(true)
+    event.preventDefault();
+    setIsLoading(true);
     try {
-      await Auth.confirmSignUp(fields.email, fields.confirmationCode)
-      await Auth.signIn(fields.email, fields.password)
-      userHasAuthenticated(true)
-      nav('/')
+      await Auth.confirmSignUp(fields.email, fields.confirmationCode);
+      await Auth.signIn(fields.email, fields.password);
+      userHasAuthenticated(true);
+      nav('/');
     } catch (e) {
-      onError(e)
-      setIsLoading(false)
+      onError(e);
+      setIsLoading(false);
     }
   }
 
@@ -84,7 +84,7 @@ export default function Signup() {
           Verify
         </LoaderButton>
       </Form>
-    )
+    );
   }
 
   function renderForm() {
@@ -117,8 +117,8 @@ export default function Signup() {
           Signup
         </LoaderButton>
       </Form>
-    )
+    );
   }
 
-  return <div className='Signup'>{newUser === null ? renderForm() : renderConfirmationForm()}</div>
+  return <div className='Signup'>{newUser === null ? renderForm() : renderConfirmationForm()}</div>;
 }

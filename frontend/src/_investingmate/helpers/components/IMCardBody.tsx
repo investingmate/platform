@@ -1,15 +1,15 @@
-import clsx from 'clsx'
-import {FC} from 'react'
-import {WithChildren} from '../react18MigrationHelpers'
+import clsx from 'clsx';
+import { FC } from 'react';
+import { WithChildren } from '../react18MigrationHelpers';
 
 type Props = {
-  className?: string
-  scroll?: boolean
-  height?: number
-}
+  className?: string;
+  scroll?: boolean;
+  height?: number;
+};
 
 const IMCardBody: FC<Props & WithChildren> = (props) => {
-  const {className, scroll, height, children} = props
+  const { className, scroll, height, children } = props;
   return (
     <div
       className={clsx(
@@ -23,7 +23,7 @@ const IMCardBody: FC<Props & WithChildren> = (props) => {
     >
       {children}
     </div>
-  )
-}
+  );
+};
 
-export {IMCardBody}
+export { IMCardBody };

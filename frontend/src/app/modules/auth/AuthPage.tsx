@@ -1,22 +1,22 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import {useEffect} from 'react'
-import {Outlet, Route, Routes} from 'react-router-dom'
-import {Registration} from './components/Registration'
-import {ForgotPassword} from './components/ForgotPassword'
-import {Login} from './components/Login'
-import {toAbsoluteUrl} from '../../../_investingmate/helpers'
-import {HomeLanguages} from '../../../_investingmate/partials/layout/header-menus/HomeLanguages'
-import {useIntl} from 'react-intl'
+import { useEffect } from 'react';
+import { Outlet, Route, Routes } from 'react-router-dom';
+import { Registration } from './components/Registration';
+import { ForgotPassword } from './components/ForgotPassword';
+import { Login } from './components/Login';
+import { toAbsoluteUrl } from '../../../_investingmate/helpers';
+import { HomeLanguages } from '../../../_investingmate/partials/layout/header-menus/HomeLanguages';
+import { useIntl } from 'react-intl';
 
 const AuthLayout = () => {
-  const intl = useIntl()
+  const intl = useIntl();
 
   useEffect(() => {
-    document.body.classList.add('bg-body')
+    document.body.classList.add('bg-body');
     return () => {
-      document.body.classList.remove('bg-body')
-    }
-  }, [])
+      document.body.classList.remove('bg-body');
+    };
+  }, []);
 
   return (
     <div
@@ -43,19 +43,29 @@ const AuthLayout = () => {
       {/* begin::Footer */}
       <div className='d-flex flex-center flex-column-auto p-10 pt-0'>
         <div className='d-flex align-items-center fw-bold fs-6'>
-          <a href='#' className='text-muted text-hover-primary px-2'>
-            {intl.formatMessage({id: 'PAGES.ABOUT'})}
+          <a
+            href='https://investingmate.com.au/'
+            target='_blank'
+            className='text-muted text-hover-primary px-2'
+            rel='noreferrer'
+          >
+            {intl.formatMessage({ id: 'PAGES.ABOUT' })}
           </a>
 
-          <a href='#' className='text-muted text-hover-primary px-2'>
-            {intl.formatMessage({id: 'PAGES.CONTACT_US'})}
+          <a
+            href='https://investingmate.com.au/'
+            target='_blank'
+            className='text-muted text-hover-primary px-2'
+            rel='noreferrer'
+          >
+            {intl.formatMessage({ id: 'PAGES.CONTACT_US' })}
           </a>
         </div>
       </div>
       {/* end::Footer */}
     </div>
-  )
-}
+  );
+};
 
 const AuthPage = () => {
   return (
@@ -67,7 +77,7 @@ const AuthPage = () => {
         <Route index element={<Login />} />
       </Route>
     </Routes>
-  )
-}
+  );
+};
 
-export {AuthPage}
+export { AuthPage };

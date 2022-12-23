@@ -1,43 +1,45 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, {useEffect, useRef} from 'react'
-import ApexCharts, {ApexOptions} from 'apexcharts'
-import {getCSS, getCSSVariableValue} from '../../../assets/ts/_utils'
-import {useThemeMode} from '../../layout/theme-mode/ThemeModeProvider'
-import {createArrayOfData, createArrayOfYears} from '../../../../utils/HelperFunctions'
+import React, { useEffect, useRef } from 'react';
+import ApexCharts, { ApexOptions } from 'apexcharts';
+import { getCSS, getCSSVariableValue } from '../../../assets/ts/_utils';
+import { useThemeMode } from '../../layout/theme-mode/ThemeModeProvider';
+import { COLOURS } from '../../../../utils/DesignContants';
 
 type Props = {
-  className?: string
-  label: string
-}
+  className?: string;
+  label: string;
+  data: any[];
+};
 
-const LineChartsWidget: React.FC<Props> = ({className, label}) => {
-  const chartRef = useRef<HTMLDivElement | null>(null)
-  const {mode} = useThemeMode()
+const LineChartsWidget: React.FC<Props> = ({ className, label, data }) => {
+  const chartRef = useRef<HTMLDivElement | null>(null);
+  const { mode } = useThemeMode();
+
   const refreshMode = () => {
     if (!chartRef.current) {
-      return
+      return;
     }
 
-    const height = parseInt(getCSS(chartRef.current, 'height'))
+    const height = parseInt(getCSS(chartRef.current, 'height'));
 
-    const chart = new ApexCharts(chartRef.current, getChartOptions(height, label))
+    const chart = new ApexCharts(chartRef.current, getChartOptions(height, label, data));
     if (chart) {
-      chart.render()
+      chart.render();
     }
 
-    return chart
-  }
+    return chart;
+  };
 
   useEffect(() => {
-    const chart = refreshMode()
+    const chart = refreshMode();
 
     return () => {
       if (chart) {
-        chart.destroy()
+        chart.destroy();
       }
-    }
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [chartRef, mode])
+  }, [chartRef, mode, data, label]);
 
   return (
     <div className={`card ${className}`}>
@@ -78,27 +80,27 @@ const LineChartsWidget: React.FC<Props> = ({className, label}) => {
       {/* begin::Body */}
       <div className='card-body'>
         {/* begin::Chart */}
-        <div ref={chartRef} id='im_charts_widget_3_chart' style={{height: '350px'}}></div>
+        <div ref={chartRef} id='im_charts_widget_3_chart' style={{ height: '350px' }}></div>
         {/* end::Chart */}
       </div>
       {/* end::Body */}
     </div>
-  )
-}
+  );
+};
 
-export {LineChartsWidget}
+export { LineChartsWidget };
 
-function getChartOptions(height: number, label: string): ApexOptions {
-  const labelColor = getCSSVariableValue('--im-gray-600')
-  const borderColor = getCSSVariableValue('--im-gray-300')
-  const baseColor = getCSSVariableValue('--im-info')
-  const lightColor = getCSSVariableValue('--im-info-light')
+function getChartOptions(height: number, label: string, data: any[]): ApexOptions {
+  const labelColor = getCSSVariableValue('--im-gray-600');
+  const borderColor = getCSSVariableValue('--im-gray-300');
+  const lightColor = getCSSVariableValue('--im-info-light');
+  const baseColor = COLOURS.PURPLE;
 
   return {
     series: [
       {
         name: label,
-        data: createArrayOfData(),
+        data: data && data.map((item) => item.amount),
       },
     ],
     chart: {
@@ -114,7 +116,7 @@ function getChartOptions(height: number, label: string): ApexOptions {
       show: false,
     },
     dataLabels: {
-      enabled: true,
+      enabled: data.length <= 10,
       style: {
         colors: [baseColor],
         fontSize: '12px',
@@ -131,7 +133,7 @@ function getChartOptions(height: number, label: string): ApexOptions {
       colors: [baseColor],
     },
     xaxis: {
-      categories: createArrayOfYears(),
+      categories: data && data.map((item) => item.label),
       axisBorder: {
         show: false,
       },
@@ -139,6 +141,7 @@ function getChartOptions(height: number, label: string): ApexOptions {
         show: false,
       },
       labels: {
+        show: !label.includes('Price - '),
         style: {
           colors: labelColor,
           fontSize: '12px',
@@ -196,7 +199,8 @@ function getChartOptions(height: number, label: string): ApexOptions {
       },
       y: {
         formatter: function (val) {
-          return '$' + val + ' thousands'
+          return '' + val + ' ';
+          // return '$' + val + ' ';
         },
       },
     },
@@ -214,5 +218,5 @@ function getChartOptions(height: number, label: string): ApexOptions {
       strokeColors: baseColor,
       strokeWidth: 3,
     },
-  }
+  };
 }

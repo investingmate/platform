@@ -1,9 +1,9 @@
-import {Route, Routes, Outlet} from 'react-router-dom'
-import {CompaniesListWrapper} from './components/CompaniesList'
-import CompanyOverviewPage from "./CompanyOverviewPage";
-import {PageLink, PageTitle} from "../../../_investingmate/layout/core/PageData";
-import CompanyFinancialsPage from "./CompanyFinancialsPage";
-import {DataDisclaimer} from "../../../components/DataDisclaimer";
+import { Route, Routes, Outlet } from 'react-router-dom';
+import { CompaniesListWrapper } from './components/CompaniesList';
+import CompanyOverviewPage from './CompanyOverviewPage';
+import { PageLink, PageTitle } from '../../../_investingmate/layout/core/PageData';
+import CompanyFinancialsPage from './CompanyFinancialsPage';
+import { DataDisclaimer } from '../../../components/DataDisclaimer';
 
 const companiesBreadcrumbs: Array<PageLink> = [
   {
@@ -24,7 +24,7 @@ const companiesBreadcrumbs: Array<PageLink> = [
     isSeparator: true,
     isActive: false,
   },
-]
+];
 
 const CompaniesPage = () => {
   return (
@@ -60,14 +60,17 @@ const CompaniesPage = () => {
           }
         />
       </Route>
-      <Route index element={
-        <>
-          <PageTitle breadcrumbs={[]}>Companies</PageTitle>
-          <CompaniesListWrapper />
-        </>
-      } />
+      <Route
+        index
+        element={
+          <>
+            <PageTitle breadcrumbs={[]}>Companies</PageTitle>
+            <CompaniesListWrapper />
+          </>
+        }
+      />
     </Routes>
-  )
-}
+  );
+};
 
-export default CompaniesPage
+export default CompaniesPage;

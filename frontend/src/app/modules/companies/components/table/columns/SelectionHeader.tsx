@@ -1,14 +1,14 @@
-import {FC, PropsWithChildren} from 'react'
-import {HeaderProps} from 'react-table'
-import {useListView} from '../../../core/ListViewProvider'
-import {Company} from "../../../core/_models";
+import { FC, PropsWithChildren } from 'react';
+import { HeaderProps } from 'react-table';
+import { useListView } from '../../../core/ListViewProvider';
+import { Company } from '../../../core/_models';
 
 type Props = {
-  tableProps: PropsWithChildren<HeaderProps<Company>>
-}
+  tableProps: PropsWithChildren<HeaderProps<Company>>;
+};
 
-const SelectionHeader: FC<Props> = ({tableProps}) => {
-  const {isAllSelected, onSelectAll} = useListView()
+const SelectionHeader: FC<Props> = ({ tableProps }) => {
+  const { isAllSelected, onSelectAll } = useListView();
   return (
     <th {...tableProps.column.getHeaderProps()} className='w-10px pe-2'>
       <div className='form-check form-check-sm form-check-custom form-check-solid me-3'>
@@ -22,7 +22,7 @@ const SelectionHeader: FC<Props> = ({tableProps}) => {
         />
       </div>
     </th>
-  )
-}
+  );
+};
 
-export {SelectionHeader}
+export { SelectionHeader };

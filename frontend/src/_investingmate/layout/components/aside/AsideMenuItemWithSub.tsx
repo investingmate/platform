@@ -1,16 +1,16 @@
-import {FC} from 'react'
-import clsx from 'clsx'
-import {useLocation} from 'react-router'
-import {checkIsActive, IMSVG, WithChildren} from '../../../helpers'
-import {useLayout} from '../../core'
+import { FC } from 'react';
+import clsx from 'clsx';
+import { useLocation } from 'react-router';
+import { checkIsActive, IMSVG, WithChildren } from '../../../helpers';
+import { useLayout } from '../../core';
 
 type Props = {
-  to: string
-  title: string
-  icon?: string
-  fontIcon?: string
-  hasBullet?: boolean
-}
+  to: string;
+  title: string;
+  icon?: string;
+  fontIcon?: string;
+  hasBullet?: boolean;
+};
 
 const AsideMenuItemWithSub: FC<Props & WithChildren> = ({
   children,
@@ -20,18 +20,18 @@ const AsideMenuItemWithSub: FC<Props & WithChildren> = ({
   fontIcon,
   hasBullet,
 }) => {
-  const {pathname} = useLocation()
-  const isActive = checkIsActive(pathname, to)
-  const {config} = useLayout()
-  const {aside} = config
+  const { pathname } = useLocation();
+  const isActive = checkIsActive(pathname, to);
+  const { config } = useLayout();
+  const { aside } = config;
 
   return (
     <div
-      className={clsx({show: isActive, hover: isActive}, 'menu-item menu-accordion')}
+      className={clsx({ show: isActive, hover: isActive }, 'menu-item menu-accordion')}
       data-im-menu-sub='accordion'
       data-im-menu-trigger='click'
     >
-      <span className={clsx('menu-link', {active: isActive})}>
+      <span className={clsx('menu-link', { active: isActive })}>
         {hasBullet && (
           <span className='menu-bullet'>
             <span className='bullet bullet-dot'></span>
@@ -46,9 +46,9 @@ const AsideMenuItemWithSub: FC<Props & WithChildren> = ({
         <span className='menu-title'>{title}</span>
         <span className='menu-arrow'></span>
       </span>
-      <div className={clsx({show: isActive}, 'menu-sub menu-sub-accordion')}>{children}</div>
+      <div className={clsx({ show: isActive }, 'menu-sub menu-sub-accordion')}>{children}</div>
     </div>
-  )
-}
+  );
+};
 
-export {AsideMenuItemWithSub}
+export { AsideMenuItemWithSub };
