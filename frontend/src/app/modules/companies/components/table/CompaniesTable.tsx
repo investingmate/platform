@@ -8,13 +8,11 @@ import {
   getFilteredRowModel,
   SortingState,
   useReactTable,
-  FilterFn,
   ColumnFiltersState,
   getFacetedRowModel,
   getFacetedUniqueValues,
   getFacetedMinMaxValues,
 } from '@tanstack/react-table';
-import { rankItem } from '@tanstack/match-sorter-utils';
 
 import { Company, TCompanyColumn } from '../../core/_models';
 import { useQueryResponseData } from '../../core/QueryResponseProvider';
