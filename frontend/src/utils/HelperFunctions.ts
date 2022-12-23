@@ -1,5 +1,7 @@
 import { Company } from '../app/modules/companies/core/_models';
 import moment from 'moment';
+import { FilterFn } from '@tanstack/react-table';
+import { rankItem } from '@tanstack/match-sorter-utils';
 
 export const customStringfy = (str: string) => {
   let newStr = str.replaceAll('_', ' ');
@@ -66,4 +68,15 @@ export const removeFromWatchlist = (company: Company) => {
 
 export const dateFormatter = (date: any) => {
   return moment(date).format('DD/MM/YYYY');
+};
+
+export const fuzzyFilter: FilterFn<any> = (row, columnId, value, addMeta) => {
+  // Rank the item
+  const itemRank = rankItem(row.getValue(columnId), value);
+  // Store the itemRank info
+  addMeta({
+    itemRank,
+  });
+  // Return if the item should be filtered in/out
+  return itemRank.passed;
 };

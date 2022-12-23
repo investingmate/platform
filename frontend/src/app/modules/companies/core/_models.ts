@@ -300,21 +300,57 @@ export const initialCompany: Company = {
     summary: [
       {
         name: '',
+        group: [
+          {
+            year: '',
+            amount: 0.0,
+            name: '',
+            label: '',
+            description: '',
+          },
+        ],
       },
     ],
     income_statement: [
       {
         name: '',
+        group: [
+          {
+            year: '',
+            amount: 0.0,
+            name: '',
+            label: '',
+            description: '',
+          },
+        ],
       },
     ],
     balance_sheet: [
       {
         name: '',
+        group: [
+          {
+            year: '',
+            amount: 0.0,
+            name: '',
+            label: '',
+            description: '',
+          },
+        ],
       },
     ],
     cash_flow: [
       {
         name: '',
+        group: [
+          {
+            year: '',
+            amount: 0.0,
+            name: '',
+            label: '',
+            description: '',
+          },
+        ],
       },
     ],
   },
@@ -365,16 +401,26 @@ export interface PriceDataHistory {
 }
 
 export interface FinancialsData {
+  id?: ID;
+  year: string;
+  amount: number;
   name: string;
-  // description: string;
-  // label: string;
-  // year: string;
-  // amount: number;
+  description: string;
+  label: string;
+  history_data?: FinancialsData[];
 }
 
 export interface Financials {
-  summary: FinancialsData[];
-  income_statement: FinancialsData[];
-  balance_sheet: FinancialsData[];
-  cash_flow: FinancialsData[];
+  summary: FinancialsGroup[];
+  income_statement: FinancialsGroup[];
+  balance_sheet: FinancialsGroup[];
+  cash_flow: FinancialsGroup[];
 }
+
+export type TFinancialColumn = ColumnDef<FinancialsData>;
+
+export type FinancialsGroup = {
+  id?: ID;
+  name: string;
+  group: FinancialsData[];
+};

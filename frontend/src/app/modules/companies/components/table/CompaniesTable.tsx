@@ -26,18 +26,11 @@ import { CompaniesListGrouping } from '../header/CompaniesListGrouping';
 import { useListView } from '../../core/ListViewProvider';
 import { CompaniesListDropDown } from '../header/CompaniesListDropdown';
 import { useNavigate } from 'react-router-dom';
-import { addToWatchlist, removeFromWatchlist } from '../../../../../utils/HelperFunctions';
-
-const fuzzyFilter: FilterFn<any> = (row, columnId, value, addMeta) => {
-  // Rank the item
-  const itemRank = rankItem(row.getValue(columnId), value);
-  // Store the itemRank info
-  addMeta({
-    itemRank,
-  });
-  // Return if the item should be filtered in/out
-  return itemRank.passed;
-};
+import {
+  addToWatchlist,
+  fuzzyFilter,
+  removeFromWatchlist,
+} from '../../../../../utils/HelperFunctions';
 
 const CompaniesTable = () => {
   const { selected } = useListView();

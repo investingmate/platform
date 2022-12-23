@@ -8,9 +8,10 @@ import {
   Indicator,
   IndicatorGroup,
   PriceData,
+  FinancialsData,
+  FinancialsGroup,
 } from './_models';
-import { numberFormatter, sortArrayOfObjects } from '../../../../utils/HelperFunctions';
-import momentJS from 'moment';
+import { numberFormatter } from '../../../../utils/HelperFunctions';
 
 const API_URL = process.env.REACT_APP_API_URL;
 const COMPANY_URL = `${API_URL}/company`;
@@ -274,12 +275,48 @@ const getPriceData = (filter: string) => {
   return priceData;
 };
 
-const getFinancials = (filter: string) => {
-  const data = [];
-  data.push({
-    name: filter,
+const getFinancials = (label: string) => {
+  const financialGroup = ['PROFITABILITY', 'VALUATION', 'PER SHARE'];
+  const items = [
+    'NPAT ($M)',
+    'NPAT Margin',
+    'Abnormals ($M)',
+    'NPAT before Abnormals ($M)',
+    'Return on Equity (ROE)',
+    'Return on Assets (ROA)',
+  ];
+
+  const financialsGroups: FinancialsGroup[] = [];
+
+  financialGroup.forEach((ind) => {
+    const data: FinancialsData[] = [];
+    items.forEach((ind, index) => {
+      const historyData = [];
+      for (let i = 0; i < years; i++) {
+        historyData.push({
+          year: `20${currentYear - i}`,
+          label: `20${currentYear - i}`,
+          amount: Math.floor(Math.random() * 10) + 1 + index,
+          name: ind,
+          description: `Description about: ${ind}`,
+        });
+      }
+      data.push({
+        year: `20${currentYear}`,
+        label: `20${currentYear}`,
+        amount: Math.floor(Math.random() * 10) + 1 + index,
+        name: ind,
+        description: `Description about: ${ind}`,
+        history_data: historyData,
+      });
+    });
+    financialsGroups.push({
+      name: ind,
+      group: data,
+    });
   });
-  return data;
+
+  return financialsGroups;
 };
 
 const _companies = COMPANIES.map((company, index) => {

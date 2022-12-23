@@ -48,7 +48,7 @@ const CompaniesHeader = () => {
 
   return (
     <div className='card'>
-      <div className='card-body p-5 pb-0 mb-xl-10'>
+      <div className='card-body p-5 pb-0 mb-0'>
         <div className='d-flex flex-wrap flex-sm-nowrap mb-3'>
           <div className='flex-grow-1'>
             <div className='d-flex justify-content-between align-items-start flex-wrap mb-2'>
