@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import {
   ColumnOrderState,
   flexRender,
@@ -29,12 +29,18 @@ import {
   fuzzyFilter,
   removeFromWatchlist,
 } from '../../../../../utils/HelperFunctions';
+import { useLocation } from 'react-router';
+import { PathsConstants } from '../../../../../utils/PathsConstants';
 
 const CompaniesTable = () => {
-  const { selected } = useListView();
-  const companies = useQueryResponseData();
+  const location = useLocation();
+  const isDashboardPage = location.pathname.replace('/', '') === PathsConstants.DASHBOARD;
   const nav = useNavigate();
-  const data = useMemo(() => companies, [companies]);
+  const { selected } = useListView();
+
+  const companies = useQueryResponseData();
+  const [companiesData, setCompanies] = useState(companies);
+  const data = useMemo(() => companiesData, [companiesData]);
 
   const [isFilterEnabled, setIsFilterEnabled] = React.useState(true);
   const MIN_SIZE = isFilterEnabled ? 160 : 100;
@@ -184,6 +190,16 @@ const CompaniesTable = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isFilterEnabled]);
 
+  useEffect(() => {
+    const newList = localStorage.getItem('watchList');
+    if (newList && isDashboardPage) {
+      const companiesList = JSON.parse(newList);
+      if (companiesList) setCompanies(companiesList);
+    } else {
+      setCompanies(companies);
+    }
+  }, [companies, location.pathname, columns, isDashboardPage]);
+
   const table = useReactTable({
     data,
     columns,
@@ -225,11 +241,15 @@ const CompaniesTable = () => {
   }, [columnsSelected]);
 
   const handleOnClick = (row: any) => {
-    nav(
-      `company-overview`,
-      // `company-overview?ticker=${row.original.ticker.toLowerCase()}`,
-      { state: { company: JSON.stringify(row.original) } }
-    );
+    if (isDashboardPage) {
+      nav(`/companies/company-overview`, { state: { company: JSON.stringify(row.original) } });
+    } else {
+      nav(
+        `company-overview`,
+        // `company-overview?ticker=${row.original.ticker.toLowerCase()}`,
+        { state: { company: JSON.stringify(row.original) } }
+      );
+    }
   };
 
   const handleFav = (row: any) => {
@@ -254,102 +274,105 @@ const CompaniesTable = () => {
   };
 
   return (
-    <div className='card-header border-0 pb-6 pt-6'>
-      <CompaniesListSearch
-        value={globalFilter ?? ''}
-        onChange={(value) => setGlobalFilter(String(value))}
-      />
-      <div className='card-toolbar'>
-        {selected.length > 0 ? (
-          <CompaniesListGrouping />
-        ) : (
-          <div className='d-flex justify-content-end' data-im-user-table-toolbar='base'>
-            {/*<CompaniesListFilter />*/}
-            <CompaniesListDropDown
-              columns={columnsSelected}
-              setColumns={setColumnsSelected}
-              isFilterEnabled={isFilterEnabled}
-              setIsFilterEnabled={setIsFilterEnabled}
-            />
-          </div>
-        )}
-      </div>
-      <div className='table-responsive'>
-        <table
-          id='im_table_companies'
-          className='table table-hover align-middle fs-6 dataTable no-footer border table-rounded'
-        >
-          <thead>
-            {table.getHeaderGroups().map((headerGroup) => (
-              <tr className='text-start fw-bolder fs-7 text-uppercase gs-0' key={headerGroup.id}>
-                {headerGroup.headers.map((header) => (
-                  <DraggableColumnHeader
-                    key={header.id}
-                    header={header}
-                    table={table}
-                    isFilterEnabled={isFilterEnabled}
-                  />
-                ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody>
-            {table
-              .getRowModel()
-              .rows.slice(0, 10)
-              .map((row) => {
-                return (
-                  <tr key={row.id} className='cursor-pointer btn-light'>
-                    {row.getVisibleCells().map((cell) => {
-                      if (cell.column.id === 'logo') {
-                        return (
-                          <th key={cell.column.id}>
-                            {row.original.logo.length > 0 ? (
-                              <div className='symbol-label'>
-                                <img
-                                  src={row.original.logo}
-                                  alt={row.original.name}
-                                  className='w-100'
-                                />
-                              </div>
-                            ) : (
-                              <IMSVG
-                                path='/media/icons/duotune/general/gen006.svg'
-                                className='svg-icon svg-icon-3x svg-icon-warning'
-                              />
-                            )}
-                          </th>
-                        );
-                      } else if (cell.column.id === 'fav') {
-                        return (
-                          <th key={cell.column.id} onClick={() => handleFav(row)}>
-                            <>
-                              {checkWatchlistState(row) ? (
-                                <span className='indicator-label'>
-                                  <i className='fas fa-regular fa-star mx-2 fs-2 text-info' />
-                                </span>
+    <div className={isDashboardPage ? 'p-0' : 'pt-6 px-6'}>
+      <div
+        className={isDashboardPage ? 'card-header border-0 p-0' : 'card-header border-0 p-0 pb-6'}
+      >
+        <CompaniesListSearch
+          value={globalFilter ?? ''}
+          onChange={(value) => setGlobalFilter(String(value))}
+        />
+        <div className='card-toolbar'>
+          {selected.length > 0 ? (
+            <CompaniesListGrouping />
+          ) : (
+            <div className='d-flex justify-content-end' data-im-user-table-toolbar='base'>
+              <CompaniesListDropDown
+                columns={columnsSelected}
+                setColumns={setColumnsSelected}
+                isFilterEnabled={isFilterEnabled}
+                setIsFilterEnabled={setIsFilterEnabled}
+              />
+            </div>
+          )}
+        </div>
+        <div className='table-responsive'>
+          <table
+            id='im_table_companies'
+            className='table table-hover align-middle fs-6 dataTable no-footer border table-rounded'
+          >
+            <thead>
+              {table.getHeaderGroups().map((headerGroup) => (
+                <tr className='text-start fw-bolder fs-7 text-uppercase gs-0' key={headerGroup.id}>
+                  {headerGroup.headers.map((header) => (
+                    <DraggableColumnHeader
+                      key={header.id}
+                      header={header}
+                      table={table}
+                      isFilterEnabled={isFilterEnabled}
+                    />
+                  ))}
+                </tr>
+              ))}
+            </thead>
+            <tbody>
+              {table
+                .getRowModel()
+                .rows.slice(0, 10)
+                .map((row) => {
+                  return (
+                    <tr key={row.id} className='cursor-pointer btn-light'>
+                      {row.getVisibleCells().map((cell) => {
+                        if (cell.column.id === 'logo') {
+                          return (
+                            <th key={cell.column.id}>
+                              {row.original.logo.length > 0 ? (
+                                <div className='symbol-label'>
+                                  <img
+                                    src={row.original.logo}
+                                    alt={row.original.name}
+                                    className='w-100'
+                                  />
+                                </div>
                               ) : (
-                                <span className='indicator-label text-info'>
-                                  <i className='fas fa-regular fa-star mx-2 fs-2' />
-                                </span>
+                                <IMSVG
+                                  path='/media/icons/duotune/general/gen006.svg'
+                                  className='svg-icon svg-icon-3x svg-icon-warning'
+                                />
                               )}
-                            </>
-                          </th>
+                            </th>
+                          );
+                        } else if (cell.column.id === 'fav') {
+                          return (
+                            <th key={cell.column.id} onClick={() => handleFav(row)}>
+                              <>
+                                {checkWatchlistState(row) ? (
+                                  <span className='indicator-label'>
+                                    <i className='fas fa-regular fa-star mx-2 fs-2 text-info' />
+                                  </span>
+                                ) : (
+                                  <span className='indicator-label text-info'>
+                                    <i className='fas fa-regular fa-star mx-2 fs-2' />
+                                  </span>
+                                )}
+                              </>
+                            </th>
+                          );
+                        }
+                        return (
+                          <td key={cell.id} onClick={() => handleOnClick(row)}>
+                            {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                          </td>
                         );
-                      }
-                      return (
-                        <td key={cell.id} onClick={() => handleOnClick(row)}>
-                          {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                        </td>
-                      );
-                    })}
-                  </tr>
-                );
-              })}
-          </tbody>
-        </table>
+                      })}
+                    </tr>
+                  );
+                })}
+            </tbody>
+          </table>
+        </div>
+        <ListPagination table={table} />
       </div>
-      <ListPagination table={table} />
     </div>
   );
 };

@@ -36,6 +36,7 @@ const CompaniesPage = () => {
             <>
               <PageTitle breadcrumbs={companiesBreadcrumbs}>Companies</PageTitle>
               <CompaniesListWrapper />
+              <DataDisclaimer />
             </>
           }
         />
@@ -66,6 +67,7 @@ const CompaniesPage = () => {
           <>
             <PageTitle breadcrumbs={[]}>Companies</PageTitle>
             <CompaniesListWrapper />
+            <DataDisclaimer />
           </>
         }
       />

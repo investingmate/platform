@@ -3,12 +3,16 @@ import { MenuItem } from './MenuItem';
 import { MenuInnerWithSub } from './MenuInnerWithSub';
 import { MegaMenu } from './MegaMenu';
 import { useIntl } from 'react-intl';
+import { PathsConstants } from '../../../../utils/PathsConstants';
 
 export function MenuInner() {
   const intl = useIntl();
   return (
     <>
-      <MenuItem title={intl.formatMessage({ id: 'MENU.DASHBOARD' })} to='/dashboard' />
+      <MenuItem
+        title={intl.formatMessage({ id: 'MENU.DASHBOARD' })}
+        to={`/${PathsConstants.DASHBOARD}`}
+      />
       <MenuItem title='Layout Builder' to='/builder' />
       <MenuInnerWithSub
         title='Crafted'
@@ -78,8 +82,8 @@ export function MenuInner() {
           menuPlacement='right-start'
           menuTrigger={`{default:'click', lg: 'hover'}`}
         >
-          <MenuItem to='/error/404' title='Error 404' hasBullet={true} />
-          <MenuItem to='/error/500' title='Error 500' hasBullet={true} />
+          <MenuItem to={`/${PathsConstants.ERROR_404}`} title='Error 404' hasBullet={true} />
+          <MenuItem to={`/${PathsConstants.ERROR_500}`} title='Error 500' hasBullet={true} />
         </MenuInnerWithSub>
 
         {/* Widgets */}

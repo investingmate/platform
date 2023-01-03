@@ -11,7 +11,7 @@ const CustomCard = (props: Props) => {
     <div className='card'>
       <div className='card-header border-0 cursor-pointer ps-6'>
         <div className='card-title m-0'>
-          <h6 className='fw-bolder m-0'>{title}</h6>
+          <h5 className='fw-bolder m-0'>{title}</h5>
         </div>
       </div>
       <div>

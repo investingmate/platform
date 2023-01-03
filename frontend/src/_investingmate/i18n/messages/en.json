@@ -101,5 +101,7 @@
   "COMPANIES.CURRENT": "Current",
   "COMPANIES.HISTORY": "History",
   "COMPANIES.ADVANCED": "Advanced",
-  "COMPANIES.BASIC": "Basic"
+  "COMPANIES.BASIC": "Basic",
+  "COMPANIES.WATCH_LIST": "Watch List",
+  "COMPANIES.NEWS": "News"
 }
