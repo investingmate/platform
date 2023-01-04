@@ -16,7 +16,7 @@ export function HeaderWrapper() {
   return (
     <div
       id='im_header'
-      className={clsx('header', classes.header.join(' '), 'align-items-stretch')}
+      className={clsx('header', classes.header.join(' '), 'align-items-stretch shadow')}
       {...attributes.headerMenu}
     >
       <div

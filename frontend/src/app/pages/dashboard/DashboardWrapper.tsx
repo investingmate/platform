@@ -6,6 +6,7 @@ import { CompaniesListWrapper } from '../../modules/companies/components/Compani
 import { DataDisclaimer } from '../../../components/DataDisclaimer';
 import { CustomCard } from '../../../components/CustomCard';
 import { NewsSection } from '../../modules/dashboard/components/NewsSection';
+import { FinancialsIndicators } from '../../modules/dashboard/components/FinancialsIndicators';
 
 const DashboardPage: FC = () => {
   const intl = useIntl();
@@ -14,6 +15,7 @@ const DashboardPage: FC = () => {
       <CustomCard title={intl.formatMessage({ id: 'COMPANIES.WATCH_LIST' })}>
         <CompaniesListWrapper />
       </CustomCard>
+      <FinancialsIndicators />
       <NewsSection />
       <DataDisclaimer />
     </>
