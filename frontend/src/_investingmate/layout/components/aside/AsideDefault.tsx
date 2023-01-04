@@ -6,6 +6,7 @@ import clsx from 'clsx';
 import { useLayout } from '../../core';
 import { IMSVG, toAbsoluteUrl } from '../../../helpers';
 import { AsideMenu } from './AsideMenu';
+import { PathsConstants } from '../../../../utils/PathsConstants';
 
 const AsideDefault: FC = () => {
   const { config, classes } = useLayout();
@@ -36,12 +37,12 @@ const AsideDefault: FC = () => {
       <div className='aside-logo flex-column-auto' id='im_aside_logo'>
         {/* begin::Logo */}
         {aside.theme === 'dark' && (
-          <Link to='/dashboard'>
+          <Link to={`/${PathsConstants.DASHBOARD}`}>
             <img alt='Logo' className='h-25px logo' src={toAbsoluteUrl('/media/logos/logo.svg')} />
           </Link>
         )}
         {aside.theme === 'light' && (
-          <Link to='/dashboard'>
+          <Link to={`/${PathsConstants.DASHBOARD}`}>
             <img alt='Logo' className='h-25px logo' src={toAbsoluteUrl('/media/logos/logo.svg')} />
           </Link>
         )}

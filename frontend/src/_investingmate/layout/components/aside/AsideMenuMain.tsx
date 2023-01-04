@@ -3,6 +3,7 @@
 // import { IMSVG } from '../../../helpers';
 // import { AsideMenuItemWithSub } from "./AsideMenuItemWithSub";
 import { AsideMenuItem } from './AsideMenuItem';
+import { PathsConstants } from '../../../../utils/PathsConstants';
 
 export function AsideMenuMain() {
   // const intl = useIntl()
@@ -10,7 +11,7 @@ export function AsideMenuMain() {
   return (
     <>
       <AsideMenuItem
-        to='/dashboard'
+        to={`/${PathsConstants.DASHBOARD}`}
         icon='/media/icons/duotune/art/art002.svg'
         // title={intl.formatMessage({id: 'MENU.DASHBOARD'})}
         title='Dashboard'

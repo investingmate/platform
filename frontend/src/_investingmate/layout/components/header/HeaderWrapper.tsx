@@ -7,6 +7,7 @@ import { useLayout } from '../../core';
 import { DefaultTitle } from './page-title/DefaultTitle';
 import { Topbar } from './Topbar';
 import { Header } from './Header';
+import { PathsConstants } from '../../../../utils/PathsConstants';
 
 export function HeaderWrapper() {
   const { config, classes, attributes } = useLayout();
@@ -15,7 +16,7 @@ export function HeaderWrapper() {
   return (
     <div
       id='im_header'
-      className={clsx('header', classes.header.join(' '), 'align-items-stretch')}
+      className={clsx('header', classes.header.join(' '), 'align-items-stretch shadow')}
       {...attributes.headerMenu}
     >
       <div
@@ -39,7 +40,7 @@ export function HeaderWrapper() {
         {/* begin::Logo */}
         {!aside.display && (
           <div className='d-flex align-items-center flex-grow-1 flex-lg-grow-0'>
-            <Link to='/dashboard' className='d-lg-none'>
+            <Link to={`/${PathsConstants.DASHBOARD}`} className='d-lg-none'>
               <img
                 alt='Logo'
                 src={toAbsoluteUrl('/media/logos/logo_purple.svg')}

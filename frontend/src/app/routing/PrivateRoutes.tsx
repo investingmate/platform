@@ -5,6 +5,7 @@ import { MasterLayout } from '../../_investingmate/layout/MasterLayout';
 import { DashboardWrapper } from '../pages/dashboard/DashboardWrapper';
 import { getCSSVariableValue } from '../../_investingmate/assets/ts/_utils';
 import { WithChildren } from '../../_investingmate/helpers';
+import { PathsConstants } from '../../utils/PathsConstants';
 
 const PrivateRoutes = () => {
   const CompaniesPage = lazy(() => import('../modules/companies/CompaniesPage'));
@@ -13,12 +14,15 @@ const PrivateRoutes = () => {
     <Routes>
       <Route element={<MasterLayout />}>
         {/* Redirect to Dashboard after success login/registration */}
-        <Route path='auth/*' element={<Navigate to='/dashboard' />} />
+        <Route
+          path={`${PathsConstants.AUTH}/*`}
+          element={<Navigate to={`/${PathsConstants.DASHBOARD}`} />}
+        />
         {/* Pages */}
-        <Route path='dashboard' element={<DashboardWrapper />} />
+        <Route path={PathsConstants.DASHBOARD} element={<DashboardWrapper />} />
         {/* Lazy Modules */}
         <Route
-          path='companies/*'
+          path={`${PathsConstants.COMPANIES}/*`}
           element={
             <SuspensedView>
               <CompaniesPage />
@@ -26,7 +30,7 @@ const PrivateRoutes = () => {
           }
         />
         {/* Page Not Found */}
-        <Route path='*' element={<Navigate to='/error/404' />} />
+        <Route path='*' element={<Navigate to={`/${PathsConstants.ERROR_404}`} />} />
       </Route>
     </Routes>
   );

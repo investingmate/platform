@@ -66,8 +66,8 @@ export const removeFromWatchlist = (company: Company) => {
   }
 };
 
-export const dateFormatter = (date: any) => {
-  return moment(date).format('DD/MM/YYYY');
+export const dateFormatter = (date: any, format: string = 'DD/MM/YYYY') => {
+  return moment(date).format(format);
 };
 
 export const fuzzyFilter: FilterFn<any> = (row, columnId, value, addMeta) => {
