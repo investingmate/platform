@@ -2,7 +2,7 @@ import React from 'react';
 
 const FinancialsIndicators = () => {
   return (
-    <div className='mt-6'>
+    <div className='mt-0 mb-3'>
       <div className='row g-5'>
         <div className='col-lg-4'>
           <div className='card card-custom card-stretch mb-5'>

@@ -5,7 +5,7 @@ import { CustomCard } from '../../../../components/CustomCard';
 const NewsSection = () => {
   const intl = useIntl();
   return (
-    <div className='mt-3'>
+    <div className='mt-6'>
       <CustomCard title={intl.formatMessage({ id: 'COMPANIES.NEWS' })}>
         <>TODO</>
       </CustomCard>

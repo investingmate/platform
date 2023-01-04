@@ -12,10 +12,10 @@ const DashboardPage: FC = () => {
   const intl = useIntl();
   return (
     <>
+      <FinancialsIndicators />
       <CustomCard title={intl.formatMessage({ id: 'COMPANIES.WATCH_LIST' })}>
         <CompaniesListWrapper />
       </CustomCard>
-      <FinancialsIndicators />
       <NewsSection />
       <DataDisclaimer />
     </>

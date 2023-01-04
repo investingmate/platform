@@ -42,7 +42,7 @@ const CompaniesTable = () => {
   const [companiesData, setCompanies] = useState(companies);
   const data = useMemo(() => companiesData, [companiesData]);
 
-  const [isFilterEnabled, setIsFilterEnabled] = React.useState(true);
+  const [isFilterEnabled, setIsFilterEnabled] = React.useState(!isDashboardPage);
   const MIN_SIZE = isFilterEnabled ? 160 : 100;
   const defaultColumns: TCompanyColumn[] = [
     {
