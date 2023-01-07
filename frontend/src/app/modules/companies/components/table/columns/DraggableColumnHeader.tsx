@@ -59,7 +59,7 @@ const DraggableColumnHeader: FC<{
       }}
       className={`min-w-${header.getSize()}px`}
     >
-      <div className='d-flex flex-column justify-content-start h-100'>
+      <div className='d-flex flex-column justify-content-center h-100'>
         <CustomTooltip description={colInfo && colInfo.description ? colInfo.description : ''}>
           <div
             ref={previewRef}

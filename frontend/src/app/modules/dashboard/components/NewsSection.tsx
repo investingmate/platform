@@ -53,7 +53,7 @@ const NewsSection = () => {
   const intl = useIntl();
   const [currentNews, setCurrentNews] = useState<INews | undefined>(undefined);
   return (
-    <div className='mt-6'>
+    <div className=''>
       <CustomCard title={intl.formatMessage({ id: 'COMPANIES.NEWS' })}>
         <div className='card card-xl-stretch'>
           <div className='card-body p-0'>
