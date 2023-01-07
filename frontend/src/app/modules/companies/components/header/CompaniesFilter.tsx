@@ -118,7 +118,7 @@ export function CompaniesFilter({
         placeholder={`Search (${column.getFacetedUniqueValues().size})`}
         list={column.id + 'list'}
       />
-      <div className='h-1' />
+      <div className='h-45px pt-15 w-100' />
     </>
   );
 }

@@ -424,3 +424,12 @@ export type FinancialsGroup = {
   name: string;
   group: FinancialsData[];
 };
+
+export type TForeignExchangeColumn = ColumnDef<ForeignExchange>;
+
+export type ForeignExchange = {
+  id?: ID;
+  name: string;
+  icon: string;
+  amount: number;
+};

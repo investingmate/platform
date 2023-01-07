@@ -1,4 +1,13 @@
 import React from 'react';
+// import { CustomCarousel } from '../../../../components/Carousel';
+// import { CompaniesIndicator } from '../../companies/components/CompaniesIndicator';
+
+// const items = [
+//   {
+//     id: 1,
+//     item: <CompaniesIndicator description='test 1' label='test 1' value={1.0} showGraph={false} />,
+//   },
+// ];
 
 const FinancialsIndicators = () => {
   return (
@@ -10,6 +19,9 @@ const FinancialsIndicators = () => {
               <h5 className='card-title fw-bolder'>Widget Title</h5>
             </div>
             <div className='card-body'>Lorem Ipsum is simply dummy text</div>
+            {/*<div className='card-body d-flex justify-content-center align-items-center w-100'>*/}
+            {/*<CustomCarousel variant='dark' items={items} />*/}
+            {/*</div>*/}
           </div>
         </div>
 
