@@ -105,5 +105,11 @@
   "COMPANIES.WATCH_LIST": "Watch List",
   "COMPANIES.NEWS": "News",
   "COMPANIES.TUTORIAL": "Tips on how to use Investing Mate",
-  "COMPANIES.FOREIGN_EXCHANGE": "Foreign Exchange - (1 AUD)"
+  "COMPANIES.FOREIGN_EXCHANGE": "Foreign Exchange - (1 AUD)",
+  "DASHBOARD.ECONOMIC_MARKET_OVERVIEW": "Economic & Market Overview",
+  "DASHBOARD.TOTAL_COMPANIES": "Total Companies",
+  "DASHBOARD.CPI": "Consumer Price Index",
+  "DASHBOARD.GDP": "Gross Domestic Product",
+  "DASHBOARD.SECTORS": "Sectors",
+  "DASHBOARD.TOTAL_SECTORS": "Total Sectors"
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import {EconomicMarketOverview} from "./EconomicMarketOverview";
 // import { CustomCarousel } from '../../../../components/Carousel';
 // import { CompaniesIndicator } from '../../companies/components/CompaniesIndicator';
 
@@ -15,13 +16,14 @@ const FinancialsIndicators = () => {
       <div className='row g-5'>
         <div className='col-lg-4'>
           <div className='card card-custom card-stretch mb-5'>
-            <div className='card-header'>
-              <h5 className='card-title fw-bolder'>Widget Title</h5>
-            </div>
-            <div className='card-body'>Lorem Ipsum is simply dummy text</div>
+            {/*<div className='card-header'>*/}
+            {/*  <h5 className='card-title fw-bolder'>Widget Title</h5>*/}
+            {/*</div>*/}
+            {/*<div className='card-body'>Lorem Ipsum is simply dummy text</div>*/}
             {/*<div className='card-body d-flex justify-content-center align-items-center w-100'>*/}
             {/*<CustomCarousel variant='dark' items={items} />*/}
             {/*</div>*/}
+            <EconomicMarketOverview className='card' color='primary' />
           </div>
         </div>
 
