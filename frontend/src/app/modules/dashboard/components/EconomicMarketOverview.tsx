@@ -1,15 +1,15 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react'
-import {IMSVG} from "../../../../_investingmate/helpers";
-import {useQueryResponseData} from "../../companies/core/QueryResponseProvider";
-import {useIntl} from "react-intl";
+import React from 'react';
+import { IMSVG } from '../../../../_investingmate/helpers';
+import { useQueryResponseData } from '../../companies/core/QueryResponseProvider';
+import { useIntl } from 'react-intl';
 
 type Props = {
-  className: string
-  color: string
-}
+  className: string;
+  color: string;
+};
 
-const EconomicMarketOverview: React.FC<Props> = ({className, color}) => {
+const EconomicMarketOverview: React.FC<Props> = ({ className, color }) => {
   const companies = useQueryResponseData();
   const intl = useIntl();
 
@@ -25,12 +25,15 @@ const EconomicMarketOverview: React.FC<Props> = ({className, color}) => {
         </div>
         <div
           className='shadow-xs card-rounded mx-9 mb-9 px-6 py-9 position-relative z-index-1 bg-body'
-          style={{marginTop: '-170px'}}
+          style={{ marginTop: '-170px' }}
         >
           <div className='d-flex align-items-center mb-6'>
             <div className='symbol symbol-45px w-40px me-5'>
               <span className='symbol-label bg-lighten'>
-                <IMSVG path='/media/icons/duotune/maps/map004.svg' className='svg-icon-1 svg-icon-primary' />
+                <IMSVG
+                  path='/media/icons/duotune/maps/map004.svg'
+                  className='svg-icon-1 svg-icon-primary'
+                />
               </span>
             </div>
             <div className='d-flex align-items-center flex-wrap w-100'>
@@ -48,14 +51,15 @@ const EconomicMarketOverview: React.FC<Props> = ({className, color}) => {
           <div className='d-flex align-items-center mb-6'>
             <div className='symbol symbol-45px w-40px me-5'>
               <span className='symbol-label bg-lighten'>
-                <IMSVG path='/media/icons/duotune/ecommerce/ecm003.svg' className='svg-icon-1 svg-icon-primary' />
+                <IMSVG
+                  path='/media/icons/duotune/ecommerce/ecm003.svg'
+                  className='svg-icon-1 svg-icon-primary'
+                />
               </span>
             </div>
             <div className='d-flex align-items-center flex-wrap w-100'>
               <div className='mb-1 pe-3 flex-grow-1'>
-                <div className='fs-5 text-gray-800 fw-bold'>
-                  CPI
-                </div>
+                <div className='fs-5 text-gray-800 fw-bold'>CPI</div>
                 <div className='text-gray-400 fw-semibold fs-7'>
                   {intl.formatMessage({ id: 'DASHBOARD.CPI' })}
                 </div>
@@ -68,14 +72,15 @@ const EconomicMarketOverview: React.FC<Props> = ({className, color}) => {
           <div className='d-flex align-items-center mb-6'>
             <div className='symbol symbol-45px w-40px me-5'>
               <span className='symbol-label bg-lighten'>
-                <IMSVG path='/media/icons/duotune/finance/fin010.svg' className='svg-icon-1 svg-icon-primary' />
+                <IMSVG
+                  path='/media/icons/duotune/finance/fin010.svg'
+                  className='svg-icon-1 svg-icon-primary'
+                />
               </span>
             </div>
             <div className='d-flex align-items-center flex-wrap w-100'>
               <div className='mb-1 pe-3 flex-grow-1'>
-                <div className='fs-5 text-gray-800 fw-bold'>
-                  GDP
-                </div>
+                <div className='fs-5 text-gray-800 fw-bold'>GDP</div>
                 <div className='text-gray-400 fw-semibold fs-7'>
                   {intl.formatMessage({ id: 'DASHBOARD.GDP' })}
                 </div>
@@ -89,7 +94,10 @@ const EconomicMarketOverview: React.FC<Props> = ({className, color}) => {
           <div className='d-flex align-items-center'>
             <div className='symbol symbol-45px w-40px me-5'>
               <span className='symbol-label bg-lighten'>
-                <IMSVG path='/media/icons/duotune/general/gen024.svg' className='svg-icon-1 svg-icon-primary' />
+                <IMSVG
+                  path='/media/icons/duotune/general/gen024.svg'
+                  className='svg-icon-1 svg-icon-primary'
+                />
               </span>
             </div>
             <div className='d-flex align-items-center flex-wrap w-100'>
@@ -109,7 +117,7 @@ const EconomicMarketOverview: React.FC<Props> = ({className, color}) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export {EconomicMarketOverview}
+export { EconomicMarketOverview };

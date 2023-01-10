@@ -9,9 +9,9 @@ import { NewsSection } from '../../modules/dashboard/components/NewsSection';
 import { FinancialsIndicators } from '../../modules/dashboard/components/FinancialsIndicators';
 import { dateFormatter } from '../../../utils/HelperFunctions';
 import { ForeignExchangeTable } from '../../modules/dashboard/components/ForeignExchangeTable';
-import {QueryRequestProvider} from "../../modules/companies/core/QueryRequestProvider";
-import {QueryResponseProvider} from "../../modules/companies/core/QueryResponseProvider";
-import {ListViewProvider} from "../../modules/companies/core/ListViewProvider";
+import { QueryRequestProvider } from '../../modules/companies/core/QueryRequestProvider';
+import { QueryResponseProvider } from '../../modules/companies/core/QueryResponseProvider';
+import { ListViewProvider } from '../../modules/companies/core/ListViewProvider';
 
 const DashboardPage: FC = () => {
   const intl = useIntl();
