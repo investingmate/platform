@@ -9,14 +9,21 @@ import {
 } from '@tanstack/react-table';
 import { DraggableColumnHeader } from '../../companies/components/table/columns/DraggableColumnHeader';
 import { ListPagination } from '../../companies/components/pagination/ListPagination';
+import { PathsConstants } from '../../../../utils/PathsConstants';
+import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router';
 
 interface IDefaultTable {
   columns: any;
   defaultData: any;
+  hidePagination?: boolean;
+  isClickable?: boolean;
 }
 const DefaultTable = (props: IDefaultTable) => {
-  const { columns, defaultData } = props;
-
+  const { columns, defaultData, hidePagination = false, isClickable = false } = props;
+  const location = useLocation();
+  const isDashboardPage = location.pathname.replace('/', '') === PathsConstants.DASHBOARD;
+  const nav = useNavigate();
   const [data] = React.useState(() => [...defaultData]);
   const [sorting, setSorting] = React.useState<SortingState>([]);
 
@@ -31,6 +38,19 @@ const DefaultTable = (props: IDefaultTable) => {
     getSortedRowModel: getSortedRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
   });
+
+  const handleOnClick = (row: any) => {
+    console.log(row.original);
+    if (isDashboardPage) {
+      nav(`/companies/company-overview`, { state: { company: JSON.stringify(row.original) } });
+    } else {
+      nav(
+        `company-overview`,
+        // `company-overview?ticker=${row.original.ticker.toLowerCase()}`,
+        { state: { company: JSON.stringify(row.original) } }
+      );
+    }
+  };
 
   return (
     <div className='border-0 pb-0 pt-2'>
@@ -68,7 +88,11 @@ const DefaultTable = (props: IDefaultTable) => {
                           </th>
                         );
                       }
-                      return (
+                      return isClickable ? (
+                        <td key={cell.id} onClick={() => handleOnClick(row)}>
+                          {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                        </td>
+                      ) : (
                         <td key={cell.id}>
                           {flexRender(cell.column.columnDef.cell, cell.getContext())}
                         </td>
@@ -80,7 +104,7 @@ const DefaultTable = (props: IDefaultTable) => {
           </tbody>
         </table>
       </div>
-      {data.length > 5 && <ListPagination table={table} />}
+      {data.length > 5 && !hidePagination && <ListPagination table={table} />}
     </div>
   );
 };
