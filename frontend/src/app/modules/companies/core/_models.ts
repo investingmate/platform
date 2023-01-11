@@ -433,3 +433,13 @@ export type ForeignExchange = {
   icon: string;
   amount: number;
 };
+
+export type Item = {
+  id?: ID;
+  amount_change: number;
+  percentage: number;
+};
+
+export type ListItem = Company & Item;
+
+export type TListColumn = ColumnDef<ListItem>;

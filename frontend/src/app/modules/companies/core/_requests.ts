@@ -107,7 +107,7 @@ const slugfy = (name) => {
   );
 };
 
-const COMPANIES = [
+export const COMPANIES = [
   'Lotus Resources Ltd',
   'Global Lithium Resources Ltd',
   'Core Lithium Ltd',

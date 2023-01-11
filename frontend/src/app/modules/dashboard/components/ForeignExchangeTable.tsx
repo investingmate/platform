@@ -56,6 +56,7 @@ const ForeignExchangeTable = () => {
         id: 'amount',
         header: 'Amount',
         cell: (info) => info.getValue(),
+        size: 50,
       },
     ],
     []

@@ -110,6 +110,10 @@
   "DASHBOARD.TOTAL_COMPANIES": "Total Companies",
   "DASHBOARD.CPI": "Consumer Price Index",
   "DASHBOARD.GDP": "Gross Domestic Product",
+  "DASHBOARD.CASH_RATE": "Cash Rate",
+  "DASHBOARD.INTEREST_RATE": "Interest Rate",
   "DASHBOARD.SECTORS": "Sectors",
-  "DASHBOARD.TOTAL_SECTORS": "Total Sectors"
+  "DASHBOARD.TOTAL_SECTORS": "Total Sectors",
+  "DASHBOARD.TOP_FALLERS": "Top Fallers",
+  "DASHBOARD.TOP_GAINERS": "Top Gainers"
 }

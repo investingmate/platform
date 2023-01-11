@@ -1,5 +1,5 @@
 import React from 'react';
-import {EconomicMarketOverview} from "./EconomicMarketOverview";
+import { EconomicMarketOverview } from './EconomicMarketOverview';
 // import { CustomCarousel } from '../../../../components/Carousel';
 // import { CompaniesIndicator } from '../../companies/components/CompaniesIndicator';
 
