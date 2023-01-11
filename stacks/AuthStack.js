@@ -1,39 +1,39 @@
-import * as iam from "aws-cdk-lib/aws-iam";
-import * as cognito from "aws-cdk-lib/aws-cognito";
-import { Cognito, use } from "@serverless-stack/resources";
-import { StorageStack } from "./StorageStack";
-import { ApiStack } from "./ApiStack";
+import {
+  UserPoolClientIdentityProvider,
+  UserPoolIdentityProviderGoogle,
+  ProviderAttribute,
+} from "aws-cdk-lib/aws-cognito";
+import { Cognito } from "@serverless-stack/resources";
 
 export function AuthStack({ stack, app }) {
-  const { bucket } = use(StorageStack);
-  const { api } = use(ApiStack);
+  const url =
+    app.stage !== "local"
+      ? `https://app.${app.stage}.investingmate.com.au`
+      : "http://localhost:3000";
 
   const auth = new Cognito(stack, "auth", {
     login: ["email"],
     cdk: {
       userPoolClient: {
-        supportedIdentityProviders: [
-          cognito.UserPoolClientIdentityProvider.GOOGLE,
-        ],
+        supportedIdentityProviders: [UserPoolClientIdentityProvider.GOOGLE],
         oAuth: {
-          callbackUrls: ["http://localhost:3000"],
-          logoutUrls: ["http://localhost:3000"],
+          callbackUrls: [url],
+          logoutUrls: [url],
         },
       },
     },
   });
 
-  const provider = new cognito.UserPoolIdentityProviderGoogle(stack, "Google", {
-    clientId:
-      "560062138519-d9fior6tn78a3d908e37ngmpnb9c6d10.apps.googleusercontent.com",
-    clientSecret: "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",
+  const provider = new UserPoolIdentityProviderGoogle(stack, "Google", {
+    clientId: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     userPool: auth.cdk.userPool,
     scopes: ["profile", "email", "openid"],
     attributeMapping: {
-      email: cognito.ProviderAttribute.GOOGLE_EMAIL,
-      givenName: cognito.ProviderAttribute.GOOGLE_GIVEN_NAME,
-      familyName: cognito.ProviderAttribute.GOOGLE_FAMILY_NAME,
-      profilePicture: cognito.ProviderAttribute.GOOGLE_PICTURE,
+      email: ProviderAttribute.GOOGLE_EMAIL,
+      givenName: ProviderAttribute.GOOGLE_GIVEN_NAME,
+      familyName: ProviderAttribute.GOOGLE_FAMILY_NAME,
+      profilePicture: ProviderAttribute.GOOGLE_PICTURE,
     },
   });
 
@@ -46,18 +46,6 @@ export function AuthStack({ stack, app }) {
     },
   });
 
-  auth.attachPermissionsForAuthUsers(auth, [
-    // Allow access to the API
-    api,
-    // Policy granting access to a specific folder in the bucket
-    new iam.PolicyStatement({
-      actions: ["s3:*"],
-      effect: iam.Effect.ALLOW,
-      resources: [
-        bucket.bucketArn + "/private/${cognito-identity.amazonaws.com:sub}/*",
-      ],
-    }),
-  ]);
   // Show the auth resources in the output
   stack.addOutputs({
     Region: app.region,

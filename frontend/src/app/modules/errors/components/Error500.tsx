@@ -1,6 +1,6 @@
-import {FC} from 'react'
-import {Link} from 'react-router-dom'
-import {toAbsoluteUrl} from '../../../../_investingmate/helpers'
+import { FC } from 'react';
+import { Link } from 'react-router-dom';
+import { toAbsoluteUrl } from '../../../../_investingmate/helpers';
 
 const Error500: FC = () => {
   return (
@@ -56,9 +56,6 @@ const Error500: FC = () => {
             <a href='https://keenthemes.com' className='text-muted text-hover-primary px-2'>
               About
             </a>
-            <a href='mailto:support@keenthemes.com' className='text-muted text-hover-primary px-2'>
-              Contact
-            </a>
             <a href='https://1.envato.market/EA4JP' className='text-muted text-hover-primary px-2'>
               Contact Us
             </a>
@@ -69,7 +66,7 @@ const Error500: FC = () => {
       </div>
       {/*end::Authentication - Error 500*/}
     </div>
-  )
-}
+  );
+};
 
-export {Error500}
+export { Error500 };

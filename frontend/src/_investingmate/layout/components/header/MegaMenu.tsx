@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, {FC} from 'react'
+import React, { FC } from 'react';
 
 const MegaMenu: FC = () => (
   <div className='row' data-im-menu-dismiss='true'>
@@ -136,6 +136,6 @@ const MegaMenu: FC = () => (
       </div>
     </div>
   </div>
-)
+);
 
-export {MegaMenu}
+export { MegaMenu };

@@ -1,0 +1,16 @@
+.loading-container {
+  box-shadow: 0 0 50px 0 rgb(82 63 105 / 15%);
+  background-color: #fff;
+  color: #7e8299;
+  font-weight: 500;
+  top: 25vh;
+  left: 25vw;
+  height: 150px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  border-radius: var(--bs-card-inner-border-radius);
+}

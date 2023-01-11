@@ -1,26 +1,26 @@
-import {useState} from 'react'
-import {useFormik} from 'formik'
-import * as Yup from 'yup'
-import clsx from 'clsx'
-import {Auth} from 'aws-amplify'
-import {Link, useNavigate} from 'react-router-dom'
-import {useAuth} from '../core/Auth'
-import {onError} from '../../../../lib/errorLib'
-import {toAbsoluteUrl, useQuery} from '../../../../_investingmate/helpers'
-import {IUser} from '../../../../utils/Interfaces'
+import { useState } from 'react';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import clsx from 'clsx';
+import { Auth } from 'aws-amplify';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../core/Auth';
+import { onError } from '../../../../lib/errorLib';
+import { toAbsoluteUrl, useQuery } from '../../../../_investingmate/helpers';
+import { IUser } from '../../../../utils/Interfaces';
 
 const initialValues = {
-  firstname: 'Lucas',
-  lastname: 'Nascimento',
-  email: 'csalucasnascimento@gmail.com',
-  password: 'Aus.2013!',
-  confirmPassword: 'Aus.2013!',
+  firstname: '',
+  lastname: '',
+  email: '',
+  password: '',
+  confirmPassword: '',
   acceptTerms: false,
-}
+};
 
 const initialValues2 = {
   confirmationCode: '',
-}
+};
 
 const schema = Yup.object().shape({
   firstname: Yup.string()
@@ -47,28 +47,28 @@ const schema = Yup.object().shape({
       then: Yup.string().oneOf([Yup.ref('password')], "Password and Confirm Password didn't match"),
     }),
   acceptTerms: Yup.bool().required('You must accept the terms and conditions'),
-})
+});
 
 const schema2 = Yup.object().shape({
   confirmationCode: Yup.string()
     .min(6, 'Minimum 6 symbols')
     .max(6, 'Maximum 6 symbols')
     .required('Confirmation code is required'),
-})
+});
 
 export function Registration() {
-  const navigate = useNavigate()
-  const query = useQuery()
-  const email = query.get('email') ?? ''
-  const [loading, setLoading] = useState(false)
-  const {setCurrentUser} = useAuth()
-  const [user, setUser] = useState<IUser>({username: '', password: ''})
+  const navigate = useNavigate();
+  const query = useQuery();
+  const email = query.get('email') ?? '';
+  const [loading, setLoading] = useState(false);
+  const { setCurrentUser } = useAuth();
+  const [user, setUser] = useState<IUser>({ username: '', password: '' });
 
   const formik = useFormik({
     initialValues,
     validationSchema: schema,
-    onSubmit: async (values, {setStatus, setSubmitting}) => {
-      setLoading(true)
+    onSubmit: async (values, { setStatus, setSubmitting }) => {
+      setLoading(true);
       try {
         const newUser = {
           username: values.email,
@@ -79,43 +79,43 @@ export function Registration() {
             family_name: values.lastname,
             nickname: values.firstname,
           },
-        }
-        await Auth.signUp(newUser)
+        };
+        await Auth.signUp(newUser);
         setUser({
           username: values.email,
           password: values.password,
-        })
-        setLoading(false)
-        navigate(`/auth/registration?email=${values.email}`)
+        });
+        setLoading(false);
+        navigate(`/auth/registration?email=${values.email}`);
       } catch (error) {
-        onError(error)
-        setStatus('The registration details is incorrect')
-        setSubmitting(false)
-        setLoading(false)
+        onError(error);
+        setStatus('The registration details is incorrect');
+        setSubmitting(false);
+        setLoading(false);
       }
     },
-  })
+  });
 
   const formik2 = useFormik({
     initialValues: {
       ...initialValues2,
     },
     validationSchema: schema2,
-    onSubmit: async (values, {setStatus, setSubmitting}) => {
-      setLoading(true)
+    onSubmit: async (values, { setStatus, setSubmitting }) => {
+      setLoading(true);
       try {
-        await Auth.confirmSignUp(email, values.confirmationCode)
-        const {username} = await Auth.signIn(user.username, user.password)
-        setCurrentUser(username)
+        await Auth.confirmSignUp(email, values.confirmationCode);
+        const { username } = await Auth.signIn(user.username, user.password);
+        setCurrentUser(username);
         // navigate(`/auth/login`);
       } catch (error) {
-        onError(error)
-        setStatus('The confirmation code is incorrect')
-        setSubmitting(false)
-        setLoading(false)
+        onError(error);
+        setStatus('The confirmation code is incorrect');
+        setSubmitting(false);
+        setLoading(false);
       }
     },
-  })
+  });
 
   const renderForm = () => (
     <form
@@ -133,7 +133,7 @@ export function Registration() {
         {/* begin::Link */}
         <div className='text-gray-400 fw-bold fs-4'>
           Already have an account?
-          <Link to='/auth/login' className='link-primary fw-bolder' style={{marginLeft: '5px'}}>
+          <Link to='/auth/login' className='link-primary fw-bolder' style={{ marginLeft: '5px' }}>
             Sign In
           </Link>
         </div>
@@ -232,7 +232,7 @@ export function Registration() {
           {...formik.getFieldProps('email')}
           className={clsx(
             'form-control form-control-lg form-control-solid',
-            {'is-invalid': formik.touched.email && formik.errors.email},
+            { 'is-invalid': formik.touched.email && formik.errors.email },
             {
               'is-valid': formik.touched.email && !formik.errors.email,
             }
@@ -335,9 +335,9 @@ export function Registration() {
             className='form-check-label fw-bold text-gray-700 fs-6'
             htmlFor='im_login_toc_agree'
           >
-            I Agree the{' '}
+            I agree to the
             <Link to='/auth/terms' className='ms-1 link-primary'>
-              terms and conditions
+              Terms and Conditions
             </Link>
             .
           </label>
@@ -362,7 +362,7 @@ export function Registration() {
         >
           {!loading && <span className='indicator-label'>Submit</span>}
           {loading && (
-            <span className='indicator-progress' style={{display: 'block'}}>
+            <span className='indicator-progress' style={{ display: 'block' }}>
               Please wait...{' '}
               <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
             </span>
@@ -380,7 +380,7 @@ export function Registration() {
       </div>
       {/* end::Form group */}
     </form>
-  )
+  );
 
   const renderFormConfirm = () => (
     <form
@@ -398,7 +398,7 @@ export function Registration() {
         {/* begin::Link */}
         <div className='text-gray-400 fw-bold fs-4'>
           Already have an account?
-          <Link to='/auth/login' className='link-primary fw-bolder' style={{marginLeft: '5px'}}>
+          <Link to='/auth/login' className='link-primary fw-bolder' style={{ marginLeft: '5px' }}>
             Forgot Password ?
           </Link>
         </div>
@@ -467,7 +467,7 @@ export function Registration() {
         >
           {!loading && <span className='indicator-label'>Submit</span>}
           {loading && (
-            <span className='indicator-progress' style={{display: 'block'}}>
+            <span className='indicator-progress' style={{ display: 'block' }}>
               Please wait...{' '}
               <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
             </span>
@@ -485,7 +485,7 @@ export function Registration() {
       </div>
       {/* end::Form group */}
     </form>
-  )
+  );
 
-  return <div className='Signup'>{!email ? renderForm() : renderFormConfirm()}</div>
+  return <div className='Signup'>{!email ? renderForm() : renderFormConfirm()}</div>;
 }

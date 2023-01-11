@@ -1,5 +1,5 @@
-import {Link} from 'react-router-dom'
-import {KTSVG} from '../../../../_investingmate/helpers'
+import { Link } from 'react-router-dom';
+import { IMSVG } from '../../../../_investingmate/helpers';
 
 const Companies = () => {
   return (
@@ -14,7 +14,7 @@ const Companies = () => {
         </Link>
       </div>
 
-      <div className='card-body p-9'>
+      <div className='card-body ps-3 pt-2 pb-2'>
         <div className='row mb-7'>
           <label className='col-lg-4 fw-bold text-muted'>Full Name</label>
 
@@ -90,7 +90,7 @@ const Companies = () => {
         </div>
 
         <div className='notice d-flex bg-light-warning rounded border-warning border border-dashed p-6'>
-          <KTSVG
+          <IMSVG
             path='icons/duotune/general/gen044.svg'
             className='svg-icon-2tx svg-icon-warning me-4'
           />
@@ -110,7 +110,7 @@ const Companies = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export {Companies}
+export { Companies };

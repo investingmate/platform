@@ -3,7 +3,6 @@ import { StorageStack } from "./StorageStack";
 import { ApiStack } from "./ApiStack";
 import { AuthStack } from "./AuthStack";
 import { FrontendStack } from "./FrontendStack";
-import { ConfigStack } from "./ConfigStack";
 import { App } from "@serverless-stack/resources";
 
 /**
@@ -20,8 +19,7 @@ export default function (app) {
   app
     .stack(CertificateStack)
     .stack(StorageStack)
-    .stack(ConfigStack)
-    .stack(ApiStack)
     .stack(AuthStack)
+    .stack(ApiStack)
     .stack(FrontendStack);
 }

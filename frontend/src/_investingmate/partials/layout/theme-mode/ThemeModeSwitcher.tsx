@@ -1,14 +1,14 @@
-import clsx from 'clsx'
-import {KTSVG} from '../../../helpers'
-import {ThemeModeType, useThemeMode} from './ThemeModeProvider'
+import clsx from 'clsx';
+import { IMSVG } from '../../../helpers';
+import { ThemeModeType, useThemeMode } from './ThemeModeProvider';
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
 type Props = {
-  toggleBtnClass?: string
-  toggleBtnIconClass?: string
-  menuPlacement?: string
-  menuTrigger?: string
-}
+  toggleBtnClass?: string;
+  toggleBtnIconClass?: string;
+  menuPlacement?: string;
+  menuTrigger?: string;
+};
 
 const ThemeModeSwitcher = ({
   toggleBtnClass = '',
@@ -16,11 +16,11 @@ const ThemeModeSwitcher = ({
   menuPlacement = 'bottom-end',
   menuTrigger = "{default: 'click', lg: 'hover'}",
 }: Props) => {
-  const {mode, menuMode, updateMode, updateMenuMode} = useThemeMode()
+  const { mode, menuMode, updateMode, updateMenuMode } = useThemeMode();
   const switchMode = (_mode: ThemeModeType) => {
-    updateMenuMode(_mode)
-    updateMode(_mode)
-  }
+    updateMenuMode(_mode);
+    updateMode(_mode);
+  };
 
   return (
     <>
@@ -33,14 +33,14 @@ const ThemeModeSwitcher = ({
         data-im-menu-placement={menuPlacement}
       >
         {mode === 'dark' && (
-          <KTSVG
+          <IMSVG
             path='/media/icons/duotune/general/gen061.svg'
             className={clsx('theme-light-hide', toggleBtnIconClass)}
           />
         )}
 
         {mode === 'light' && (
-          <KTSVG
+          <IMSVG
             path='/media/icons/duotune/general/gen060.svg'
             className={clsx('theme-dark-hide', toggleBtnIconClass)}
           />
@@ -57,11 +57,11 @@ const ThemeModeSwitcher = ({
         <div className='menu-item px-3 my-0'>
           <a
             href='#'
-            className={clsx('menu-link px-3 py-2', {active: menuMode === 'light'})}
+            className={clsx('menu-link px-3 py-2', { active: menuMode === 'light' })}
             onClick={() => switchMode('light')}
           >
             <span className='menu-icon' data-im-element='icon'>
-              <KTSVG path='/media/icons/duotune/general/gen060.svg' className='svg-icon-3' />
+              <IMSVG path='/media/icons/duotune/general/gen060.svg' className='svg-icon-3' />
             </span>
             <span className='menu-title'>Light</span>
           </a>
@@ -72,11 +72,11 @@ const ThemeModeSwitcher = ({
         <div className='menu-item px-3 my-0'>
           <a
             href='#'
-            className={clsx('menu-link px-3 py-2', {active: menuMode === 'dark'})}
+            className={clsx('menu-link px-3 py-2', { active: menuMode === 'dark' })}
             onClick={() => switchMode('dark')}
           >
             <span className='menu-icon' data-im-element='icon'>
-              <KTSVG path='/media/icons/duotune/general/gen061.svg' className='svg-icon-3' />
+              <IMSVG path='/media/icons/duotune/general/gen061.svg' className='svg-icon-3' />
             </span>
             <span className='menu-title'>Dark</span>
           </a>
@@ -84,23 +84,23 @@ const ThemeModeSwitcher = ({
         {/* end::Menu item */}
 
         {/* begin::Menu item */}
-        <div className='menu-item px-3 my-0'>
-          <a
-            href='#'
-            className={clsx('menu-link px-3 py-2', {active: menuMode === 'system'})}
-            onClick={() => switchMode('system')}
-          >
-            <span className='menu-icon' data-im-element='icon'>
-              <KTSVG path='/media/icons/duotune/general/gen062.svg' className='svg-icon-3' />
-            </span>
-            <span className='menu-title'>System</span>
-          </a>
-        </div>
+        {/*<div className='menu-item px-3 my-0'>*/}
+        {/*  <a*/}
+        {/*    href='#'*/}
+        {/*    className={clsx('menu-link px-3 py-2', {active: menuMode === 'system'})}*/}
+        {/*    onClick={() => switchMode('system')}*/}
+        {/*  >*/}
+        {/*    <span className='menu-icon' data-im-element='icon'>*/}
+        {/*      <IMSVG path='/media/icons/duotune/general/gen062.svg' className='svg-icon-3' />*/}
+        {/*    </span>*/}
+        {/*    <span className='menu-title'>System</span>*/}
+        {/*  </a>*/}
+        {/*</div>*/}
         {/* end::Menu item */}
       </div>
       {/* end::Menu */}
     </>
-  )
-}
+  );
+};
 
-export {ThemeModeSwitcher}
+export { ThemeModeSwitcher };

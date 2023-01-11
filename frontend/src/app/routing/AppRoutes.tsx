@@ -1,12 +1,13 @@
-import {Route, Routes, BrowserRouter, Navigate} from 'react-router-dom'
-import {PrivateRoutes} from './PrivateRoutes'
-import {ErrorsPage} from '../modules/errors/ErrorsPage'
-import {useAuth, Logout, AuthPage} from '../modules/auth'
-import {App} from '../App'
-import {FC} from 'react'
+import { Route, Routes, BrowserRouter, Navigate } from 'react-router-dom';
+import { PrivateRoutes } from './PrivateRoutes';
+import { ErrorsPage } from '../modules/errors/ErrorsPage';
+import { useAuth, Logout, AuthPage } from '../modules/auth';
+import { App } from '../App';
+import { FC } from 'react';
+import { PathsConstants } from '../../utils/PathsConstants';
 
 const AppRoutes: FC = () => {
-  const {currentUser} = useAuth()
+  const { currentUser } = useAuth();
   return (
     <BrowserRouter>
       <Routes>
@@ -16,18 +17,18 @@ const AppRoutes: FC = () => {
           {currentUser ? (
             <>
               <Route path='/*' element={<PrivateRoutes />} />
-              <Route index element={<Navigate to='/dashboard' />} />
+              <Route index element={<Navigate to={`/${PathsConstants.DASHBOARD}`} />} />
             </>
           ) : (
             <>
               <Route path='auth/*' element={<AuthPage />} />
-              <Route path='*' element={<Navigate to='/auth' />} />
+              <Route path='*' element={<Navigate to={`/${PathsConstants.AUTH}`} />} />
             </>
           )}
         </Route>
       </Routes>
     </BrowserRouter>
-  )
-}
+  );
+};
 
-export {AppRoutes}
+export { AppRoutes };

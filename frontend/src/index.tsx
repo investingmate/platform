@@ -1,13 +1,14 @@
-import {createRoot} from 'react-dom/client'
-import './_investingmate/assets/sass/style.scss'
-import './_investingmate/assets/sass/plugins.scss'
-import './_investingmate/assets/sass/style.react.scss'
-import {Amplify} from 'aws-amplify'
-import {initSentry} from './lib/errorLib'
-import config from './config'
-import {AuthProvider} from './app/modules/auth'
-import {AppRoutes} from './app/routing/AppRoutes'
-import {InvestingMateI18nProvider} from './_investingmate/i18n/InvestingMatei18n'
+import { createRoot } from 'react-dom/client';
+import './_investingmate/assets/sass/style.scss';
+import './_investingmate/assets/sass/plugins.scss';
+import './_investingmate/assets/sass/style.react.scss';
+import { Amplify } from 'aws-amplify';
+import { initSentry } from './lib/errorLib';
+import config from './config';
+import { AuthProvider } from './app/modules/auth';
+import { AppRoutes } from './app/routing/AppRoutes';
+import { InvestingMateI18nProvider } from './_investingmate/i18n/InvestingMatei18n';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 Amplify.configure({
   Auth: {
@@ -19,8 +20,8 @@ Amplify.configure({
     oauth: {
       domain: `${config.cognito.AUTH_DOMAIN}.auth.${config.cognito.REGION}.amazoncognito.com`,
       scope: ['email', 'profile', 'openid', 'aws.cognito.signin.user.admin'],
-      redirectSignIn: 'http://localhost:3000',
-      redirectSignOut: 'http://localhost:3000',
+      redirectSignIn: config.DOMAIN,
+      redirectSignOut: config.DOMAIN,
       responseType: 'code',
     },
   },
@@ -38,17 +39,19 @@ Amplify.configure({
       },
     ],
   },
-})
+});
 
-initSentry()
-
-const container = document.getElementById('root')
+initSentry();
+const queryClient = new QueryClient();
+const container = document.getElementById('root');
 if (container) {
   createRoot(container).render(
-    <InvestingMateI18nProvider>
-      <AuthProvider>
-        <AppRoutes />
-      </AuthProvider>
-    </InvestingMateI18nProvider>
-  )
+    <QueryClientProvider client={queryClient}>
+      <InvestingMateI18nProvider>
+        <AuthProvider>
+          <AppRoutes />
+        </AuthProvider>
+      </InvestingMateI18nProvider>
+    </QueryClientProvider>
+  );
 }

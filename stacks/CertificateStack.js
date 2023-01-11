@@ -2,10 +2,13 @@ import * as acm from "aws-cdk-lib/aws-certificatemanager";
 import * as route53 from "aws-cdk-lib/aws-route53";
 
 export function CertificateStack({ stack, app }) {
-  const domain = "investingmate.com.au";
+  const domain =
+    app.stage === "prod"
+      ? "investingmate.com.au"
+      : `${app.stage}.investingmate.com.au`;
 
-  const hostedZone = new route53.HostedZone(stack, "HostedZone", {
-    zoneName: domain,
+  const hostedZone = route53.HostedZone.fromLookup(stack, "HostedZone", {
+    domainName: domain,
   });
 
   const rootZone = route53.HostedZone.fromHostedZoneAttributes(stack, "Zone", {

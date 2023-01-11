@@ -1,23 +1,24 @@
 /* eslint-disable react/jsx-no-target-blank */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import {FC, useRef} from 'react'
-import {Link} from 'react-router-dom'
-import clsx from 'clsx'
-import {useLayout} from '../../core'
-import {KTSVG, toAbsoluteUrl} from '../../../helpers'
-import {AsideMenu} from './AsideMenu'
+import { FC, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import clsx from 'clsx';
+import { useLayout } from '../../core';
+import { IMSVG, toAbsoluteUrl } from '../../../helpers';
+import { AsideMenu } from './AsideMenu';
+import { PathsConstants } from '../../../../utils/PathsConstants';
 
 const AsideDefault: FC = () => {
-  const {config, classes} = useLayout()
-  const asideRef = useRef<HTMLDivElement | null>(null)
-  const {aside} = config
+  const { config, classes } = useLayout();
+  const asideRef = useRef<HTMLDivElement | null>(null);
+  const { aside } = config;
 
   const minimize = () => {
-    asideRef.current?.classList.add('animating')
+    asideRef.current?.classList.add('animating');
     setTimeout(() => {
-      asideRef.current?.classList.remove('animating')
-    }, 300)
-  }
+      asideRef.current?.classList.remove('animating');
+    }, 300);
+  };
 
   return (
     <div
@@ -36,12 +37,12 @@ const AsideDefault: FC = () => {
       <div className='aside-logo flex-column-auto' id='im_aside_logo'>
         {/* begin::Logo */}
         {aside.theme === 'dark' && (
-          <Link to='/dashboard'>
+          <Link to={`/${PathsConstants.DASHBOARD}`}>
             <img alt='Logo' className='h-25px logo' src={toAbsoluteUrl('/media/logos/logo.svg')} />
           </Link>
         )}
         {aside.theme === 'light' && (
-          <Link to='/dashboard'>
+          <Link to={`/${PathsConstants.DASHBOARD}`}>
             <img alt='Logo' className='h-25px logo' src={toAbsoluteUrl('/media/logos/logo.svg')} />
           </Link>
         )}
@@ -58,7 +59,7 @@ const AsideDefault: FC = () => {
             data-im-toggle-name='aside-minimize'
             onClick={minimize}
           >
-            <KTSVG
+            <IMSVG
               path={'/media/icons/duotune/arrows/arr080.svg'}
               className={'svg-icon-1 rotate-180'}
             />
@@ -87,13 +88,13 @@ const AsideDefault: FC = () => {
         {/*>*/}
         {/*  <span className='btn-label'>Docs & Components</span>*/}
         {/*  <span className='svg-icon btn-icon svg-icon-2'>*/}
-        {/*    <KTSVG path='/media/icons/duotune/general/gen005.svg' />*/}
+        {/*    <IMSVG path='/media/icons/duotune/general/gen005.svg' />*/}
         {/*  </span>*/}
         {/*</a>*/}
       </div>
       {/* end::Footer */}
     </div>
-  )
-}
+  );
+};
 
-export {AsideDefault}
+export { AsideDefault };

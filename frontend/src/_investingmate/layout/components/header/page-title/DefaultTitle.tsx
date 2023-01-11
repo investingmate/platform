@@ -1,10 +1,10 @@
-import {Link} from 'react-router-dom'
-import {useLayout} from '../../../core'
-import {PageLink, usePageData} from '../../../core/PageData'
+import { Link } from 'react-router-dom';
+import { useLayout } from '../../../core';
+import { PageLink, usePageData } from '../../../core/PageData';
 
 const DefaultTitle = () => {
-  const {pageTitle, pageDescription, pageBreadcrumbs} = usePageData()
-  const {config} = useLayout()
+  const { pageTitle, pageDescription, pageBreadcrumbs } = usePageData();
+  const { config } = useLayout();
   return (
     <div
       id='im_page_title'
@@ -57,7 +57,7 @@ const DefaultTitle = () => {
           </>
         )}
     </div>
-  )
-}
+  );
+};
 
-export {DefaultTitle}
+export { DefaultTitle };

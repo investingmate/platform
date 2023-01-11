@@ -1,54 +1,51 @@
-import {useState} from 'react'
-import {API} from 'aws-amplify'
-import {useNavigate} from 'react-router-dom'
-import {loadStripe, Token} from '@stripe/stripe-js'
-import {Elements} from '@stripe/react-stripe-js'
-import config from '../config'
-import {onError} from '../lib/errorLib'
-import BillingForm from '../components/BillingForm'
+import { useState } from 'react';
+import { API } from 'aws-amplify';
+import { useNavigate } from 'react-router-dom';
+import { loadStripe, Token } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
+import config from '../config';
+import { onError } from '../lib/errorLib';
+import BillingForm from '../components/BillingForm';
 
 const fontsData = {
-  fonts: [{cssSrc: 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800'}]
-}
+  fonts: [{ cssSrc: 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800' }],
+};
 
 export default function Settings() {
-  const nav = useNavigate()
-  const [isLoading, setIsLoading] = useState(false)
-  const stripePromise = loadStripe(config.STRIPE_KEY)
+  const nav = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+  const stripePromise = loadStripe(config.STRIPE_KEY);
 
   function billUser(details: any) {
     return API.post('notes', '/billing', {
       body: details,
-    })
+    });
   }
 
   async function handleFormSubmit(storage: string, token: Token | undefined, error: any) {
     if (error) {
-      onError(error)
-      return
+      onError(error);
+      return;
     }
-    setIsLoading(true)
+    setIsLoading(true);
     try {
       await billUser({
         storage,
         source: token?.id,
-      })
-      alert('Your card has been charged successfully!')
-      nav('/')
+      });
+      alert('Your card has been charged successfully!');
+      nav('/');
     } catch (e) {
-      onError(e)
-      setIsLoading(false)
+      onError(e);
+      setIsLoading(false);
     }
   }
 
   return (
     <div className='Settings'>
-      <Elements
-        stripe={stripePromise}
-        options={fontsData}
-      >
+      <Elements stripe={stripePromise} options={fontsData}>
         <BillingForm isLoading={isLoading} onSubmit={handleFormSubmit} />
       </Elements>
     </div>
-  )
+  );
 }

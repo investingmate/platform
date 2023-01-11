@@ -1,4 +1,4 @@
-import {toAbsoluteUrl} from "../_investingmate/helpers";
+import { toAbsoluteUrl } from '../_investingmate/helpers';
 
 export const languages = [
   {
@@ -16,4 +16,4 @@ export const languages = [
   //   name: 'Portuguese',
   //   flag: toAbsoluteUrl('/media/flags/brazil.svg'),
   // },
-]
+];
