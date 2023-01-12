@@ -15,11 +15,17 @@ const CustomCarousel = (props: Props) => {
   };
 
   return (
-    <Carousel activeIndex={index} onSelect={handleSelect} variant={variant} className='w-100'>
+    <Carousel
+      activeIndex={index}
+      onSelect={handleSelect}
+      variant={variant}
+      className='w-100'
+      indicators={true}
+    >
       {items.map((i) => {
         return (
-          <Carousel.Item interval={2000} key={i.id}>
-            <div className='w-75 ms-auto me-auto p-6 mb-6'>{i.item}</div>
+          <Carousel.Item interval={1500} key={i.id}>
+            <div className='w-75 ms-auto me-auto p-3 mb-6'>{i.item}</div>
           </Carousel.Item>
         );
       })}

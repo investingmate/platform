@@ -122,15 +122,28 @@ const DefaultTable = (props: IDefaultTable) => {
                           </th>
                         );
                       }
+
                       return isClickable ? (
                         <td key={cell.id} onClick={() => handleOnClick(row)}>
-                          {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                          {status && cell.column.id && renderIcon(cell.column.id, status)}
+                          {status && cell.column.id === 'percentage' ? (
+                            <div className='d-flex justify-content-around'>
+                              {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                              {status && cell.column.id && renderIcon(cell.column.id, status)}
+                            </div>
+                          ) : (
+                            flexRender(cell.column.columnDef.cell, cell.getContext())
+                          )}
                         </td>
                       ) : (
                         <td key={cell.id}>
-                          {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                          {status && cell.column.id && renderIcon(cell.column.id, status)}
+                          {status && cell.column.id === 'percentage' ? (
+                            <div className='d-flex justify-content-around'>
+                              {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                              {status && cell.column.id && renderIcon(cell.column.id, status)}
+                            </div>
+                          ) : (
+                            flexRender(cell.column.columnDef.cell, cell.getContext())
+                          )}
                         </td>
                       );
                     })}
