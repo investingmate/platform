@@ -434,6 +434,17 @@ export type ForeignExchange = {
   amount: number;
 };
 
+export type TForeignIndexColumn = ColumnDef<ForeignIndex>;
+
+export type ForeignIndex = {
+  id?: ID;
+  index: string;
+  flag: string;
+  last: number;
+  low: number;
+  high: number;
+};
+
 export type Item = {
   id?: ID;
   amount_change: number;

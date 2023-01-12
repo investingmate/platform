@@ -106,6 +106,7 @@
   "COMPANIES.NEWS": "News",
   "COMPANIES.TUTORIAL": "Tips on how to use Investing Mate",
   "COMPANIES.FOREIGN_EXCHANGE": "Foreign Exchange - (1 AUD)",
+  "COMPANIES.FOREIGN_INDICES": "Foreign Indices",
   "DASHBOARD.ECONOMIC_MARKET_OVERVIEW": "Economic & Market Overview",
   "DASHBOARD.TOTAL_COMPANIES": "Total Companies",
   "DASHBOARD.CPI": "Consumer Price Index",
@@ -115,5 +116,7 @@
   "DASHBOARD.SECTORS": "Sectors",
   "DASHBOARD.TOTAL_SECTORS": "Total Sectors",
   "DASHBOARD.TOP_FALLERS": "Top Fallers",
-  "DASHBOARD.TOP_GAINERS": "Top Gainers"
+  "DASHBOARD.TOP_GAINERS": "Top Gainers",
+  "DASHBOARD.NEWS": "News - Australia",
+  "DASHBOARD.NEWS_GLOBAL": "News - Global"
 }

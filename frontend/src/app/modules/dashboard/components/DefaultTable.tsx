@@ -12,15 +12,17 @@ import { ListPagination } from '../../companies/components/pagination/ListPagina
 import { PathsConstants } from '../../../../utils/PathsConstants';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router';
+import { IMSVG } from '../../../../_investingmate/helpers';
 
 interface IDefaultTable {
   columns: any;
   defaultData: any;
   hidePagination?: boolean;
   isClickable?: boolean;
+  status?: string;
 }
 const DefaultTable = (props: IDefaultTable) => {
-  const { columns, defaultData, hidePagination = false, isClickable = false } = props;
+  const { columns, defaultData, hidePagination = false, isClickable = false, status } = props;
   const location = useLocation();
   const isDashboardPage = location.pathname.replace('/', '') === PathsConstants.DASHBOARD;
   const nav = useNavigate();
@@ -52,6 +54,25 @@ const DefaultTable = (props: IDefaultTable) => {
     }
   };
 
+  const renderIcon = (cell: string, status: string) => {
+    if (status === 'UP' && cell === 'percentage') {
+      return (
+        <IMSVG
+          path='/media/icons/duotune/arrows/arr066.svg'
+          className='svg-icon-3 svg-icon-success ms-4'
+        />
+      );
+    } else if (status === 'DOWN' && cell === 'percentage') {
+      return (
+        <IMSVG
+          path='/media/icons/duotune/arrows/arr065.svg'
+          className='svg-icon-3 svg-icon-danger ms-4'
+        />
+      );
+    }
+    return null;
+  };
+
   return (
     <div className='border-0 pb-0 pt-2'>
       <div className='table-responsive'>
@@ -79,6 +100,19 @@ const DefaultTable = (props: IDefaultTable) => {
                 return (
                   <tr key={row.id} className='cursor-pointer btn-light'>
                     {row.getVisibleCells().map((cell) => {
+                      if (cell.column.id === 'flag') {
+                        return (
+                          <th key={cell.column.id}>
+                            <div className='d-flex justify-content-center'>
+                              <IMSVG
+                                path={row.original.flag}
+                                className='svg-icon-2 svg-icon-primary'
+                              />
+                            </div>
+                          </th>
+                        );
+                      }
+
                       if (cell.column.id === 'icon') {
                         return (
                           <th key={cell.column.id}>
@@ -91,10 +125,12 @@ const DefaultTable = (props: IDefaultTable) => {
                       return isClickable ? (
                         <td key={cell.id} onClick={() => handleOnClick(row)}>
                           {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                          {status && cell.column.id && renderIcon(cell.column.id, status)}
                         </td>
                       ) : (
                         <td key={cell.id}>
                           {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                          {status && cell.column.id && renderIcon(cell.column.id, status)}
                         </td>
                       );
                     })}

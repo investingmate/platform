@@ -9,7 +9,7 @@ export const customStringfy = (str: string) => {
 };
 
 export const numberFormatter = (num: number): number => {
-  return parseFloat(num.toFixed(2));
+  return parseFloat((Math.round(num * 100) / 100).toFixed(2));
 };
 
 export const sortArrayOfObjects = (arr: any[], key: any) => {

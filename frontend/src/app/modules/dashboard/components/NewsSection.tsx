@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useIntl } from 'react-intl';
 import { CustomCard } from '../../../../components/CustomCard';
 import { IMSVG } from '../../../../_investingmate/helpers';
 import Modal from 'react-bootstrap/Modal';
@@ -49,12 +48,16 @@ const news: INews[] = [
   },
 ];
 
-const NewsSection = () => {
-  const intl = useIntl();
+interface INewsSection {
+  title: string;
+}
+
+const NewsSection = (props: INewsSection) => {
+  const { title } = props;
   const [currentNews, setCurrentNews] = useState<INews | undefined>(undefined);
   return (
     <div className=''>
-      <CustomCard title={intl.formatMessage({ id: 'COMPANIES.NEWS' })}>
+      <CustomCard title={title}>
         <div className='card card-xl-stretch'>
           <div className='card-body p-0'>
             {news.map((item) => {
