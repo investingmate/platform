@@ -10,13 +10,65 @@ import { FinancialsIndicators } from '../../modules/dashboard/components/Financi
 import { dateFormatter } from '../../../utils/HelperFunctions';
 import { ForeignExchangeTable } from '../../modules/dashboard/components/ForeignExchangeTable';
 import { QueryRequestProvider } from '../../modules/companies/core/QueryRequestProvider';
-import { QueryResponseProvider } from '../../modules/companies/core/QueryResponseProvider';
+import {
+  QueryResponseProvider,
+  useQueryResponseData,
+} from '../../modules/companies/core/QueryResponseProvider';
 import { ListViewProvider } from '../../modules/companies/core/ListViewProvider';
-import { TopFallersTable } from '../../modules/dashboard/components/TopFallersTable';
-import { TopGainersTable } from '../../modules/dashboard/components/TopGainersTable';
+import { TopListTable } from '../../modules/dashboard/components/TopListTable';
+import { TListColumn } from '../../modules/companies/core/_models';
 
 const DashboardPage: FC = () => {
   const intl = useIntl();
+
+  const companies = useQueryResponseData();
+  // TODO refactor this based on the data provider integration
+  const defaultData = companies
+    .map((item, index) => {
+      const amount = parseFloat((Math.random() + 1).toFixed(2));
+      return {
+        ...item,
+        amount_change: amount,
+        percentage: (amount * 0.3).toFixed(2), // mock dummy data
+      };
+    })
+    .sort((p1, p2) =>
+      p1.amount_change < p2.amount_change ? 1 : p1.amount_change > p2.amount_change ? -1 : 0
+    );
+
+  const columns = React.useMemo<TListColumn[]>(
+    () => [
+      {
+        accessorFn: (row) => row.ticker,
+        id: 'ticker',
+        header: 'Ticker',
+        cell: (info) => info.getValue(),
+        size: 50,
+      },
+      {
+        accessorFn: (row) => row.name,
+        id: 'name',
+        header: 'Name',
+        cell: (info) => info.getValue(),
+      },
+      {
+        accessorFn: (row) => row.amount_change,
+        id: 'amount_change',
+        header: 'Amount',
+        cell: (info) => `$${info.getValue()}`,
+        size: 50,
+      },
+      {
+        accessorFn: (row) => row.percentage,
+        id: 'percentage',
+        header: 'Percentage',
+        cell: (info) => `${info.getValue()}%`,
+        size: 50,
+      },
+    ],
+    []
+  );
+
   return (
     <>
       <FinancialsIndicators />
@@ -32,7 +84,7 @@ const DashboardPage: FC = () => {
               </span>
             </div>
             <div className='card-body pb-0'>
-              <TopFallersTable />
+              <TopListTable columns={columns} defaultData={defaultData} />
             </div>
           </div>
         </div>
@@ -47,7 +99,7 @@ const DashboardPage: FC = () => {
               </span>
             </div>
             <div className='card-body pb-3'>
-              <TopGainersTable />
+              <TopListTable columns={columns} defaultData={defaultData} />
             </div>
           </div>
         </div>
